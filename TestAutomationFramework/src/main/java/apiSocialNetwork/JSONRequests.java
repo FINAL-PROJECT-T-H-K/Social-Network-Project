@@ -8,7 +8,7 @@ public class JSONRequests {
             "    },\n" +
             "    \"confirmPassword\": \"alabala123\",\n" +
             "    \"email\": \"telerikacademy@abv.bg\",\n" +
-            "    \"password\": \"alabala123\",\n" +
+            "    \"password\": \"%s\",\n" +
             "    \"username\": \"%s\"\n" +
             "}";
 
