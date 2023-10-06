@@ -1,6 +1,8 @@
-2023-08-28 18:01:13,637 INFO  [main] Initializing WebDriver
-2023-08-28 18:01:20,727 INFO  [main] Initializing WebDriver
-2023-08-28 18:01:20,734 INFO  [main] Initializing WebDriver
-2023-08-28 18:01:22,239 INFO  [main] Clicking on element trello.loginPage.loginButton
-2023-08-28 18:01:24,683 INFO  [main] Clicking on element trello.loginPage.loginSubmitButton
-2023-08-28 18:01:35,620 INFO  [main] Quitting WebDriver
+2023-10-06 15:11:12,213 INFO  [main] Initializing WebDriver
+2023-10-06 15:11:19,850 INFO  [main] Initializing WebDriver
+2023-10-06 15:11:28,394 INFO  [main] Initializing WebDriver
+2023-10-06 15:11:28,395 INFO  [main] Initializing WebDriver
+2023-10-06 15:11:31,424 INFO  [main] Initializing WebDriver
+2023-10-06 15:11:32,744 INFO  [main] Clicking on element socialNetwork.submitButton
+2023-10-06 15:11:36,950 INFO  [main] Clicking on element socialNetwork.successful.register
+2023-10-06 15:11:38,401 INFO  [main] Quitting WebDriver
