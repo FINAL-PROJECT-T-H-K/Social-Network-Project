@@ -22,6 +22,10 @@ public class BaseTest {
         loginPageSocial = new LoginPageSocial(driver);
         registerLageSocial = new RegisterPageSocial(driver);
 
+
+        ///work
+
+
     }
 
     @AfterClass
