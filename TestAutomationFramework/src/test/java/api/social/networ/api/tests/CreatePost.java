@@ -10,35 +10,32 @@ import io.restassured.response.ValidatableResponse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import io.restassured.specification.RequestSpecification;
 
 import static apiSocialNetwork.Constants.*;
 import static apiSocialNetwork.Endpoints.*;
 import static apiSocialNetwork.JSONRequests.POST_BODY;
-import static apiSocialNetwork.JSONRequests.REGISTRATION_BODY;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
+import static java.util.Objects.isNull;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 
 public class CreatePost extends BaseTestSetup {
-
-    @BeforeEach
-    public void authentication() {
-        PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
-        preemptiveBasicAuthScheme.setUserName(USERNAME);
-        preemptiveBasicAuthScheme.setPassword(PASSWORD);
-        RestAssured.authentication = preemptiveBasicAuthScheme;
+    @BeforeClass
+    public void cookieSetup() {
+        if (isNull(COOKIE_VALUE)) {
+            AuthenticateUser auth = new AuthenticateUser();
+            auth._02_authenticateAndFetchCookies();
+        }
     }
 
     @Test
     public static void _03_createPost() {
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
-
-        String kuki = "JSESSIONID="+COOKIE_VALUE;
 
         Response response = RestAssured
                 .given()
@@ -56,6 +53,24 @@ public class CreatePost extends BaseTestSetup {
         System.out.println("Post was created successfully!");
     }
 
+    //GET ALL POSTS REQ
+    @Test
+    public void getAllPosts_Successful() {
+        baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
+        Response response = RestAssured.given()
+                .queryParam("sorted", "true")
+                .queryParam("unsorted", "false")
+                .when()
+                .get(baseURI);
+
+        System.out.println(response.asString());
+
+        int statusCode = response.getStatusCode();
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+
+        System.out.println("Successfully fetched all posts.");
+    }
 }
+
 

@@ -5,21 +5,22 @@ import com.github.javafaker.service.RandomService;
 import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.config.EncoderConfig;
-import io.restassured.specification.RequestSpecification;
-import org.apache.commons.lang3.RandomStringUtils;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.util.Locale;
-
-import static apiSocialNetwork.Constants.PASSWORD;
-import static apiSocialNetwork.Constants.USERNAME;
-import static apiSocialNetwork.Endpoints.BASE_URL;
-import static io.restassured.RestAssured.baseURI;
+import static apiSocialNetwork.Constants.*;
 
 public class BaseTestSetup {
-    @BeforeMethod
+    public static String userId;
+    public static String COOKIE_VALUE;
+    public static String USERNAME;
+    public static String PASSWORD;
+    public static String skillId;
+
+    @BeforeSuite
     public void setup() {
         EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig()
                 .appendDefaultContentCharsetToContentTypeIfUndefined(false);
@@ -33,15 +34,13 @@ public class BaseTestSetup {
         String randomUsername = fakeValuesService.bothify("Username?????");
         String randomPassword = fakeValuesService.bothify("Password?????");
 
-        USERNAME =randomUsername;
+        USERNAME = randomUsername;
         PASSWORD = randomPassword;
     }
-    @BeforeEach
     public void authentication() {
-        PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
-        preemptiveBasicAuthScheme.setUserName(USERNAME);
-        preemptiveBasicAuthScheme.setPassword(PASSWORD);
-        RestAssured.authentication = preemptiveBasicAuthScheme;
+        PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
+        authScheme.setUserName(USERNAME);
+        authScheme.setPassword(PASSWORD);
+        RestAssured.authentication = authScheme;
     }
-
 }

@@ -7,7 +7,7 @@ public class JSONRequests {
             "        \"name\": \"All\"\n" +
             "    },\n" +
             "    \"confirmPassword\": \"alabala123\",\n" +
-            "    \"email\": \"telerikacademy@abv.bg\",\n" +
+            "    \"email\": \"test@gmail.com\",\n" +
             "    \"password\": \"%s\",\n" +
             "    \"username\": \"%s\"\n" +
             "}";
@@ -33,4 +33,15 @@ public class JSONRequests {
             "  \"searchParam2\": \"\",\n" +
             "  \"size\": 10\n" +
             "}";
+
+    public static final String SKILLS_BODY = "{\n" +
+            "  \"category\": {\n" +
+            "    \"id\": 153,\n" +
+            "    \"name\": \"TESTREST\"\n" +
+            "  },\n" +
+            "  \"skill\": \"RESTTEST\",\n" +
+            "  \"skillId\": 400\n" +
+            "}";
+
+    public static final String EDITED_SKILLS_BODY ="{\"newField\": \"newValue\"}";
 }

@@ -13,7 +13,7 @@ import java.util.Locale;
 
 import static apiSocialNetwork.Constants.*;
 import static apiSocialNetwork.Endpoints.*;
-import static apiSocialNetwork.JSONRequests.*;
+import static apiSocialNetwork.JSONRequests.REGISTRATION_BODY;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
@@ -22,7 +22,7 @@ import static org.testng.Assert.assertEquals;
 public class RegistrationTest extends BaseTestSetup {
 
     @Test
-    public void _01_registerUser_Successful() {
+    public void registerUser_Successful() {
 
         baseURI = BASE_URL + REGISTER_ENDPOINT;
 
@@ -41,9 +41,9 @@ public class RegistrationTest extends BaseTestSetup {
         assertEquals(responseUsername, USERNAME, "Username does not match the expected username");
 
         String responseID = response.getBody().asString().split(" ")[6];
-        ID = responseID;
+        userId = responseID;
 
-        assertEquals(responseID, ID, "User Id does not match the expected ID");
+        assertEquals(responseID, userId, "User Id does not match the expected ID");
 
         System.out.printf("Username with name '%s' was successfully created.", USERNAME );
 
