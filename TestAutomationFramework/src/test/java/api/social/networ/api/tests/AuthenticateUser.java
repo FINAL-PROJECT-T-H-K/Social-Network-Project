@@ -7,6 +7,8 @@ import io.restassured.response.ValidatableResponse;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import static apisocialnetwork.Constants.USER_ID;
 import static apisocialnetwork.Endpoints.*;
 import static io.restassured.RestAssured.baseURI;
 import static java.util.Objects.isNull;

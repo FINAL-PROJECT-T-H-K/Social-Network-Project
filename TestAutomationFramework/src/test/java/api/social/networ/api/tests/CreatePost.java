@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static apisocialnetwork.Constants.USER_ID;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.POST_BODY;
 import static apisocialnetwork.JSONRequests.PROFILE_POST;
@@ -75,7 +76,7 @@ public class CreatePost extends BaseTestSetup {
 
     @Test
     public void showAllProfilePosts_Successful() {
-        baseURI = String.format(BASE_URL + GET_ALL_PROFILE_POSTS,USER_ID);
+        baseURI = String.format(BASE_URL + GET_ALL_PROFILE_POSTS);
 
         Response response = RestAssured.given()
                 .contentType(ContentType.JSON)
