@@ -3,12 +3,16 @@ package api.social.networ.api.tests;
 import api.base.BaseTestSetup;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
+import static apisocialnetwork.Constants.APPLICATION_JSON;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.POST_BODY;
+import static apisocialnetwork.JSONRequests.REGISTRATION_BODY;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
 import static java.util.Objects.isNull;
@@ -18,13 +22,17 @@ import static org.testng.Assert.assertEquals;
 
 public class CreatePost extends BaseTestSetup {
     @BeforeClass
-    public void cookieSetup() {
+    public void cardTestSetup() {
+        if (isNull(USER_ID)) {
+            RegistrationTest registerUser = new RegistrationTest();
+            registerUser.registerUser_Successful();
+        }
+
         if (isNull(COOKIE_VALUE)) {
-            AuthenticateUser auth = new AuthenticateUser();
-            auth._02_authenticateAndFetchCookies();
+            AuthenticateUser authenticate = new AuthenticateUser();
+            authenticate._02_authenticateAndFetchCookies();
         }
     }
-
     @Test
     public static void _02_createPost(){
 

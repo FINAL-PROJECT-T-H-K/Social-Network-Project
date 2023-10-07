@@ -35,11 +35,12 @@ public class RegistrationTest extends BaseTestSetup {
         assertEquals(responseUsername, USERNAME, "Username does not match the expected username");
 
         String responseID = response.getBody().asString().split(" ")[6];
-        userId = responseID;
+        USER_ID = responseID;
 
-        assertEquals(responseID, userId, "User Id does not match the expected ID");
+        assertEquals(responseID, USER_ID, "User Id does not match the expected ID");
 
         System.out.printf("Username with name '%s' was successfully created.", USERNAME );
 
     }
+
 }

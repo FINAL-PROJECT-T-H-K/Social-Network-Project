@@ -6,14 +6,13 @@ import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.config.EncoderConfig;
 
-import io.restassured.http.Cookie;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeSuite;
 
 import java.util.Locale;
 
 public class BaseTestSetup {
-    public static String userId;
+    public static String USER_ID;
     public static String COOKIE_VALUE;
     public static String USERNAME;
     public static String PASSWORD;
@@ -38,10 +37,10 @@ public class BaseTestSetup {
 
         uniqueName = RandomStringUtils.randomAlphabetic(10);
     }
-    public void authentication() {
-        PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
-        authScheme.setUserName(USERNAME);
-        authScheme.setPassword(PASSWORD);
-        RestAssured.authentication = authScheme;
-    }
+//    public void authentication() {
+//        PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
+//        authScheme.setUserName(USERNAME);
+//        authScheme.setPassword(PASSWORD);
+//        RestAssured.authentication = authScheme;
+//    }
 }
