@@ -1,8 +1,10 @@
-2023-10-07 03:28:18,827 INFO  [main] Initializing WebDriver
-2023-10-07 03:28:29,842 INFO  [main] Initializing WebDriver
-2023-10-07 03:28:31,899 INFO  [main] Initializing WebDriver
-2023-10-07 03:28:31,900 INFO  [main] Initializing WebDriver
-2023-10-07 03:28:35,228 INFO  [main] Initializing WebDriver
-2023-10-07 03:28:37,159 INFO  [main] Clicking on element socialNetwork.submitButton
-2023-10-07 03:28:39,542 INFO  [main] Clicking on element socialNetwork.successful.register
-2023-10-07 03:28:39,848 INFO  [main] Quitting WebDriver
+2023-10-07 17:34:51,531 INFO  [main] Initializing WebDriver
+2023-10-07 17:35:01,340 INFO  [main] Initializing WebDriver
+2023-10-07 17:35:03,883 INFO  [main] Initializing WebDriver
+2023-10-07 17:35:03,884 INFO  [main] Initializing WebDriver
+2023-10-07 17:35:03,885 INFO  [main] Initializing WebDriver
+2023-10-07 17:35:03,901 INFO  [main] Initializing WebDriver
+2023-10-07 17:35:05,741 INFO  [main] Clicking on element socialNetwork.loginSubmitButton
+2023-10-07 17:35:08,680 INFO  [main] Clicking on element new.post.button
+2023-10-07 17:35:11,012 INFO  [main] Clicking on element create.post.button
+2023-10-07 17:35:27,104 INFO  [main] Quitting WebDriver

@@ -1,7 +1,8 @@
 package test.cases.socialNetwork.socialnetwork;
 
 import org.junit.Test;
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTestSetup {
+
 
 
     @Test

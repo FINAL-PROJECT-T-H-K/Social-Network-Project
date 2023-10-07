@@ -2,6 +2,7 @@ package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
 import io.restassured.RestAssured;
+import io.restassured.http.Cookies;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.testng.Assert;
@@ -40,6 +41,7 @@ public class AuthenticateUser extends BaseTestSetup {
                 .then()
                 .assertThat()
                 .statusCode(302);
+
 
         int statusCode = responseBody.extract().statusCode();
         String CookieValue = responseBody.extract().cookies().get("JSESSIONID");

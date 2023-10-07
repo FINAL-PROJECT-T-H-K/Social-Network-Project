@@ -45,7 +45,7 @@ public class RegisterPageSocial extends BasePage {
             randomCount--;
         }
 
-        return String.format("User%s", username);
+        return String.format("Username%s", username);
     }
     public String generatePassword() {
         randomCount = random.nextInt(5);

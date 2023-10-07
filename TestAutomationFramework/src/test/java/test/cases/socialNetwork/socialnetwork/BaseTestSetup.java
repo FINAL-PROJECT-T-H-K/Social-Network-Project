@@ -6,13 +6,17 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import pages.socialNetwork.pages.socialNetwork.LoginPageSocial;
+import pages.socialNetwork.pages.socialNetwork.PostPageSocial;
 import pages.socialNetwork.pages.socialNetwork.RegisterPageSocial;
 
-public class BaseTest {
+public class BaseTestSetup {
+    static UserActions actions = new UserActions();
 
+    //PAGES
     public static RegisterPageSocial registerLageSocial;
     public static LoginPageSocial loginPageSocial;
-    static UserActions actions = new UserActions();
+    public static PostPageSocial postPageSocial;
+
 
     @BeforeClass
     public static void setUp() {
@@ -21,10 +25,7 @@ public class BaseTest {
 
         loginPageSocial = new LoginPageSocial(driver);
         registerLageSocial = new RegisterPageSocial(driver);
-
-
-        ///work final project
-        // testing commit/push
+        postPageSocial = new PostPageSocial(driver);
 
     }
 
