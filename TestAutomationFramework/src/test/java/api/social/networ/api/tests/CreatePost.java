@@ -2,36 +2,20 @@ package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
 import io.restassured.RestAssured;
-import io.restassured.authentication.PreemptiveBasicAuthScheme;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
-import static apiSocialNetwork.Constants.*;
-import static apiSocialNetwork.Endpoints.*;
-import static apiSocialNetwork.JSONRequests.POST_BODY;
+import static apisocialnetwork.Endpoints.*;
+import static apisocialnetwork.JSONRequests.POST_BODY;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
-import static java.util.Objects.isNull;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 
 public class CreatePost extends BaseTestSetup {
-    @BeforeClass
-    public void cookieSetup() {
-        if (isNull(COOKIE_VALUE)) {
-            AuthenticateUser auth = new AuthenticateUser();
-            auth._02_authenticateAndFetchCookies();
-        }
-    }
 
     @Test
     public static void _03_createPost() {

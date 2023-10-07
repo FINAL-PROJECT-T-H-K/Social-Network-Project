@@ -1,4 +1,4 @@
-package apiSocialNetwork;
+package apisocialnetwork;
 
 public class JSONRequests {
     public static final String REGISTRATION_BODY = "{\n" +
@@ -13,9 +13,9 @@ public class JSONRequests {
             "}";
 
     public static final String POST_BODY = "{\n" +
-            "    \"content\": \"string\",\n" +
-            "    \"picture\": \"string\",\n" +
-            "    \"public\": true\n" +
+            " \"content\": \"MyFirstPost\",\n" +
+            " \"picture\": \"No picture\",\n" +
+            " \"public\": true\n" +
             "}";
 
     public static final String COMMENT_BODY =

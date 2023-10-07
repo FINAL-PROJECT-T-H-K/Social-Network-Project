@@ -7,12 +7,9 @@ import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.config.EncoderConfig;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.BeforeEach;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.util.Locale;
-import static apiSocialNetwork.Constants.*;
 
 public class BaseTestSetup {
     public static String userId;
@@ -31,7 +28,6 @@ public class BaseTestSetup {
         FakeValuesService fakeValuesService = new FakeValuesService(
                 new Locale("en-GB"), new RandomService());
 
-        String email = fakeValuesService.bothify("????##@gmail.com");
         String randomUsername = fakeValuesService.bothify("Username?????");
         String randomPassword = fakeValuesService.bothify("Password?????");
 

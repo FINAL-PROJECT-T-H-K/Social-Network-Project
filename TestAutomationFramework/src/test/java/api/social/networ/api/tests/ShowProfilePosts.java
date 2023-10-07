@@ -7,8 +7,8 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 
-import static apiSocialNetwork.Endpoints.*;
-import static apiSocialNetwork.JSONRequests.PROFILE_POST;
+import static apisocialnetwork.Endpoints.*;
+import static apisocialnetwork.JSONRequests.PROFILE_POST;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
