@@ -2,16 +2,19 @@ package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
+import static apisocialnetwork.JSONRequests.PROFILE_POST;
 import static apisocialnetwork.JSONRequests.REGISTRATION_BODY;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class RegistrationTest extends BaseTestSetup {
 
@@ -42,5 +45,4 @@ public class RegistrationTest extends BaseTestSetup {
         System.out.printf("Username with name '%s' was successfully created.", USERNAME );
 
     }
-
 }

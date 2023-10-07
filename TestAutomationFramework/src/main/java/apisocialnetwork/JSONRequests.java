@@ -1,5 +1,8 @@
 package apisocialnetwork;
 
+import static apisocialnetwork.Constants.POST_ID;
+import static apisocialnetwork.Constants.USER_ID;
+
 public class JSONRequests {
     public static final String REGISTRATION_BODY = "{\n" +
             "    \"category\": {\n" +
@@ -18,12 +21,11 @@ public class JSONRequests {
             " \"public\": true\n" +
             "}";
 
-    public static final String COMMENT_BODY =
-            "{\n" +
-                    "    \"content\": \"CommentContent\",\n" +
-                    "    \"postId\": \"YourPostId\",\n" +
-                    "    \"userId\": \"YourGeneratedIdUser\"\n" +
-                    "}";
+    public static final String COMMENT_BODY = String.format("{\n" +
+            "    \"content\": \"CommentContent\",\n" +
+            "    \"postId\": \"%s\",\n" +
+            "    \"userId\": \"%s\"\n" +
+            "}", POST_ID, USER_ID);
 
 
     public static final String PROFILE_POST = "{\n" +
@@ -43,5 +45,5 @@ public class JSONRequests {
             "  \"skillId\": 400\n" +
             "}";
 
-    public static final String EDITED_SKILLS_BODY ="{\"newField\": \"newValue\"}";
+    public static final String EDITED_SKILLS_BODY = "{\"newField\": \"newValue\"}";
 }

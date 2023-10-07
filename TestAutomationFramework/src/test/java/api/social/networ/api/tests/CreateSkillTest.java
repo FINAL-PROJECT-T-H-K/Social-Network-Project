@@ -12,6 +12,7 @@ import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
+import static java.util.Objects.isNull;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -19,11 +20,11 @@ import static org.testng.Assert.assertTrue;
 public class CreateSkillTest extends BaseTestSetup {
 
     @Test
-    public static void create_a_skill() {
+    public static void _01_create_a_skill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
         String skillsUnique = format("%s%s", SKILL_DESCRIPTION, UNIQUE_NAME);
-        String uniqueUser = String.format(SKILLS_BODY,skillsUnique);
+        String uniqueUser = String.format(SKILLS_BODY, skillsUnique);
 
         Response response = RestAssured.given()
                 .contentType(ContentType.JSON)
@@ -34,23 +35,29 @@ public class CreateSkillTest extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
 
-        System.out.printf("Skills with name '%s' was successfully created.%n",skillsUnique);
-        ///NEED TO COLLECT SKILL ID IN VARIABLE
+        System.out.println(response.getBody().asPrettyString());
+        System.out.printf("Skills with name '%s' was successfully created.%n", skillsUnique);
+
+        SKILL_ID = response.jsonPath().getString("skillId");
 
         //ASSERT
     }
 
 
     @Test
-    public void editSkill() {
+    public void _02_editSkill() {
+
+        if (isNull(SKILL_ID)) {
+            _01_create_a_skill();
+        }
 
         baseURI = BASE_URL + EDIT_SKILL_ENDPOINT;
-        String editSkill = String.format("%s %s",EDITED_SKILLS, UNIQUE_NAME);
+        String editSkill = String.format("%s %s", EDITED_SKILLS, UNIQUE_NAME);
 
         Response response = RestAssured
                 .given()
                 .queryParam("skill", editSkill)
-                .queryParam("skillId", 800)
+                .queryParam("skillId", SKILL_ID)
                 .contentType(ContentType.JSON)
                 .body(EDITED_SKILLS_BODY)
                 .when()
@@ -59,13 +66,13 @@ public class CreateSkillTest extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         assertEquals(200, statusCode, "Incorrect status code");
 
-        System.out.printf("Skills with name '%s' was successfully edited.%n",editSkill);
-        ///NEED TO COLLECT SKILL ID IN VARIABLE
+        System.out.printf("Skills with name '%s' was successfully edited.%n", editSkill);
+
         ///ASSERT FOR ID AND SKILL
     }
 
     @Test
-    public static void get_all_skills() {
+    public static void _03_get_all_skills() {
         baseURI = BASE_URL + SKILL_ENDPOINT;
 
         Response response = RestAssured.given()
@@ -83,12 +90,16 @@ public class CreateSkillTest extends BaseTestSetup {
     }
 
     @Test
-    public static void delete_skills() {
+    public static void _04_delete_skills() {
+
+        if (isNull(SKILL_ID)) {
+            _01_create_a_skill();
+        }
         baseURI = BASE_URL + DELETE_SKILL_ENDPOINT;
 
         Response response = RestAssured
                 .given()
-                .queryParam("skillId", 90)
+                .queryParam("skillId", SKILL_ID)
                 .when()
                 .put(baseURI);
 

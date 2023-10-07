@@ -7,15 +7,17 @@ import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static apisocialnetwork.Constants.USER_ID;
+import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.POST_BODY;
 import static apisocialnetwork.JSONRequests.PROFILE_POST;
 import static io.restassured.RestAssured.baseURI;
+import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
 import static java.util.Objects.isNull;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class CreatePost extends BaseTestSetup {
@@ -33,12 +35,11 @@ public class CreatePost extends BaseTestSetup {
     }
 
     @Test
-    public static void _02_createPost() {
+    public void _02_createPost() {
 
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
 
-        Response response = RestAssured
-                .given()
+        Response response = given()
                 .header("Content-Type", "application/json")
                 .header("Accept", "*/*")
                 .cookie("JSESSIONID", COOKIE_VALUE)
@@ -50,8 +51,11 @@ public class CreatePost extends BaseTestSetup {
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        System.out.println(response.getBody().asPrettyString());
         System.out.println("Post was created successfully!");
 
+        POST_ID = response.jsonPath().getString("postId");
+        System.out.println("Post ID is " + POST_ID);
     }
 
     //GET ALL POSTS REQ
@@ -60,7 +64,7 @@ public class CreatePost extends BaseTestSetup {
 
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
-        Response response = RestAssured.given()
+        Response response = given()
                 .queryParam("sorted", "true")
                 .queryParam("unsorted", "false")
                 .when()
@@ -74,19 +78,46 @@ public class CreatePost extends BaseTestSetup {
         System.out.println("Successfully fetched all posts.");
     }
 
+
+    //NOT WORKING
     @Test
     public void showAllProfilePosts_Successful() {
-        baseURI = String.format(BASE_URL + GET_ALL_PROFILE_POSTS);
 
-        Response response = RestAssured.given()
+        baseURI = GET_PROFILE_POSTS;
+
+        Response response = given()
                 .contentType(ContentType.JSON)
                 .body(PROFILE_POST)
+                .when()
                 .get(baseURI);
 
         int statusCode = response.getStatusCode();
+        String responseBody = response.getBody().asString();
+        System.out.println("Response Status Code: " + statusCode);
+        System.out.println("Response Body: " + responseBody);
+
+        //ASSERT
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertTrue(responseBody.length() > 2, "Response array is empty");
     }
 
+
+    //NOT WORKING
+    @Test
+    public void deletePosts_Successful() {
+        String baseUrl = "http://localhost:8081/api/post/auth/manager";
+
+
+        Response response = given()
+                .queryParam("postId", POST_ID)
+                .when()
+                .delete(baseUrl);
+
+        int statusCode = response.getStatusCode();
+        System.out.println(response.getBody().asString());
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+    }
 }
+
 
 
