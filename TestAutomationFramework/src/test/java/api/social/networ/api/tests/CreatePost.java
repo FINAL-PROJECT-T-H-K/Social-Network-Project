@@ -2,17 +2,14 @@ package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-
-import static apisocialnetwork.Constants.APPLICATION_JSON;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.POST_BODY;
-import static apisocialnetwork.JSONRequests.REGISTRATION_BODY;
+import static apisocialnetwork.JSONRequests.PROFILE_POST;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
 import static java.util.Objects.isNull;
@@ -22,7 +19,7 @@ import static org.testng.Assert.assertEquals;
 
 public class CreatePost extends BaseTestSetup {
     @BeforeClass
-    public void cardTestSetup() {
+    public void Setup() {
         if (isNull(USER_ID)) {
             RegistrationTest registerUser = new RegistrationTest();
             registerUser.registerUser_Successful();
@@ -33,16 +30,17 @@ public class CreatePost extends BaseTestSetup {
             authenticate._02_authenticateAndFetchCookies();
         }
     }
-    @Test
-    public static void _02_createPost(){
 
-        baseURI= BASE_URL+CREATE_POST_ENDPOINT;
+    @Test
+    public static void _02_createPost() {
+
+        baseURI = BASE_URL + CREATE_POST_ENDPOINT;
 
         Response response = RestAssured
                 .given()
-                .header("Content-Type","application/json")
-                .header("Accept","*/*")
-                .cookie("JSESSIONID",COOKIE_VALUE)
+                .header("Content-Type", "application/json")
+                .header("Accept", "*/*")
+                .cookie("JSESSIONID", COOKIE_VALUE)
                 .body(POST_BODY)
                 .when()
                 .log()
@@ -54,6 +52,7 @@ public class CreatePost extends BaseTestSetup {
         System.out.println("Post was created successfully!");
 
     }
+
     //GET ALL POSTS REQ
     @Test
     public void getAllPosts_Successful() {
@@ -72,6 +71,19 @@ public class CreatePost extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
 
         System.out.println("Successfully fetched all posts.");
+    }
+
+    @Test
+    public void showAllProfilePosts_Successful() {
+        baseURI = String.format(BASE_URL + GET_ALL_PROFILE_POSTS,USER_ID);
+
+        Response response = RestAssured.given()
+                .contentType(ContentType.JSON)
+                .body(PROFILE_POST)
+                .get(baseURI);
+
+        int statusCode = response.getStatusCode();
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
     }
 
 }

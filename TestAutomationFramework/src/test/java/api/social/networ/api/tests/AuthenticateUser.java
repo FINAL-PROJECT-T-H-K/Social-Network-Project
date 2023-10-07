@@ -3,9 +3,9 @@ package api.social.networ.api.tests;
 import api.base.BaseTestSetup;
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import static apisocialnetwork.Endpoints.*;
 import static io.restassured.RestAssured.baseURI;
@@ -14,8 +14,8 @@ import static java.util.Objects.isNull;
 
 public class AuthenticateUser extends BaseTestSetup {
 
-    @BeforeAll
-    public void setupAuthentication() {
+    @BeforeTest
+    public static void setupAuthentication() {
         if (isNull(USER_ID)) {
             RegistrationTest registerUser = new RegistrationTest();
             registerUser.registerUser_Successful();

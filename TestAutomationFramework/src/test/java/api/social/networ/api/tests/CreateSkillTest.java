@@ -22,7 +22,7 @@ public class CreateSkillTest extends BaseTestSetup {
     public static void create_a_skill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
-        String skillsUnique = format("%s%s", SKILL_DESCRIPTION, uniqueName);
+        String skillsUnique = format("%s%s", SKILL_DESCRIPTION, UNIQUE_NAME);
         String uniqueUser = String.format(SKILLS_BODY,skillsUnique);
 
         Response response = RestAssured.given()
@@ -45,7 +45,7 @@ public class CreateSkillTest extends BaseTestSetup {
     public void editSkill() {
 
         baseURI = BASE_URL + EDIT_SKILL_ENDPOINT;
-        String editSkill = String.format("%s %s",EDITED_SKILLS,uniqueName);
+        String editSkill = String.format("%s %s",EDITED_SKILLS, UNIQUE_NAME);
 
         Response response = RestAssured
                 .given()
