@@ -8,16 +8,13 @@ import io.restassured.config.EncoderConfig;
 
 import io.restassured.http.Cookie;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.BeforeEach;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.util.Locale;
-import static apiSocialNetwork.Constants.*;
 
 public class BaseTestSetup {
     public static String userId;
-    public static String COOKIE_VALUE;
+    public static String CookieValue;
     public static String USERNAME;
     public static String PASSWORD;
     public static String skillId;
@@ -34,7 +31,6 @@ public class BaseTestSetup {
         FakeValuesService fakeValuesService = new FakeValuesService(
                 new Locale("en-GB"), new RandomService());
 
-        String email = fakeValuesService.bothify("????##@gmail.com");
         String randomUsername = fakeValuesService.bothify("Username?????");
         String randomPassword = fakeValuesService.bothify("Password?????");
 

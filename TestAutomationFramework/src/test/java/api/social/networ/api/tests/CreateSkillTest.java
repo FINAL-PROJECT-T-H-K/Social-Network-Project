@@ -6,10 +6,10 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
-import static apiSocialNetwork.Constants.EDITED_SKILLS;
-import static apiSocialNetwork.Constants.SKILL_DESCRIPTION;
-import static apiSocialNetwork.Endpoints.*;
-import static apiSocialNetwork.JSONRequests.*;
+import static apisocialnetwork.Constants.EDITED_SKILLS;
+import static apisocialnetwork.Constants.SKILL_DESCRIPTION;
+import static apisocialnetwork.Endpoints.*;
+import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
@@ -50,7 +50,7 @@ public class CreateSkillTest extends BaseTestSetup {
         Response response = RestAssured
                 .given()
                 .queryParam("skill", editSkill)
-                .queryParam("skillId", 927)
+                .queryParam("skillId", 800)
                 .contentType(ContentType.JSON)
                 .body(EDITED_SKILLS_BODY)
                 .when()
@@ -88,7 +88,7 @@ public class CreateSkillTest extends BaseTestSetup {
 
         Response response = RestAssured
                 .given()
-                .queryParam("skillId", 923)
+                .queryParam("skillId", 90)
                 .when()
                 .put(baseURI);
 

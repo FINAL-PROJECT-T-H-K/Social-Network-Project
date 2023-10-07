@@ -1,4 +1,4 @@
-package apiSocialNetwork;
+package apisocialnetwork;
 
 public class Endpoints {
 

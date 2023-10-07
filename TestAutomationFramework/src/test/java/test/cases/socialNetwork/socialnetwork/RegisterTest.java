@@ -3,7 +3,7 @@ package test.cases.socialNetwork.socialnetwork;
 import org.junit.Test;
 import pages.socialNetwork.pages.socialNetwork.RegisterPageSocial;
 
-public class RegisterTest extends BaseTest{
+public class RegisterTest extends BaseTestSetup {
     String username;
     String password;
 

@@ -2,22 +2,13 @@ package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
 import io.restassured.RestAssured;
-import io.restassured.authentication.PreemptiveBasicAuthScheme;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import static apiSocialNetwork.Constants.*;
-import static apiSocialNetwork.Endpoints.*;
-
-import static apiSocialNetwork.JSONRequests.PROFILE_POST;
+import static apisocialnetwork.Endpoints.*;
 import static io.restassured.RestAssured.baseURI;
-import static java.lang.String.format;
-import static org.apache.http.HttpStatus.SC_OK;
-import static org.testng.Assert.assertEquals;
+
 
 
 public class AuthenticateUser extends BaseTestSetup {
@@ -25,7 +16,6 @@ public class AuthenticateUser extends BaseTestSetup {
     public void setupAuthentication() {
         authentication();
     }
-
     @Test
     public void _02_authenticateAndFetchCookies() {
         baseURI = BASE_URL;
@@ -44,14 +34,17 @@ public class AuthenticateUser extends BaseTestSetup {
                 .assertThat()
                 .statusCode(302);
 
+
         int statusCode = responseBody.extract().statusCode();
         String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
-        COOKIE_VALUE = CookieValue;
+
         Assert.assertFalse(CookieValue.isEmpty(), "Cookie value is not present");
-//                assertEquals(CookieValue.isEmpty(),);
-        System.out.println("Cookie value is: " + COOKIE_VALUE);
+     //   assertEquals(CookieValue.isEmpty(), );
+        System.out.println("Cookie value is: " + CookieValue);
         System.out.println("Status code is: " + statusCode);
 
     }
 }
+
+
 
