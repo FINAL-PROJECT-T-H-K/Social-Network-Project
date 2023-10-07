@@ -14,13 +14,12 @@ import java.util.Locale;
 
 public class BaseTestSetup {
     public static String userId;
-    public static String CookieValue;
+    public static String COOKIE_VALUE;
     public static String USERNAME;
     public static String PASSWORD;
     public static String skillId;
     public static String uniqueName;
 
-    public static Cookie COOKIE_VALUE_2ND;
     @BeforeSuite
     public void setup() {
         EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig()

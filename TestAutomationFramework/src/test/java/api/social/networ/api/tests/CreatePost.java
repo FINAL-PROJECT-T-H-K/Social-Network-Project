@@ -1,24 +1,14 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import com.google.gson.JsonObject;
 import io.restassured.RestAssured;
-import io.restassured.authentication.PreemptiveBasicAuthScheme;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.http.Cookie;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
-import static apiSocialNetwork.Constants.*;
-import static apiSocialNetwork.Endpoints.*;
-import static apiSocialNetwork.JSONRequests.POST_BODY;
+import static apisocialnetwork.Endpoints.*;
+import static apisocialnetwork.JSONRequests.POST_BODY;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
 import static java.util.Objects.isNull;
@@ -38,6 +28,8 @@ public class CreatePost extends BaseTestSetup {
     @Test
     public static void _02_createPost(){
 
+        baseURI= BASE_URL+CREATE_POST_ENDPOINT;
+
         Response response = RestAssured
                 .given()
                 .header("Content-Type","application/json")
@@ -47,7 +39,7 @@ public class CreatePost extends BaseTestSetup {
                 .when()
                 .log()
                 .all()
-                .post("http://localhost:8081/api/post/auth/creator");
+                .post(baseURI);
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
