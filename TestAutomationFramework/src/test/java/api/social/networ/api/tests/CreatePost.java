@@ -1,10 +1,12 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
+import com.google.gson.JsonObject;
 import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
+import io.restassured.http.Cookie;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
@@ -34,28 +36,28 @@ public class CreatePost extends BaseTestSetup {
     }
 
     @Test
-    public static void _03_createPost() {
-        baseURI = BASE_URL + CREATE_POST_ENDPOINT;
+    public static void _02_createPost(){
 
         Response response = RestAssured
                 .given()
                 .header("Content-Type","application/json")
                 .header("Accept","*/*")
-                .cookie(COOKIE_VALUE)
+                .cookie("JSESSIONID",COOKIE_VALUE)
                 .body(POST_BODY)
                 .when()
                 .log()
                 .all()
-                .post(baseURI);
+                .post("http://localhost:8081/api/post/auth/creator");
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
         System.out.println("Post was created successfully!");
-    }
 
+    }
     //GET ALL POSTS REQ
     @Test
     public void getAllPosts_Successful() {
+
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
         Response response = RestAssured.given()
@@ -71,6 +73,7 @@ public class CreatePost extends BaseTestSetup {
 
         System.out.println("Successfully fetched all posts.");
     }
+
 }
 
 

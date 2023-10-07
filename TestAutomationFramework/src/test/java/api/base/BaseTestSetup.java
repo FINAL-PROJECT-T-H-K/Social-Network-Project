@@ -6,6 +6,7 @@ import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.config.EncoderConfig;
 
+import io.restassured.http.Cookie;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.BeforeMethod;
@@ -21,6 +22,8 @@ public class BaseTestSetup {
     public static String PASSWORD;
     public static String skillId;
     public static String uniqueName;
+
+    public static Cookie COOKIE_VALUE_2ND;
     @BeforeSuite
     public void setup() {
         EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig()
