@@ -39,7 +39,7 @@ public class JSONRequests {
             "    \"id\": 153,\n" +
             "    \"name\": \"TESTREST\"\n" +
             "  },\n" +
-            "  \"skill\": \"RESTTEST\",\n" +
+            "  \"skill\": \"%s\",\n" +
             "  \"skillId\": 400\n" +
             "}";
 

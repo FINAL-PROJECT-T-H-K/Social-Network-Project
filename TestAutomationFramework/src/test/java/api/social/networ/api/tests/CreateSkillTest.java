@@ -6,9 +6,10 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
+import static apiSocialNetwork.Constants.EDITED_SKILLS;
+import static apiSocialNetwork.Constants.SKILL_DESCRIPTION;
 import static apiSocialNetwork.Endpoints.*;
-import static apiSocialNetwork.JSONRequests.EDITED_SKILLS_BODY;
-import static apiSocialNetwork.JSONRequests.SKILLS_BODY;
+import static apiSocialNetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
@@ -21,15 +22,19 @@ public class CreateSkillTest extends BaseTestSetup {
     public static void create_a_skill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
+        String skillsUnique = format("%s%s", SKILL_DESCRIPTION, uniqueName);
+        String uniqueUser = String.format(SKILLS_BODY,skillsUnique);
+
         Response response = RestAssured.given()
                 .contentType(ContentType.JSON)
-                .body(SKILLS_BODY)
+                .body(uniqueUser)
                 .when()
                 .post(baseURI);
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
 
+        System.out.printf("Skills with name '%s' was successfully created.%n",skillsUnique);
         ///NEED TO COLLECT SKILL ID IN VARIABLE
 
         //ASSERT
@@ -40,11 +45,12 @@ public class CreateSkillTest extends BaseTestSetup {
     public void editSkill() {
 
         baseURI = BASE_URL + EDIT_SKILL_ENDPOINT;
+        String editSkill = String.format("%s %s",EDITED_SKILLS,uniqueName);
 
         Response response = RestAssured
                 .given()
-                .queryParam("skill", "SecondSkillRest")
-                .queryParam("skillId", 923)
+                .queryParam("skill", editSkill)
+                .queryParam("skillId", 927)
                 .contentType(ContentType.JSON)
                 .body(EDITED_SKILLS_BODY)
                 .when()
@@ -53,6 +59,8 @@ public class CreateSkillTest extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         assertEquals(200, statusCode, "Incorrect status code");
 
+        System.out.printf("Skills with name '%s' was successfully edited.%n",editSkill);
+        ///NEED TO COLLECT SKILL ID IN VARIABLE
         ///ASSERT FOR ID AND SKILL
     }
 

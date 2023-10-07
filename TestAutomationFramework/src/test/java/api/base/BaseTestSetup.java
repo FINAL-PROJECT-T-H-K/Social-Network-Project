@@ -6,6 +6,7 @@ import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.config.EncoderConfig;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -19,7 +20,7 @@ public class BaseTestSetup {
     public static String USERNAME;
     public static String PASSWORD;
     public static String skillId;
-
+    public static String uniqueName;
     @BeforeSuite
     public void setup() {
         EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig()
@@ -36,6 +37,8 @@ public class BaseTestSetup {
 
         USERNAME = randomUsername;
         PASSWORD = randomPassword;
+
+        uniqueName = RandomStringUtils.randomAlphabetic(10);
     }
     public void authentication() {
         PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
