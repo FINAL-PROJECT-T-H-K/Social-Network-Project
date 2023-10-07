@@ -50,7 +50,7 @@ public class CreateSkillTest extends BaseTestSetup {
         Response response = RestAssured
                 .given()
                 .queryParam("skill", editSkill)
-                .queryParam("skillId", 927)
+                .queryParam("skillId", 800)
                 .contentType(ContentType.JSON)
                 .body(EDITED_SKILLS_BODY)
                 .when()
@@ -88,7 +88,7 @@ public class CreateSkillTest extends BaseTestSetup {
 
         Response response = RestAssured
                 .given()
-                .queryParam("skillId", 923)
+                .queryParam("skillId", 90)
                 .when()
                 .put(baseURI);
 

@@ -13,33 +13,62 @@ public class PostPageSocial extends BaseSocialNetwork{
     public PostPageSocial(WebDriver driver) {
         super(driver, "socialNetwork.homePage");
     }
-    public void createPost(String generateDescription) {
+    public void create_public_post(String generateDescription) {
 
         actions.waitForElementClickable("new.post.button");
         actions.clickElement("new.post.button");
 
         actions.waitForElementClickable("post.description");
         actions.typeValueInField(generateDescription, "post.description");
+
+        actions.waitForElementClickable("choose.public.post");
+        actions.clickElement("choose.public.post");
+
+        actions.waitForElementClickable("create.post.button");
+        actions.clickElement("create.post.button");
+
+
+    }
+    public void create_private_post(String generateDescription) {
+
+        actions.waitForElementClickable("new.post.button");
+        actions.clickElement("new.post.button");
+
+        actions.waitForElementClickable("post.description");
+        actions.typeValueInField(generateDescription, "post.description");
+
+        actions.waitForElementClickable("choose.private.post");
+        actions.clickElement("choose.private.post");
+
+        actions.waitForElementClickable("create.post.button");
         actions.clickElement("create.post.button");
 
 
     }
 
 
-    public void verifyTopicCreated(String generateDescription) {
+    public void verifyPostCreated(String generateDescription) {
         actions.waitForElementClickable("explore.button");
         System.out.printf("Post with title %s is created", generateDescription);
     }
+    public void verifyPublicPostCreated() {
+        actions.assertElementPresent("public.post.displayed");
+    }
+    public void verifyPrivatePostCreated() {
+        actions.assertElementPresent("private.post.displayed");
+
+    }
+
 
     public String generateDescription() {
 
         String generatedDescription = postDescription;
 
-        randomCount = random.nextInt(20);
+        randomCount = random.nextInt(14);
         while (randomCount >= 0) {
-            String randomStr = RandomStringUtils.randomAlphabetic(33);
-            String randomNumber = RandomStringUtils.randomNumeric(33);
-            String randomAlphanumeric = RandomStringUtils.randomAlphanumeric(33);
+            String randomStr = RandomStringUtils.randomAlphabetic(8);
+            String randomNumber = RandomStringUtils.randomNumeric(8);
+            String randomAlphanumeric = RandomStringUtils.randomAlphanumeric(8);
             generatedDescription = generatedDescription.concat(randomStr).concat(" ").concat(randomNumber).concat(" ")
                     .concat(randomAlphanumeric).concat("\n");
             randomCount--;

@@ -13,7 +13,7 @@ import java.util.Locale;
 
 public class BaseTestSetup {
     public static String userId;
-    public static String COOKIE_VALUE;
+    public static String CookieValue;
     public static String USERNAME;
     public static String PASSWORD;
     public static String skillId;

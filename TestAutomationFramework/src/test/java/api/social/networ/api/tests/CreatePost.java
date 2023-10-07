@@ -18,19 +18,21 @@ import static org.testng.Assert.assertEquals;
 public class CreatePost extends BaseTestSetup {
 
     @Test
-    public static void _03_createPost() {
+    public static void createPost() {
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
 
         Response response = RestAssured
                 .given()
                 .header("Content-Type","application/json")
                 .header("Accept","*/*")
-                .cookie(COOKIE_VALUE)
+                .cookie(CookieValue)
                 .body(POST_BODY)
                 .when()
                 .log()
                 .all()
                 .post(baseURI);
+
+        System.out.println(response.getBody().asPrettyString());
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
