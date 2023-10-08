@@ -1,7 +1,6 @@
 package apisocialnetwork;
 
-import static apisocialnetwork.Constants.POST_ID;
-import static apisocialnetwork.Constants.USER_ID;
+import static apisocialnetwork.Constants.*;
 
 public class JSONRequests {
     public static final String REGISTRATION_BODY = "{\n" +
@@ -22,10 +21,10 @@ public class JSONRequests {
             "}";
 
     public static final String COMMENT_BODY = String.format("{\n" +
-            "    \"content\": \"CommentContent\",\n" +
+            "    \"content\": \"%s\",\n" +
             "    \"postId\": \"%s\",\n" +
             "    \"userId\": \"%s\"\n" +
-            "}", POST_ID, USER_ID);
+            "}",COMMENT_DESCRIPTION, POST_ID, USER_ID);
 
 
     public static final String PROFILE_POST = "{\n" +

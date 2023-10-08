@@ -1,5 +1,6 @@
 package apisocialnetwork;
 
+import static apisocialnetwork.Constants.COMMENT_ID;
 import static apisocialnetwork.Constants.USER_ID;
 import static java.lang.String.format;
 
@@ -19,5 +20,10 @@ public class Endpoints {
     public static final String SKILL_ENDPOINT = "/api/skill";
     public static final String EDIT_SKILL_ENDPOINT = "/api/skill/edit";
     public static final String DELETE_SKILL_ENDPOINT = "/api/skill/delete";
+    public static final String SHOW_ALL_COMMENTS = "/api/comment";
+    public static final String SHOW_CREATED_COMMENTS =BASE_URL + "/api/comment/single?commentId=" + COMMENT_ID;
+
+    public static final String DELETE_POSTS ="/api/post/auth/manager";
 }
+
 

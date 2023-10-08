@@ -82,11 +82,16 @@ public class CreatePost extends BaseTestSetup {
     //NOT WORKING
     @Test
     public void _04_showAllProfilePosts_Successful() {
+        if (isNull(POST_ID)) {
+            CreatePost createPost = new CreatePost();
+            createPost._02_createPost();
+        }
 
         baseURI = GET_PROFILE_POSTS;
 
         Response response = given()
                 .contentType(ContentType.JSON)
+                .cookies("JSESSIONID", COOKIE_VALUE)
                 .body(PROFILE_POST)
                 .when()
                 .get(baseURI);
@@ -102,16 +107,21 @@ public class CreatePost extends BaseTestSetup {
     }
 
 
-    //NOT WORKING
     @Test
     public void _05_deletePosts_Successful() {
-        String baseUrl = "http://localhost:8081/api/post/auth/manager";
+        if (isNull(POST_ID)) {
+            CreatePost createPost = new CreatePost();
+            createPost._02_createPost();
+        }
+
+        baseURI = BASE_URL + DELETE_POSTS;
 
 
         Response response = given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
                 .queryParam("postId", POST_ID)
                 .when()
-                .delete(baseUrl);
+                .delete(baseURI);
 
         int statusCode = response.getStatusCode();
         System.out.println(response.getBody().asString());

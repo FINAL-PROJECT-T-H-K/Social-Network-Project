@@ -5,19 +5,18 @@ import com.github.javafaker.service.RandomService;
 import io.restassured.RestAssured;
 import io.restassured.config.EncoderConfig;
 
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeSuite;
 
 import java.util.Locale;
 
-public class BaseTestSetup {
+import static io.restassured.RestAssured.given;
 
-    public static String COOKIE_VALUE;
+public class BaseTestSetup {
     public static String USERNAME;
     public static String PASSWORD;
-    public static String SKILL_ID;
     public static String UNIQUE_NAME;
-
 
 
     /**
@@ -41,5 +40,12 @@ public class BaseTestSetup {
         PASSWORD = randomPassword;
 
         UNIQUE_NAME = RandomStringUtils.randomAlphabetic(10);
+    }
+
+    public RequestSpecification getApplicationAuthentication() {
+        return given()
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .queryParam("username", USERNAME)
+                .queryParam("password", PASSWORD);
     }
 }

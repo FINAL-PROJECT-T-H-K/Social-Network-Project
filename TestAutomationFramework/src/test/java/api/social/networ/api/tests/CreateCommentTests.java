@@ -35,23 +35,70 @@ public class CreateCommentTests extends BaseTestSetup {
         }
     }
 
-
-    //NOT WORKING
     @Test
     public void _01_createComment() {
         baseURI = BASE_URL + COMMENT_ENDPOINT;
 
         Response response = RestAssured
                 .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
                 .contentType(ContentType.JSON)
                 .body(COMMENT_BODY)
                 .when()
                 .post(baseURI);
 
+        COMMENT_ID = response.jsonPath().getString("commentId");
+
         int statusCode = response.getStatusCode();
         System.out.println("Status Code: " + statusCode);
 
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
-        System.out.println(response.getBody().asPrettyString());
+        assertEquals(response.getBody().jsonPath().getString("content"), COMMENT_DESCRIPTION);
+        System.out.println("Response Body: " + response.getBody().asString());
+
+    }
+
+    @Test
+    public void _02_showCreatedComment() {
+        if (isNull(COMMENT_ID)) {
+            _01_createComment();
+        }
+
+        baseURI = SHOW_CREATED_COMMENTS;
+        Response response = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE) // Set your cookies here
+                .when()
+                .get(baseURI);
+
+
+        int statusCode = response.getStatusCode();
+        System.out.println("Response Status Code: " + response.getStatusCode());
+        System.out.println("Response Body: " + response.getBody().asString());
+
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(response.getBody().jsonPath().getString( "commentId"), COMMENT_ID);
+
+    }
+
+    @Test
+    public void _02_showAllCreatedComment() {
+
+        baseURI = BASE_URL+SHOW_ALL_COMMENTS;
+
+        Response response = RestAssured.given()
+                .queryParam("sorted", true)
+                .queryParam("unsorted", true)
+                .when()
+                .get(baseURI);
+
+
+        int statusCode = response.getStatusCode();
+        System.out.println("Response Status Code: " + response.getStatusCode());
+        System.out.println("Response Body: " + response.getBody().asString());
+
+        ///ONE MORE ASSERT
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+
     }
 }

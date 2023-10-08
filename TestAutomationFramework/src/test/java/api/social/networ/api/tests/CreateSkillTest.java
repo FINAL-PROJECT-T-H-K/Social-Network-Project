@@ -6,8 +6,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
-import static apisocialnetwork.Constants.EDITED_SKILLS;
-import static apisocialnetwork.Constants.SKILL_DESCRIPTION;
+import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
