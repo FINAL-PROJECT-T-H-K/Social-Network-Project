@@ -1,7 +1,6 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
@@ -34,8 +33,8 @@ public class CreatePost extends BaseTestSetup {
         }
     }
 
-    @Test
-    public void _02_createPost() {
+    @Test(priority = 1)
+    public void createPost() {
 
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
 
@@ -49,18 +48,25 @@ public class CreatePost extends BaseTestSetup {
                 .all()
                 .post(baseURI);
 
+        POST_ID = response.jsonPath().getString("postId");
+
         int statusCode = response.getStatusCode();
+        String postContent = response.getBody().jsonPath().getString("content");
+        String postContentPic = response.getBody().jsonPath().getString("picture");
+
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(postContent,POST_DESCRIPTION,format("Response body content does not match the expected. Expected %s",POST_DESCRIPTION));
+        assertEquals(postContentPic,POST_DESCRIPTION_PIC,format("Response body content does not match the expected. Expected %s",POST_DESCRIPTION_PIC));
+
         System.out.println(response.getBody().asPrettyString());
         System.out.println("Post was created successfully!");
-
-        POST_ID = response.jsonPath().getString("postId");
         System.out.println("Post ID is " + POST_ID);
     }
 
     //GET ALL POSTS REQ
-    @Test
-    public void _03_getAllPosts_Successful() {
+    @Test(priority = 2)
+    public void getAllPosts_Successful() {
+
 
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
@@ -78,12 +84,12 @@ public class CreatePost extends BaseTestSetup {
         System.out.println("Successfully fetched all posts.");
     }
     
-    @Test
-    public void _04_showAllProfilePosts_Successful() {
-        if (isNull(POST_ID)) {
-            CreatePost createPost = new CreatePost();
-            createPost._02_createPost();
-        }
+    @Test(priority = 3)
+    public void showAllProfilePosts_Successful() {
+//        if (isNull(POST_ID)) {
+//            CreatePost createPost = new CreatePost();
+//            createPost.createPost();
+//        }
 
         baseURI = GET_PROFILE_POSTS;
 
@@ -104,12 +110,12 @@ public class CreatePost extends BaseTestSetup {
         assertTrue(responseBody.length() > 2, "Response array is empty");
     }
 
-    @Test
-    public void _05_deletePosts_Successful() {
-        if (isNull(POST_ID)) {
-            CreatePost createPost = new CreatePost();
-            createPost._02_createPost();
-        }
+    @Test(priority = 4)
+    public void deletePosts_Successful() {
+//        if (isNull(POST_ID)) {
+//            CreatePost createPost = new CreatePost();
+//            createPost.createPost();
+//        }
 
         baseURI = BASE_URL + DELETE_POSTS;
 

@@ -32,7 +32,7 @@ public class CreateCommentTests extends BaseTestSetup {
         }
         if (isNull(POST_ID)) {
             CreatePost createPost = new CreatePost();
-            createPost._02_createPost();
+            createPost.createPost();
         }
     }
 
