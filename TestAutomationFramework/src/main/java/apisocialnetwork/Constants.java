@@ -9,7 +9,6 @@ public class Constants {
     public static final String EDIT_COMMENT = "MyEditComment";
     public static String UNIQUE_NAME;
     public static String USER_ID;
-
     public static String RECEIVER_USER_ID;
     public static String SENDER_USER_ID;
     public static String POST_ID;
