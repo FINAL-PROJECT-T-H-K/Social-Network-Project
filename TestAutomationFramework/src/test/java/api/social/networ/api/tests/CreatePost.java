@@ -124,6 +124,8 @@ public class CreatePost extends BaseTestSetup {
         System.out.println(response.getBody().asString());
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
     }
+
+    //LIKE / DISLIKE POST
 }
 
 

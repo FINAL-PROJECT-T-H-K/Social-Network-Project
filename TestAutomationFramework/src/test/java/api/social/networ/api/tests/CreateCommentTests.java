@@ -67,7 +67,7 @@ public class CreateCommentTests extends BaseTestSetup {
         baseURI = SHOW_CREATED_COMMENTS;
         Response response = RestAssured
                 .given()
-                .cookies("JSESSIONID", COOKIE_VALUE) // Set your cookies here
+                .cookies("JSESSIONID", COOKIE_VALUE)
                 .when()
                 .get(baseURI);
 
@@ -77,14 +77,14 @@ public class CreateCommentTests extends BaseTestSetup {
         System.out.println("Response Body: " + response.getBody().asString());
 
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
-        assertEquals(response.getBody().jsonPath().getString( "commentId"), COMMENT_ID);
+        assertEquals(response.getBody().jsonPath().getString("commentId"), COMMENT_ID);
 
     }
 
     @Test
-    public void _02_showAllCreatedComment() {
+    public void _03_showAllCreatedComment() {
 
-        baseURI = BASE_URL+SHOW_ALL_COMMENTS;
+        baseURI = BASE_URL + SHOW_ALL_COMMENTS;
 
         Response response = RestAssured.given()
                 .queryParam("sorted", true)
@@ -100,8 +100,83 @@ public class CreateCommentTests extends BaseTestSetup {
         ///ONE MORE ASSERT
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
 
+    }
 
-        ///check if we can delete a comment and assert it
+    @Test
+    public void _04_editComment() {
+        if (isNull(COMMENT_ID)) {
+            _01_createComment();
+        }
 
+        baseURI = BASE_URL + EDITED_COMMENT;
+
+        Response response = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .contentType(ContentType.JSON)
+                .when()
+                .put(baseURI);
+
+        int statusCode = response.getStatusCode();
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+
+        String responseBody = response.getBody().asString();
+        assertEquals(responseBody, "");
+
+    }
+
+    @Test
+    public void _05_likedComment() {
+
+        if (isNull(COMMENT_ID)) {
+            _01_createComment();
+        }
+        baseURI = BASE_URL + LIKED_COMMENT;
+
+        Response response = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .contentType(ContentType.JSON)
+                .when()
+                .post(baseURI);
+
+        int statusCode = response.getStatusCode();
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+
+
+        //ASSERT FOR COMMENTID
+        int commentIdFromResponse = response.jsonPath().getInt("commentId");
+        int expectedCommentId = Integer.parseInt(COMMENT_ID);
+        assertEquals(commentIdFromResponse, expectedCommentId);
+
+        //EVERY TIME PASSED
+        boolean liked = response.jsonPath().getBoolean("liked");
+        assertEquals(liked, true);
+
+
+    }
+
+    @Test
+    public void _06_deleteCreatedComment() {
+        if (isNull(COMMENT_ID)) {
+            _01_createComment();
+        }
+
+        baseURI = BASE_URL + DELETE_COMMENT;
+        Response response = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .queryParam("commentId", COMMENT_ID)
+                .contentType(ContentType.JSON)
+                .when()
+                .delete(baseURI);
+
+        int statusCode = response.getStatusCode();
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+
+        String responseBody = response.getBody().asString();
+
+        assertEquals(responseBody, "");
+        System.out.println("Response Body: " + responseBody);
     }
 }

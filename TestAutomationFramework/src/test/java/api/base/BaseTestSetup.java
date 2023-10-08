@@ -8,6 +8,7 @@ import io.restassured.config.EncoderConfig;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeSuite;
+import static apisocialnetwork.Constants.*;
 
 import java.util.Locale;
 
@@ -16,8 +17,6 @@ import static io.restassured.RestAssured.given;
 public class BaseTestSetup {
     public static String USERNAME;
     public static String PASSWORD;
-    public static String UNIQUE_NAME;
-
 
     /**
      * Provided configuration resolve REST Assured issue with a POST request without request body.
