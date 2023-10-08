@@ -7,8 +7,6 @@ public class Constants {
     public static final String EDITED_SKILLS = "Edited My Skills to ";
     public static final String COMMENT_DESCRIPTION ="NoComment";
     public static final String EDIT_COMMENT = "MyEditComment";
-    public static final String POST_DESCRIPTION = "MyFirstPost";
-    public static final String POST_DESCRIPTION_PIC = "No picture";
     public static String UNIQUE_NAME;
     public static String USER_ID;
     public static String RECEIVER_USER_ID;
@@ -21,7 +19,6 @@ public class Constants {
     public static String SKILL_ID;
     public static String RECEIVER_USERNAME;
     public static String SENDER_USERNAME;
-
 
 
 
