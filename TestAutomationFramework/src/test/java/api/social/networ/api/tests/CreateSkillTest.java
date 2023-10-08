@@ -18,8 +18,8 @@ import static org.testng.Assert.assertTrue;
 
 public class CreateSkillTest extends BaseTestSetup {
 
-    @Test
-    public static void _01_create_a_skill() {
+    @Test(priority = 1)
+    public static void create_a_skill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
         String skillsUnique = format("%s%s", SKILL_DESCRIPTION, UNIQUE_NAME);
@@ -45,11 +45,11 @@ public class CreateSkillTest extends BaseTestSetup {
     }
 
 
-    @Test
-    public void _02_editSkill() {
+    @Test(priority = 2)
+    public void editSkill() {
 
         if (isNull(SKILL_ID)) {
-            _01_create_a_skill();
+            create_a_skill();
         }
 
         baseURI = BASE_URL + EDIT_SKILL_ENDPOINT;
@@ -72,8 +72,8 @@ public class CreateSkillTest extends BaseTestSetup {
         ///ASSERT FOR ID AND SKILL
     }
 
-    @Test
-    public static void _03_get_all_skills() {
+    @Test(priority = 3)
+    public static void get_all_skills() {
         baseURI = BASE_URL + SKILL_ENDPOINT;
 
         Response response = RestAssured.given()
@@ -90,11 +90,11 @@ public class CreateSkillTest extends BaseTestSetup {
         ///ASSERT
     }
 
-    @Test
-    public static void _04_delete_skills() {
+    @Test(priority = 4)
+    public static void delete_skills() {
 
         if (isNull(SKILL_ID)) {
-            _01_create_a_skill();
+            create_a_skill();
         }
         baseURI = BASE_URL + DELETE_SKILL_ENDPOINT;
 
