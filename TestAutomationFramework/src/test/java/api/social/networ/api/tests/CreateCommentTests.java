@@ -100,5 +100,8 @@ public class CreateCommentTests extends BaseTestSetup {
         ///ONE MORE ASSERT
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
 
+
+        ///check if we can delete a comment and assert it
+
     }
 }

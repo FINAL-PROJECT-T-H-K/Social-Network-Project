@@ -40,7 +40,7 @@ public class CreatePost extends BaseTestSetup {
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
 
         Response response = given()
-                .header("Content-Type", "application/json")
+                .contentType(ContentType.JSON)
                 .header("Accept", "*/*")
                 .cookie("JSESSIONID", COOKIE_VALUE)
                 .body(POST_BODY)
@@ -103,7 +103,6 @@ public class CreatePost extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
         assertTrue(responseBody.length() > 2, "Response array is empty");
     }
-
 
     @Test
     public void _05_deletePosts_Successful() {

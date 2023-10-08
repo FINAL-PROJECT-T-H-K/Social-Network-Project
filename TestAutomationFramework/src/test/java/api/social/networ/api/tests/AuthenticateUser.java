@@ -26,14 +26,14 @@ public class AuthenticateUser extends BaseTestSetup {
 
     @Test
     public void _02_authenticateAndFetchCookies() {
-        baseURI = BASE_URL;
+        baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
         System.out.println("Using Username: " + USERNAME);
-        System.out.println("Using Password: " + PASSWORD);
+        System.out.println("Using Password: " + PASSWORD);  ///might be deleted
 
         ValidatableResponse responseBody = getApplicationAuthentication()
                 .when()
-                .post(AUTHENTICATE_ENDPOINT)
+                .post(baseURI)
                 .then()
                 .assertThat()
                 .statusCode(302);
@@ -45,9 +45,14 @@ public class AuthenticateUser extends BaseTestSetup {
         COOKIE_VALUE = CookieValue;
 
         Assert.assertFalse(CookieValue.isEmpty(), "Cookie value is not present");
-        //   assertEquals(CookieValue.isEmpty(), );
         System.out.println("Cookie value is: " + CookieValue);
         System.out.println("Status code is: " + statusCode);
+
+
+        ///add upgrade user personal profile request
+
+
+        ///add upgrade user expertise profile request
 
     }
 }

@@ -37,12 +37,16 @@ public class RegistrationTest extends BaseTestSetup {
         String responseUsername = response.getBody().asString().split(" ")[3];
         assertEquals(responseUsername, USERNAME, "Username does not match the expected username");
 
+        ///let's check this test case as we compare same things from response body only, it is always true.
         String responseID = response.getBody().asString().split(" ")[6];
         USER_ID = responseID;
 
         assertEquals(responseID, USER_ID, "User Id does not match the expected ID");
 
         System.out.printf("Username with name '%s' was successfully created.", USERNAME );
+
+
+        ///add show users post request
 
     }
 }

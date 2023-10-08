@@ -23,6 +23,8 @@ public class CreateSkillTest extends BaseTestSetup {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
         String skillsUnique = format("%s%s", SKILL_DESCRIPTION, UNIQUE_NAME);
+
+        ///uniqueUser can be changed as requestBody
         String uniqueUser = String.format(SKILLS_BODY, skillsUnique);
 
         Response response = RestAssured.given()
