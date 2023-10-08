@@ -16,8 +16,8 @@ public class JSONRequests {
 
 
     public static final String POST_BODY =  String.format( "{\n" +
-            " \"content\": \"%sMyFirstPost\",\n" +
-            " \"picture\": \"%sNo picture\",\n" +
+            " \"content\": \"%s\",\n" +
+            " \"picture\": \"%s\",\n" +
             " \"public\": true\n" +
             "}", POST_DESCRIPTION, POST_DESCRIPTION_PIC);
 
