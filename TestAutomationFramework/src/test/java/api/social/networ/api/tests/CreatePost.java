@@ -77,9 +77,7 @@ public class CreatePost extends BaseTestSetup {
 
         System.out.println("Successfully fetched all posts.");
     }
-
-
-    //NOT WORKING
+    
     @Test
     public void _04_showAllProfilePosts_Successful() {
         if (isNull(POST_ID)) {
