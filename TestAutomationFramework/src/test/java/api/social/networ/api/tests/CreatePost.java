@@ -60,7 +60,7 @@ public class CreatePost extends BaseTestSetup {
 
     //GET ALL POSTS REQ
     @Test
-    public void getAllPosts_Successful() {
+    public void _03_getAllPosts_Successful() {
 
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
@@ -81,7 +81,7 @@ public class CreatePost extends BaseTestSetup {
 
     //NOT WORKING
     @Test
-    public void showAllProfilePosts_Successful() {
+    public void _04_showAllProfilePosts_Successful() {
 
         baseURI = GET_PROFILE_POSTS;
 
@@ -104,7 +104,7 @@ public class CreatePost extends BaseTestSetup {
 
     //NOT WORKING
     @Test
-    public void deletePosts_Successful() {
+    public void _05_deletePosts_Successful() {
         String baseUrl = "http://localhost:8081/api/post/auth/manager";
 
 
