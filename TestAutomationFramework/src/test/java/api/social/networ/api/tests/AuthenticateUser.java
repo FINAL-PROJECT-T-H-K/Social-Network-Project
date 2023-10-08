@@ -53,8 +53,63 @@ public class AuthenticateUser extends BaseTestSetup {
 
 
         ///add upgrade user expertise profile request
+    }
+
+    @Test
+    public void _02_authenticateAndFetchCookiesReceiver() {
+        baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
+
+        System.out.println("Using Username: " + USERNAME);
+        System.out.println("Using Password: " + PASSWORD);  ///might be deleted
+
+        ValidatableResponse responseBody = getApplicationAuthentication()
+                .when()
+                .post(baseURI)
+                .then()
+                .assertThat()
+                .statusCode(302);
+
+
+        int statusCode = responseBody.extract().statusCode();
+        String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
+
+        COOKIE_VALUE_RECEIVER = CookieValue;
+
+        Assert.assertFalse(CookieValue.isEmpty(), "Cookie value is not present");
+        System.out.println("Cookie value is: " + CookieValue);
+        System.out.println("Status code is: " + statusCode);
+
 
     }
+
+    @Test
+    public void _02_authenticateAndFetchCookiesSender() {
+        baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
+
+        System.out.println("Using Username: " + USERNAME);
+        System.out.println("Using Password: " + PASSWORD);  ///might be deleted
+
+        ValidatableResponse responseBody = getApplicationAuthentication()
+                .when()
+                .post(baseURI)
+                .then()
+                .assertThat()
+                .statusCode(302);
+
+
+        int statusCode = responseBody.extract().statusCode();
+        String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
+
+        COOKIE_VALUE_SENDER = CookieValue;
+
+        Assert.assertFalse(CookieValue.isEmpty(), "Cookie value is not present");
+        System.out.println("Cookie value is: " + CookieValue);
+        System.out.println("Status code is: " + statusCode);
+
+
+    }
+
+
 }
 
 

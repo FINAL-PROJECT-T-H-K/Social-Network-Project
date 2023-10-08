@@ -45,4 +45,6 @@ public class JSONRequests {
             "}";
 
     public static final String EDITED_SKILLS_BODY = "{\"newField\": \"newValue\"}";
+
+    public static final String SEND_CONNECTION_REQ_BODY = "{\"id\": %s, \"username\": \"%s\"}";
 }

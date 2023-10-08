@@ -22,8 +22,9 @@ public class Endpoints {
     public static final String DELETE_SKILL_ENDPOINT = "/api/skill/delete";
     public static final String SHOW_ALL_COMMENTS = "/api/comment";
     public static final String SHOW_CREATED_COMMENTS =BASE_URL + "/api/comment/single?commentId=" + COMMENT_ID;
-
     public static final String DELETE_POSTS ="/api/post/auth/manager";
+
+    public static final String SEND_CONNECTION_REQUEST_ENDPOINT = "/api/auth/request";
 }
 
 
