@@ -1,7 +1,6 @@
 package apisocialnetwork;
 
-import static apisocialnetwork.Constants.COMMENT_ID;
-import static apisocialnetwork.Constants.USER_ID;
+import static apisocialnetwork.Constants.*;
 import static java.lang.String.format;
 
 public class Endpoints {
@@ -23,8 +22,13 @@ public class Endpoints {
     public static final String SHOW_ALL_COMMENTS = "/api/comment";
     public static final String SHOW_CREATED_COMMENTS =BASE_URL + "/api/comment/single?commentId=" + COMMENT_ID;
     public static final String DELETE_POSTS ="/api/post/auth/manager";
-
     public static final String SEND_CONNECTION_REQUEST_ENDPOINT = "/api/auth/request";
+
+    public static final String EDITED_COMMENT = "/api/comment/auth/editor?commentId=" + COMMENT_ID +
+            "&content=" + EDIT_COMMENT +
+            "&name=" + UNIQUE_NAME;
+    public static final String LIKED_COMMENT ="/api/comment/auth/likesUp?commentId=" + COMMENT_ID;
+    public static final String DELETE_COMMENT = "/api/comment/auth/manager";
 }
 
 
