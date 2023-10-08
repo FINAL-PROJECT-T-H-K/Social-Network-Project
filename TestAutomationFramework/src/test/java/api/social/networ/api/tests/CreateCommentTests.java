@@ -157,7 +157,7 @@ public class CreateCommentTests extends BaseTestSetup {
     }
 
     @Test
-    public void _05_deleteCreatedComment() {
+    public void _06_deleteCreatedComment() {
         if (isNull(COMMENT_ID)) {
             _01_createComment();
         }
