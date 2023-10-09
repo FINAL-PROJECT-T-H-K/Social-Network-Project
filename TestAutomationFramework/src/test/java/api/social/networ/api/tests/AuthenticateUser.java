@@ -24,11 +24,8 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 public class AuthenticateUser extends BaseTestSetup {
-
     public static  String RANDOM_JOB_TITLE_FIRST;
-
     public static  String RANDOM_JOB_TITLE;
-
 
     @BeforeTest
     public static void setupAuthentication() {
@@ -62,14 +59,12 @@ public class AuthenticateUser extends BaseTestSetup {
         System.out.println("Cookie value is: " + CookieValue);
         System.out.println("Status code is: " + statusCode);
 
-
         ///add upgrade user personal profile request
-
-
-        ///add upgrade user expertise profile request
     }
     @Test
     public void _03_upgradeExpertiseProfile() {
+
+        //ADD AUTH
 
         baseURI = BASE_URL + "/api/users/auth/" + USER_ID + "/expertise";
 

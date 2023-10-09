@@ -6,6 +6,10 @@ import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
 
 public class ErrorMessages {
+    public static final String ERROR_MESSAGE_INCORRECT_STATUS = format("Incorrect status code. Expected %s.", SC_OK);
+    public static final String ERROR_MESSAGE_USER_ID = "User Id does not match the expected ID";
+    public static final String ERROR_MESSAGE_USERNAME = "Username does not match the expected username";
+
     public static final String RESPONSE_HAS_A_NON_EMPTY_BODY = "Response has a non-empty body.";
     public static final String ERROR_MESSAGE_LIKED_POST = "Expected status should be true for liked post";
     public static final String ERROR_MESSAGE_FOR_DISLIKE_POST = "Expected status should be false for disliked comment";

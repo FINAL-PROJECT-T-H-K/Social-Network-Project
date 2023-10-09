@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
+import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static java.lang.String.format;
@@ -24,7 +25,6 @@ public class CreateSkillTest extends BaseTestSetup {
 
         String skillsUnique = format("%s%s", SKILL_DESCRIPTION, UNIQUE_NAME);
 
-        ///uniqueUser can be changed as requestBody
         String uniqueUser = String.format(SKILLS_BODY, skillsUnique);
 
         Response response = RestAssured.given()
@@ -34,7 +34,7 @@ public class CreateSkillTest extends BaseTestSetup {
                 .post(baseURI);
 
         int statusCode = response.getStatusCode();
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_INCORRECT_STATUS);
 
         System.out.println(response.getBody().asPrettyString());
         System.out.printf("Skills with name '%s' was successfully created.%n", skillsUnique);
@@ -65,7 +65,7 @@ public class CreateSkillTest extends BaseTestSetup {
                 .put(baseURI);
 
         int statusCode = response.getStatusCode();
-        assertEquals(200, statusCode, "Incorrect status code");
+        assertEquals(200, statusCode, ERROR_MESSAGE_INCORRECT_STATUS);
 
         System.out.printf("Skills with name '%s' was successfully edited.%n", editSkill);
 
@@ -85,7 +85,7 @@ public class CreateSkillTest extends BaseTestSetup {
         System.out.println(response.asString());
 
         int statusCode = response.getStatusCode();
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(statusCode, SC_OK,ERROR_MESSAGE_INCORRECT_STATUS);
 
         ///ASSERT
     }
@@ -105,12 +105,12 @@ public class CreateSkillTest extends BaseTestSetup {
                 .put(baseURI);
 
         int statusCode = response.getStatusCode();
-        assertEquals(200, statusCode, "Incorrect status code. Expected 200 for successful deletion.");
+        assertEquals(200, statusCode, SC_OK,ERROR_MESSAGE_INCORRECT_STATUS);
 
         String responseBody = response.getBody().asString();
         System.out.println("Response Body: " + responseBody);
 
-        assertTrue(responseBody.isEmpty(), "Response body is not empty");
+        assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
     }
 }
 

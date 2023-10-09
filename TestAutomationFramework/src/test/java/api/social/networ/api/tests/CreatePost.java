@@ -30,9 +30,9 @@ public class CreatePost extends BaseTestSetup {
 
     @BeforeClass
     public void Setup() {
-        if (isNull(USER_ID)) {
-            preconditionLogic.registerUser(USERNAME,PASSWORD);
-        }
+       if (isNull(USER_ID)) {
+           preconditionLogic.registerUser(USERNAME,PASSWORD);
+       }
 
         if (isNull(COOKIE_VALUE)) {
             AuthenticateUser authenticate = new AuthenticateUser();
@@ -74,6 +74,7 @@ public class CreatePost extends BaseTestSetup {
 
     @Test(priority = 2)
     public void getAllPosts_Successful() {
+
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
         Response response = given()
