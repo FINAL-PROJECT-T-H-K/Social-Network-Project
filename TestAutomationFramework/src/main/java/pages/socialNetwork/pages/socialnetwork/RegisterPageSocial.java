@@ -1,4 +1,4 @@
-package pages.socialNetwork.pages.socialNetwork;
+package pages.socialNetwork.pages.socialnetwork;
 
 import com.telerikacademy.testframework.pages.BasePage;
 import org.apache.commons.lang3.RandomStringUtils;

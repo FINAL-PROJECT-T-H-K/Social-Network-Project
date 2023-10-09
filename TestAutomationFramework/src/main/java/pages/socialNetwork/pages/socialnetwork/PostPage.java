@@ -1,16 +1,16 @@
-package pages.socialNetwork.pages.socialNetwork;
+package pages.socialNetwork.pages.socialnetwork;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Random;
 
-public class PostPageSocial extends BaseSocialNetwork{
+public class PostPage extends BasePage {
 
     private String postDescription = "";
     Random random = new Random();
     int randomCount;
-    public PostPageSocial(WebDriver driver) {
+    public PostPage(WebDriver driver) {
         super(driver, "socialNetwork.homePage");
     }
     public void create_public_post(String generateDescription) {

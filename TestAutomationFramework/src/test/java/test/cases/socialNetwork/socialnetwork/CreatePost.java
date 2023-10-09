@@ -1,7 +1,6 @@
 package test.cases.socialNetwork.socialnetwork;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 public class CreatePost extends BaseTestSetup {
 

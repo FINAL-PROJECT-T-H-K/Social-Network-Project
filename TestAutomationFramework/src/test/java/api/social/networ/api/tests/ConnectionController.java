@@ -1,7 +1,7 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import apisocialnetwork.PreconditionLogic;
+import apisocialnetwork.Precondition;
 import apisocialnetwork.Utils;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -20,7 +20,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 public class ConnectionController extends BaseTestSetup {
-    static PreconditionLogic preconditionLogic = new PreconditionLogic();
+    static Precondition preconditionLogic = new Precondition();
 
     @BeforeTest
     public static void setupAuthentication() {

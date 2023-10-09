@@ -1,7 +1,7 @@
 package test.cases.socialNetwork.socialnetwork;
 
 import org.junit.Test;
-import pages.socialNetwork.pages.socialNetwork.RegisterPageSocial;
+import pages.socialNetwork.pages.socialnetwork.RegisterPageSocial;
 
 public class RegisterTest extends BaseTestSetup {
     String username;

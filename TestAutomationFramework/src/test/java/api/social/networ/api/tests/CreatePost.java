@@ -1,7 +1,7 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import apisocialnetwork.PreconditionLogic;
+import apisocialnetwork.Precondition;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -20,7 +20,7 @@ import static org.testng.Assert.*;
 
 
 public class CreatePost extends BaseTestSetup {
-    PreconditionLogic preconditionLogic = new PreconditionLogic();
+    Precondition preconditionLogic = new Precondition();
 
     @BeforeClass
     public void Setup() {
@@ -35,7 +35,6 @@ public class CreatePost extends BaseTestSetup {
         }
 
         if (isNull(POST_ID)) {
-            PreconditionLogic preconditionLogic = new PreconditionLogic();
             preconditionLogic.createPost();
         }
     }

@@ -1,11 +1,11 @@
-package pages.socialNetwork.pages.socialNetwork;
+package pages.socialNetwork.pages.socialnetwork;
 
 import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.Utils.getConfigPropertyByKey;
 
-public class LoginPageSocial extends BaseSocialNetwork {
-    public LoginPageSocial(WebDriver driver) {
+public class LoginPage extends BasePage {
+    public LoginPage(WebDriver driver) {
         super(driver, "socialNetwork.loginPage");
     }
 

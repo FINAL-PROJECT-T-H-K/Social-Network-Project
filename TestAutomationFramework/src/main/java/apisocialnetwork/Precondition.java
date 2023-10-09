@@ -12,7 +12,7 @@ import static apisocialnetwork.JSONRequests.REGISTRATION_BODY;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
-public class PreconditionLogic {
+public class Precondition {
 
         public void registerUser(String username, String password) {
 
