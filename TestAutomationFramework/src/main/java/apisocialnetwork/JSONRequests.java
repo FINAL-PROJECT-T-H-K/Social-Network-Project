@@ -8,8 +8,8 @@ public class JSONRequests {
             "        \"id\": 100,\n" +
             "        \"name\": \"All\"\n" +
             "    },\n" +
-            "    \"confirmPassword\": \"alabala123\",\n" +
-            "    \"email\": \"test@gmail.com\",\n" +
+            "    \"confirmPassword\": \"%s\",\n" +
+            "    \"email\": \"%s\",\n" +
             "    \"password\": \"%s\",\n" +
             "    \"username\": \"%s\"\n" +
             "}";

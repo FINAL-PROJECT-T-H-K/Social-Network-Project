@@ -1,6 +1,8 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
+import apisocialnetwork.PreconditionLogic;
+import apisocialnetwork.Utils;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeTest;
@@ -18,43 +20,35 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 public class ConnectionController extends BaseTestSetup {
+    static PreconditionLogic preconditionLogic = new PreconditionLogic();
 
     @BeforeTest
     public static void setupAuthentication() {
-        if (isNull(RECEIVER_USER_ID)) {
-            RegistrationTest registerUser = new RegistrationTest();
-            registerUser.registerReceiverUser_Successful();
-        }
 
-        if (isNull(SENDER_USER_ID)) {
-            RegistrationTest registerUser = new RegistrationTest();
-            registerUser.registerSenderUser_Successful();
-        }
+        preconditionLogic.registerUser(USERNAME, PASSWORD);
 
-        if (isNull(COOKIE_VALUE_SENDER)) {
+        if (isNull(COOKIE_VALUE)) {
             AuthenticateUser authenticate = new AuthenticateUser();
-            authenticate._02_authenticateAndFetchCookiesSender();
+            authenticate._02_authenticateAndFetchCookies();
         }
-
-        if (isNull(COOKIE_VALUE_RECEIVER)) {
-            AuthenticateUser authenticate = new AuthenticateUser();
-            authenticate._02_authenticateAndFetchCookiesReceiver();
-        }
-
     }
 
     @Test
-    public void sendConnectionRequest(){
+    public void sendConnectionRequest() {
+
+        String usernameReceiver = Utils.generateUniqueUsername();
+        String password = Utils.generateUniquePassword();
+        preconditionLogic.registerUser(usernameReceiver, password);
 
         baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
 
-        String requestBody = String.format(SEND_CONNECTION_REQ_BODY, RECEIVER_USER_ID, RECEIVER_USERNAME);
+        String requestBody = String.format(SEND_CONNECTION_REQ_BODY, USER_ID, usernameReceiver);
 
         Response response = given()
                 .contentType(ContentType.JSON)
                 .header("Accept", "*/*")
-                .cookie("JSESSIONID", COOKIE_VALUE_SENDER)
-                .queryParam("principal",SENDER_USERNAME)
+                .cookie("JSESSIONID", COOKIE_VALUE)
+                .queryParam("principal", USERNAME)
                 .body(requestBody)
                 .when()
                 .log()
@@ -63,6 +57,20 @@ public class ConnectionController extends BaseTestSetup {
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+
+    }
+
+    @Test
+    public void approveConnectionRequest (){
+
+        ///preconditions
+        ///take below preconditions from PreconditionLogic class
+        //1.logout sender user
+        //2.Login receiver user
+
+        ///implement approveConnectionReq
+        //logic for getting connectionId
+
 
     }
 
