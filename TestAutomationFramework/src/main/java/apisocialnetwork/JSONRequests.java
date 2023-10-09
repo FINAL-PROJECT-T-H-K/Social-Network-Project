@@ -14,11 +14,11 @@ public class JSONRequests {
             "    \"username\": \"%s\"\n" +
             "}";
 
-    public static final String POST_BODY = "{\n" +
-            " \"content\": \"MyFirstPost\",\n" +
+    public static final String POST_BODY =  String.format("{\n" +
+            " \"content\": \"%s\",\n" +
             " \"picture\": \"No picture\",\n" +
             " \"public\": true\n" +
-            "}";
+            "}",POST_DESCRIPTION);
 
     public static final String COMMENT_BODY = String.format("{\n" +
             "    \"content\": \"%s\",\n" +

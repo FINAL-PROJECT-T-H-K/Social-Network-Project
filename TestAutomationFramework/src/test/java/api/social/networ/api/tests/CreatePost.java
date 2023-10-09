@@ -1,6 +1,7 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
+import apisocialnetwork.PreconditionLogic;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -15,11 +16,12 @@ import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
 import static java.util.Objects.isNull;
 import static org.apache.http.HttpStatus.SC_OK;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 
 public class CreatePost extends BaseTestSetup {
+    PreconditionLogic preconditionLogic = new PreconditionLogic();
+
     @BeforeClass
     public void Setup() {
         if (isNull(USER_ID)) {
@@ -30,6 +32,11 @@ public class CreatePost extends BaseTestSetup {
         if (isNull(COOKIE_VALUE)) {
             AuthenticateUser authenticate = new AuthenticateUser();
             authenticate._02_authenticateAndFetchCookies();
+        }
+
+        if (isNull(POST_ID)) {
+            PreconditionLogic preconditionLogic = new PreconditionLogic();
+            preconditionLogic.createPost();
         }
     }
 
@@ -52,22 +59,17 @@ public class CreatePost extends BaseTestSetup {
 
         int statusCode = response.getStatusCode();
         String postContent = response.getBody().jsonPath().getString("content");
-        String postContentPic = response.getBody().jsonPath().getString("picture");
 
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
-//        assertEquals(postContent,POST_DESCRIPTION,format("Response body content does not match the expected. Expected %s",POST_DESCRIPTION));
-//        assertEquals(postContentPic,POST_DESCRIPTION_PIC,format("Response body content does not match the expected. Expected %s",POST_DESCRIPTION_PIC));
+        assertEquals(postContent, POST_DESCRIPTION, format("Response body content does not match the expected. Expected %s", POST_DESCRIPTION));
 
         System.out.println(response.getBody().asPrettyString());
         System.out.println("Post was created successfully!");
         System.out.println("Post ID is " + POST_ID);
     }
 
-    //GET ALL POSTS REQ
     @Test(priority = 2)
     public void getAllPosts_Successful() {
-
-
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
         Response response = given()
@@ -86,11 +88,6 @@ public class CreatePost extends BaseTestSetup {
 
     @Test(priority = 3)
     public void showAllProfilePosts_Successful() {
-//        if (isNull(POST_ID)) {
-//            CreatePost createPost = new CreatePost();
-//            createPost.createPost();
-//        }
-
         baseURI = GET_PROFILE_POSTS;
 
         Response response = given()
@@ -168,7 +165,7 @@ public class CreatePost extends BaseTestSetup {
 
     }
 
-    @Test(priority = 5)
+    @Test(priority = 6)
     public void dislikeProfilePosts_Successful() {
         if (isNull(POST_ID)) {
             CreatePost createPost = new CreatePost();
@@ -189,7 +186,7 @@ public class CreatePost extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
 
         boolean liked = responseBody.jsonPath().getBoolean("liked");
-        assertTrue(liked, "Expected status should be false for liked post");
+        assertFalse(liked, "Expected status should be false for disliked comment");
 
         String postIdFromResponse = responseBody.jsonPath().getString("postId");
         assertEquals(postIdFromResponse, POST_ID, "Response body's postId is not equal to the variable's postId");
@@ -198,16 +195,9 @@ public class CreatePost extends BaseTestSetup {
     }
 
 
-    @Test(priority = 5)
+    @Test(priority = 7)
     public void deletePosts_Successful() {
-//        if (isNull(POST_ID)) {
-//            CreatePost createPost = new CreatePost();
-//            createPost.createPost();
-//        }
-
         baseURI = BASE_URL + DELETE_POSTS;
-
-
         Response response = given()
                 .cookies("JSESSIONID", COOKIE_VALUE)
                 .queryParam("postId", POST_ID)
@@ -218,8 +208,6 @@ public class CreatePost extends BaseTestSetup {
         System.out.println(response.getBody().asString());
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
     }
-
-    //LIKE / DISLIKE POST
 }
 
 

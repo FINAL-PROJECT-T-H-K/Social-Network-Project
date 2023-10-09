@@ -1,6 +1,7 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
+import apisocialnetwork.PreconditionLogic;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -18,7 +19,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.*;
 
 public class CreateCommentTests extends BaseTestSetup {
-
+    PreconditionLogic preconditionLogic = new PreconditionLogic();
     private static final String ERROR_MESSAGE_COMMENT_ID = format("Incorrect comment ID. Expected %s", COMMENT_ID);
     private static final String ERROR_MESSAGE_LIKED_SHOULD_BE_FALSE = "Expected status should be false for disliked comment";
     private static final String ERROR_MESSAGE_LIKED_SHOULD_BE_TRUE = "Expected status should be true for liked comment";
@@ -38,8 +39,7 @@ public class CreateCommentTests extends BaseTestSetup {
             authenticate._02_authenticateAndFetchCookies();
         }
         if (isNull(POST_ID)) {
-            CreatePost createPost = new CreatePost();
-            createPost.createPost();
+            preconditionLogic.createPost();
         }
     }
 
