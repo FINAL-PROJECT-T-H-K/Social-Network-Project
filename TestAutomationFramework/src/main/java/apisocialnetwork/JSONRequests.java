@@ -47,4 +47,10 @@ public class JSONRequests {
     public static final String EDITED_SKILLS_BODY = "{\"newField\": \"newValue\"}";
 
     public static final String SEND_CONNECTION_REQ_BODY = "{\"id\": %s, \"username\": \"%s\"}";
+
+    public static final String POST_EDIT = String.format("{"
+            + "\"content\": \"%s\","
+            + "\"picture\": \"No picture\","
+            + "\"public\": true"
+            + "}",EDITED_POST) ;
 }

@@ -1,6 +1,7 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
@@ -8,8 +9,7 @@ import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
-import static apisocialnetwork.JSONRequests.POST_BODY;
-import static apisocialnetwork.JSONRequests.PROFILE_POST;
+import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
@@ -83,7 +83,7 @@ public class CreatePost extends BaseTestSetup {
 
         System.out.println("Successfully fetched all posts.");
     }
-    
+
     @Test(priority = 3)
     public void showAllProfilePosts_Successful() {
 //        if (isNull(POST_ID)) {
@@ -111,6 +111,94 @@ public class CreatePost extends BaseTestSetup {
     }
 
     @Test(priority = 4)
+    public void editProfilePosts_Successful() {
+        if (isNull(POST_ID)) {
+            CreatePost createPost = new CreatePost();
+            createPost.createPost();
+        }
+
+        baseURI = BASE_URL + EDIT_POST;
+
+        Response responseBody = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .baseUri(baseURI)
+                .contentType(ContentType.JSON)
+                .queryParam("postId", POST_ID)
+                .body(POST_EDIT)
+                .when()
+                .put(baseURI);
+
+
+        int statusCode = responseBody.getStatusCode();
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+
+        String response = responseBody.getBody().asString();
+        assertTrue(response.isEmpty(), "Response has a non-empty body.");
+    }
+
+
+    @Test(priority = 5)
+    public void likeProfilePosts_Successful() {
+        if (isNull(POST_ID)) {
+            CreatePost createPost = new CreatePost();
+            createPost.createPost();
+        }
+        baseURI = BASE_URL + LIKE_POST;
+
+        Response responseBody = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .contentType(ContentType.JSON)
+                .when()
+                .post(baseURI);
+
+        int statusCode = responseBody.getStatusCode();
+
+        //ASSERT
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+
+        boolean liked = responseBody.jsonPath().getBoolean("liked");
+        assertTrue(liked, "Expected status should be true for liked post");
+
+        String postIdFromResponse = responseBody.jsonPath().getString("postId");
+        assertEquals(postIdFromResponse, POST_ID, "Response body's postId is not equal to the variable's postId");
+        System.out.printf("Post with id:%s was successful liked! ", POST_ID);
+
+
+    }
+
+    @Test(priority = 5)
+    public void dislikeProfilePosts_Successful() {
+        if (isNull(POST_ID)) {
+            CreatePost createPost = new CreatePost();
+            createPost.createPost();
+        }
+        baseURI = BASE_URL + LIKE_POST;
+
+        Response responseBody = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .contentType(ContentType.JSON)
+                .when()
+                .post(baseURI);
+
+        int statusCode = responseBody.getStatusCode();
+
+        //ASSERT
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+
+        boolean liked = responseBody.jsonPath().getBoolean("liked");
+        assertTrue(liked, "Expected status should be false for liked post");
+
+        String postIdFromResponse = responseBody.jsonPath().getString("postId");
+        assertEquals(postIdFromResponse, POST_ID, "Response body's postId is not equal to the variable's postId");
+        System.out.printf("Post with id:%s was successful disliked! ", POST_ID);
+
+    }
+
+
+    @Test(priority = 5)
     public void deletePosts_Successful() {
 //        if (isNull(POST_ID)) {
 //            CreatePost createPost = new CreatePost();
