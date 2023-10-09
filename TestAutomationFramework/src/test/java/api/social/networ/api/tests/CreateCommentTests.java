@@ -160,10 +160,14 @@ public class CreateCommentTests extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         int commentIdFromResponse = response.jsonPath().getInt("commentId");
         int expectedCommentId = Integer.parseInt(COMMENT_ID);
+
+        //LIKED OR DISLIKED ?
         boolean liked = response.jsonPath().getBoolean("liked");
 
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
         assertEquals(commentIdFromResponse, expectedCommentId,format("Expected Id does not match. Expected %s",COMMENT_ID));
+
+        //MAYBE DISLIKE ?
         assertFalse(liked,"Expected status should be false for disliked comment");
 
         System.out.println(response.getBody().asPrettyString());
