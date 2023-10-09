@@ -8,8 +8,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
-import static apisocialnetwork.Endpoints.BASE_URL;
-import static apisocialnetwork.Endpoints.SEND_CONNECTION_REQUEST_ENDPOINT;
+import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
@@ -58,19 +57,28 @@ public class ConnectionController extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
 
     }
-
     @Test
-    public void approveConnectionRequest (){
+    public void approveConnectionRequest() {
 
-        ///preconditions
-        ///take below preconditions from PreconditionLogic class
-        //1.logout sender user
-        //2.Login receiver user
+        baseTestSetup.loginUser();
+        baseTestSetup.sendConnectionRequest();
+        baseTestSetup.loginUserWithParams(RECEIVER_USER_NAME, RECEIVER_PASSWORD);
+        baseTestSetup.showReceivedRequests();
 
+        baseURI = BASE_URL + CONNECTION_REQUEST_ENDPOINT + RECEIVER_USER_ID + CONNECTION_REQUEST_APPROVE_ENDPOINT;
 
-        ///implement approveConnectionReq
-        //logic for getting connectionId
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .header("Accept", "*/*")
+                .cookie("JSESSIONID", COOKIE_VALUE)
+                .queryParam("requestId", CONNECTION_ID)
+                .when()
+                .log()
+                .all()
+                .post(baseURI);
 
+        int statusCode = response.getStatusCode();
+        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
 
     }
 

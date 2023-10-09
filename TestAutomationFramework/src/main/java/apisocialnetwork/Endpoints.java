@@ -32,6 +32,9 @@ public class Endpoints {
     public static final String LIKE_POST = "/api/post/auth/likesUp?postId=" + POST_ID;
     public static final String EDIT_POST = "/api/post/auth/editor";
 
+    public static final String CONNECTION_REQUEST_ENDPOINT = "/api/auth/users/";
+    public static final String CONNECTION_REQUEST_APPROVE_ENDPOINT = "/request/approve";
+
 }
 
 
