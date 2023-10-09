@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
+import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
@@ -20,13 +21,17 @@ import static org.testng.Assert.*;
 
 
 public class CreatePost extends BaseTestSetup {
+
+    public static final String ERROR_MESSAGE_DOES_NOT_MATCH_BODY = format("Response body content does not match the expected. Expected %s", POST_DESCRIPTION);
+    public static final String ERROR_MESSAGE_EMPTY_BODY = "Response array is empty";
+    public static final String ERROR_MESSAGE_FOR_NOT_EQUAL_POST = "Response body's postId is not equal to the variable's postId";
+    public static final String ERROR_MESSAGE_FOR_NOT_EQUAL_POST_ID = ERROR_MESSAGE_FOR_NOT_EQUAL_POST;
     Precondition preconditionLogic = new Precondition();
 
     @BeforeClass
     public void Setup() {
         if (isNull(USER_ID)) {
-            RegistrationTest registerUser = new RegistrationTest();
-            registerUser.registerUser_Successful();
+            preconditionLogic.registerUser(USERNAME,PASSWORD);
         }
 
         if (isNull(COOKIE_VALUE)) {
@@ -59,8 +64,8 @@ public class CreatePost extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         String postContent = response.getBody().jsonPath().getString("content");
 
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
-        assertEquals(postContent, POST_DESCRIPTION, format("Response body content does not match the expected. Expected %s", POST_DESCRIPTION));
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
+        assertEquals(postContent, POST_DESCRIPTION, ERROR_MESSAGE_DOES_NOT_MATCH_BODY);
 
         System.out.println(response.getBody().asPrettyString());
         System.out.println("Post was created successfully!");
@@ -80,7 +85,7 @@ public class CreatePost extends BaseTestSetup {
         System.out.println(response.asString());
 
         int statusCode = response.getStatusCode();
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
 
         System.out.println("Successfully fetched all posts.");
     }
@@ -102,8 +107,8 @@ public class CreatePost extends BaseTestSetup {
         System.out.println("Response Body: " + responseBody);
 
         //ASSERT
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
-        assertTrue(responseBody.length() > 2, "Response array is empty");
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
+        assertTrue(responseBody.length() > 2, ERROR_MESSAGE_EMPTY_BODY);
     }
 
     @Test(priority = 4)
@@ -127,10 +132,10 @@ public class CreatePost extends BaseTestSetup {
 
 
         int statusCode = responseBody.getStatusCode();
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
 
         String response = responseBody.getBody().asString();
-        assertTrue(response.isEmpty(), "Response has a non-empty body.");
+        assertTrue(response.isEmpty(), RESPONSE_HAS_A_NON_EMPTY_BODY);
     }
 
 
@@ -152,13 +157,13 @@ public class CreatePost extends BaseTestSetup {
         int statusCode = responseBody.getStatusCode();
 
         //ASSERT
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
 
         boolean liked = responseBody.jsonPath().getBoolean("liked");
-        assertTrue(liked, "Expected status should be true for liked post");
+        assertTrue(liked, ERROR_MESSAGE_LIKED_POST);
 
         String postIdFromResponse = responseBody.jsonPath().getString("postId");
-        assertEquals(postIdFromResponse, POST_ID, "Response body's postId is not equal to the variable's postId");
+        assertEquals(postIdFromResponse, POST_ID, ERROR_MESSAGE_DOES_NOT_MATCH_BODY);
         System.out.printf("Post with id:%s was successful liked! ", POST_ID);
 
 
@@ -182,13 +187,13 @@ public class CreatePost extends BaseTestSetup {
         int statusCode = responseBody.getStatusCode();
 
         //ASSERT
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
 
         boolean liked = responseBody.jsonPath().getBoolean("liked");
-        assertFalse(liked, "Expected status should be false for disliked comment");
+        assertFalse(liked, ERROR_MESSAGE_FOR_DISLIKE_POST);
 
         String postIdFromResponse = responseBody.jsonPath().getString("postId");
-        assertEquals(postIdFromResponse, POST_ID, "Response body's postId is not equal to the variable's postId");
+        assertEquals(postIdFromResponse, POST_ID, ERROR_MESSAGE_FOR_NOT_EQUAL_POST_ID);
         System.out.printf("Post with id:%s was successful disliked! ", POST_ID);
 
     }
@@ -205,7 +210,7 @@ public class CreatePost extends BaseTestSetup {
 
         int statusCode = response.getStatusCode();
         System.out.println(response.getBody().asString());
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
     }
 }
 

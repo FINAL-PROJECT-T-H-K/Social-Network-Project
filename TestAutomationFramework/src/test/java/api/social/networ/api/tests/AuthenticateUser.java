@@ -37,12 +37,10 @@ public class AuthenticateUser extends BaseTestSetup {
                 .assertThat()
                 .statusCode(302);
 
-
-        int statusCode = responseBody.extract().statusCode();
         String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
-
         COOKIE_VALUE = CookieValue;
-
+        
+        int statusCode = responseBody.extract().statusCode();
         Assert.assertFalse(CookieValue.isEmpty(), "Cookie value is not present");
         System.out.println("Cookie value is: " + CookieValue);
         System.out.println("Status code is: " + statusCode);

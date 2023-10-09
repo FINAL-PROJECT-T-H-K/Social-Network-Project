@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
+import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.JSONRequests.COMMENT_BODY;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
@@ -20,12 +21,7 @@ import static org.testng.Assert.*;
 
 public class CreateCommentTests extends BaseTestSetup {
     Precondition preconditionLogic = new Precondition();
-    private static final String ERROR_MESSAGE_COMMENT_ID = format("Incorrect comment ID. Expected %s", COMMENT_ID);
-    private static final String ERROR_MESSAGE_LIKED_SHOULD_BE_FALSE = "Expected status should be false for disliked comment";
-    private static final String ERROR_MESSAGE_LIKED_SHOULD_BE_TRUE = "Expected status should be true for liked comment";
-    private static final String ERROR_MESSAGE_RESPONSE_CONTENT = format("Response body content does not match the expected. Expected %s", COMMENT_DESCRIPTION);
-    private static final String ERROR_MESSAGE_STATUS_CODE = format("Incorrect status code. Expected %s.", SC_OK);
-    private static final String ERROR_MESSAGE_RESPONSE_BODY_EMPTY = "Response body should be empty";
+
 
     @BeforeClass
     public void Setup() {

@@ -47,6 +47,4 @@ public class Precondition {
 
         POST_ID = response.jsonPath().getString("postId");
     }
-
-
 }
