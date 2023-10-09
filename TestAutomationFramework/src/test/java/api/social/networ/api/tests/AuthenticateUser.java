@@ -28,7 +28,7 @@ public class AuthenticateUser extends BaseTestSetup {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
         System.out.println("Using Username: " + USERNAME);
-        System.out.println("Using Password: " + PASSWORD);  ///might be deleted
+        System.out.println("Using Password: " + PASSWORD); 
 
         ValidatableResponse responseBody = getApplicationAuthentication()
                 .when()
