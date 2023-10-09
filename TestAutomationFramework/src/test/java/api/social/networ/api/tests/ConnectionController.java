@@ -1,7 +1,6 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import apisocialnetwork.Precondition;
 import apisocialnetwork.Utils;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -20,12 +19,12 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 public class ConnectionController extends BaseTestSetup {
-    static Precondition preconditionLogic = new Precondition();
+    static BaseTestSetup baseTestSetup = new BaseTestSetup();
 
     @BeforeTest
     public static void setupAuthentication() {
 
-        preconditionLogic.registerUser(USERNAME, PASSWORD);
+        baseTestSetup.registerUser(USERNAME, PASSWORD);
 
         if (isNull(COOKIE_VALUE)) {
             AuthenticateUser authenticate = new AuthenticateUser();
@@ -38,7 +37,7 @@ public class ConnectionController extends BaseTestSetup {
 
         String usernameReceiver = Utils.generateUniqueUsername();
         String password = Utils.generateUniquePassword();
-        preconditionLogic.registerUser(usernameReceiver, password);
+        baseTestSetup.registerUser(usernameReceiver, password);
 
         baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
 
@@ -67,6 +66,7 @@ public class ConnectionController extends BaseTestSetup {
         ///take below preconditions from PreconditionLogic class
         //1.logout sender user
         //2.Login receiver user
+
 
         ///implement approveConnectionReq
         //logic for getting connectionId

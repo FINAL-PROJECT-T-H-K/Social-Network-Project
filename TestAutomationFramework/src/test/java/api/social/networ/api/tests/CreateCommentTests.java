@@ -1,7 +1,6 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import apisocialnetwork.Precondition;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -20,7 +19,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.*;
 
 public class CreateCommentTests extends BaseTestSetup {
-    Precondition preconditionLogic = new Precondition();
+    BaseTestSetup baseTestSetup = new BaseTestSetup();
 
 
     @BeforeClass
@@ -35,7 +34,7 @@ public class CreateCommentTests extends BaseTestSetup {
             authenticate._02_authenticateAndFetchCookies();
         }
         if (isNull(POST_ID)) {
-            preconditionLogic.createPost();
+            baseTestSetup.createPost();
         }
     }
 

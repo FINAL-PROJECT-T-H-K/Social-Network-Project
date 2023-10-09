@@ -1,4 +1,4 @@
-package test.cases.socialNetwork.socialnetwork;
+package test.cases.socialNetwork;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package test.cases.socialNetwork.socialnetwork;
+package test.cases.socialNetwork;
 
 import com.telerikacademy.testframework.CustomWebDriverManager;
 import com.telerikacademy.testframework.UserActions;

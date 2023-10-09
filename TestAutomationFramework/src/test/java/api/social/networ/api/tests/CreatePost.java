@@ -1,7 +1,6 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import apisocialnetwork.Precondition;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -26,12 +25,12 @@ public class CreatePost extends BaseTestSetup {
     public static final String ERROR_MESSAGE_EMPTY_BODY = "Response array is empty";
     public static final String ERROR_MESSAGE_FOR_NOT_EQUAL_POST = "Response body's postId is not equal to the variable's postId";
     public static final String ERROR_MESSAGE_FOR_NOT_EQUAL_POST_ID = ERROR_MESSAGE_FOR_NOT_EQUAL_POST;
-    Precondition preconditionLogic = new Precondition();
+    BaseTestSetup baseTestSetup = new BaseTestSetup();
 
     @BeforeClass
     public void Setup() {
        if (isNull(USER_ID)) {
-           preconditionLogic.registerUser(USERNAME,PASSWORD);
+           baseTestSetup.registerUser(USERNAME,PASSWORD);
        }
 
         if (isNull(COOKIE_VALUE)) {
@@ -40,7 +39,7 @@ public class CreatePost extends BaseTestSetup {
         }
 
         if (isNull(POST_ID)) {
-            preconditionLogic.createPost();
+            baseTestSetup.createPost();
         }
     }
 
