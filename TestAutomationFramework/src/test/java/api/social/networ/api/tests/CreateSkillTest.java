@@ -39,7 +39,7 @@ public class CreateSkillTest extends BaseTestSetup {
         System.out.println(response.getBody().asPrettyString());
         System.out.printf("Skills with name '%s' was successfully created.%n", skillsUnique);
 
-        SKILL_ID = response.jsonPath().getString("skillId");
+
 
         //ASSERT
     }
