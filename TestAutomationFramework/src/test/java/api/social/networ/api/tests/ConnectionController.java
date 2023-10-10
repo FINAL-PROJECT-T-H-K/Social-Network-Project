@@ -57,6 +57,7 @@ public class ConnectionController extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
 
     }
+
     @Test
     public void approveConnectionRequest() {
 

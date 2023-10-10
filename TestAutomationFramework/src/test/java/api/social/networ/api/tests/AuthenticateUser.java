@@ -24,8 +24,8 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 public class AuthenticateUser extends BaseTestSetup {
-    public static  String RANDOM_JOB_TITLE_FIRST;
-    public static  String RANDOM_JOB_TITLE;
+    public static String RANDOM_JOB_TITLE_FIRST;
+    public static String RANDOM_JOB_TITLE;
 
     @BeforeTest
     public static void setupAuthentication() {
@@ -40,9 +40,8 @@ public class AuthenticateUser extends BaseTestSetup {
     public void _02_authenticateAndFetchCookies() {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
-
         System.out.println("Using Username: " + USERNAME);
-        System.out.println("Using Password: " + PASSWORD); 
+        System.out.println("Using Password: " + PASSWORD);
 
         ValidatableResponse responseBody = getApplicationAuthentication()
                 .when()
@@ -53,7 +52,7 @@ public class AuthenticateUser extends BaseTestSetup {
 
         String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
         COOKIE_VALUE = CookieValue;
-        
+
         int statusCode = responseBody.extract().statusCode();
         Assert.assertFalse(CookieValue.isEmpty(), "Cookie value is not present");
         System.out.println("Cookie value is: " + CookieValue);
@@ -61,6 +60,7 @@ public class AuthenticateUser extends BaseTestSetup {
 
         ///add upgrade user personal profile request
     }
+
     @Test
     public void _03_upgradeExpertiseProfile() {
 
@@ -83,12 +83,12 @@ public class AuthenticateUser extends BaseTestSetup {
                         "\"skill1\": \"%s\",  " +
                         "\"skills\": [    " +
                         "\"%s\"  ]}"
-                ,USER_ID, RANDOM_JOB_TITLE_FIRST,RANDOM_JOB_TITLE);
+                , USER_ID, RANDOM_JOB_TITLE_FIRST, RANDOM_JOB_TITLE);
 
 
         Response response = given()
                 .contentType(ContentType.JSON)
-                .header("Accept","*/*")
+                .header("Accept", "*/*")
                 .cookie("JSESSIONID", COOKIE_VALUE)
                 .body(body)
                 .when()

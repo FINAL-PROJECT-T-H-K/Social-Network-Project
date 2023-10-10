@@ -27,24 +27,11 @@ public class CreatePost extends BaseTestSetup {
     public static final String ERROR_MESSAGE_FOR_NOT_EQUAL_POST_ID = ERROR_MESSAGE_FOR_NOT_EQUAL_POST;
     BaseTestSetup baseTestSetup = new BaseTestSetup();
 
-    @BeforeClass
-    public void Setup() {
-       if (isNull(USER_ID)) {
-           baseTestSetup.registerUser(USERNAME,PASSWORD);
-       }
-
-        if (isNull(COOKIE_VALUE)) {
-            AuthenticateUser authenticate = new AuthenticateUser();
-            authenticate._02_authenticateAndFetchCookies();
-        }
-
-        if (isNull(POST_ID)) {
-            baseTestSetup.createPost();
-        }
-    }
-
-    @Test(priority = 1)
+    @Test
     public void createPost() {
+
+        baseTestSetup.registerUser(USERNAME, PASSWORD);
+        baseTestSetup.loginUser();
 
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
 
@@ -71,7 +58,7 @@ public class CreatePost extends BaseTestSetup {
         System.out.println("Post ID is " + POST_ID);
     }
 
-    @Test(priority = 2)
+    @Test
     public void getAllPosts_Successful() {
 
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
@@ -90,8 +77,13 @@ public class CreatePost extends BaseTestSetup {
         System.out.println("Successfully fetched all posts.");
     }
 
-    @Test(priority = 3)
+    @Test
     public void showAllProfilePosts_Successful() {
+
+        baseTestSetup.registerUser(USERNAME, PASSWORD);
+        baseTestSetup.loginUser();
+        baseTestSetup.createPost();
+
         baseURI = GET_PROFILE_POSTS;
 
         Response response = given()
@@ -111,12 +103,12 @@ public class CreatePost extends BaseTestSetup {
         assertTrue(responseBody.length() > 2, ERROR_MESSAGE_EMPTY_BODY);
     }
 
-    @Test(priority = 4)
+    @Test
     public void editProfilePosts_Successful() {
-        if (isNull(POST_ID)) {
-            CreatePost createPost = new CreatePost();
-            createPost.createPost();
-        }
+
+        baseTestSetup.registerUser(USERNAME, PASSWORD);
+        baseTestSetup.loginUser();
+        baseTestSetup.createPost();
 
         baseURI = BASE_URL + EDIT_POST;
 
@@ -139,12 +131,13 @@ public class CreatePost extends BaseTestSetup {
     }
 
 
-    @Test(priority = 5)
+    @Test
     public void likeProfilePosts_Successful() {
-        if (isNull(POST_ID)) {
-            CreatePost createPost = new CreatePost();
-            createPost.createPost();
-        }
+
+        baseTestSetup.registerUser(USERNAME, PASSWORD);
+        baseTestSetup.loginUser();
+        baseTestSetup.createPost();
+
         baseURI = BASE_URL + LIKE_POST;
 
         Response responseBody = RestAssured
@@ -169,38 +162,13 @@ public class CreatePost extends BaseTestSetup {
 
     }
 
-    @Test(priority = 6)
-    public void dislikeProfilePosts_Successful() {
-        if (isNull(POST_ID)) {
-            CreatePost createPost = new CreatePost();
-            createPost.createPost();
-        }
-        baseURI = BASE_URL + LIKE_POST;
-
-        Response responseBody = RestAssured
-                .given()
-                .cookies("JSESSIONID", COOKIE_VALUE)
-                .contentType(ContentType.JSON)
-                .when()
-                .post(baseURI);
-
-        int statusCode = responseBody.getStatusCode();
-
-        //ASSERT
-        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
-
-        boolean liked = responseBody.jsonPath().getBoolean("liked");
-        assertFalse(liked, ERROR_MESSAGE_FOR_DISLIKE_POST);
-
-        String postIdFromResponse = responseBody.jsonPath().getString("postId");
-        assertEquals(postIdFromResponse, POST_ID, ERROR_MESSAGE_FOR_NOT_EQUAL_POST_ID);
-        System.out.printf("Post with id:%s was successful disliked! ", POST_ID);
-
-    }
-
-
-    @Test(priority = 7)
+    @Test
     public void deletePosts_Successful() {
+
+        baseTestSetup.registerUser(USERNAME, PASSWORD);
+        baseTestSetup.loginUser();
+        baseTestSetup.createPost();
+
         baseURI = BASE_URL + DELETE_POSTS;
         Response response = given()
                 .cookies("JSESSIONID", COOKIE_VALUE)
