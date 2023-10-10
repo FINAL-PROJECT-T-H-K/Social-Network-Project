@@ -1,7 +1,7 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import apisocialnetwork.Utils;
+import apisocialnetwork.Helper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
@@ -24,7 +24,7 @@ public class RegistrationTest extends BaseTestSetup {
 
         baseURI = BASE_URL + REGISTER_ENDPOINT;
 
-        String uniqueEmail = Utils.generateRandomEmail();
+        String uniqueEmail = Helper.generateRandomEmail();
 
         String uniqueUser = String.format(REGISTRATION_BODY, PASSWORD, uniqueEmail, PASSWORD,USERNAME);
 

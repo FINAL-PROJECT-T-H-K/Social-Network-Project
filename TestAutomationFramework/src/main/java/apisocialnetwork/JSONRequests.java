@@ -35,14 +35,15 @@ public class JSONRequests {
             "  \"size\": 10\n" +
             "}";
 
-    public static final String SKILLS_BODY = "{\n" +
+
+    public static final String SKILLS_BODY = String.format("{\n" +
             "  \"category\": {\n" +
-            "    \"id\": 153,\n" +
-            "    \"name\": \"TESTREST\"\n" +
+            "    \"id\": %d,\n" +
+            "    \"name\": \"%s\"\n" +
             "  },\n" +
             "  \"skill\": \"%s\",\n" +
             "  \"skillId\": 400\n" +
-            "}";
+            "}",SKILL_BODY_ID,SKILL_NAME,SKILL_DESCRIPTION);
 
     public static final String EDITED_SKILLS_BODY = "{\"newField\": \"newValue\"}";
 

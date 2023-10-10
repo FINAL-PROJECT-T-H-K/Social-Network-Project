@@ -1,6 +1,6 @@
 package api.base;
 
-import apisocialnetwork.Utils;
+import apisocialnetwork.Helper;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
 import io.restassured.RestAssured;
@@ -10,7 +10,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeSuite;
 
 import static apisocialnetwork.Constants.*;
@@ -41,13 +40,12 @@ public class BaseTestSetup {
         FakeValuesService fakeValuesService = new FakeValuesService(
                 new Locale("en-GB"), new RandomService());
 
-        String randomUsername = fakeValuesService.bothify("Username?????");
-        String randomPassword = fakeValuesService.bothify("Password?????");
+        USERNAME = fakeValuesService.bothify("Username??????");
+        PASSWORD = fakeValuesService.bothify("Password??????");
+        UNIQUE_NAME = fakeValuesService.bothify("UniqueName??????");
+        SKILL_DESCRIPTION =fakeValuesService.bothify("SkillDescription??????");
+        SKILL_DESCRIPTION_EDITED =fakeValuesService.bothify(SKILL_DESCRIPTION+UNIQUE_NAME);
 
-        USERNAME = randomUsername;
-        PASSWORD = randomPassword;
-
-        UNIQUE_NAME = RandomStringUtils.randomAlphabetic(10);
     }
 
     public RequestSpecification getApplicationAuthentication() {
@@ -103,7 +101,7 @@ public class BaseTestSetup {
 
         baseURI = BASE_URL + REGISTER_ENDPOINT;
 
-        String uniqueEmailReceiver = Utils.generateRandomEmail();
+        String uniqueEmailReceiver = Helper.generateRandomEmail();
 
         String uniqueUser = String.format(REGISTRATION_BODY, password, uniqueEmailReceiver, password, username);
 
@@ -138,8 +136,8 @@ public class BaseTestSetup {
     public void sendConnectionRequest() {
 
         SENDER_USER_ID = USER_ID;
-        String usernameReceiver = Utils.generateUniqueUsername();
-        String password = Utils.generateUniquePassword();
+        String usernameReceiver = Helper.generateUniqueUsername();
+        String password = Helper.generateUniquePassword();
         registerUser(usernameReceiver, password);
         RECEIVER_USER_ID = USER_ID;
 
@@ -176,5 +174,56 @@ public class BaseTestSetup {
         int id = response.jsonPath().getInt("[0].id");
         CONNECTION_ID = String.valueOf(id);
 
+    }
+    public static Response createSkill() {
+        baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
+
+        Response response = RestAssured.given()
+                .contentType(ContentType.JSON)
+                .body(SKILLS_BODY)
+                .log()
+                .all()
+                .when()
+                .post(baseURI);
+
+        SKILL_ID = response.getBody().jsonPath().getString("skillId");
+        return response;
+    }
+    protected static Response editSkill() {
+        baseURI = BASE_URL + EDIT_SKILL_ENDPOINT;
+
+        Response response = RestAssured
+                .given()
+                .queryParam("skill", EDITED_SKILLS+UNIQUE_NAME)
+                .queryParam("skillId", SKILL_ID)
+                .contentType(ContentType.JSON)
+                .body(EDITED_SKILLS_BODY)
+                .log()
+                .all()
+                .when()
+                .put(baseURI);
+        return response;
+    }
+    protected static Response deleteSkill() {
+        baseURI = BASE_URL + DELETE_SKILL_ENDPOINT;
+
+        Response response = RestAssured
+                .given()
+                .queryParam("skillId", SKILL_ID)
+                .when()
+                .put(baseURI);
+        return response;
+    }
+    protected static Response showAllSkills() {
+        baseURI = BASE_URL + SKILL_ENDPOINT;
+
+        Response response = RestAssured.given()
+                .queryParam("sorted", "true")
+                .queryParam("unsorted", "false")
+                .log()
+                .all()
+                .when()
+                .get(baseURI);
+        return response;
     }
 }

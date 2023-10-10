@@ -1,7 +1,7 @@
 package apisocialnetwork;
 
-import static apisocialnetwork.Constants.COMMENT_DESCRIPTION;
-import static apisocialnetwork.Constants.COMMENT_ID;
+import static apisocialnetwork.Constants.*;
+import static apisocialnetwork.Constants.SKILL_DESCRIPTION;
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
 
@@ -18,5 +18,9 @@ public class ErrorMessages {
     public static final String ERROR_MESSAGE_LIKED_SHOULD_BE_TRUE = "Expected status should be true for liked comment";
     public static final String ERROR_MESSAGE_RESPONSE_CONTENT = format("Response body content does not match the expected. Expected %s", COMMENT_DESCRIPTION);
     public static final String ERROR_MESSAGE_STATUS_CODE = format("Incorrect status code. Expected %s.", SC_OK);
+    public static final String ERROR_MESSAGE_RESPONSE_SKILL_NAME = format("Response body content does not match the expected. Expected %s", SKILL_NAME);
+    public static final String ERROR_MESSAGE_RESPONSE_SKILL_DESCRIPTION = format("Response body content does not match the expected. Expected %s", SKILL_DESCRIPTION);
     public static final String ERROR_MESSAGE_RESPONSE_BODY_EMPTY = "Response body should be empty";
+    public static final String ERROR_MESSAGE_BODY_NOT_VALID_JSON = "Body is not a valid JSON";
 }
+

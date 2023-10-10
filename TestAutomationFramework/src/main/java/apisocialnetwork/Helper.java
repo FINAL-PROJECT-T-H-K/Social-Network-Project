@@ -3,8 +3,10 @@ package apisocialnetwork;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.text.CharacterPredicates;
 import org.apache.commons.text.RandomStringGenerator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class Utils {
+public class Helper {
 
     public static String generateRandomEmail() {
         // Create a random string generator
@@ -28,6 +30,15 @@ public class Utils {
     // Helper method to generate a unique password
     public static String generateUniquePassword() {
         return "Password" + RandomStringUtils.randomAlphabetic(8);
+    }
+
+    public static boolean isValid(String json) {
+        try {
+            new JSONObject(json);
+        } catch (JSONException e) {
+            return false;
+        }
+        return true;
     }
 
 }

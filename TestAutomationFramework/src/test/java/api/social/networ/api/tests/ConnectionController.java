@@ -1,7 +1,7 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import apisocialnetwork.Utils;
+import apisocialnetwork.Helper;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeTest;
@@ -34,8 +34,8 @@ public class ConnectionController extends BaseTestSetup {
     @Test
     public void sendConnectionRequest() {
 
-        String usernameReceiver = Utils.generateUniqueUsername();
-        String password = Utils.generateUniquePassword();
+        String usernameReceiver = Helper.generateUniqueUsername();
+        String password = Helper.generateUniquePassword();
         baseTestSetup.registerUser(usernameReceiver, password);
 
         baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
