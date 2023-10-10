@@ -30,8 +30,8 @@ public class CreateCommentTests extends BaseTestSetup {
         }
 
         if (isNull(COOKIE_VALUE)) {
-            AuthenticateUser authenticate = new AuthenticateUser();
-            authenticate._02_authenticateAndFetchCookies();
+            AuthenticateUserTest authenticate = new AuthenticateUserTest();
+            authenticate.LoginAndFetchCookiesTest();
         }
         if (isNull(POST_ID)) {
             baseTestSetup.createPost();

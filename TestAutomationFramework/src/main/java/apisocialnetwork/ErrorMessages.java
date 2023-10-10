@@ -3,10 +3,12 @@ package apisocialnetwork;
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Constants.SKILL_DESCRIPTION;
 import static java.lang.String.format;
+import static org.apache.http.HttpStatus.SC_MOVED_TEMPORARILY;
 import static org.apache.http.HttpStatus.SC_OK;
 
 public class ErrorMessages {
     public static final String ERROR_MESSAGE_INCORRECT_STATUS = format("Incorrect status code. Expected %s.", SC_OK);
+    public static final String ERROR_MESSAGE_INCORRECT_STATUS_LOGIN = format("Incorrect status code. Expected %s.", SC_MOVED_TEMPORARILY);
     public static final String ERROR_MESSAGE_USER_ID = "User Id does not match the expected ID";
     public static final String ERROR_MESSAGE_USERNAME = "Username does not match the expected username";
 

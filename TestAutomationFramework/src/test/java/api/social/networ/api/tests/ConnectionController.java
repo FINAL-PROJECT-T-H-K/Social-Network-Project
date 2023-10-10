@@ -26,8 +26,8 @@ public class ConnectionController extends BaseTestSetup {
         baseTestSetup.registerUser(USERNAME, PASSWORD);
 
         if (isNull(COOKIE_VALUE)) {
-            AuthenticateUser authenticate = new AuthenticateUser();
-            authenticate._02_authenticateAndFetchCookies();
+            AuthenticateUserTest authenticate = new AuthenticateUserTest();
+            authenticate.LoginAndFetchCookiesTest();
         }
     }
 

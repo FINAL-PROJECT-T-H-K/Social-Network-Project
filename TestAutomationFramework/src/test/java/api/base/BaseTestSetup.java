@@ -4,6 +4,7 @@ import apisocialnetwork.Helper;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
 import io.restassured.RestAssured;
+import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.config.EncoderConfig;
 
 import io.restassured.http.ContentType;
@@ -239,5 +240,28 @@ public class BaseTestSetup {
         USER_ID = response.getBody().asString().split(" ")[6];
 
         return response;
+    }
+    protected static @NotNull ValidatableResponse LoginUser() {
+        baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
+
+        PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
+        preemptiveBasicAuthScheme.setUserName(USERNAME);
+        preemptiveBasicAuthScheme.setPassword(PASSWORD);
+        RestAssured.authentication = preemptiveBasicAuthScheme;
+
+        ValidatableResponse responseBody = RestAssured
+                .given()
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .queryParam("username", USERNAME)
+                .queryParam("password", PASSWORD)
+                .when()
+                .post(baseURI)
+                .then()
+                .assertThat()
+                .statusCode(302);
+
+        COOKIE_VALUE = responseBody.extract().cookies().get("JSESSIONID");
+
+        return responseBody;
     }
 }

@@ -9,4 +9,8 @@ public class ShowMessages {
     public static final String SHOW_MESSAGE_RESPONSE_BODY = "Show the response body: \n";
     public static final String SHOW_MESSAGE_CREATED_SKILL_SILL_ID = String.format("Skills with name '%s' and Id '%s' was successfully created.%n",SKILL_DESCRIPTION, SKILL_ID);
     public static final String CORRECT_REGISTER_RETURN_MESSAGE = String.format("User with name %s and id %s was created", USERNAME, USER_ID);
+
+    public static final String SHOW_MESSAGE_LOGIN_USED_USERNAME_PASSWORD_COOKIE = String.format("Using Username: %s and Password: %s\nCookie value is: %s ", USERNAME, PASSWORD,COOKIE_VALUE);
+    public static final String ERROR_MESSAGE_COOKIE_VALUE_IS_NOT_PRESENT = "Cookie value is not present";
+
 }
