@@ -23,7 +23,7 @@ public class AuthenticateUser extends BaseTestSetup {
 
         if (isNull(USER_ID)) {
             RegistrationTest registerUser = new RegistrationTest();
-            registerUser.registerUser_Successful();
+            registerUser.registerUserTest();
         }
     }
 

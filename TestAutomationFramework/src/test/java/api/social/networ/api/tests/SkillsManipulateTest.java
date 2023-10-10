@@ -17,7 +17,7 @@ import static org.testng.Assert.assertTrue;
 public class SkillsManipulateTest extends BaseTestSetup {
 
     @Test(priority = 1)
-    public static void createSkillSuccessfully() {
+    public static void createSkillTest() {
 
         Response response = createSkill();
 
@@ -37,7 +37,7 @@ public class SkillsManipulateTest extends BaseTestSetup {
     }
 
     @Test(priority = 3)
-    public static void getAllSkillsSuccessfully() {
+    public static void getAllSkillsTest() {
 
         Response response = showAllSkills();
 
@@ -53,7 +53,7 @@ public class SkillsManipulateTest extends BaseTestSetup {
     }
 
     @Test(priority = 4)
-    public static void deleteSkillSuccessfully() {
+    public static void deleteSkillTest() {
 
         if (isNull(SKILL_ID)) {
             createSkill();
@@ -72,7 +72,7 @@ public class SkillsManipulateTest extends BaseTestSetup {
     }
 
     @Test(priority = 2)
-    public void editSkillSuccessfully() {
+    public void editSkillTest() {
 
         if (isNull(SKILL_ID)) {
             createSkill();

@@ -26,7 +26,7 @@ public class CreateCommentTests extends BaseTestSetup {
     public void Setup() {
         if (isNull(USER_ID)) {
             RegistrationTest registerUser = new RegistrationTest();
-            registerUser.registerUser_Successful();
+            registerUser.registerUserTest();
         }
 
         if (isNull(COOKIE_VALUE)) {

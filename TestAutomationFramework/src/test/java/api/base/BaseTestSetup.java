@@ -10,6 +10,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.BeforeSuite;
 
 import static apisocialnetwork.Constants.*;
@@ -23,8 +24,6 @@ import static io.restassured.RestAssured.given;
 
 public class BaseTestSetup {
     public static final String REQUEST = "/request/";
-    public static String USERNAME;
-    public static String PASSWORD;
 
     /**
      * Provided configuration resolve REST Assured issue with a POST request without request body.
@@ -44,7 +43,9 @@ public class BaseTestSetup {
         PASSWORD = fakeValuesService.bothify("Password??????");
         UNIQUE_NAME = fakeValuesService.bothify("UniqueName??????");
         SKILL_DESCRIPTION =fakeValuesService.bothify("SkillDescription??????");
-        SKILL_DESCRIPTION_EDITED =fakeValuesService.bothify(SKILL_DESCRIPTION+UNIQUE_NAME);
+        SKILL_DESCRIPTION_EDITED =SKILL_DESCRIPTION+UNIQUE_NAME;
+        RANDOM_EMAIL=fakeValuesService.bothify("??????##@example.com");
+
 
     }
 
@@ -175,7 +176,8 @@ public class BaseTestSetup {
         CONNECTION_ID = String.valueOf(id);
 
     }
-    public static Response createSkill() {
+
+    public static @NotNull Response createSkill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
         Response response = RestAssured.given()
@@ -192,7 +194,7 @@ public class BaseTestSetup {
     protected static Response editSkill() {
         baseURI = BASE_URL + EDIT_SKILL_ENDPOINT;
 
-        Response response = RestAssured
+        return RestAssured
                 .given()
                 .queryParam("skill", EDITED_SKILLS+UNIQUE_NAME)
                 .queryParam("skillId", SKILL_ID)
@@ -202,28 +204,40 @@ public class BaseTestSetup {
                 .all()
                 .when()
                 .put(baseURI);
-        return response;
     }
     protected static Response deleteSkill() {
         baseURI = BASE_URL + DELETE_SKILL_ENDPOINT;
 
-        Response response = RestAssured
+        return RestAssured
                 .given()
                 .queryParam("skillId", SKILL_ID)
                 .when()
                 .put(baseURI);
-        return response;
     }
     protected static Response showAllSkills() {
         baseURI = BASE_URL + SKILL_ENDPOINT;
 
-        Response response = RestAssured.given()
+        return RestAssured.given()
                 .queryParam("sorted", "true")
                 .queryParam("unsorted", "false")
                 .log()
                 .all()
                 .when()
                 .get(baseURI);
+    }
+    protected static @NotNull Response createAndRegisterUser() {
+        baseURI = BASE_URL + REGISTER_ENDPOINT;
+
+        Response response = given()
+                .contentType(APPLICATION_JSON)
+                .body(REGISTRATION_BODY)
+                .log()
+                .all()
+                .when()
+                .post(baseURI);
+
+        USER_ID = response.getBody().asString().split(" ")[6];
+
         return response;
     }
 }
