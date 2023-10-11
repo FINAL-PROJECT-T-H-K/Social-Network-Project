@@ -2,7 +2,7 @@ package test.cases.socialNetwork;
 
 import org.junit.Test;
 
-public class RegisterTest extends BaseTestSetup {
+public class RegisterTests extends BaseTestSetup {
     String username;
     String password;
 

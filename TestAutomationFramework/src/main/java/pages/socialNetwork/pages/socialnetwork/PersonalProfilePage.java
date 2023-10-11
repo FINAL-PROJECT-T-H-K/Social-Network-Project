@@ -23,8 +23,8 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.waitForElementVisible("profile.birthday");
         actions.typeValueInField("profile.birthday.date","profile.birthday");
 
-        actions.waitForElementClickable("profile.updatePersonalProfile.button");
-        actions.clickElement("profile.updatePersonalProfile.button");
+        actions.waitForElementClickable("profile.update.personal.profile.button");
+        actions.clickElement("profile.update.personal.profile.button");
     }
 
     public void updateUserProfileWithEmailAddress(String email) {
@@ -33,8 +33,8 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.typeValueInField(email,"profile.email.address");
 
 
-        actions.waitForElementClickable("profile.updatePersonalProfile.button");
-        actions.clickElement("profile.updatePersonalProfile.button");
+        actions.waitForElementClickable("profile.update.personal.profile.button");
+        actions.clickElement("profile.update.personal.profile.button");
     }
    public void enterPersonalProfile() {
         actions.waitForElementVisible("profile.personal.page.button");
@@ -68,8 +68,8 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.waitForElementClickable("profile.job.tittle");
         actions.clickElement("profile.job.tittle");
 
-        actions.waitForElementClickable("profile.updateJob.button");
-        actions.clickElement("profile.updateJob.button");
+        actions.waitForElementClickable("profile.update.job.button");
+        actions.clickElement("profile.update.job.button");
 
     }
     public void updateSkillsSection(){

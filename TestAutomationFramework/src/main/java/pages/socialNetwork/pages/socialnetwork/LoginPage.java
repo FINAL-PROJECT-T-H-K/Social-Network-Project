@@ -15,20 +15,20 @@ public class LoginPage extends BaseSocialPage {
 
         navigateToPage();
 
-        actions.waitForElementVisible("socialNetwork.loginPage.username");
-        actions.typeValueInField(username, "socialNetwork.loginPage.username");
+        actions.waitForElementVisible("loginPage.username");
+        actions.typeValueInField(username, "loginPage.username");
 
-        actions.waitForElementVisible("socialNetwork.loginPage.password");
-        actions.typeValueInField(password, "socialNetwork.loginPage.password");
+        actions.waitForElementVisible("loginPage.password");
+        actions.typeValueInField(password, "loginPage.password");
 
-        actions.clickElement("socialNetwork.loginSubmitButton");
+        actions.clickElement("loginSubmitButton");
 
-        actions.waitForElementVisible("socialNetwork.header.member.menuButton");
+        actions.waitForElementVisible("header.member.menu.button");
     }
 
 
     public void assertAuthenticatedUser() {
-        actions.assertElementPresent("socialNetwork.header.member.menuButton");
-        actions.clickElement("socialNetwork.header.member.menuButton");
+        actions.assertElementPresent("header.member.menu.button");
+        actions.clickElement("header.member.menu.button");
     }
 }
