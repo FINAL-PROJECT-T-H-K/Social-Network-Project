@@ -4,11 +4,11 @@ import org.openqa.selenium.WebDriver;
 
 import static com.telerikacademy.testframework.Utils.getConfigPropertyByKey;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends BaseSocialPage {
+
     public LoginPage(WebDriver driver) {
         super(driver, "socialNetwork.loginPage");
     }
-
     public void loginUserSocial(String userKey) {
         String username = getConfigPropertyByKey("socialNetwork.users." + userKey + ".username");
         String password = getConfigPropertyByKey("socialNetwork.users." + userKey + ".password");

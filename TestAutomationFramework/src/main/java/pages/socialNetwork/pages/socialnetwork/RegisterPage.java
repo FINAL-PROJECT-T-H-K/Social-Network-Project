@@ -8,10 +8,10 @@ import java.util.Random;
 
 import static java.lang.String.format;
 
-public class RegisterPageSocial extends BasePage {
+public class RegisterPage extends BasePage {
     Random random = new Random();
     int randomCount;
-    public RegisterPageSocial(WebDriver driver) {
+    public RegisterPage(WebDriver driver) {
         super(driver,"socialNetwork.RegisterPage");
     }
 

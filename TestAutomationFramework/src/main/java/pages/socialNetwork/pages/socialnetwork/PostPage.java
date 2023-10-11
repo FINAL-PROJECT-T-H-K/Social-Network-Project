@@ -3,17 +3,15 @@ package pages.socialNetwork.pages.socialnetwork;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Random;
+public class PostPage extends BaseSocialPage {
 
-public class PostPage extends BasePage {
+    public String commentText = "My comment is ";
 
-    private String postDescription = "";
-    Random random = new Random();
-    int randomCount;
     public PostPage(WebDriver driver) {
         super(driver, "socialNetwork.homePage");
     }
-    public void create_public_post(String generateDescription) {
+
+    public void createPublicPost(String generateDescription) {
 
         actions.waitForElementClickable("new.post.button");
         actions.clickElement("new.post.button");
@@ -29,7 +27,8 @@ public class PostPage extends BasePage {
 
 
     }
-    public void create_private_post(String generateDescription) {
+
+    public void createPrivatePost(String generateDescription) {
 
         actions.waitForElementClickable("new.post.button");
         actions.clickElement("new.post.button");
@@ -46,35 +45,60 @@ public class PostPage extends BasePage {
 
     }
 
+    public void clickOnLatestPosts() {
+        actions.waitForElementClickable("latest.post.button");
+        actions.clickElement("latest.post.button");
+    }
+
+    public void likePublicPost() {
+
+
+        if (actions.isElementVisible("dislike.button")) {
+            actions.clickElement("dislike.button");
+        }
+
+        actions.waitForElementVisible("like.button");
+        actions.clickElement("like.button");
+
+        actions.waitForElementVisible("dislike.button");
+    }
+
+    public void unlikePublicPost() {
+
+        if (actions.isElementVisible("like.button")) {
+            actions.clickElement("like.button");
+        }
+
+        actions.waitForElementVisible("dislike.button");
+        actions.clickElement("dislike.button");
+    }
+    public void validateTopicIsUnliked(){
+        actions.assertElementPresent("like.button");
+    }
+    public void deletePost(){
+
+
+    }
+    public void validatePostIsLiked(){
+        actions.assertElementPresent("dislike.button");
+    }
 
     public void verifyPostCreated(String generateDescription) {
         actions.waitForElementClickable("explore.button");
         System.out.printf("Post with title %s is created", generateDescription);
     }
+
     public void verifyPublicPostCreated() {
         actions.assertElementPresent("public.post.displayed");
     }
+
     public void verifyPrivatePostCreated() {
         actions.assertElementPresent("private.post.displayed");
 
     }
 
-
     public String generateDescription() {
-
-        String generatedDescription = postDescription;
-
-        randomCount = random.nextInt(14);
-        while (randomCount >= 0) {
-            String randomStr = RandomStringUtils.randomAlphabetic(8);
-            String randomNumber = RandomStringUtils.randomNumeric(8);
-            String randomAlphanumeric = RandomStringUtils.randomAlphanumeric(8);
-            generatedDescription = generatedDescription.concat(randomStr).concat(" ").concat(randomNumber).concat(" ")
-                    .concat(randomAlphanumeric).concat("\n");
-            randomCount--;
-        }
-        return generatedDescription;
+        commentText += RandomStringUtils.randomAlphabetic(15);
+        return commentText;
     }
-
-
 }

@@ -1,16 +1,13 @@
-2023-10-07 20:19:56,579 INFO  [main] Initializing WebDriver
-2023-10-07 20:20:06,527 INFO  [main] Initializing WebDriver
-2023-10-07 20:20:08,914 INFO  [main] Initializing WebDriver
-2023-10-07 20:20:08,915 INFO  [main] Initializing WebDriver
-2023-10-07 20:20:08,915 INFO  [main] Initializing WebDriver
-2023-10-07 20:20:08,929 INFO  [main] Initializing WebDriver
-2023-10-07 20:20:10,983 INFO  [main] Clicking on element socialNetwork.loginSubmitButton
-2023-10-07 20:20:13,610 INFO  [main] Clicking on element new.post.button
-2023-10-07 20:20:16,322 INFO  [main] Clicking on element choose.private.post
-2023-10-07 20:20:16,645 INFO  [main] Clicking on element create.post.button
-2023-10-07 20:20:30,417 INFO  [main] Initializing WebDriver
-2023-10-07 20:20:31,562 INFO  [main] Clicking on element socialNetwork.loginSubmitButton
-2023-10-07 20:20:33,921 INFO  [main] Clicking on element new.post.button
-2023-10-07 20:20:38,276 INFO  [main] Clicking on element choose.public.post
-2023-10-07 20:20:39,059 INFO  [main] Clicking on element create.post.button
-2023-10-07 20:20:52,613 INFO  [main] Quitting WebDriver
+2023-10-11 13:35:17,654 INFO  [main] Initializing WebDriver
+2023-10-11 13:35:25,350 INFO  [main] Initializing WebDriver
+2023-10-11 13:35:27,995 INFO  [main] Initializing WebDriver
+2023-10-11 13:35:27,997 INFO  [main] Initializing WebDriver
+2023-10-11 13:35:27,998 INFO  [main] Initializing WebDriver
+2023-10-11 13:35:28,003 INFO  [main] Initializing WebDriver
+2023-10-11 13:35:28,007 INFO  [main] Initializing WebDriver
+2023-10-11 13:35:28,026 INFO  [main] Initializing WebDriver
+2023-10-11 13:35:29,557 INFO  [main] Clicking on element socialNetwork.loginSubmitButton
+2023-10-11 13:35:31,534 INFO  [main] Clicking on element profile.personal.page.button
+2023-10-11 13:35:34,167 INFO  [main] Clicking on element profile.editProfile.page.button
+2023-10-11 13:35:42,206 INFO  [main] Clicking on element profile.updatePersonalProfile.button
+2023-10-11 13:35:51,125 INFO  [main] Quitting WebDriver

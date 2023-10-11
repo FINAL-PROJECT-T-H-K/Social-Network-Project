@@ -1,7 +1,7 @@
 package test.cases.socialNetwork;
 
 import org.junit.Test;
-import pages.socialNetwork.pages.socialnetwork.RegisterPageSocial;
+import pages.socialNetwork.pages.socialnetwork.RegisterPage;
 
 public class RegisterTest extends BaseTestSetup {
     String username;
@@ -15,7 +15,6 @@ public class RegisterTest extends BaseTestSetup {
         username = registerLageSocial.generateUser();
         password =  registerLageSocial.generatePassword();
 
-        RegisterPageSocial registerLageSocial = new RegisterPageSocial(actions.getDriver());
         registerLageSocial.registerUser(username,password);
 
         //ASSERT

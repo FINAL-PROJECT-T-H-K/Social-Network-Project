@@ -10,6 +10,7 @@ public class LoginTest extends BaseTestSetup {
 
         loginPageSocial.loginUserSocial("user");
         //ASSERT
+
         loginPageSocial.assertAuthenticatedUser();
     }
 }

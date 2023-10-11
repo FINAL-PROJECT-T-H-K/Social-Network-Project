@@ -5,15 +5,15 @@ import com.telerikacademy.testframework.UserActions;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import pages.socialNetwork.pages.socialnetwork.LoginPage;
-import pages.socialNetwork.pages.socialnetwork.PostPage;
-import pages.socialNetwork.pages.socialnetwork.RegisterPageSocial;
+import pages.socialNetwork.pages.socialnetwork.*;
 
 public class BaseTestSetup {
     static UserActions actions = new UserActions();
 
     //PAGES
-    public static RegisterPageSocial registerLageSocial;
+    public static PersonalProfilePage personalProfilePage;
+    public static LogoutPage logoutPage;
+    public static RegisterPage registerLageSocial;
     public static LoginPage loginPageSocial;
     public static PostPage postPageSocial;
 
@@ -24,8 +24,10 @@ public class BaseTestSetup {
         WebDriver driver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
 
         loginPageSocial = new LoginPage(driver);
-        registerLageSocial = new RegisterPageSocial(driver);
+        registerLageSocial = new RegisterPage(driver);
         postPageSocial = new PostPage(driver);
+        logoutPage = new LogoutPage(driver);
+        personalProfilePage = new PersonalProfilePage(driver);
 
     }
 
