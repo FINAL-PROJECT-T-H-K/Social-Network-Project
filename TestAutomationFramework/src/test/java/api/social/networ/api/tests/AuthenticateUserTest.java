@@ -23,7 +23,7 @@ public class AuthenticateUserTest extends BaseTestSetup {
             createAndRegisterUser();
         }
 
-        ValidatableResponse responseBody = LoginUser();
+        ValidatableResponse responseBody = loginUser();
 
         int statusCode = responseBody.extract().statusCode();
 

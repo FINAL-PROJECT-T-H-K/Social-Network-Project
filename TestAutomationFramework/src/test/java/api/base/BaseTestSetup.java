@@ -1,6 +1,5 @@
 package api.base;
 
-import apisocialnetwork.Helper;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
 import io.restassured.RestAssured;
@@ -22,7 +21,6 @@ import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
-import static java.util.Objects.isNull;
 
 public class BaseTestSetup {
     public static final String REQUEST = "/request/";
@@ -38,7 +36,6 @@ public class BaseTestSetup {
         RestAssured.config = RestAssured.config().encoderConfig(encoderConfig);
 
         generateRandomConstants();
-
     }
 
     protected static void generateRandomConstants() {
@@ -66,25 +63,6 @@ public class BaseTestSetup {
                 .queryParam("username", username)
                 .queryParam("password", password);
     }
-
-    public void loginUser() {
-        baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
-
-        System.out.println("Using Username: " + USERNAME);
-        System.out.println("Using Password: " + PASSWORD);
-
-        ValidatableResponse responseBody = getApplicationAuthentication()
-                .when()
-                .post(baseURI)
-                .then()
-                .assertThat()
-                .statusCode(302);
-
-        String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
-        COOKIE_VALUE = CookieValue;
-
-    }
-
     public void loginUserWithParams(String username, String password) {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
@@ -243,7 +221,7 @@ public class BaseTestSetup {
 
         return response;
     }
-    protected static @NotNull ValidatableResponse LoginUser() {
+    protected static @NotNull ValidatableResponse loginUser() {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
         PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
@@ -286,7 +264,7 @@ public class BaseTestSetup {
                 .when()
                 .get(baseURI);
     }
-    protected static @NotNull Response createPosts() {
+    protected static @NotNull Response createPost() {
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
 
         Response response = given()
@@ -335,5 +313,33 @@ public class BaseTestSetup {
                 .queryParam("postId", POST_ID)
                 .when()
                 .delete(baseURI);
+    }
+    protected static @NotNull Response createComment() {
+        baseURI = BASE_URL + COMMENT_ENDPOINT;
+
+        String commentBody = String.format(COMMENT_BODY,COMMENT_DESCRIPTION,POST_ID,USER_ID);
+
+        Response response = RestAssured
+                .given()
+                .contentType(ContentType.JSON)
+                .header("Accept","*/*")
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .body(commentBody)
+                .when()
+                .post(baseURI);
+
+        COMMENT_ID = response.jsonPath().getString("commentId");
+        System.out.println("Lets seee comment ID"+COMMENT_ID);
+
+        return response;
+    }
+    protected static Response showComment() {
+        baseURI = SHOW_CREATED_COMMENTS;
+        Response response = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .when()
+                .get(baseURI);
+        return response;
     }
 }

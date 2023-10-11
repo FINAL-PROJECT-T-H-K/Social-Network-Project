@@ -19,7 +19,7 @@ public class PostManipulationTest extends BaseTestSetup {
         createAndRegisterUser();
         loginUser();
 
-        Response response = createPosts();
+        Response response = createPost();
 
         int statusCode = response.getStatusCode();
         String postContent = response.getBody().jsonPath().getString("content");
@@ -54,7 +54,7 @@ public class PostManipulationTest extends BaseTestSetup {
         }
         loginUser();
         if (isNull(POST_ID)) {
-            createPosts();
+            createPost();
         }
         Response response = showAllProfilePosts();
 
@@ -78,7 +78,7 @@ public class PostManipulationTest extends BaseTestSetup {
         }
         loginUser();
         if (isNull(POST_ID)) {
-            createPosts();
+            createPost();
         }
 
         Response response = editProfilePost();
@@ -101,7 +101,7 @@ public class PostManipulationTest extends BaseTestSetup {
         }
         loginUser();
         if (isNull(POST_ID)) {
-            createPosts();
+            createPost();
         }
 
         Response response = likePost();
@@ -126,7 +126,7 @@ public class PostManipulationTest extends BaseTestSetup {
         }
         loginUser();
         if (isNull(POST_ID)) {
-            createPosts();
+            createPost();
         }
 
         Response response = deletePost();
