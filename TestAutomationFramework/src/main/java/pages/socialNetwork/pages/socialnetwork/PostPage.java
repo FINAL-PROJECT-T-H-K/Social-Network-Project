@@ -72,10 +72,31 @@ public class PostPage extends BaseSocialPage {
         actions.waitForElementVisible("dislike.button");
         actions.clickElement("dislike.button");
     }
-    public void validateTopicIsUnliked(){
+    public void validateTopicIsUnliked() {
         actions.assertElementPresent("like.button");
     }
     public void deletePost(){
+        actions.waitForElementVisible("profile.personal.page.button");
+        actions.clickElement("profile.personal.page.button");
+
+        actions.waitForElementClickable("latest.Activity.button");
+        actions.clickElement("latest.Activity.button");
+
+        actions.waitForElementClickable("recently.post");
+        actions.clickElement("recently.post");
+
+        actions.waitForElementVisible("delete.post.button");
+        actions.clickElement("delete.post.button");
+
+        actions.waitForElementVisible("delete.drop.down.button");
+        actions.clickElement("delete.drop.down.button");
+
+        actions.waitForElementVisible("delete.submit.button");
+        actions.clickElement("delete.submit.button");
+
+    }
+    public void validatePostIsDeleted(){
+        actions.assertElementPresent("delete.post.message");
 
 
     }

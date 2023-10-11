@@ -40,7 +40,6 @@ public class PersonalProfileTests extends BaseTestSetup {
 
 
         //assert should be added
-
     }
 
     @Test//IN PROGRESS

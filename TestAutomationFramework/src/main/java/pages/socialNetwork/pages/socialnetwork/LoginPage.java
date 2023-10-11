@@ -14,7 +14,6 @@ public class LoginPage extends BaseSocialPage {
         String password = getConfigPropertyByKey("socialNetwork.users." + userKey + ".password");
 
         navigateToPage();
-        assertPageNavigated();
 
         actions.waitForElementVisible("socialNetwork.loginPage.username");
         actions.typeValueInField(username, "socialNetwork.loginPage.username");

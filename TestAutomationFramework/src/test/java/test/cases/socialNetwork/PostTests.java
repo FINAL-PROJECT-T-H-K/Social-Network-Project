@@ -2,13 +2,15 @@ package test.cases.socialNetwork;
 
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.testng.annotations.AfterTest;
 
 public class PostTests extends BaseTestSetup {
     String postDescription;
 
     @Test
     public void createPublicPostTest() {
-         loginSocial(); ///maybe in beforeAll
+        loginSocial(); ///maybe in beforeAll
 
         postDescription = postPageSocial.generateDescription();
         postPageSocial.createPublicPost(postDescription);
@@ -29,6 +31,9 @@ public class PostTests extends BaseTestSetup {
         //assert
         postPageSocial.verifyPostCreated(postDescription);
         postPageSocial.verifyPrivatePostCreated();
+
+
+        postPageSocial.deletePost();
     }
 
     @Test
@@ -51,12 +56,18 @@ public class PostTests extends BaseTestSetup {
 
         //assert
         postPageSocial.validateTopicIsUnliked();
+
+
     }
 
-
-    @AfterEach
-    public void tearDownTest(){
+    @Test    ///MAYBE SHOULD BE IN @AFTERCLASS
+    public void deletePostTest() {
+        loginSocial();
         postPageSocial.deletePost();
+        //assert
+        postPageSocial.validatePostIsDeleted();
+
+
     }
 }
 
