@@ -38,7 +38,6 @@ public class BaseTestSetup {
 
         generateRandomConstants();
     }
-
     protected static void generateRandomConstants() {
         FakeValuesService fakeValuesService = new FakeValuesService(
                 new Locale("en-GB"), new RandomService());
@@ -52,7 +51,6 @@ public class BaseTestSetup {
 
     }
     public void showReceivedRequests() {
-
         baseURI = BASE_URL + CONNECTION_REQUEST_ENDPOINT + USER_ID_RECEIVER + REQUEST;
 
         Response response = given()
@@ -64,12 +62,8 @@ public class BaseTestSetup {
                 .all()
                 .get();
 
-        System.out.println(CONNECTION_ID);
-        System.out.println(response.getBody().asPrettyString());
         int id = response.jsonPath().getInt("[0].id");
         CONNECTION_ID = String.valueOf(id);
-
-
     }
     public static @NotNull Response createSkill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
@@ -140,10 +134,6 @@ public class BaseTestSetup {
 
         USER_ID = response.getBody().asString().split(" ")[6];
 
-        System.out.println(USER_ID);
-        System.out.println(USERNAME);
-        System.out.println(PASSWORD);
-
         return response;
     }
     protected static @NotNull Response createAndRegisterUserReceiver() {
@@ -166,11 +156,6 @@ public class BaseTestSetup {
                 .post(baseURI);
 
         USER_ID_RECEIVER = response.getBody().asString().split(" ")[6];
-
-
-        System.out.println(USER_ID_RECEIVER);
-        System.out.println(USERNAME_RECEIVER);
-        System.out.println(PASSWORD_RECEIVER);
 
         return response;
     }
@@ -195,9 +180,6 @@ public class BaseTestSetup {
 
         COOKIE_VALUE = responseBody.extract().cookies().get("JSESSIONID");
 
-        System.out.println(USERNAME);
-        System.out.println(PASSWORD);
-
         return responseBody;
     }
     protected static @NotNull ValidatableResponse loginUserReceiver() {
@@ -221,20 +203,16 @@ public class BaseTestSetup {
 
         COOKIE_VALUE_RECEIVER = responseBody.extract().cookies().get("JSESSIONID");
 
-        System.out.println(USERNAME_RECEIVER);
-        System.out.println(PASSWORD_RECEIVER);
-
         return responseBody;
     }
     protected static Response showAllPosts() {
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
-        Response response = given()
+        return given()
                 .queryParam("sorted", "true")
                 .queryParam("unsorted", "false")
                 .when()
                 .get(baseURI);
-        return response;
     }
     protected static Response showAllProfilePosts() {
         baseURI = GET_PROFILE_POSTS;
@@ -279,13 +257,12 @@ public class BaseTestSetup {
     protected static Response likePost() {
         baseURI = BASE_URL + LIKE_POST;
 
-        Response response = RestAssured
+        return RestAssured
                 .given()
                 .cookies("JSESSIONID", COOKIE_VALUE)
                 .contentType(ContentType.JSON)
                 .when()
                 .post(baseURI);
-        return response;
     }
     protected static Response deletePost() {
         baseURI = BASE_URL + DELETE_POSTS;
@@ -311,7 +288,6 @@ public class BaseTestSetup {
                 .post(baseURI);
 
         COMMENT_ID = response.jsonPath().getString("commentId");
-        System.out.println("Lets seee comment ID"+COMMENT_ID);
 
         return response;
     }
@@ -329,7 +305,7 @@ public class BaseTestSetup {
 
         String requestBody = String.format(SEND_CONNECTION_REQ_BODY, USER_ID_RECEIVER, USERNAME_RECEIVER);
 
-        Response response = given()
+        return given()
                 .contentType(ContentType.JSON)
                 .header("Accept", "*/*")
                 .cookie("JSESSIONID", COOKIE_VALUE)
@@ -339,7 +315,6 @@ public class BaseTestSetup {
                 .log()
                 .all()
                 .post(baseURI);
-        return response;
     }
     protected static Response approveRequest() {
         baseURI = BASE_URL + CONNECTION_REQUEST_ENDPOINT + USER_ID_RECEIVER + CONNECTION_REQUEST_APPROVE_ENDPOINT;
@@ -354,9 +329,40 @@ public class BaseTestSetup {
                 .all()
                 .post(baseURI);
 
-        System.out.println(response.getBody().asPrettyString());
-
         return response;
 
+    }
+    protected static Response editComment() {
+        baseURI = BASE_URL + EDITED_COMMENT;
+
+        Response response = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .contentType(ContentType.JSON)
+                .when()
+                .put(baseURI);
+        return response;
+    }
+    protected static Response deleteComment() {
+        baseURI = BASE_URL + DELETE_COMMENT;
+        Response response = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .queryParam("commentId", COMMENT_ID)
+                .contentType(ContentType.JSON)
+                .when()
+                .delete(baseURI);
+        return response;
+    }
+    protected static Response likeComment() {
+        baseURI = BASE_URL + LIKED_COMMENT;
+
+        Response response = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .contentType(ContentType.JSON)
+                .when()
+                .post(baseURI);
+        return response;
     }
 }

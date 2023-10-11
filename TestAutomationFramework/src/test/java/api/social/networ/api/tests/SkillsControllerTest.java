@@ -14,7 +14,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class SkillsManipulationTest extends BaseTestSetup {
+public class SkillsControllerTest extends BaseTestSetup {
 
 
 

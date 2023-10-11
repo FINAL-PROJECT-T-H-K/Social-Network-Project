@@ -7,12 +7,11 @@ import org.testng.annotations.Test;
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.ShowMessages.*;
-import static java.util.Objects.isNull;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.*;
 
 
-public class PostManipulationTest extends BaseTestSetup {
+public class PostControllerTest extends BaseTestSetup {
     @Test
     public void createPostSuccessfullyTest() {
 

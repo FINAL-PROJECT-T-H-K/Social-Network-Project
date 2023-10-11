@@ -1,30 +1,26 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
-import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.Helper.isValid;
 import static apisocialnetwork.JSONRequests.*;
-import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
-import static java.util.Objects.isNull;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.*;
 
-public class CommentsManipulationTest extends BaseTestSetup {
+public class CommentsControllerTest extends BaseTestSetup {
     @Test
     public void createCommentTest() {
 
         createAndRegisterUser();
+
         loginUser();
+
         createPost();
 
         Response response = createComment();
@@ -65,19 +61,18 @@ public class CommentsManipulationTest extends BaseTestSetup {
         assertEquals(createdCommentID, COMMENT_ID, ERROR_MESSAGE_COMMENT_ID);
 
     }
-
     @Test
-    public void editComment() {
+    public void editCommentTest() {
 
+        createAndRegisterUser();
 
-        baseURI = BASE_URL + EDITED_COMMENT;
+        loginUser();
 
-        Response response = RestAssured
-                .given()
-                .cookies("JSESSIONID", COOKIE_VALUE)
-                .contentType(ContentType.JSON)
-                .when()
-                .put(baseURI);
+        createPost();
+
+        createComment();
+
+        Response response = editComment();
 
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asString();
@@ -86,18 +81,18 @@ public class CommentsManipulationTest extends BaseTestSetup {
         assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
     }
-
     @Test
-    public void likeComment() {
+    public void likeCommentTest() {
 
-        baseURI = BASE_URL + LIKED_COMMENT;
+        createAndRegisterUser();
 
-        Response response = RestAssured
-                .given()
-                .cookies("JSESSIONID", COOKIE_VALUE)
-                .contentType(ContentType.JSON)
-                .when()
-                .post(baseURI);
+        loginUser();
+
+        createPost();
+
+        createComment();
+
+        Response response = likeComment();
 
         int statusCode = response.getStatusCode();
         int commentIdFromResponse = response.jsonPath().getInt("commentId");
@@ -112,44 +107,45 @@ public class CommentsManipulationTest extends BaseTestSetup {
         System.out.println(response.getBody().asPrettyString());
 
     }
-
     @Test
-    public void dislikeComment() {
+    public void dislikeCommentTest() {
 
-        baseURI = BASE_URL + LIKED_COMMENT;
+        createAndRegisterUser();
 
-        Response response = RestAssured
-                .given()
-                .cookies("JSESSIONID", COOKIE_VALUE)
-                .contentType(ContentType.JSON)
-                .when()
-                .post(baseURI);
+        loginUser();
 
-        int statusCode = response.getStatusCode();
-        int commentIdFromResponse = response.jsonPath().getInt("commentId");
+        createPost();
+
+        createComment();
+
+        Response response = likeComment();
+        Response responseDisliked = likeComment();
+
+        int statusCode = responseDisliked.getStatusCode();
+        int commentIdFromResponse = responseDisliked.jsonPath().getInt("commentId");
         int expectedCommentId = Integer.parseInt(COMMENT_ID);
 
-        boolean liked = response.jsonPath().getBoolean("liked");
+        boolean liked = responseDisliked.jsonPath().getBoolean("liked");
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(commentIdFromResponse, expectedCommentId, ERROR_MESSAGE_COMMENT_ID);
         assertFalse(liked, ERROR_MESSAGE_LIKED_SHOULD_BE_FALSE);
 
-        System.out.println(response.getBody().asPrettyString());
+        System.out.println(responseDisliked.getBody().asPrettyString());
 
     }
-
     @Test
-    public void deleteCreatedComment() {
+    public void deleteCreatedCommentTest() {
 
-        baseURI = BASE_URL + DELETE_COMMENT;
-        Response response = RestAssured
-                .given()
-                .cookies("JSESSIONID", COOKIE_VALUE)
-                .queryParam("commentId", COMMENT_ID)
-                .contentType(ContentType.JSON)
-                .when()
-                .delete(baseURI);
+        createAndRegisterUser();
+
+        loginUser();
+
+        createPost();
+
+        createComment();
+
+        Response response = deleteComment();
 
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asString();
@@ -157,17 +153,10 @@ public class CommentsManipulationTest extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
     }
-
     @Test
     public void deletePosts_TearDown() {
 
-        baseURI = BASE_URL + DELETE_POSTS;
-
-        Response response = given()
-                .cookies("JSESSIONID", COOKIE_VALUE)
-                .queryParam("postId", POST_ID)
-                .when()
-                .delete(baseURI);
+        Response response = deletePost();
 
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asPrettyString();
