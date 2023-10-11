@@ -27,10 +27,10 @@ public class AuthenticateUserTest extends BaseTestSetup {
 
         int statusCode = responseBody.extract().statusCode();
 
-        System.out.println(SHOW_MESSAGE_LOGIN_USED_USERNAME_PASSWORD_COOKIE);
-
         assertEquals(statusCode, SC_MOVED_TEMPORARILY, ERROR_MESSAGE_INCORRECT_STATUS_LOGIN);
         Assert.assertFalse(COOKIE_VALUE.isEmpty(), ERROR_MESSAGE_COOKIE_VALUE_IS_NOT_PRESENT);
+
+        System.out.println(SHOW_MESSAGE_LOGIN_USED_USERNAME_PASSWORD_COOKIE);
 
     }
 

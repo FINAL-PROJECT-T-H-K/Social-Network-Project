@@ -14,7 +14,9 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class SkillsManipulateTest extends BaseTestSetup {
+public class SkillsManipulationTest extends BaseTestSetup {
+
+
 
     @Test(priority = 1)
     public static void createSkillTest() {
@@ -44,12 +46,15 @@ public class SkillsManipulateTest extends BaseTestSetup {
         System.out.println(SHOW_MESSAGE_RESPONSE_BODY + response.asPrettyString());
 
         int statusCode = response.getStatusCode();
+        String responseBody = response.getBody().asPrettyString();
 
         assertTrue(isValid(SKILLS_BODY), ERROR_MESSAGE_BODY_NOT_VALID_JSON);
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_INCORRECT_STATUS);
+        assertTrue(responseBody.length() > 0, ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
         System.out.println(response.getBody().asPrettyString());
 
+        System.out.println(SHOW_MESSAGE_SHOW_ALL_SKILLS);
     }
 
     @Test(priority = 4)

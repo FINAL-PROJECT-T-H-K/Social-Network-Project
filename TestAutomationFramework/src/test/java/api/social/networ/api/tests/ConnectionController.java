@@ -4,6 +4,7 @@ import api.base.BaseTestSetup;
 import apisocialnetwork.Helper;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -20,10 +21,10 @@ import static org.testng.Assert.assertEquals;
 public class ConnectionController extends BaseTestSetup {
     static BaseTestSetup baseTestSetup = new BaseTestSetup();
 
-    @BeforeTest
+    @BeforeEach
     public static void setupAuthentication() {
 
-        baseTestSetup.registerUser(USERNAME, PASSWORD);
+//        baseTestSetup.registerUser(USERNAME, PASSWORD);
 
         if (isNull(COOKIE_VALUE)) {
             AuthenticateUserTest authenticate = new AuthenticateUserTest();
@@ -36,7 +37,7 @@ public class ConnectionController extends BaseTestSetup {
 
         String usernameReceiver = Helper.generateUniqueUsername();
         String password = Helper.generateUniquePassword();
-        baseTestSetup.registerUser(usernameReceiver, password);
+//        baseTestSetup.registerUser(usernameReceiver, password);
 
         baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
 
@@ -62,7 +63,7 @@ public class ConnectionController extends BaseTestSetup {
     public void approveConnectionRequest() {
 
         baseTestSetup.loginUser();
-        baseTestSetup.sendConnectionRequest();
+//        baseTestSetup.sendConnectionRequest();
         baseTestSetup.loginUserWithParams(RECEIVER_USER_NAME, RECEIVER_PASSWORD);
         baseTestSetup.showReceivedRequests();
 

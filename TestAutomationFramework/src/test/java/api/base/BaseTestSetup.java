@@ -22,10 +22,10 @@ import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
+import static java.util.Objects.isNull;
 
 public class BaseTestSetup {
     public static final String REQUEST = "/request/";
-
     /**
      * Provided configuration resolve REST Assured issue with a POST request without request body.
      * Missing configuration leads to response status code 415 (Unsupported Media Type)
@@ -37,17 +37,20 @@ public class BaseTestSetup {
 
         RestAssured.config = RestAssured.config().encoderConfig(encoderConfig);
 
+        generateRandomConstants();
+
+    }
+
+    protected static void generateRandomConstants() {
         FakeValuesService fakeValuesService = new FakeValuesService(
                 new Locale("en-GB"), new RandomService());
 
-        USERNAME = fakeValuesService.bothify("Username??????");
-        PASSWORD = fakeValuesService.bothify("Password??????");
-        UNIQUE_NAME = fakeValuesService.bothify("UniqueName??????");
-        SKILL_DESCRIPTION =fakeValuesService.bothify("SkillDescription??????");
+        USERNAME = fakeValuesService.bothify("Username??????????");
+        PASSWORD = fakeValuesService.bothify("Password??????????");
+        UNIQUE_NAME = fakeValuesService.bothify("UniqueName???????????");
+        SKILL_DESCRIPTION =fakeValuesService.bothify("SkillDescription??????????");
         SKILL_DESCRIPTION_EDITED =SKILL_DESCRIPTION+UNIQUE_NAME;
         RANDOM_EMAIL=fakeValuesService.bothify("??????##@example.com");
-
-
     }
 
     public RequestSpecification getApplicationAuthentication() {
@@ -99,66 +102,66 @@ public class BaseTestSetup {
         COOKIE_VALUE = CookieValue;
     }
 
-    public void registerUser(String username, String password) {
+//    public void registerUser(String username, String password) {
+//
+//        baseURI = BASE_URL + REGISTER_ENDPOINT;
+//
+//        String uniqueEmailReceiver = Helper.generateRandomEmail();
+//
+//        String uniqueUser = String.format(REGISTRATION_BODY, password, uniqueEmailReceiver, password, username);
+//
+//        Response response = RestAssured.given()
+//                .contentType(APPLICATION_JSON)
+//                .body(uniqueUser)
+//                .when()
+//                .post(baseURI);
+//
+//        String responseID = response.getBody().asString().split(" ")[6];
+//        USER_ID = responseID;
+//        RECEIVER_USER_NAME = username;
+//        RECEIVER_PASSWORD = password;
+//    }
+//
+//    public void createPost() {
+//        baseURI = BASE_URL + CREATE_POST_ENDPOINT;
+//
+//        Response response = given()
+//                .contentType(ContentType.JSON)
+//                .header("Accept", "*/*")
+//                .cookie("JSESSIONID", COOKIE_VALUE)
+//                .body(POST_BODY)
+//                .when()
+//                .log()
+//                .all()
+//                .post(baseURI);
+//
+//        POST_ID = response.jsonPath().getString("postId");
+//    }
 
-        baseURI = BASE_URL + REGISTER_ENDPOINT;
-
-        String uniqueEmailReceiver = Helper.generateRandomEmail();
-
-        String uniqueUser = String.format(REGISTRATION_BODY, password, uniqueEmailReceiver, password, username);
-
-        Response response = RestAssured.given()
-                .contentType(APPLICATION_JSON)
-                .body(uniqueUser)
-                .when()
-                .post(baseURI);
-
-        String responseID = response.getBody().asString().split(" ")[6];
-        USER_ID = responseID;
-        RECEIVER_USER_NAME = username;
-        RECEIVER_PASSWORD = password;
-    }
-
-    public void createPost() {
-        baseURI = BASE_URL + CREATE_POST_ENDPOINT;
-
-        Response response = given()
-                .contentType(ContentType.JSON)
-                .header("Accept", "*/*")
-                .cookie("JSESSIONID", COOKIE_VALUE)
-                .body(POST_BODY)
-                .when()
-                .log()
-                .all()
-                .post(baseURI);
-
-        POST_ID = response.jsonPath().getString("postId");
-    }
-
-    public void sendConnectionRequest() {
-
-        SENDER_USER_ID = USER_ID;
-        String usernameReceiver = Helper.generateUniqueUsername();
-        String password = Helper.generateUniquePassword();
-        registerUser(usernameReceiver, password);
-        RECEIVER_USER_ID = USER_ID;
-
-        baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
-
-        String requestBody = String.format(SEND_CONNECTION_REQ_BODY, RECEIVER_USER_ID, usernameReceiver);
-
-        Response response = given()
-                .contentType(ContentType.JSON)
-                .header("Accept", "*/*")
-                .cookie("JSESSIONID", COOKIE_VALUE)
-                .queryParam("principal", USERNAME)
-                .body(requestBody)
-                .when()
-                .log()
-                .all()
-                .post(baseURI);
-
-    }
+//    public void sendConnectionRequest() {
+//
+//        SENDER_USER_ID = USER_ID;
+//        String usernameReceiver = Helper.generateUniqueUsername();
+//        String password = Helper.generateUniquePassword();
+//        registerUser(usernameReceiver, password);
+//        RECEIVER_USER_ID = USER_ID;
+//
+//        baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
+//
+//        String requestBody = String.format(SEND_CONNECTION_REQ_BODY, RECEIVER_USER_ID, usernameReceiver);
+//
+//        Response response = given()
+//                .contentType(ContentType.JSON)
+//                .header("Accept", "*/*")
+//                .cookie("JSESSIONID", COOKIE_VALUE)
+//                .queryParam("principal", USERNAME)
+//                .body(requestBody)
+//                .when()
+//                .log()
+//                .all()
+//                .post(baseURI);
+//
+//    }
 
     public void showReceivedRequests() {
 
@@ -177,7 +180,6 @@ public class BaseTestSetup {
         CONNECTION_ID = String.valueOf(id);
 
     }
-
     public static @NotNull Response createSkill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
@@ -263,5 +265,75 @@ public class BaseTestSetup {
         COOKIE_VALUE = responseBody.extract().cookies().get("JSESSIONID");
 
         return responseBody;
+    }
+    protected static Response showAllPosts() {
+        baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
+
+        Response response = given()
+                .queryParam("sorted", "true")
+                .queryParam("unsorted", "false")
+                .when()
+                .get(baseURI);
+        return response;
+    }
+    protected static Response showAllProfilePosts() {
+        baseURI = GET_PROFILE_POSTS;
+
+        return given()
+                .contentType(ContentType.JSON)
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .body(PROFILE_POST)
+                .when()
+                .get(baseURI);
+    }
+    protected static @NotNull Response createPosts() {
+        baseURI = BASE_URL + CREATE_POST_ENDPOINT;
+
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .header("Accept", "*/*")
+                .cookie("JSESSIONID", COOKIE_VALUE)
+                .body(POST_BODY)
+                .when()
+                .log()
+                .all()
+                .post(baseURI);
+
+        POST_ID = response.jsonPath().getString("postId");
+
+        return response;
+    }
+    protected static Response editProfilePost() {
+        baseURI = BASE_URL + EDIT_POST;
+
+        return RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .baseUri(baseURI)
+                .contentType(ContentType.JSON)
+                .queryParam("postId", POST_ID)
+                .body(POST_EDIT)
+                .when()
+                .put(baseURI);
+    }
+    protected static Response likePost() {
+        baseURI = BASE_URL + LIKE_POST;
+
+        Response response = RestAssured
+                .given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .contentType(ContentType.JSON)
+                .when()
+                .post(baseURI);
+        return response;
+    }
+    protected static Response deletePost() {
+        baseURI = BASE_URL + DELETE_POSTS;
+
+        return given()
+                .cookies("JSESSIONID", COOKIE_VALUE)
+                .queryParam("postId", POST_ID)
+                .when()
+                .delete(baseURI);
     }
 }

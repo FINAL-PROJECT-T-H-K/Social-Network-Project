@@ -12,19 +12,18 @@ public class JSONRequests {
             "    \"email\": \"%s\",\n" +
             "    \"password\": \"%s\",\n" +
             "    \"username\": \"%s\"\n" +
-            "}",PASSWORD,RANDOM_EMAIL,PASSWORD,USERNAME);
-
-    public static final String POST_BODY =  String.format("{\n" +
+            "}", PASSWORD, RANDOM_EMAIL, PASSWORD, USERNAME);
+    public static final String POST_BODY = String.format("{\n" +
             " \"content\": \"%s\",\n" +
             " \"picture\": \"No picture\",\n" +
             " \"public\": true\n" +
-            "}",POST_DESCRIPTION);
+            "}", POST_DESCRIPTION);
 
     public static final String COMMENT_BODY = String.format("{\n" +
             "    \"content\": \"%s\",\n" +
             "    \"postId\": \"%s\",\n" +
             "    \"userId\": \"%s\"\n" +
-            "}",COMMENT_DESCRIPTION, POST_ID, USER_ID);
+            "}", COMMENT_DESCRIPTION, POST_ID, USER_ID);
 
 
     public static final String PROFILE_POST = "{\n" +
@@ -43,7 +42,7 @@ public class JSONRequests {
             "  },\n" +
             "  \"skill\": \"%s\",\n" +
             "  \"skillId\": 400\n" +
-            "}",SKILL_BODY_ID,SKILL_NAME,SKILL_DESCRIPTION);
+            "}", SKILL_BODY_ID, SKILL_NAME, SKILL_DESCRIPTION);
 
     public static final String EDITED_SKILLS_BODY = "{\"newField\": \"newValue\"}";
 
@@ -53,5 +52,5 @@ public class JSONRequests {
             + "\"content\": \"%s\","
             + "\"picture\": \"No picture\","
             + "\"public\": true"
-            + "}",EDITED_POST) ;
+            + "}", EDITED_POST_CONTENT);
 }

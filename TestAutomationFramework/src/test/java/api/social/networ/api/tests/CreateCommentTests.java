@@ -33,9 +33,6 @@ public class CreateCommentTests extends BaseTestSetup {
             AuthenticateUserTest authenticate = new AuthenticateUserTest();
             authenticate.LoginAndFetchCookiesTest();
         }
-        if (isNull(POST_ID)) {
-            baseTestSetup.createPost();
-        }
     }
 
     @Test(priority = 1)
