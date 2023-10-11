@@ -139,7 +139,6 @@ public class PostManipulationTest extends BaseTestSetup {
 
         System.out.printf(SHOW_MESSAGE_POST_DELETED);
     }
-
 }
 
 
