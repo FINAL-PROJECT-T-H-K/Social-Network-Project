@@ -4,7 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 
 public class PostPage extends BaseSocialPage {
-    public String PostDescription = "My Post:  ";
+    public String PostDescription = "My Post: ";
 
     public PostPage(WebDriver driver) {
         super(driver, "socialNetwork.homePage");

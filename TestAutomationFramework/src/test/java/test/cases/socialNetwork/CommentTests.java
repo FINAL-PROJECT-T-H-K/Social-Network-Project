@@ -4,6 +4,7 @@ import org.junit.Test;
 
 public class CommentTests extends BaseTestSetup {
     public String commentText;
+    public String editedComment;
 
     @Test
     public void createCommentUnderThePostTests() {
@@ -42,5 +43,30 @@ public class CommentTests extends BaseTestSetup {
 
         //assert
         commentPage.validateTopicIsUnliked();
+    }
+
+    @Test
+    public void editCommentUnderThePostTests() {
+        loginSocial();
+
+        postPageSocial.clickOnTheRecentPost();
+        commentPage.clickOnShowCommentsUnderThePost();
+
+        editedComment = commentPage.generateRandomEditComment();
+        commentPage.userEditCommentUnderThePost(editedComment);
+
+        //assert
+
+    }
+
+    @Test  //maybe in @AfterClassMethod
+    public void deleteCommentUnderThePostTests() {
+        loginSocial();
+
+        postPageSocial.clickOnTheRecentPost();
+        commentPage.clickOnShowCommentsUnderThePost();
+        commentPage.userDeleteCommentUnderThePost();
+
+      //assert
     }
 }
