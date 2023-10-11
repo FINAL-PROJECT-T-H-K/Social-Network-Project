@@ -13,10 +13,11 @@ import static org.testng.Assert.*;
 
 
 public class PostManipulationTest extends BaseTestSetup {
-    @Test(priority = 1)
+    @Test
     public void createPostSuccessfullyTest() {
 
         createAndRegisterUser();
+
         loginUser();
 
         Response response = createPost();
@@ -32,7 +33,7 @@ public class PostManipulationTest extends BaseTestSetup {
 
     }
 
-    @Test(priority = 2)
+    @Test
     public void getAllPostsTest() {
 
         Response response = showAllPosts();
@@ -45,17 +46,15 @@ public class PostManipulationTest extends BaseTestSetup {
         System.out.println(SHOW_MESSAGE_GET_ALL_POSTS);
     }
 
-
-    @Test(priority = 3)
+    @Test
     public void showAllProfilePosts_Successful() {
 
-        if (isNull(USER_ID)) {
-            createAndRegisterUser();
-        }
+        createAndRegisterUser();
+
         loginUser();
-        if (isNull(POST_ID)) {
-            createPost();
-        }
+
+        createPost();
+
         Response response = showAllProfilePosts();
 
         int statusCode = response.getStatusCode();
@@ -70,16 +69,15 @@ public class PostManipulationTest extends BaseTestSetup {
     }
 
 
-    @Test(priority = 4)
+    @Test
     public void editPostsTest() {
 
-        if (isNull(USER_ID)) {
-            createAndRegisterUser();
-        }
+        createAndRegisterUser();
+
         loginUser();
-        if (isNull(POST_ID)) {
-            createPost();
-        }
+
+        createPost();
+
 
         Response response = editProfilePost();
 
@@ -93,16 +91,15 @@ public class PostManipulationTest extends BaseTestSetup {
     }
 
 
-    @Test(priority = 5)
+    @Test
     public void dislikeProfilePostTest() {
 
-        if (isNull(USER_ID)) {
-            createAndRegisterUser();
-        }
+
+        createAndRegisterUser();
+
         loginUser();
-        if (isNull(POST_ID)) {
-            createPost();
-        }
+
+        createPost();
 
         Response response = likePost();
 
@@ -118,16 +115,14 @@ public class PostManipulationTest extends BaseTestSetup {
         System.out.printf(SHOW_MESSAGE_POST_LIKED);
     }
 
-    @Test(priority = 6)
+    @Test
     public void deletePostsTest() {
 
-        if (isNull(USER_ID)) {
-            createAndRegisterUser();
-        }
+        createAndRegisterUser();
+
         loginUser();
-        if (isNull(POST_ID)) {
-            createPost();
-        }
+
+        createPost();
 
         Response response = deletePost();
 

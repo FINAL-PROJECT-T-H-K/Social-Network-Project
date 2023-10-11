@@ -15,14 +15,15 @@ public class Constants {
     public static String UNIQUE_NAME;
     public static String USERNAME;
     public static String PASSWORD;
+    public static String USERNAME_RECEIVER;
+    public static String PASSWORD_RECEIVER;
     public static String USER_ID;
-    public static String SENDER_USER_ID;
-    public static String RECEIVER_USER_ID;
+    public static String USER_ID_RECEIVER;
     public static String POST_ID;
     public static String COMMENT_ID;
     public static String COOKIE_VALUE;
+    public static String COOKIE_VALUE_RECEIVER;
     public static String SKILL_ID;
     public static String CONNECTION_ID;
-    public static String RECEIVER_USER_NAME;
-    public static String RECEIVER_PASSWORD;
+
 }

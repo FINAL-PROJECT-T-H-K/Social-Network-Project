@@ -3,7 +3,18 @@ package apisocialnetwork;
 import static apisocialnetwork.Constants.*;
 
 public class JSONRequests {
-    public static final String REGISTRATION_BODY = String.format("{\n" +
+//    public static final String REGISTRATION_BODY = String.format("{\n" +
+//            "    \"category\": {\n" +
+//            "        \"id\": 100,\n" +
+//            "        \"name\": \"All\"\n" +
+//            "    },\n" +
+//            "    \"confirmPassword\": \"%s\",\n" +
+//            "    \"email\": \"%s\",\n" +
+//            "    \"password\": \"%s\",\n" +
+//            "    \"username\": \"%s\"\n" +
+//            "}", PASSWORD, RANDOM_EMAIL, PASSWORD, USERNAME);
+
+    public static final String REGISTRATION_BODY ="{\n" +
             "    \"category\": {\n" +
             "        \"id\": 100,\n" +
             "        \"name\": \"All\"\n" +
@@ -12,7 +23,7 @@ public class JSONRequests {
             "    \"email\": \"%s\",\n" +
             "    \"password\": \"%s\",\n" +
             "    \"username\": \"%s\"\n" +
-            "}", PASSWORD, RANDOM_EMAIL, PASSWORD, USERNAME);
+            "}";
     public static final String POST_BODY = String.format("{\n" +
             " \"content\": \"%s\",\n" +
             " \"picture\": \"No picture\",\n" +

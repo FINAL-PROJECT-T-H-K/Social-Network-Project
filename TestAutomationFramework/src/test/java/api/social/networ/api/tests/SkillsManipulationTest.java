@@ -18,7 +18,7 @@ public class SkillsManipulationTest extends BaseTestSetup {
 
 
 
-    @Test(priority = 1)
+    @Test
     public static void createSkillTest() {
 
         Response response = createSkill();
@@ -38,7 +38,7 @@ public class SkillsManipulationTest extends BaseTestSetup {
 
     }
 
-    @Test(priority = 3)
+    @Test
     public static void getAllSkillsTest() {
 
         Response response = showAllSkills();
@@ -57,7 +57,7 @@ public class SkillsManipulationTest extends BaseTestSetup {
         System.out.println(SHOW_MESSAGE_SHOW_ALL_SKILLS);
     }
 
-    @Test(priority = 4)
+    @Test
     public static void deleteSkillTest() {
 
         if (isNull(SKILL_ID)) {
@@ -76,12 +76,10 @@ public class SkillsManipulationTest extends BaseTestSetup {
 
     }
 
-    @Test(priority = 2)
+    @Test
     public void editSkillTest() {
 
-        if (isNull(SKILL_ID)) {
-            createSkill();
-        }
+        createSkill();
 
         Response response = editSkill();
 

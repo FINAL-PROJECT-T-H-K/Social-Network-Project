@@ -20,7 +20,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.*;
 
 public class CommentsManipulationTest extends BaseTestSetup {
-    @Test(priority = 1)
+    @Test
     public void createCommentTest() {
 
         createAndRegisterUser();
@@ -41,18 +41,16 @@ public class CommentsManipulationTest extends BaseTestSetup {
 
     }
 
-    @Test(priority = 2)
+    @Test
     public void showCreatedCommentTest() {
-        if (isNull(USER_ID)) {
-            createAndRegisterUser();
-        }
+
+        createAndRegisterUser();
+
         loginUser();
-        if (isNull(POST_ID)) {
-            createPost();
-        }
-        if (isNull(COMMENT_ID)){
-            createComment();
-        }
+
+        createPost();
+
+        createComment();
 
         Response response = showComment();
 
@@ -68,7 +66,7 @@ public class CommentsManipulationTest extends BaseTestSetup {
 
     }
 
-    @Test(priority = 3)
+    @Test
     public void editComment() {
 
 
@@ -89,7 +87,7 @@ public class CommentsManipulationTest extends BaseTestSetup {
 
     }
 
-    @Test(priority = 4)
+    @Test
     public void likeComment() {
 
         baseURI = BASE_URL + LIKED_COMMENT;
@@ -115,7 +113,7 @@ public class CommentsManipulationTest extends BaseTestSetup {
 
     }
 
-    @Test(priority = 5)
+    @Test
     public void dislikeComment() {
 
         baseURI = BASE_URL + LIKED_COMMENT;
@@ -141,7 +139,7 @@ public class CommentsManipulationTest extends BaseTestSetup {
 
     }
 
-    @Test(priority = 7)
+    @Test
     public void deleteCreatedComment() {
 
         baseURI = BASE_URL + DELETE_COMMENT;
@@ -160,7 +158,7 @@ public class CommentsManipulationTest extends BaseTestSetup {
         assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
     }
 
-    @Test(priority = 8)
+    @Test
     public void deletePosts_TearDown() {
 
         baseURI = BASE_URL + DELETE_POSTS;

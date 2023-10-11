@@ -17,6 +17,7 @@ import static apisocialnetwork.Constants.*;
 
 import java.util.Locale;
 
+import static apisocialnetwork.Constants.PASSWORD_RECEIVER;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
@@ -48,114 +49,26 @@ public class BaseTestSetup {
         SKILL_DESCRIPTION =fakeValuesService.bothify("SkillDescription??????????");
         SKILL_DESCRIPTION_EDITED =SKILL_DESCRIPTION+UNIQUE_NAME;
         RANDOM_EMAIL=fakeValuesService.bothify("??????##@example.com");
+
     }
-
-    public RequestSpecification getApplicationAuthentication() {
-        return given()
-                .header("Content-Type", "application/x-www-form-urlencoded")
-                .queryParam("username", USERNAME)
-                .queryParam("password", PASSWORD);
-    }
-
-    public RequestSpecification getApplicationAuthenticationWithSpecificUser(String username, String password) {
-        return given()
-                .header("Content-Type", "application/x-www-form-urlencoded")
-                .queryParam("username", username)
-                .queryParam("password", password);
-    }
-    public void loginUserWithParams(String username, String password) {
-        baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
-
-        System.out.println("Using Username: " + username);
-        System.out.println("Using Password: " + password);
-
-        ValidatableResponse responseBody = getApplicationAuthenticationWithSpecificUser(username,password)
-                .when()
-                .post(baseURI)
-                .then()
-                .assertThat()
-                .statusCode(302);
-
-        String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
-        COOKIE_VALUE = CookieValue;
-    }
-
-//    public void registerUser(String username, String password) {
-//
-//        baseURI = BASE_URL + REGISTER_ENDPOINT;
-//
-//        String uniqueEmailReceiver = Helper.generateRandomEmail();
-//
-//        String uniqueUser = String.format(REGISTRATION_BODY, password, uniqueEmailReceiver, password, username);
-//
-//        Response response = RestAssured.given()
-//                .contentType(APPLICATION_JSON)
-//                .body(uniqueUser)
-//                .when()
-//                .post(baseURI);
-//
-//        String responseID = response.getBody().asString().split(" ")[6];
-//        USER_ID = responseID;
-//        RECEIVER_USER_NAME = username;
-//        RECEIVER_PASSWORD = password;
-//    }
-//
-//    public void createPost() {
-//        baseURI = BASE_URL + CREATE_POST_ENDPOINT;
-//
-//        Response response = given()
-//                .contentType(ContentType.JSON)
-//                .header("Accept", "*/*")
-//                .cookie("JSESSIONID", COOKIE_VALUE)
-//                .body(POST_BODY)
-//                .when()
-//                .log()
-//                .all()
-//                .post(baseURI);
-//
-//        POST_ID = response.jsonPath().getString("postId");
-//    }
-
-//    public void sendConnectionRequest() {
-//
-//        SENDER_USER_ID = USER_ID;
-//        String usernameReceiver = Helper.generateUniqueUsername();
-//        String password = Helper.generateUniquePassword();
-//        registerUser(usernameReceiver, password);
-//        RECEIVER_USER_ID = USER_ID;
-//
-//        baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
-//
-//        String requestBody = String.format(SEND_CONNECTION_REQ_BODY, RECEIVER_USER_ID, usernameReceiver);
-//
-//        Response response = given()
-//                .contentType(ContentType.JSON)
-//                .header("Accept", "*/*")
-//                .cookie("JSESSIONID", COOKIE_VALUE)
-//                .queryParam("principal", USERNAME)
-//                .body(requestBody)
-//                .when()
-//                .log()
-//                .all()
-//                .post(baseURI);
-//
-//    }
-
     public void showReceivedRequests() {
 
-        baseURI = BASE_URL + CONNECTION_REQUEST_ENDPOINT + USER_ID + REQUEST;
+        baseURI = BASE_URL + CONNECTION_REQUEST_ENDPOINT + USER_ID_RECEIVER + REQUEST;
 
         Response response = given()
                 .contentType(ContentType.JSON)
                 .header("Accept", "*/*")
-                .cookie("JSESSIONID", COOKIE_VALUE)
+                .cookie("JSESSIONID", COOKIE_VALUE_RECEIVER)
                 .when()
                 .log()
                 .all()
                 .get();
 
+        System.out.println(CONNECTION_ID);
+        System.out.println(response.getBody().asPrettyString());
         int id = response.jsonPath().getInt("[0].id");
         CONNECTION_ID = String.valueOf(id);
+
 
     }
     public static @NotNull Response createSkill() {
@@ -209,15 +122,55 @@ public class BaseTestSetup {
     protected static @NotNull Response createAndRegisterUser() {
         baseURI = BASE_URL + REGISTER_ENDPOINT;
 
+        FakeValuesService fakeValuesService = new FakeValuesService(
+                new Locale("en-GB"), new RandomService());
+
+        USERNAME = fakeValuesService.bothify("Username??????????");
+        PASSWORD = fakeValuesService.bothify("Password??????????");
+
+        String registrationBody = String.format(REGISTRATION_BODY, PASSWORD, RANDOM_EMAIL, PASSWORD, USERNAME);
+
         Response response = given()
                 .contentType(APPLICATION_JSON)
-                .body(REGISTRATION_BODY)
+                .body(registrationBody)
                 .log()
                 .all()
                 .when()
                 .post(baseURI);
 
         USER_ID = response.getBody().asString().split(" ")[6];
+
+        System.out.println(USER_ID);
+        System.out.println(USERNAME);
+        System.out.println(PASSWORD);
+
+        return response;
+    }
+    protected static @NotNull Response createAndRegisterUserReceiver() {
+        baseURI = BASE_URL + REGISTER_ENDPOINT;
+
+        FakeValuesService fakeValuesService = new FakeValuesService(
+                new Locale("en-GB"), new RandomService());
+
+        USERNAME_RECEIVER = fakeValuesService.bothify("UsernameReceiver??????????");
+        PASSWORD_RECEIVER = fakeValuesService.bothify("PasswordReceiver??????????");
+
+        String registrationBody = String.format(REGISTRATION_BODY, PASSWORD_RECEIVER, RANDOM_EMAIL, PASSWORD_RECEIVER, USERNAME_RECEIVER);
+
+        Response response = given()
+                .contentType(APPLICATION_JSON)
+                .body(registrationBody)
+                .log()
+                .all()
+                .when()
+                .post(baseURI);
+
+        USER_ID_RECEIVER = response.getBody().asString().split(" ")[6];
+
+
+        System.out.println(USER_ID_RECEIVER);
+        System.out.println(USERNAME_RECEIVER);
+        System.out.println(PASSWORD_RECEIVER);
 
         return response;
     }
@@ -241,6 +194,35 @@ public class BaseTestSetup {
                 .statusCode(302);
 
         COOKIE_VALUE = responseBody.extract().cookies().get("JSESSIONID");
+
+        System.out.println(USERNAME);
+        System.out.println(PASSWORD);
+
+        return responseBody;
+    }
+    protected static @NotNull ValidatableResponse loginUserReceiver() {
+        baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
+
+        PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
+        preemptiveBasicAuthScheme.setUserName(USERNAME_RECEIVER);
+        preemptiveBasicAuthScheme.setPassword(PASSWORD_RECEIVER);
+        RestAssured.authentication = preemptiveBasicAuthScheme;
+
+        ValidatableResponse responseBody = RestAssured
+                .given()
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .queryParam("username", USERNAME_RECEIVER)
+                .queryParam("password", PASSWORD_RECEIVER)
+                .when()
+                .post(baseURI)
+                .then()
+                .assertThat()
+                .statusCode(302);
+
+        COOKIE_VALUE_RECEIVER = responseBody.extract().cookies().get("JSESSIONID");
+
+        System.out.println(USERNAME_RECEIVER);
+        System.out.println(PASSWORD_RECEIVER);
 
         return responseBody;
     }
@@ -341,5 +323,40 @@ public class BaseTestSetup {
                 .when()
                 .get(baseURI);
         return response;
+    }
+    protected static Response sendRequest() {
+        baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
+
+        String requestBody = String.format(SEND_CONNECTION_REQ_BODY, USER_ID_RECEIVER, USERNAME_RECEIVER);
+
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .header("Accept", "*/*")
+                .cookie("JSESSIONID", COOKIE_VALUE)
+                .queryParam("principal", USERNAME)
+                .body(requestBody)
+                .when()
+                .log()
+                .all()
+                .post(baseURI);
+        return response;
+    }
+    protected static Response approveRequest() {
+        baseURI = BASE_URL + CONNECTION_REQUEST_ENDPOINT + USER_ID_RECEIVER + CONNECTION_REQUEST_APPROVE_ENDPOINT;
+
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .header("Accept", "*/*")
+                .cookie("JSESSIONID", COOKIE_VALUE_RECEIVER)
+                .queryParam("requestId", CONNECTION_ID)
+                .when()
+                .log()
+                .all()
+                .post(baseURI);
+
+        System.out.println(response.getBody().asPrettyString());
+
+        return response;
+
     }
 }
