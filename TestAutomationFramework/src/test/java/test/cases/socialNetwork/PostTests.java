@@ -37,7 +37,7 @@ public class PostTests extends BaseTestSetup {
     public void likePostWhenClickLikeButtonTest() {
         loginSocial();
 
-        postPageSocial.clickOnLatestPosts();
+        homePage.clickOnLatestPostsButton();
         postPageSocial.likePublicPost();
 
         //assert
@@ -47,7 +47,7 @@ public class PostTests extends BaseTestSetup {
     @Test
     public void unlikePostWhenClickLikeButtonTest() {
         loginSocial();
-        postPageSocial.clickOnLatestPosts();
+        homePage.clickOnLatestPostsButton();
 
         postPageSocial.unlikePublicPost();
 

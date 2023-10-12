@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LogoutPage extends BaseSocialPage {
     public LogoutPage(WebDriver driver) {
-        super(driver, "socialNetwork.homePage");
+        super(driver, "social.network.homepage");
 
 
     }
@@ -16,7 +16,7 @@ public class LogoutPage extends BaseSocialPage {
 
     }
     public void assertSuccsesfullLogout() {
-        actions.waitForElementPresent("sign.in.button");;
+        actions.waitForElementPresent("home.page.sign.in.button");;
     }
     public void validateLoggedOut() {
         actions.waitForElementClickable("register.page.submitButton");

@@ -7,7 +7,7 @@ public class PostPage extends BaseSocialPage {
     public String PostDescription = "My Post: ";
 
     public PostPage(WebDriver driver) {
-        super(driver, "socialNetwork.homePage");
+        super(driver, "social.network.homepage");
     }
 
     public void createPublicPost(String generateDescription) {
@@ -42,11 +42,6 @@ public class PostPage extends BaseSocialPage {
         actions.clickElement("create.post.button");
 
 
-    }
-
-    public void clickOnLatestPosts() {
-        actions.waitForElementClickable("latest.post.button");
-        actions.clickElement("latest.post.button");
     }
 
     public void likePublicPost() {

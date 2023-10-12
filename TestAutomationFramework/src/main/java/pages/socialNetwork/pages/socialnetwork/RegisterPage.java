@@ -12,7 +12,7 @@ public class RegisterPage extends BasePage {
     Random random = new Random();
     int randomCount;
     public RegisterPage(WebDriver driver) {
-        super(driver,"socialNetwork.RegisterPage");
+        super(driver, "social.network.register.page");
     }
 
     public void registerUser(String generateUser,String generatePassword) {
@@ -45,7 +45,7 @@ public class RegisterPage extends BasePage {
             randomCount--;
         }
 
-        return String.format("Username%s", username);
+        return String.format("User%s", username);
     }
     public String generatePassword() {
         randomCount = random.nextInt(5);
@@ -57,7 +57,7 @@ public class RegisterPage extends BasePage {
             randomCount--;
         }
 
-        return format("%s", passwordGenerate.trim());
+        return format("pass%s", passwordGenerate.trim());
     }
 
    public void assertSuccsesfullRegistration(){

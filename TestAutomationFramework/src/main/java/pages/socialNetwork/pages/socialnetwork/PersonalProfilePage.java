@@ -9,7 +9,7 @@ public class PersonalProfilePage extends BaseSocialPage {
     String email;
 
     public PersonalProfilePage(WebDriver driver) {
-        super(driver, "socialNetwork.homePage");
+        super(driver, "social.network.homepage");
     }
 
     public void setFirstLastNamesAndBirthdate(String firstName, String lastName) {
