@@ -3,7 +3,18 @@ package apisocialnetwork;
 import static apisocialnetwork.Constants.*;
 
 public class JSONRequests {
-    public static final String REGISTRATION_BODY = "{\n" +
+//    public static final String REGISTRATION_BODY = String.format("{\n" +
+//            "    \"category\": {\n" +
+//            "        \"id\": 100,\n" +
+//            "        \"name\": \"All\"\n" +
+//            "    },\n" +
+//            "    \"confirmPassword\": \"%s\",\n" +
+//            "    \"email\": \"%s\",\n" +
+//            "    \"password\": \"%s\",\n" +
+//            "    \"username\": \"%s\"\n" +
+//            "}", PASSWORD, RANDOM_EMAIL, PASSWORD, USERNAME);
+
+    public static final String REGISTRATION_BODY ="{\n" +
             "    \"category\": {\n" +
             "        \"id\": 100,\n" +
             "        \"name\": \"All\"\n" +
@@ -13,18 +24,17 @@ public class JSONRequests {
             "    \"password\": \"%s\",\n" +
             "    \"username\": \"%s\"\n" +
             "}";
-
-    public static final String POST_BODY =  String.format("{\n" +
+    public static final String POST_BODY = String.format("{\n" +
             " \"content\": \"%s\",\n" +
             " \"picture\": \"No picture\",\n" +
             " \"public\": true\n" +
-            "}",POST_DESCRIPTION);
+            "}", POST_DESCRIPTION);
 
-    public static final String COMMENT_BODY = String.format("{\n" +
-            "    \"content\": \"%s\",\n" +
-            "    \"postId\": \"%s\",\n" +
-            "    \"userId\": \"%s\"\n" +
-            "}",COMMENT_DESCRIPTION, USER_ID, POST_ID);
+    public static final String COMMENT_BODY = "{\n" +
+            "  \"content\": \"%s\",\n" +
+            "  \"postId\": %s,\n" +
+            "  \"userId\": %s\n" +
+            "}";
 
 
     public static final String PROFILE_POST = "{\n" +
@@ -35,14 +45,15 @@ public class JSONRequests {
             "  \"size\": 10\n" +
             "}";
 
-    public static final String SKILLS_BODY = "{\n" +
+
+    public static final String SKILLS_BODY = String.format("{\n" +
             "  \"category\": {\n" +
-            "    \"id\": 153,\n" +
-            "    \"name\": \"TESTREST\"\n" +
+            "    \"id\": %d,\n" +
+            "    \"name\": \"%s\"\n" +
             "  },\n" +
             "  \"skill\": \"%s\",\n" +
             "  \"skillId\": 400\n" +
-            "}";
+            "}", SKILL_BODY_ID, SKILL_NAME, SKILL_DESCRIPTION);
 
     public static final String EDITED_SKILLS_BODY = "{\"newField\": \"newValue\"}";
 
@@ -52,5 +63,6 @@ public class JSONRequests {
             + "\"content\": \"%s\","
             + "\"picture\": \"No picture\","
             + "\"public\": true"
-            + "}",EDITED_POST) ;
+            + "}", EDITED_POST_CONTENT);
+
 }
