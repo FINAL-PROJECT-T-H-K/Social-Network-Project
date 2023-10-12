@@ -18,6 +18,18 @@ public class PostTests extends BaseTestSetup {
         postPageSocial.verifyPublicPostCreated();
 
     }
+    @Test
+    public void createPublicPostsAdminUserTest() {
+        loginPageSocial.loginAdminUser("user");
+
+        postDescription = postPageSocial.generateDescription();
+        postPageSocial.createPublicPost(postDescription);
+
+        //Assert
+        postPageSocial.verifyPostCreated(postDescription);
+        postPageSocial.verifyPublicPostCreated();
+
+    }
 
     @Test
     public void createPrivatePostTest() {

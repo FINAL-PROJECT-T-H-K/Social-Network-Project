@@ -60,8 +60,6 @@ public class BaseTestSetup {
         int id = response.jsonPath().getInt("[0].id");
         CONNECTION_ID = String.valueOf(id);
     }
-
-
     public static  Response createSkill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
@@ -179,7 +177,6 @@ public class BaseTestSetup {
 
         return responseBody;
     }
-
     protected static  Response upgradeExpertiseProfile() {
 
         createAndRegisterUser();

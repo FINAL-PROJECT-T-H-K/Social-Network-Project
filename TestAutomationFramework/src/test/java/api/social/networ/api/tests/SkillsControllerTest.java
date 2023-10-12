@@ -1,25 +1,15 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
-import com.github.javafaker.service.FakeValuesService;
-import com.github.javafaker.service.RandomService;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
-
-import java.util.Locale;
 import java.util.logging.Logger;
 
 import static apisocialnetwork.Constants.*;
-import static apisocialnetwork.Endpoints.API_USERS_AUTH;
-import static apisocialnetwork.Endpoints.BASE_URL;
 import static apisocialnetwork.ErrorMessages.*;
-import static apisocialnetwork.JSONRequests.EXPERTISE_BODY;
 import static apisocialnetwork.Utils.isValid;
 import static apisocialnetwork.JSONRequests.SKILLS_BODY;
 import static apisocialnetwork.ShowMessages.*;
-import static io.restassured.RestAssured.baseURI;
-import static io.restassured.RestAssured.given;
 import static java.util.Objects.isNull;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
