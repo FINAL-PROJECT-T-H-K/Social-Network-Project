@@ -5,8 +5,9 @@ import io.restassured.response.ValidatableResponse;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static apisocialnetwork.Constants.COOKIE_VALUE;
-import static apisocialnetwork.Constants.USER_ID;
+import java.util.logging.Logger;
+
+import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.ERROR_MESSAGE_INCORRECT_STATUS_LOGIN;
 import static apisocialnetwork.ShowMessages.ERROR_MESSAGE_COOKIE_VALUE_IS_NOT_PRESENT;
 import static apisocialnetwork.ShowMessages.SHOW_MESSAGE_LOGIN_USED_USERNAME_PASSWORD_COOKIE;
@@ -15,6 +16,8 @@ import static org.apache.http.HttpStatus.SC_MOVED_TEMPORARILY;
 import static org.testng.Assert.assertEquals;
 
 public class AuthenticateUserTest extends BaseTestSetup {
+
+    Logger logger = Logger.getLogger("");
 
     @Test
     public void LoginAndFetchCookiesTest() {
@@ -31,6 +34,9 @@ public class AuthenticateUserTest extends BaseTestSetup {
         Assert.assertFalse(COOKIE_VALUE.isEmpty(), ERROR_MESSAGE_COOKIE_VALUE_IS_NOT_PRESENT);
 
         System.out.println(SHOW_MESSAGE_LOGIN_USED_USERNAME_PASSWORD_COOKIE);
+
+        logger.info ("Username " + USERNAME);
+        logger.info("Password " + PASSWORD);
 
     }
 
