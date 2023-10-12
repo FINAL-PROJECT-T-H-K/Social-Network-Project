@@ -6,10 +6,10 @@ import org.apache.commons.text.RandomStringGenerator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Helper {
+public class Utils {
 
     public static String generateRandomEmail() {
-        // Create a random string generator
+        // Create a random string gnrtr
         RandomStringGenerator generator = new RandomStringGenerator.Builder()
                 .withinRange('a', 'z')
                 .filteredBy(CharacterPredicates.LETTERS, CharacterPredicates.DIGITS)

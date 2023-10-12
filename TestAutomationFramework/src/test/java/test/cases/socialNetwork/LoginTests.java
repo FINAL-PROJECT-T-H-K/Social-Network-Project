@@ -1,16 +1,14 @@
 package test.cases.socialNetwork;
 
 import org.junit.Test;
-public class LoginTest extends BaseTestSetup {
 
-
+public class LoginTests extends BaseTestSetup {
 
     @Test
-    public void validate_userAuthentication(){
+    public void successfullyUserAuthentication() {
 
         loginPageSocial.loginUserSocial("user");
         //ASSERT
-
         loginPageSocial.assertAuthenticatedUser();
     }
 }

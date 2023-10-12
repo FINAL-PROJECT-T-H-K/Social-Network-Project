@@ -4,8 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 
 public class PostPage extends BaseSocialPage {
-
-    public String commentText = "My comment is ";
+    public String PostDescription = "My Post: ";
 
     public PostPage(WebDriver driver) {
         super(driver, "socialNetwork.homePage");
@@ -53,38 +52,29 @@ public class PostPage extends BaseSocialPage {
     public void likePublicPost() {
 
 
-        if (actions.isElementVisible("dislike.button")) {
-            actions.clickElement("dislike.button");
+        if (actions.isElementVisible("post.dislike.button")) {
+            actions.clickElement("post.dislike.button");
         }
 
-        actions.waitForElementVisible("like.button");
-        actions.clickElement("like.button");
+        actions.waitForElementVisible("post.like.button");
+        actions.clickElement("post.like.button");
 
-        actions.waitForElementVisible("dislike.button");
+        actions.waitForElementVisible("post.dislike.button");
     }
 
     public void unlikePublicPost() {
 
-        if (actions.isElementVisible("like.button")) {
-            actions.clickElement("like.button");
+        if (actions.isElementVisible("post.like.button")) {
+            actions.clickElement("post.like.button");
         }
 
-        actions.waitForElementVisible("dislike.button");
-        actions.clickElement("dislike.button");
+        actions.waitForElementVisible("post.dislike.button");
+        actions.clickElement("post.dislike.button");
     }
     public void validateTopicIsUnliked() {
-        actions.assertElementPresent("like.button");
+        actions.assertElementPresent("post.like.button");
     }
     public void deletePost(){
-        actions.waitForElementVisible("profile.personal.page.button");
-        actions.clickElement("profile.personal.page.button");
-
-        actions.waitForElementClickable("latest.Activity.button");
-        actions.clickElement("latest.Activity.button");
-
-        actions.waitForElementClickable("recently.post");
-        actions.clickElement("recently.post");
-
         actions.waitForElementVisible("delete.post.button");
         actions.clickElement("delete.post.button");
 
@@ -95,13 +85,24 @@ public class PostPage extends BaseSocialPage {
         actions.clickElement("delete.submit.button");
 
     }
+
+    public void clickOnTheRecentPost() {
+        actions.waitForElementVisible("profile.personal.page.button");
+        actions.clickElement("profile.personal.page.button");
+
+        actions.waitForElementClickable("latest.activity.button");
+        actions.clickElement("latest.activity.button");
+
+        actions.waitForElementClickable("recently.post");
+        actions.clickElement("recently.post");
+    }
     public void validatePostIsDeleted(){
         actions.assertElementPresent("delete.post.message");
 
 
     }
     public void validatePostIsLiked(){
-        actions.assertElementPresent("dislike.button");
+        actions.assertElementPresent("post.dislike.button");
     }
 
     public void verifyPostCreated(String generateDescription) {
@@ -119,7 +120,7 @@ public class PostPage extends BaseSocialPage {
     }
 
     public String generateDescription() {
-        commentText += RandomStringUtils.randomAlphabetic(15);
-        return commentText;
+        PostDescription += RandomStringUtils.randomAlphabetic(15);
+        return PostDescription;
     }
 }

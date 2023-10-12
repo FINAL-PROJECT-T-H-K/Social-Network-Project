@@ -9,13 +9,13 @@ import pages.socialNetwork.pages.socialnetwork.*;
 
 public class BaseTestSetup {
     static UserActions actions = new UserActions();
-
     //PAGES
     public static PersonalProfilePage personalProfilePage;
     public static LogoutPage logoutPage;
     public static RegisterPage registerLageSocial;
     public static LoginPage loginPageSocial;
     public static PostPage postPageSocial;
+    public static CommentPage commentPage;
 
 
     @BeforeClass
@@ -28,7 +28,7 @@ public class BaseTestSetup {
         postPageSocial = new PostPage(driver);
         logoutPage = new LogoutPage(driver);
         personalProfilePage = new PersonalProfilePage(driver);
-
+        commentPage = new CommentPage(driver);
     }
 
     @AfterClass

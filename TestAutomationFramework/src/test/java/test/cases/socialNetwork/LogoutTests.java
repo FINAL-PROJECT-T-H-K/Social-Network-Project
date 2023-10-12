@@ -2,7 +2,7 @@ package test.cases.socialNetwork;
 
 import org.junit.Test;
 
-public class LogoutTest extends BaseTestSetup{
+public class LogoutTests extends BaseTestSetup{
 
 
     @Test

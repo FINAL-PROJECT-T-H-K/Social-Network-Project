@@ -1,9 +1,7 @@
 package test.cases.socialNetwork;
 
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.testng.annotations.AfterTest;
+
 
 public class PostTests extends BaseTestSetup {
     String postDescription;
@@ -33,7 +31,6 @@ public class PostTests extends BaseTestSetup {
         postPageSocial.verifyPrivatePostCreated();
 
 
-        postPageSocial.deletePost();
     }
 
     @Test
@@ -59,10 +56,17 @@ public class PostTests extends BaseTestSetup {
 
 
     }
+    @Test ///IN PROGRESS
+    public void editPostTest() {
+
+    }
+
 
     @Test    ///MAYBE SHOULD BE IN @AFTERCLASS
     public void deletePostTest() {
         loginSocial();
+
+        postPageSocial.clickOnTheRecentPost();
         postPageSocial.deletePost();
         //assert
         postPageSocial.validatePostIsDeleted();

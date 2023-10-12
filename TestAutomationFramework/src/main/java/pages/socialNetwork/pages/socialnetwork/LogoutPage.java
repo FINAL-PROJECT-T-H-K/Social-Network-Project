@@ -11,14 +11,14 @@ public class LogoutPage extends BaseSocialPage {
     }
     @Test
     public void logoutSuccessfully() {
-        actions.waitForElementClickable("socialNetwork.logout.button");
-        actions.clickElement("socialNetwork.logout.button");
+        actions.waitForElementClickable("logout.button");
+        actions.clickElement("logout.button");
 
     }
     public void assertSuccsesfullLogout() {
-        actions.waitForElementPresent("socialNetwork.signIn.button");;
+        actions.waitForElementPresent("sign.in.button");;
     }
     public void validateLoggedOut() {
-        actions.waitForElementClickable("socialNetwork.submitButton");
+        actions.waitForElementClickable("register.page.submitButton");
     }
 }
