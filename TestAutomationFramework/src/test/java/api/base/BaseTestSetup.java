@@ -29,6 +29,7 @@ public class BaseTestSetup {
      * Provided configuration resolve REST Assured issue with a POST request without request body.
      * Missing configuration leads to response status code 415 (Unsupported Media Type)
      */
+//    Just Testing Jenkins
     @BeforeSuite
     public void setup() {
         EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig()
