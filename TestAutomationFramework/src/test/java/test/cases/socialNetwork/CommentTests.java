@@ -10,7 +10,7 @@ public class CommentTests extends BaseTestSetup {
     public void createCommentUnderThePostTests() {
         loginSocial();
 
-        postPageSocial.clickOnLatestPosts();
+        homePage.clickOnLatestPostsButton();
         commentText = commentPage.generateRandomComment();
         commentPage.clickOnExploreThePost();
 

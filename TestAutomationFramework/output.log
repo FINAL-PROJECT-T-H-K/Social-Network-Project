@@ -1,18 +1,11 @@
-2023-10-12 01:57:39,946 INFO  [main] Initializing WebDriver
-2023-10-12 01:57:48,648 INFO  [main] Initializing WebDriver
-2023-10-12 01:57:50,419 INFO  [main] Initializing WebDriver
-2023-10-12 01:57:50,422 INFO  [main] Initializing WebDriver
-2023-10-12 01:57:50,423 INFO  [main] Initializing WebDriver
-2023-10-12 01:57:50,423 INFO  [main] Initializing WebDriver
-2023-10-12 01:57:50,423 INFO  [main] Initializing WebDriver
-2023-10-12 01:57:50,424 INFO  [main] Initializing WebDriver
-2023-10-12 01:57:50,448 INFO  [main] Initializing WebDriver
-2023-10-12 01:57:51,916 INFO  [main] Clicking on element loginSubmitButton
-2023-10-12 01:57:53,982 INFO  [main] Clicking on element profile.personal.page.button
-2023-10-12 01:57:56,429 INFO  [main] Clicking on element latest.activity.button
-2023-10-12 01:57:57,142 INFO  [main] Clicking on element recently.post
-2023-10-12 01:57:59,488 INFO  [main] Clicking on element show.comments.button
-2023-10-12 01:58:00,211 INFO  [main] Clicking on element delete.comment.button
-2023-10-12 01:58:01,573 INFO  [main] Clicking on element delete.comment.button.confirm
-2023-10-12 01:58:01,755 INFO  [main] Clicking on element delete.comment.submit.button
-2023-10-12 01:58:04,672 INFO  [main] Quitting WebDriver
+2023-10-12 21:13:07,185 INFO  [main] Initializing WebDriver
+2023-10-12 21:13:13,394 INFO  [main] Initializing WebDriver
+2023-10-12 21:13:15,174 INFO  [main] Initializing WebDriver
+2023-10-12 21:13:15,174 INFO  [main] Initializing WebDriver
+2023-10-12 21:13:15,175 INFO  [main] Initializing WebDriver
+2023-10-12 21:13:15,176 INFO  [main] Initializing WebDriver
+2023-10-12 21:13:15,177 INFO  [main] Initializing WebDriver
+2023-10-12 21:13:15,177 INFO  [main] Initializing WebDriver
+2023-10-12 21:13:15,178 INFO  [main] Initializing WebDriver
+2023-10-12 21:13:16,673 INFO  [main] Clicking on element home.page.about.us
+2023-10-12 21:13:17,894 INFO  [main] Quitting WebDriver

@@ -44,11 +44,6 @@ public class PostPage extends BaseSocialPage {
 
     }
 
-    public void clickOnLatestPosts() {
-        actions.waitForElementClickable("latest.post.button");
-        actions.clickElement("latest.post.button");
-    }
-
     public void likePublicPost() {
 
 

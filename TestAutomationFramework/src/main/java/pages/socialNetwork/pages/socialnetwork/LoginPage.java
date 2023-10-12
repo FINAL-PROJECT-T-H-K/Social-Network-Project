@@ -15,13 +15,13 @@ public class LoginPage extends BaseSocialPage {
 
         navigateToPage();
 
-        actions.waitForElementVisible("loginPage.username");
-        actions.typeValueInField(username, "loginPage.username");
+        actions.waitForElementVisible("login.page.username");
+        actions.typeValueInField(username, "login.page.username");
 
-        actions.waitForElementVisible("loginPage.password");
-        actions.typeValueInField(password, "loginPage.password");
+        actions.waitForElementVisible("login.page.password");
+        actions.typeValueInField(password, "login.page.password");
 
-        actions.clickElement("loginSubmitButton");
+        actions.clickElement("login.submit.button");
 
         actions.waitForElementVisible("header.member.menu.button");
     }

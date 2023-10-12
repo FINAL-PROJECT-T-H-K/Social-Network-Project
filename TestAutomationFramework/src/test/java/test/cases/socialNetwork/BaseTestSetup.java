@@ -10,6 +10,7 @@ import pages.socialNetwork.pages.socialnetwork.*;
 public class BaseTestSetup {
     static UserActions actions = new UserActions();
     //PAGES
+    public static HomePage homePage;
     public static PersonalProfilePage personalProfilePage;
     public static LogoutPage logoutPage;
     public static RegisterPage registerLageSocial;
@@ -23,12 +24,14 @@ public class BaseTestSetup {
         UserActions.loadBrowser("socialNetwork.homePage");
         WebDriver driver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
 
+        homePage = new HomePage(driver);
         loginPageSocial = new LoginPage(driver);
         registerLageSocial = new RegisterPage(driver);
         postPageSocial = new PostPage(driver);
         logoutPage = new LogoutPage(driver);
         personalProfilePage = new PersonalProfilePage(driver);
         commentPage = new CommentPage(driver);
+
     }
 
     @AfterClass
