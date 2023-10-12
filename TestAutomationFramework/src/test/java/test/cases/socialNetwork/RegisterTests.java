@@ -5,37 +5,36 @@ import org.junit.Test;
 public class RegisterTests extends BaseTestSetup {
     String username;
     String password;
-
     String adminUsername = "admin";
     String adminPassword;
 
     @Test
     public void successfulRegisterUserTest() {
 
-        registerLageSocial.navigateToPage();
+        registerPage.navigateToPage();
 
-        username = registerLageSocial.generateUser();
-        password = registerLageSocial.generatePassword();
+        username = registerPage.generateUser();
+        password = registerPage.generatePassword();
 
-        registerLageSocial.registerUser(username, password);
+        registerPage.registerUser(username, password);
 
         //ASSERT
-        registerLageSocial.assertSuccsesfullRegistration();
+        registerPage.assertSuccsesfullRegistration();
 
     }
 
     @Test
     public void successfulRegisterAdminUserTest() {
 
-        registerLageSocial.navigateToPage();
+        registerPage.navigateToPage();
 
-        adminUsername += registerLageSocial.generateUser();
-        adminPassword += registerLageSocial.generatePassword();
+        adminUsername += registerPage.generateUser();
+        adminPassword += registerPage.generatePassword();
 
-        registerLageSocial.registerUser(adminUsername, adminPassword);
+        registerPage.registerUser(adminUsername, adminPassword);
 
         //ASSERT
-        registerLageSocial.assertSuccsesfullRegistration();
+        registerPage.assertSuccsesfullRegistration();
 
         System.out.println(adminUsername);
         System.out.println(adminPassword);

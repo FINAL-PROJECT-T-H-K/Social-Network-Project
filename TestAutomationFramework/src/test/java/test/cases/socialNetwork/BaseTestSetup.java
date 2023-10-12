@@ -13,7 +13,7 @@ public class BaseTestSetup {
     public static HomePage homePage;
     public static PersonalProfilePage personalProfilePage;
     public static LogoutPage logoutPage;
-    public static RegisterPage registerLageSocial;
+    public static RegisterPage registerPage;
     public static LoginPage loginPageSocial;
     public static PostPage postPageSocial;
     public static CommentPage commentPage;
@@ -26,7 +26,7 @@ public class BaseTestSetup {
 
         homePage = new HomePage(driver);
         loginPageSocial = new LoginPage(driver);
-        registerLageSocial = new RegisterPage(driver);
+        registerPage = new RegisterPage(driver);
         postPageSocial = new PostPage(driver);
         logoutPage = new LogoutPage(driver);
         personalProfilePage = new PersonalProfilePage(driver);

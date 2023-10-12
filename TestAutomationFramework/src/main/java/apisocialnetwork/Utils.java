@@ -59,6 +59,7 @@ public class Utils {
     public static void generateRandomConstants(String usernamePattern, String passwordPattern,
                                                String uniqueNamePattern, String skillDescriptionPattern,
                                                String emailPattern) {
+
         FakeValuesService fakeValuesService = new FakeValuesService(
                 new Locale("en-GB"), new RandomService());
 
