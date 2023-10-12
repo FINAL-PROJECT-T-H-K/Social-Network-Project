@@ -6,19 +6,19 @@ import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
-import static apisocialnetwork.ErrorMessages.ERROR_MESSAGE_DOES_NOT_MATCH_BODY;
 import static apisocialnetwork.ShowMessages.*;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.*;
 
 
 public class PostControllerTest extends BaseTestSetup {
-
     @Test
     public void createPostSuccessfullyTest() {
 
         createAndRegisterUser();
+
         loginUser();
+
         Response response = createPost();
 
         int statusCode = response.getStatusCode();
@@ -27,7 +27,7 @@ public class PostControllerTest extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(postContent, POST_DESCRIPTION, ERROR_MESSAGE_DOES_NOT_MATCH_BODY);
 
-        System.out.println(SHOW_MESSAGE_RESPONSE_BODY + response.getBody().asPrettyString());
+        System.out.println(SHOW_MESSAGE_RESPONSE_BODY+response.getBody().asPrettyString());
         System.out.println(SHOW_MESSAGE_POST_CREATED_AND_POST_ID);
 
     }
@@ -49,10 +49,13 @@ public class PostControllerTest extends BaseTestSetup {
     public void showAllProfilePosts_Successful() {
 
         createAndRegisterUser();
+
         loginUser();
+
         createPost();
 
         Response response = showAllProfilePosts();
+
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asPrettyString();
 
@@ -90,8 +93,11 @@ public class PostControllerTest extends BaseTestSetup {
     @Test
     public void dislikeProfilePostTest() {
 
+
         createAndRegisterUser();
+
         loginUser();
+
         createPost();
 
         Response response = likePost();

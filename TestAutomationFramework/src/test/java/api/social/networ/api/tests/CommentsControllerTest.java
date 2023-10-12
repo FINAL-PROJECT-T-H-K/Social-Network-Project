@@ -18,7 +18,9 @@ public class CommentsControllerTest extends BaseTestSetup {
     public void createCommentTest() {
 
         createAndRegisterUser();
+
         loginUser();
+
         createPost();
 
         Response response = createComment();
@@ -109,8 +111,11 @@ public class CommentsControllerTest extends BaseTestSetup {
     public void dislikeCommentTest() {
 
         createAndRegisterUser();
+
         loginUser();
+
         createPost();
+
         createComment();
 
         Response response = likeComment();

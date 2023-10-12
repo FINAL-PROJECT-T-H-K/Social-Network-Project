@@ -5,8 +5,6 @@ import io.restassured.response.Response;
 import org.codehaus.groovy.transform.SourceURIASTTransformation;
 import org.testng.annotations.Test;
 
-import java.util.logging.Logger;
-
 import static apisocialnetwork.Constants.USERNAME;
 import static apisocialnetwork.Constants.USER_ID;
 import static apisocialnetwork.ErrorMessages.*;
@@ -16,7 +14,6 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 public class RegistrationTest extends BaseTestSetup {
-    Logger logger = Logger.getLogger("");
 
     @Test
     public void registerUserTest() {
@@ -33,8 +30,7 @@ public class RegistrationTest extends BaseTestSetup {
         assertEquals(responseID, USER_ID, ERROR_MESSAGE_USER_ID);
         assertEquals(responseUsername, USERNAME, ERROR_MESSAGE_USERNAME);
 
-        logger.info(SHOW_MESSAGE_RESPONSE_BODY + responseReturnMessage);
-
+        System.out.println(SHOW_MESSAGE_RESPONSE_BODY + responseReturnMessage);
     }
 
 }

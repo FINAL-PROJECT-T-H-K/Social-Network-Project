@@ -8,29 +8,29 @@ import java.util.Random;
 
 import static java.lang.String.format;
 
-public class RegisterPageSocial extends BasePage {
+public class RegisterPage extends BasePage {
     Random random = new Random();
     int randomCount;
-    public RegisterPageSocial(WebDriver driver) {
+    public RegisterPage(WebDriver driver) {
         super(driver,"socialNetwork.RegisterPage");
     }
 
     public void registerUser(String generateUser,String generatePassword) {
 
-        actions.waitForElementClickable("socialNetwork.usernameField");
-        actions.typeValueInField(generateUser, "socialNetwork.usernameField");
+        actions.waitForElementClickable("register.page.usernameField");
+        actions.typeValueInField(generateUser, "register.page.usernameField");
 
-        actions.waitForElementClickable("socialNetwork.emailField");
-        actions.typeValueInField("test@abv.bg", "socialNetwork.emailField");
+        actions.waitForElementClickable("register.page.emailField");
+        actions.typeValueInField("test@abv.bg", "register.page.emailField");
 
-        actions.waitForElementClickable("socialNetwork.passwordField");
-        actions.typeValueInField(generatePassword, "socialNetwork.passwordField");
+        actions.waitForElementClickable("register.page.passwordField");
+        actions.typeValueInField(generatePassword, "register.page.passwordField");
 
-        actions.waitForElementClickable("socialNetwork.confirmPasswordField");
-        actions.typeValueInField(generatePassword, "socialNetwork.confirmPasswordField");
+        actions.waitForElementClickable("register.page.confirmPasswordField");
+        actions.typeValueInField(generatePassword, "register.page.confirmPasswordField");
 
-        actions.waitForElementClickable("socialNetwork.submitButton");
-        actions.clickElement("socialNetwork.submitButton");
+        actions.waitForElementClickable("register.page.submitButton");
+        actions.clickElement("register.page.submitButton");
 
     }
 
@@ -61,8 +61,8 @@ public class RegisterPageSocial extends BasePage {
     }
 
    public void assertSuccsesfullRegistration(){
-       actions.assertElementPresent("socialNetwork.successful.register");
-       actions.clickElement("socialNetwork.successful.register");
+       actions.assertElementPresent("register.page.successful.register");
+       actions.clickElement("register.page.successful.register");
 
    }
 }

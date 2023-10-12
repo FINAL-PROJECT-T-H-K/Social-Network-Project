@@ -20,6 +20,7 @@ import static java.lang.String.format;
 public class UserActions {
 
     final WebDriver driver;
+    int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
 
     public WebDriver getDriver() {
         return driver;
@@ -145,6 +146,24 @@ public class UserActions {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         } catch (Exception exception) {
             Assertions.fail("Element with locator: '" + xpath + "' was not found.");
+        }
+    }
+
+    public boolean isElementVisible(String locator, Object... arguments) {
+        // TODO: Implement the method
+        // 1. Get default timeout from properties
+        // 2. Initialize Wait utility
+        Duration timeout = Duration.ofSeconds(defaultTimeout);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        String xpath = getLocatorValueByKey(locator, arguments);
+
+        // 3. Try to wait for element visible
+        // 4. return true/false if the element is/not visible
+        try {
+            wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpath)));
+            return true;
+        } catch (Exception exception) {
+            return false;
         }
     }
 }

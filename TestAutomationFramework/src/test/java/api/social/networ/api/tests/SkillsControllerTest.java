@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
-import static apisocialnetwork.ErrorMessages.ERROR_MESSAGE_BODY_NOT_VALID_JSON;
 import static apisocialnetwork.Helper.isValid;
 import static apisocialnetwork.JSONRequests.SKILLS_BODY;
 import static apisocialnetwork.ShowMessages.*;
