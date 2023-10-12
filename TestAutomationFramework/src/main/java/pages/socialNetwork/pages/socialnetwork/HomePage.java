@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BaseSocialPage {
     public HomePage(WebDriver driver) {
-        super(driver, "socialNetwork.homePage");
+        super(driver, "social.network.homepage");
     }
 
     public void clickOnRegisterButton() {

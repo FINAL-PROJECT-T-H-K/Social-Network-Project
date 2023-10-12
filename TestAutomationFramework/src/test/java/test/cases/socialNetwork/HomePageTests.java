@@ -47,6 +47,7 @@ public class HomePageTests extends BaseTestSetup {
         homePage.navigateToPage();
         homePage.clickOnAboutUsButton();
 
+        //ASSERT
         homePage.validateAboutUsInformationDisplayed();
     }
 }

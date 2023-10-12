@@ -9,7 +9,7 @@ public class CommentPage extends BaseSocialPage {
     public String editCommentText = "Edit comment to: ";
 
     public CommentPage(WebDriver driver) {
-        super(driver, "socialNetwork.homePage");
+        super(driver, "social.network.homepage");
     }
 
     public void createCommentUnderPost(String generateRandomComment) {

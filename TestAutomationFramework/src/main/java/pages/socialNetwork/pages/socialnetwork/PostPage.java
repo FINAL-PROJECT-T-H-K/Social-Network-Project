@@ -7,7 +7,7 @@ public class PostPage extends BaseSocialPage {
     public String PostDescription = "My Post: ";
 
     public PostPage(WebDriver driver) {
-        super(driver, "socialNetwork.homePage");
+        super(driver, "social.network.homepage");
     }
 
     public void createPublicPost(String generateDescription) {

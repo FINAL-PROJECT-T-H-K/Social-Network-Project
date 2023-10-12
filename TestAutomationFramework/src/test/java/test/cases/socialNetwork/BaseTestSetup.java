@@ -21,7 +21,7 @@ public class BaseTestSetup {
 
     @BeforeClass
     public static void setUp() {
-        UserActions.loadBrowser("socialNetwork.homePage");
+        UserActions.loadBrowser("social.network.homepage");
         WebDriver driver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
 
         homePage = new HomePage(driver);
@@ -41,7 +41,7 @@ public class BaseTestSetup {
 
     public static void loginSocial() {
         LoginPage loginPage = new LoginPage(actions.getDriver());
-        loginPage.loginUserSocial("user");
+        loginPage.loginUser("user");
     }
 }
 

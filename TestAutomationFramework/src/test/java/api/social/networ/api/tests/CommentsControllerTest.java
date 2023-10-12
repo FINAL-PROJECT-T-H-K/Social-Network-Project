@@ -6,10 +6,8 @@ import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
-import static apisocialnetwork.Helper.isValid;
 import static apisocialnetwork.JSONRequests.*;
-import static io.restassured.RestAssured.given;
-import static java.lang.String.format;
+import static apisocialnetwork.Utils.isValid;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.*;
 

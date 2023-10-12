@@ -7,8 +7,18 @@ public class LoginTests extends BaseTestSetup {
     @Test
     public void successfullyUserAuthentication() {
 
-        loginPageSocial.loginUserSocial("user");
+        loginPageSocial.loginUser("user");
+
         //ASSERT
         loginPageSocial.assertAuthenticatedUser();
+    }
+
+    @Test
+    public void successfullyAdminUserAuthentication() {
+
+        loginPageSocial.loginAdminUser("user");
+
+        //ASSERT
+        loginPageSocial.assertAdminAuthenticatedUser();
     }
 }
