@@ -4,6 +4,7 @@ import api.base.BaseTestSetup;
 import apisocialnetwork.Utils;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -26,13 +27,15 @@ public class ConnectionController extends BaseTestSetup {
         baseTestSetup.registerUser(USERNAME, PASSWORD);
 
         if (isNull(COOKIE_VALUE)) {
-            AuthenticateUser authenticate = new AuthenticateUser();
-            authenticate._02_authenticateAndFetchCookies();
+            UserControllerTests authenticate = new UserControllerTests();
+            authenticate.authenticateUserAndFetchCookies();
         }
     }
 
     @Test
     public void sendConnectionRequest() {
+
+        baseTestSetup.loginUserWithParams(USERNAME, PASSWORD);
 
         String usernameReceiver = Utils.generateUniqueUsername();
         String password = Utils.generateUniquePassword();
@@ -55,6 +58,10 @@ public class ConnectionController extends BaseTestSetup {
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(USERNAME, response.body().asString().split(" ")[0],
+                "Expected sender username is " + USERNAME);
+        assertEquals(RECEIVER_USER_NAME, response.body().asString().split(" ")[5],
+                "Expected receiver username is " + RECEIVER_USER_NAME);
 
     }
 
@@ -80,6 +87,10 @@ public class ConnectionController extends BaseTestSetup {
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(RECEIVER_USER_NAME, response.body().asString().split(" ")[0],
+                "Expected receiver username is " + RECEIVER_USER_NAME);
+        assertEquals(USERNAME, response.body().asString().split(" ")[4],
+                "Expected sender username is " + USERNAME);
 
     }
 

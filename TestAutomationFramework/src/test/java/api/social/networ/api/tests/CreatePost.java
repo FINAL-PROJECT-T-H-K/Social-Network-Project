@@ -1,10 +1,12 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
+import apisocialnetwork.Utils;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static apisocialnetwork.Constants.*;
@@ -27,10 +29,17 @@ public class CreatePost extends BaseTestSetup {
     public static final String ERROR_MESSAGE_FOR_NOT_EQUAL_POST_ID = ERROR_MESSAGE_FOR_NOT_EQUAL_POST;
     BaseTestSetup baseTestSetup = new BaseTestSetup();
 
+    @BeforeMethod
+    public void Setup() {
+
+        USERNAME = Utils.generateUniqueUsername();
+        PASSWORD = Utils.generateUniquePassword();
+        baseTestSetup.registerUser(USERNAME,PASSWORD);
+    }
+
     @Test
     public void createPost() {
 
-        baseTestSetup.registerUser(USERNAME, PASSWORD);
         baseTestSetup.loginUser();
 
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
@@ -58,7 +67,7 @@ public class CreatePost extends BaseTestSetup {
         System.out.println("Post ID is " + POST_ID);
     }
 
-    @Test
+    @Test//(priority = 2)
     public void getAllPosts_Successful() {
 
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
@@ -77,10 +86,9 @@ public class CreatePost extends BaseTestSetup {
         System.out.println("Successfully fetched all posts.");
     }
 
-    @Test
+    @Test//(priority = 3)
     public void showAllProfilePosts_Successful() {
 
-        baseTestSetup.registerUser(USERNAME, PASSWORD);
         baseTestSetup.loginUser();
         baseTestSetup.createPost();
 
@@ -103,10 +111,9 @@ public class CreatePost extends BaseTestSetup {
         assertTrue(responseBody.length() > 2, ERROR_MESSAGE_EMPTY_BODY);
     }
 
-    @Test
+    @Test//(priority = 4)
     public void editProfilePosts_Successful() {
 
-        baseTestSetup.registerUser(USERNAME, PASSWORD);
         baseTestSetup.loginUser();
         baseTestSetup.createPost();
 
@@ -131,10 +138,9 @@ public class CreatePost extends BaseTestSetup {
     }
 
 
-    @Test
+    @Test//(priority = 5)
     public void likeProfilePosts_Successful() {
 
-        baseTestSetup.registerUser(USERNAME, PASSWORD);
         baseTestSetup.loginUser();
         baseTestSetup.createPost();
 
@@ -162,10 +168,10 @@ public class CreatePost extends BaseTestSetup {
 
     }
 
-    @Test
+
+    @Test//(priority = 7)
     public void deletePosts_Successful() {
 
-        baseTestSetup.registerUser(USERNAME, PASSWORD);
         baseTestSetup.loginUser();
         baseTestSetup.createPost();
 

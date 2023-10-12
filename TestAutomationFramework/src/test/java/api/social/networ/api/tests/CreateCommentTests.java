@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.ErrorMessages.*;
-import static apisocialnetwork.JSONRequests.COMMENT_BODY;
+import static apisocialnetwork.JSONRequests.*;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
@@ -21,7 +21,6 @@ import static org.testng.Assert.*;
 public class CreateCommentTests extends BaseTestSetup {
     BaseTestSetup baseTestSetup = new BaseTestSetup();
 
-
     @BeforeClass
     public void Setup() {
         if (isNull(USER_ID)) {
@@ -30,15 +29,16 @@ public class CreateCommentTests extends BaseTestSetup {
         }
 
         if (isNull(COOKIE_VALUE)) {
-            AuthenticateUser authenticate = new AuthenticateUser();
-            authenticate._02_authenticateAndFetchCookies();
+            UserControllerTests authenticate = new UserControllerTests();
+            authenticate.authenticateUserAndFetchCookies();
         }
         if (isNull(POST_ID)) {
-            baseTestSetup.createPost();
+            CreatePost createPost = new CreatePost();
+            createPost.createPost();
         }
     }
 
-    @Test(priority = 1)
+    @Test
     public void createComment() {
         baseURI = BASE_URL + COMMENT_ENDPOINT;
 
@@ -63,7 +63,7 @@ public class CreateCommentTests extends BaseTestSetup {
 
     }
 
-    @Test(priority = 2)
+    @Test
     public void showCreatedComment() {
 
         baseURI = SHOW_CREATED_COMMENTS;
@@ -86,7 +86,7 @@ public class CreateCommentTests extends BaseTestSetup {
 
     }
 
-    @Test(priority = 3)
+    @Test
     public void showAllCreatedComment() {
 
         baseURI = BASE_URL + SHOW_ALL_COMMENTS;
@@ -107,7 +107,7 @@ public class CreateCommentTests extends BaseTestSetup {
 
     }
 
-    @Test(priority = 4)
+    @Test
     public void editComment() {
 
         baseURI = BASE_URL + EDITED_COMMENT;
@@ -127,7 +127,7 @@ public class CreateCommentTests extends BaseTestSetup {
 
     }
 
-    @Test(priority = 5)
+    @Test
     public void likeComment() {
 
         baseURI = BASE_URL + LIKED_COMMENT;
@@ -153,7 +153,7 @@ public class CreateCommentTests extends BaseTestSetup {
 
     }
 
-    @Test(priority = 6)
+    @Test
     public void dislikeComment() {
 
         baseURI = BASE_URL + LIKED_COMMENT;
@@ -179,7 +179,7 @@ public class CreateCommentTests extends BaseTestSetup {
 
     }
 
-    @Test(priority = 7)
+    @Test
     public void deleteCreatedComment() {
 
         baseURI = BASE_URL + DELETE_COMMENT;
@@ -198,7 +198,7 @@ public class CreateCommentTests extends BaseTestSetup {
         assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
     }
 
-    @Test(priority = 8)
+    @Test
     public void deletePosts_TearDown() {
 
         baseURI = BASE_URL + DELETE_POSTS;

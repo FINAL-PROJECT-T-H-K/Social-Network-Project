@@ -11,11 +11,13 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import static apisocialnetwork.Constants.*;
 
 import java.util.Locale;
+import java.util.logging.Logger;
 
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
@@ -23,6 +25,7 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class BaseTestSetup {
+    Logger logger = Logger.getLogger("");
     public static final String REQUEST = "/request/";
     public static String USERNAME;
     public static String PASSWORD;
@@ -32,20 +35,17 @@ public class BaseTestSetup {
      * Missing configuration leads to response status code 415 (Unsupported Media Type)
      */
     @BeforeSuite
-    public void setup() {
+    public void setupForUsernameAndPassword() {
         EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig()
                 .appendDefaultContentCharsetToContentTypeIfUndefined(false);
 
         RestAssured.config = RestAssured.config().encoderConfig(encoderConfig);
 
-        FakeValuesService fakeValuesService = new FakeValuesService(
-                new Locale("en-GB"), new RandomService());
+        USERNAME =Utils.generateFakeServiceUsername();
+        PASSWORD = Utils.generateFakeServicePassword();
 
-        String randomUsername = fakeValuesService.bothify("Username?????");
-        String randomPassword = fakeValuesService.bothify("Password?????");
-
-        USERNAME = randomUsername;
-        PASSWORD = randomPassword;
+        logger.info ("Username " + USERNAME);
+        logger.info("Password " + PASSWORD);
 
         UNIQUE_NAME = RandomStringUtils.randomAlphabetic(10);
     }

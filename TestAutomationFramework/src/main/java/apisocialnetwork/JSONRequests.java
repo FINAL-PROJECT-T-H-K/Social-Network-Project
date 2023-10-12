@@ -24,7 +24,7 @@ public class JSONRequests {
             "    \"content\": \"%s\",\n" +
             "    \"postId\": \"%s\",\n" +
             "    \"userId\": \"%s\"\n" +
-            "}",COMMENT_DESCRIPTION, POST_ID, USER_ID);
+            "}",COMMENT_DESCRIPTION, USER_ID, POST_ID);
 
 
     public static final String PROFILE_POST = "{\n" +
