@@ -1,21 +1,32 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
+import com.github.javafaker.service.FakeValuesService;
+import com.github.javafaker.service.RandomService;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
+import java.util.Locale;
+import java.util.logging.Logger;
+
 import static apisocialnetwork.Constants.*;
+import static apisocialnetwork.Endpoints.API_USERS_AUTH;
+import static apisocialnetwork.Endpoints.BASE_URL;
 import static apisocialnetwork.ErrorMessages.*;
-import static apisocialnetwork.Helper.isValid;
+import static apisocialnetwork.JSONRequests.EXPERTISE_BODY;
+import static apisocialnetwork.Utils.isValid;
 import static apisocialnetwork.JSONRequests.SKILLS_BODY;
 import static apisocialnetwork.ShowMessages.*;
+import static io.restassured.RestAssured.baseURI;
+import static io.restassured.RestAssured.given;
 import static java.util.Objects.isNull;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SkillsControllerTest extends BaseTestSetup {
-
+    static Logger logger = Logger.getLogger("");
 
 
     @Test
@@ -23,7 +34,7 @@ public class SkillsControllerTest extends BaseTestSetup {
 
         Response response = createSkill();
 
-        System.out.printf(SHOW_MESSAGE_RESPONSE_BODY + response.getBody().asPrettyString());
+        logger.info(SHOW_MESSAGE_RESPONSE_BODY + response.getBody().asPrettyString());
 
         int statusCode = response.getStatusCode();
         String responseBodySkill = response.getBody().jsonPath().getString("skill");
@@ -34,7 +45,7 @@ public class SkillsControllerTest extends BaseTestSetup {
         assertEquals(responseBodyCategoryName, SKILL_NAME, ERROR_MESSAGE_RESPONSE_SKILL_NAME);
         assertTrue(isValid(SKILLS_BODY), ERROR_MESSAGE_BODY_NOT_VALID_JSON);
 
-        System.out.printf(SHOW_MESSAGE_CREATED_SKILL_SILL_ID);
+        logger.info(SHOW_MESSAGE_CREATED_SKILL_SILL_ID);
 
     }
 
@@ -43,7 +54,7 @@ public class SkillsControllerTest extends BaseTestSetup {
 
         Response response = showAllSkills();
 
-        System.out.println(SHOW_MESSAGE_RESPONSE_BODY + response.asPrettyString());
+        logger.info(SHOW_MESSAGE_RESPONSE_BODY + response.asPrettyString());
 
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asPrettyString();
@@ -52,9 +63,8 @@ public class SkillsControllerTest extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_INCORRECT_STATUS);
         assertTrue(responseBody.length() > 0, ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
-        System.out.println(response.getBody().asPrettyString());
-
-        System.out.println(SHOW_MESSAGE_SHOW_ALL_SKILLS);
+        logger.info(response.getBody().asPrettyString());
+        logger.info(SHOW_MESSAGE_SHOW_ALL_SKILLS);
     }
 
     @Test
@@ -72,9 +82,10 @@ public class SkillsControllerTest extends BaseTestSetup {
         assertEquals(SC_OK, statusCode, SC_OK, ERROR_MESSAGE_INCORRECT_STATUS);
         assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
-        System.out.println(SHOW_MESSAGE_DELETED_SKILL);
+        logger.info(SHOW_MESSAGE_DELETED_SKILL);
 
     }
+
 
     @Test
     public void editSkillTest() {
@@ -89,7 +100,7 @@ public class SkillsControllerTest extends BaseTestSetup {
         assertEquals(SC_OK, statusCode, ERROR_MESSAGE_INCORRECT_STATUS);
         assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
-        System.out.printf(SHOW_MESSAGE_EDITED_SKILL);
+        logger.info(SHOW_MESSAGE_EDITED_SKILL);
 
     }
 

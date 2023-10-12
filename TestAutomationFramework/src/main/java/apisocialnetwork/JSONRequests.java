@@ -45,6 +45,17 @@ public class JSONRequests {
             "  \"size\": 10\n" +
             "}";
 
+    public static final String EXPERTISE_BODY = String.format("{  \"availability\": 100,  " +
+                    "\"category\": {" +
+                    "    \"id\": 120,    " +
+                    "\"name\": \"Hairdresser\"  }" +
+                    ",  " +
+                    "\"id\": %s,  " +
+                    "\"skill1\": \"%s\",  " +
+                    "\"skills\": [    " +
+                    "\"%s\"  ]}"
+            , USER_ID, RANDOM_JOB_TITLE_FIRST, RANDOM_JOB_TITLE);
+
 
     public static final String SKILLS_BODY = String.format("{\n" +
             "  \"category\": {\n" +

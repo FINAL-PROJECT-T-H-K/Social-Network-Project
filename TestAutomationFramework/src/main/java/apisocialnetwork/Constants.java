@@ -12,6 +12,8 @@ public class Constants {
     public static final String SKILL_NAME = "Judge";
     public static final int SKILL_BODY_ID= 122;
     public static String SKILL_DESCRIPTION_EDITED;
+    public static String RANDOM_JOB_TITLE_FIRST;
+    public static String RANDOM_JOB_TITLE;
     public static String UNIQUE_NAME;
     public static String USERNAME;
     public static String PASSWORD;

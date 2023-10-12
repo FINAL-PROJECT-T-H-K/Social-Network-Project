@@ -2,6 +2,8 @@ package api.base;
 
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.config.EncoderConfig;
@@ -9,7 +11,6 @@ import io.restassured.config.EncoderConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-import io.restassured.specification.RequestSpecification;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.BeforeSuite;
 
@@ -20,6 +21,8 @@ import java.util.Locale;
 import static apisocialnetwork.Constants.PASSWORD_RECEIVER;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
+import static apisocialnetwork.Utils.fakeValueGenerator;
+import static apisocialnetwork.Utils.generateRandomConstants;
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
@@ -37,20 +40,11 @@ public class BaseTestSetup {
 
         RestAssured.config = RestAssured.config().encoderConfig(encoderConfig);
 
-        generateRandomConstants();
+        generateRandomConstants("Username??????????", "Password??????????",
+                "UniqueName???????????",
+                "SkillDescription??????????", "??????##@example.com");
     }
-    protected static void generateRandomConstants() {
-        FakeValuesService fakeValuesService = new FakeValuesService(
-                new Locale("en-GB"), new RandomService());
 
-        USERNAME = fakeValuesService.bothify("Username??????????");
-        PASSWORD = fakeValuesService.bothify("Password??????????");
-        UNIQUE_NAME = fakeValuesService.bothify("UniqueName???????????");
-        SKILL_DESCRIPTION =fakeValuesService.bothify("SkillDescription??????????");
-        SKILL_DESCRIPTION_EDITED =SKILL_DESCRIPTION+UNIQUE_NAME;
-        RANDOM_EMAIL=fakeValuesService.bothify("??????##@example.com");
-
-    }
     public void showReceivedRequests() {
         baseURI = BASE_URL + CONNECTION_REQUEST_ENDPOINT + USER_ID_RECEIVER + REQUEST;
 
@@ -66,6 +60,8 @@ public class BaseTestSetup {
         int id = response.jsonPath().getInt("[0].id");
         CONNECTION_ID = String.valueOf(id);
     }
+
+
     public static @NotNull Response createSkill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
@@ -182,6 +178,28 @@ public class BaseTestSetup {
         COOKIE_VALUE = responseBody.extract().cookies().get("JSESSIONID");
 
         return responseBody;
+    }
+
+    protected static @NotNull Response upgradeExpertiseProfile() {
+
+        createAndRegisterUser();
+        loginUser();
+
+        baseURI = BASE_URL + API_USERS_AUTH + USER_ID + "/expertise";
+
+        fakeValueGenerator("JobTitle?????", "JobTitles?????");
+
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .header("Accept", "*/*")
+                .cookie("JSESSIONID", COOKIE_VALUE)
+                .body(EXPERTISE_BODY)
+                .when()
+                .log()
+                .all()
+                .post(baseURI);
+
+        return response;
     }
     protected static @NotNull ValidatableResponse loginUserReceiver() {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;

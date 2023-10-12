@@ -9,6 +9,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 public class ConnectionControllerTest extends BaseTestSetup {
+
     @Test
     public void sendConnectionRequestTest() {
 
