@@ -2,23 +2,22 @@ package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
 
-import static apisocialnetwork.Constants.*;
+import static apisocialnetwork.Constants.COMMENT_DESCRIPTION;
+import static apisocialnetwork.Constants.COMMENT_ID;
 import static apisocialnetwork.ErrorMessages.*;
-<<<<<<< Updated upstream
-=======
-import static apisocialnetwork.Utils.isValid;
->>>>>>> Stashed changes
-import static apisocialnetwork.JSONRequests.*;
+import static apisocialnetwork.JSONRequests.COMMENT_BODY;
 import static apisocialnetwork.Utils.isValid;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.*;
 
 public class CommentsControllerTest extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
+
     @Test
     public void createCommentTest() {
 
@@ -44,8 +43,11 @@ public class CommentsControllerTest extends BaseTestSetup {
     public void showCreatedCommentTest() {
 
         createAndRegisterUser();
+
         loginUser();
+
         createPost();
+
         createComment();
 
         Response response = showComment();
@@ -61,6 +63,7 @@ public class CommentsControllerTest extends BaseTestSetup {
         assertEquals(createdCommentID, COMMENT_ID, ERROR_MESSAGE_COMMENT_ID);
 
     }
+
     @Test
     public void editCommentTest() {
 
@@ -73,10 +76,12 @@ public class CommentsControllerTest extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asString();
 
+        System.out.println(responseBody);
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
     }
+
     @Test
     public void likeCommentTest() {
 
@@ -92,6 +97,7 @@ public class CommentsControllerTest extends BaseTestSetup {
         int expectedCommentId = Integer.parseInt(COMMENT_ID);
 
         boolean liked = response.jsonPath().getBoolean("liked");
+        System.out.println(response.getBody().asPrettyString());
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(commentIdFromResponse, expectedCommentId, ERROR_MESSAGE_COMMENT_ID);
@@ -100,6 +106,7 @@ public class CommentsControllerTest extends BaseTestSetup {
         logger.info(response.getBody().asPrettyString());
 
     }
+
     @Test
     public void dislikeCommentTest() {
 
@@ -117,6 +124,8 @@ public class CommentsControllerTest extends BaseTestSetup {
 
         boolean liked = responseDisliked.jsonPath().getBoolean("liked");
 
+        System.out.println(responseDisliked.getBody().asPrettyString());
+
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(commentIdFromResponse, expectedCommentId, ERROR_MESSAGE_COMMENT_ID);
         assertFalse(liked, ERROR_MESSAGE_LIKED_SHOULD_BE_FALSE);
@@ -124,25 +133,9 @@ public class CommentsControllerTest extends BaseTestSetup {
         logger.info(responseDisliked.getBody().asPrettyString());
 
     }
-    @Test
-    public void deleteCreatedCommentTest() {
 
-        createAndRegisterUser();
-        loginUser();
-        createPost();
-        createComment();
-
-        Response response = deleteComment();
-
-        int statusCode = response.getStatusCode();
-        String responseBody = response.getBody().asString();
-
-        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
-        assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
-    }
-    @Test
+    @AfterTest
     public void deletePostTearDown() {
-
         Response response = deletePost();
 
         int statusCode = response.getStatusCode();

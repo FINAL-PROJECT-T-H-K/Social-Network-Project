@@ -118,4 +118,7 @@ public class PostPage extends BaseSocialPage {
         PostDescription += RandomStringUtils.randomAlphabetic(15);
         return PostDescription;
     }
+
+    public void clickOnLatestPosts() {
+    }
 }

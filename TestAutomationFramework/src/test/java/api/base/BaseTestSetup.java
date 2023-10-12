@@ -62,7 +62,7 @@ public class BaseTestSetup {
     }
 
 
-    public static @NotNull Response createSkill() {
+    public static  Response createSkill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
         Response response = RestAssured.given()
@@ -110,7 +110,7 @@ public class BaseTestSetup {
                 .when()
                 .get(baseURI);
     }
-    protected static @NotNull Response createAndRegisterUser() {
+    protected static  Response createAndRegisterUser() {
         baseURI = BASE_URL + REGISTER_ENDPOINT;
 
         FakeValuesService fakeValuesService = new FakeValuesService(
@@ -133,7 +133,7 @@ public class BaseTestSetup {
 
         return response;
     }
-    protected static @NotNull Response createAndRegisterUserReceiver() {
+    protected static  Response createAndRegisterUserReceiver() {
         baseURI = BASE_URL + REGISTER_ENDPOINT;
 
         FakeValuesService fakeValuesService = new FakeValuesService(
@@ -156,7 +156,7 @@ public class BaseTestSetup {
 
         return response;
     }
-    protected static @NotNull ValidatableResponse loginUser() {
+    protected static  ValidatableResponse loginUser() {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
         PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
@@ -180,7 +180,7 @@ public class BaseTestSetup {
         return responseBody;
     }
 
-    protected static @NotNull Response upgradeExpertiseProfile() {
+    protected static  Response upgradeExpertiseProfile() {
 
         createAndRegisterUser();
         loginUser();
@@ -201,7 +201,7 @@ public class BaseTestSetup {
 
         return response;
     }
-    protected static @NotNull ValidatableResponse loginUserReceiver() {
+    protected static  ValidatableResponse loginUserReceiver() {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
         PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
@@ -243,7 +243,7 @@ public class BaseTestSetup {
                 .when()
                 .get(baseURI);
     }
-    protected static @NotNull Response createPost() {
+    protected static  Response createPost() {
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
 
         Response response = given()
@@ -292,7 +292,7 @@ public class BaseTestSetup {
                 .when()
                 .delete(baseURI);
     }
-    protected static @NotNull Response createComment() {
+    protected static  Response createComment() {
         baseURI = BASE_URL + COMMENT_ENDPOINT;
 
         String commentBody = String.format(COMMENT_BODY,COMMENT_DESCRIPTION,POST_ID,USER_ID);
@@ -311,13 +311,14 @@ public class BaseTestSetup {
         return response;
     }
     protected static Response showComment() {
-        baseURI = SHOW_CREATED_COMMENTS;
-        Response response = RestAssured
+
+        baseURI = String.format(SHOW_CREATED_COMMENTS,COMMENT_ID);
+
+        return RestAssured
                 .given()
                 .cookies("JSESSIONID", COOKIE_VALUE)
                 .when()
                 .get(baseURI);
-        return response;
     }
     protected static Response sendRequest() {
         baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
@@ -352,15 +353,15 @@ public class BaseTestSetup {
 
     }
     protected static Response editComment() {
-        baseURI = BASE_URL + EDITED_COMMENT;
 
-        Response response = RestAssured
+        baseURI = String.format(BASE_URL +EDITED_COMMENT,COMMENT_ID);
+
+        return RestAssured
                 .given()
                 .cookies("JSESSIONID", COOKIE_VALUE)
                 .contentType(ContentType.JSON)
                 .when()
                 .put(baseURI);
-        return response;
     }
     protected static Response deleteComment() {
         baseURI = BASE_URL + DELETE_COMMENT;
@@ -374,14 +375,14 @@ public class BaseTestSetup {
         return response;
     }
     protected static Response likeComment() {
-        baseURI = BASE_URL + LIKED_COMMENT;
 
-        Response response = RestAssured
+        baseURI = String.format(BASE_URL + LIKED_COMMENT,COMMENT_ID);
+
+        return RestAssured
                 .given()
                 .cookies("JSESSIONID", COOKIE_VALUE)
                 .contentType(ContentType.JSON)
                 .when()
                 .post(baseURI);
-        return response;
     }
 }

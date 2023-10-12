@@ -20,14 +20,13 @@ public class Endpoints {
     public static final String EDIT_SKILL_ENDPOINT = "/api/skill/edit";
     public static final String DELETE_SKILL_ENDPOINT = "/api/skill/delete";
     public static final String SHOW_ALL_COMMENTS = "/api/comment";
-    public static final String SHOW_CREATED_COMMENTS = BASE_URL + "/api/comment/single?commentId=" + COMMENT_ID;
+    public static final String SHOW_CREATED_COMMENTS = BASE_URL + "/api/comment/single?commentId=" + "%s";
     public static final String DELETE_POSTS = "/api/post/auth/manager";
     public static final String SEND_CONNECTION_REQUEST_ENDPOINT = "/api/auth/request";
-
-    public static final String EDITED_COMMENT = "/api/comment/auth/editor?commentId=" + COMMENT_ID +
+    public static final String EDITED_COMMENT = "/api/comment/auth/editor?commentId=" + "%s"+
             "&content=" + EDIT_COMMENT +
             "&name=" + UNIQUE_NAME;
-    public static final String LIKED_COMMENT = "/api/comment/auth/likesUp?commentId=" + COMMENT_ID;
+    public static final String LIKED_COMMENT = "/api/comment/auth/likesUp?commentId=" + "%s";
     public static final String DELETE_COMMENT = "/api/comment/auth/manager";
     public static final String LIKE_POST = "/api/post/auth/likesUp?postId=" + POST_ID;
     public static final String EDIT_POST = "/api/post/auth/editor";

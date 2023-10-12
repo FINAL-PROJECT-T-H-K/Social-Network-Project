@@ -2,8 +2,10 @@ package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
+import static api.social.networ.api.tests.SkillsControllerTest.logger;
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.ShowMessages.*;
@@ -133,7 +135,20 @@ public class PostControllerTest extends BaseTestSetup {
 
         System.out.printf(SHOW_MESSAGE_POST_DELETED);
     }
+    @AfterTest
+    public void deletePostTearDown() {
+        Response response = deletePost();
+
+        int statusCode = response.getStatusCode();
+        String responseBody = response.getBody().asPrettyString();
+        logger.info(responseBody);
+
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
+        assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
+
+    }
 }
+
 
 
 
