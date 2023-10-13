@@ -20,6 +20,8 @@ public class Constants {
     public static String USERNAME_RECEIVER;
     public static String PASSWORD_RECEIVER;
     public static String USER_ID;
+    public static String PASSWORD_UI;
+    public static String USERNAME_UI;
     public static String USER_ID_RECEIVER;
     public static String POST_ID;
     public static String COMMENT_ID;

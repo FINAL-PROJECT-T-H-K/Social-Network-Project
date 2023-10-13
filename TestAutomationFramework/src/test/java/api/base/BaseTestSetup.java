@@ -1,5 +1,6 @@
 package api.base;
 
+import apisocialnetwork.Utils;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
 import com.google.gson.JsonObject;
@@ -11,14 +12,13 @@ import io.restassured.config.EncoderConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.BeforeSuite;
 
-import static apisocialnetwork.Constants.*;
-
 import java.util.Locale;
 
-import static apisocialnetwork.Constants.PASSWORD_RECEIVER;
+import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
 import static apisocialnetwork.Utils.fakeValueGenerator;
@@ -221,6 +221,30 @@ public class BaseTestSetup {
 
         return responseBody;
     }
+
+    public RequestSpecification getApplicationAuthenticationWithSpecificUser(String username, String password) {
+        return given()
+                .header("Content-Type", "application/x-www-form-urlencoded")
+                .queryParam("username", username)
+                .queryParam("password", password);
+    }
+
+    public void loginUserWithParams(String username, String password) {
+        baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
+
+        System.out.println("Using Username: " + username);
+        System.out.println("Using Password: " + password);
+
+        ValidatableResponse responseBody = getApplicationAuthenticationWithSpecificUser(username,password)
+                .when()
+                .post(baseURI)
+                .then()
+                .assertThat()
+                .statusCode(302);
+
+        String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
+        COOKIE_VALUE = CookieValue;
+    }
     protected static Response showAllPosts() {
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
@@ -229,6 +253,26 @@ public class BaseTestSetup {
                 .queryParam("unsorted", "false")
                 .when()
                 .get(baseURI);
+    }
+
+    public void registerUser(String username, String password) {
+
+        baseURI = BASE_URL + REGISTER_ENDPOINT;
+
+        String uniqueEmailReceiver = Utils.generateRandomEmail();
+
+        String uniqueUser = String.format(REGISTRATION_BODY, password, uniqueEmailReceiver, password, username);
+
+        Response response = RestAssured.given()
+                .contentType(APPLICATION_JSON)
+                .body(uniqueUser)
+                .when()
+                .post(baseURI);
+
+        String responseID = response.getBody().asString().split(" ")[6];
+        USER_ID = responseID;
+        USERNAME_UI = username;
+        PASSWORD_UI = password;
     }
     protected static Response showAllProfilePosts() {
         baseURI = GET_PROFILE_POSTS;
