@@ -3,10 +3,12 @@
 <suite name="Main Suite">
     <test name="Trello API Homework">
         <classes>
-            <class name="trello.api.exam.AuthenticationTest"/>
-            <class name="trello.api.exam.CreateBoardTest"/>
-            <class name="trello.api.exam.CreateListTest"/>
-            <class name="trello.api.exam.CreateCardTest"/>
+            <class name="api.social.network.api.tests.RegistrationTest"/>
+            <class name="api.social.network.api.tests.UserControllerTest"/>
+            <class name="api.social.network.api.tests.SkillsControllerTest"/>
+            <class name="api.social.network.api.tests.ConnectionControllerTest"/>
+            <class name="api.social.network.api.tests.PostControllerTest"/>
+            <class name="api.social.network.api.tests.CommentsControllerTest"/>
         </classes>
     </test>
 </suite>

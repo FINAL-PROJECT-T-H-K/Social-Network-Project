@@ -1,4 +1,4 @@
-package test.cases.socialNetwork;
+package test.cases.socialnetwork;
 
 import com.telerikacademy.testframework.CustomWebDriverManager;
 import com.telerikacademy.testframework.UserActions;
@@ -33,7 +33,6 @@ public class BaseTestSetup {
         commentPage = new CommentPage(driver);
 
     }
-
 
     @AfterClass
     public static void tearDown() {

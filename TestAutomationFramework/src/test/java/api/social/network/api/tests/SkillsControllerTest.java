@@ -1,4 +1,4 @@
-package api.social.networ.api.tests;
+package api.social.network.api.tests;
 
 import api.base.BaseTestSetup;
 import io.restassured.response.Response;
