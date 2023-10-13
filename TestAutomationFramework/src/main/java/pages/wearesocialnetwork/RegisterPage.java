@@ -60,7 +60,7 @@ public class RegisterPage extends BasePage {
         return format("pass%s", passwordGenerate.trim());
     }
 
-   public void assertSuccsesfullRegistration(){
+   public void assertSuccessfulRegistration(){
        actions.assertElementPresent("register.page.successful.register");
        actions.clickElement("register.page.successful.register");
 

@@ -24,7 +24,7 @@ public class LoginPage extends BaseSocialPage {
 
         actions.clickElement("login.submit.button");
 
-        actions.waitForElementVisible("header.member.menu.button");
+        //actions.waitForElementVisible("header.member.menu.button");
     }
 
     public void loginAdminUser(String userKey) {
@@ -52,6 +52,6 @@ public class LoginPage extends BaseSocialPage {
 
     public void assertAuthenticatedUser() {
         actions.assertElementPresent("header.member.menu.button");
-        actions.clickElement("header.member.menu.button");
+        //actions.clickElement("header.member.menu.button");
     }
 }

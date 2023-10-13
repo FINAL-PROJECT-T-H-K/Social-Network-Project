@@ -128,16 +128,16 @@ public class CommentsControllerTest extends BaseTestSetup {
 
     }
 
-    @AfterTest
-    public void deletePostTearDown() {
-        Response response = deletePost();
-
-        int statusCode = response.getStatusCode();
-        String responseBody = response.getBody().asPrettyString();
-        logger.info(responseBody);
-
-        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
-        assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
-
-    }
+//    @AfterTest
+//    public void deletePostTearDown() {
+//        Response response = deletePost();
+//
+//        int statusCode = response.getStatusCode();
+//        String responseBody = response.getBody().asPrettyString();
+//        logger.info(responseBody);
+//
+//        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
+//        assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
+//
+//    }
 }

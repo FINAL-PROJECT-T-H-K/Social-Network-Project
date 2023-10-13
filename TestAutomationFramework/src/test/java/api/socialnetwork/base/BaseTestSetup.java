@@ -1,7 +1,10 @@
 package api.socialnetwork.base;
+
 import apisocialnetwork.Utils;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.config.EncoderConfig;
@@ -10,7 +13,11 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeSuite;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Endpoints.*;
 import static apisocialnetwork.JSONRequests.*;
@@ -342,6 +349,7 @@ public class BaseTestSetup {
                 .when()
                 .delete(baseURI);
     }
+
 
     protected static Response createComment() {
         baseURI = BASE_URL + COMMENT_ENDPOINT;

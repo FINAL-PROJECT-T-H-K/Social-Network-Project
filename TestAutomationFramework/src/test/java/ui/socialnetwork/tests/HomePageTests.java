@@ -51,5 +51,7 @@ public class HomePageTests extends BaseTestSetup {
         //ASSERT
         homePage.validateAboutUsInformationDisplayed();
     }
+
+
 }
 

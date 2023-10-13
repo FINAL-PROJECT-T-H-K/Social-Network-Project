@@ -13,7 +13,7 @@ public class LogoutTests extends BaseTestSetup {
         logoutPage.logoutSuccessfully();
 
         //ASSERT
-        logoutPage.assertSuccsesfullLogout();
+        logoutPage.assertSuccessfulLogout();
         logoutPage.validateLoggedOut();
     }
 }

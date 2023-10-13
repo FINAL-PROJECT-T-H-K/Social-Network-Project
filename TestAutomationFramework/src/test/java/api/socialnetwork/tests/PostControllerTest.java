@@ -1,8 +1,15 @@
 package api.socialnetwork.tests;
 import api.socialnetwork.base.BaseTestSetup;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import io.restassured.response.Response;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
@@ -11,7 +18,6 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.*;
 
 public class PostControllerTest extends BaseTestSetup {
-
     Logger logger = Logger.getLogger("");
 
     @Test
@@ -31,14 +37,14 @@ public class PostControllerTest extends BaseTestSetup {
         logger.info(SHOW_MESSAGE_RESPONSE_BODY + response.getBody().asPrettyString());
         logger.info(SHOW_MESSAGE_POST_CREATED_AND_POST_ID);
 
+        deletePostTearDown();
+
     }
 
     @Test
     public void getAllPostsTest() {
 
         Response response = showAllPosts();
-
-        logger.info(response.asString());
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
@@ -64,6 +70,9 @@ public class PostControllerTest extends BaseTestSetup {
         assertTrue(responseBody.length() > 2, ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
         logger.info(SHOW_MESSAGE_GET_ALL_PROFILE_POSTS);
+
+        deletePostTearDown();
+
     }
 
 
@@ -83,11 +92,12 @@ public class PostControllerTest extends BaseTestSetup {
         assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
         logger.info(SHOW_MESSAGE_EDITED_POST);
+
+        deletePostTearDown();
     }
 
-
     @Test
-    public void dislikeProfilePostTest() {
+    public void likeProfilePostTest() {
 
         createAndRegisterUser();
         loginUser();
@@ -105,36 +115,42 @@ public class PostControllerTest extends BaseTestSetup {
         assertTrue(liked, ERROR_MESSAGE_LIKED_POST);
 
         logger.info(SHOW_MESSAGE_POST_LIKED);
+
+        deletePostTearDown();
+
     }
 
-    @Test
-    public void deletePostsTest() {
+//    @Test
+//    public void deletePostsTest() {
+//
+//        createAndRegisterUser();
+//        loginUser();
+//        createPost();
+//
+//        Response response = deletePost();
+//
+//        int statusCode = response.getStatusCode();
+//        String responseBody = response.getBody().asString();
+//
+//        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
+//        assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
+//
+//        logger.info(SHOW_MESSAGE_POST_DELETED);
+//    }
 
-        createAndRegisterUser();
-        loginUser();
-        createPost();
 
-        Response response = deletePost();
-
-        int statusCode = response.getStatusCode();
-        String responseBody = response.getBody().asString();
-
-        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
-        assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
-
-        logger.info(SHOW_MESSAGE_POST_DELETED);
-    }
-
-    @AfterTest
     public void deletePostTearDown() {
+
         Response response = deletePost();
 
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asPrettyString();
-        SkillsControllerTest.logger.info(responseBody);
+        logger.info(responseBody);
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
+
+        logger.info(SHOW_MESSAGE_POST_DELETED);
 
     }
 }

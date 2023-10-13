@@ -34,10 +34,10 @@ public class BaseTestSetup {
 
     }
 
-    @AfterClass
-    public static void tearDown() {
-        UserActions.quitDriver();
-    }
+//    @AfterClass
+//    public static void tearDown() {
+//        UserActions.quitDriver();
+//    }
 
     public static void loginSocial() {
         LoginPage loginPage = new LoginPage(actions.getDriver());

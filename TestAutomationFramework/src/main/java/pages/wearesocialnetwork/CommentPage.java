@@ -7,7 +7,6 @@ public class CommentPage extends BaseSocialPage {
 
     public String commentText = "My comment is ";
     public String editCommentText = "Edit comment to: ";
-
     public CommentPage(WebDriver driver) {
         super(driver, "social.network.homepage");
     }
@@ -57,7 +56,7 @@ public class CommentPage extends BaseSocialPage {
         actions.waitForElementVisible("show.comments.button");
     }
 
-    public void userDeleteCommentUnderThePost(){
+    public void userDeleteCommentUnderThePost() {
         actions.waitForElementVisible("delete.comment.button");
         actions.clickElement("delete.comment.button");
 
@@ -68,6 +67,7 @@ public class CommentPage extends BaseSocialPage {
         actions.clickElement("delete.comment.submit.button");
 
     }
+
     public void clickOnExploreThePost() {
         actions.waitForElementClickable("explore.button");
         actions.clickElement("explore.button");

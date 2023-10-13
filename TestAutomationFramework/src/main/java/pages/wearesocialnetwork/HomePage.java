@@ -13,6 +13,7 @@ public class HomePage extends BaseSocialPage {
 
         actions.waitForElementVisible("register.page.submitButton");
     }
+
     public void clickOnSignInButton() {
         actions.waitForElementVisible("home.page.sign.in.button");
         actions.clickElement("home.page.sign.in.button");
@@ -42,24 +43,36 @@ public class HomePage extends BaseSocialPage {
         actions.waitForElementVisible("about.us.information.message");
 
     }
-    public void validateAboutUsInformationDisplayed(){
+
+//    public void clickOnUserSearchBar() {
+//        actions.waitForElementVisible("//input[@id=searchParam2]");
+//        actions.clickElement("//input[@id=searchParam2]");
+//        actions.typeValueInField("");
+//
+//    }
+
+    public void validateAboutUsInformationDisplayed() {
         actions.assertElementPresent("about.us.information.message");
 
     }
-    public void validateLatestPostsDisplayed(){
+
+    public void validateLatestPostsDisplayed() {
         actions.assertElementPresent("latest.posts.message");
     }
-    public void validateHomeButtonDisplayed(){
+
+    public void validateHomeButtonDisplayed() {
         actions.assertElementPresent("nav.bar.brand");
     }
 
-    public void validateRegisterFormDisplayed(){
+    public void validateRegisterFormDisplayed() {
         actions.assertElementPresent("join.our.community");
         actions.assertElementPresent("register.page.usernameField");
     }
 
-    public void validateLoginFormDisplayed(){
+    public void validateLoginFormDisplayed() {
         actions.assertElementPresent("login.page.message");
         actions.assertElementPresent("login.page.username");
     }
+
+
 }

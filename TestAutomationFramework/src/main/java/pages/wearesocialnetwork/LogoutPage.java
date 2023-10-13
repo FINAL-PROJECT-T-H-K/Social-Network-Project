@@ -15,7 +15,7 @@ public class LogoutPage extends BaseSocialPage {
         actions.clickElement("logout.button");
 
     }
-    public void assertSuccsesfullLogout() {
+    public void assertSuccessfulLogout() {
         actions.waitForElementPresent("home.page.sign.in.button");;
     }
     public void validateLoggedOut() {
