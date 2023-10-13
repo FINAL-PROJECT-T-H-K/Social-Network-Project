@@ -19,10 +19,11 @@ import static org.testng.Assert.assertEquals;
 public class RegistrationTest extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
     Response response;
+
     @Test
     public void registerUserTest() {
 
-         response = createAndRegisterUser();
+        response = createAndRegisterUser();
 
         int statusCode = response.getStatusCode();
         String responseReturnMessage = response.asPrettyString();

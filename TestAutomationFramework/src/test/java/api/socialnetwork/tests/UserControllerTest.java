@@ -9,6 +9,7 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.util.logging.Logger;
 
 import static apisocialnetwork.Constants.*;
@@ -22,6 +23,7 @@ import static org.testng.Assert.assertEquals;
 public class UserControllerTest extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
     Response response;
+
     @Test
     public void loginAndFetchCookiesTest() {
 
@@ -43,7 +45,7 @@ public class UserControllerTest extends BaseTestSetup {
         createAndRegisterUser();
         loginUser();
 
-         response = upgradeExpertiseProfile();
+        response = upgradeExpertiseProfile();
 
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = (JsonObject) jsonParser.parse(response.asString());

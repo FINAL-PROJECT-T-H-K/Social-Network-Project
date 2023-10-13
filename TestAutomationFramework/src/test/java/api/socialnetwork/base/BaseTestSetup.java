@@ -28,6 +28,7 @@ import static io.restassured.RestAssured.given;
 
 public class BaseTestSetup {
     public static final String REQUEST = "/request/";
+
     /**
      * Provided configuration resolve REST Assured issue with a POST request without request body.
      * Missing configuration leads to response status code 415 (Unsupported Media Type)
@@ -60,7 +61,8 @@ public class BaseTestSetup {
         int id = response.jsonPath().getInt("[0].id");
         CONNECTION_ID = String.valueOf(id);
     }
-    public static  Response createSkill() {
+
+    public static Response createSkill() {
         baseURI = BASE_URL + CREATE_SKILL_ENDPOINT;
 
         Response response = RestAssured.given()
@@ -74,12 +76,13 @@ public class BaseTestSetup {
         SKILL_ID = response.getBody().jsonPath().getString("skillId");
         return response;
     }
+
     protected static Response editSkill() {
         baseURI = BASE_URL + EDIT_SKILL_ENDPOINT;
 
         return RestAssured
                 .given()
-                .queryParam("skill", EDITED_SKILLS+UNIQUE_NAME)
+                .queryParam("skill", EDITED_SKILLS + UNIQUE_NAME)
                 .queryParam("skillId", SKILL_ID)
                 .contentType(ContentType.JSON)
                 .body(EDITED_SKILLS_BODY)
@@ -88,6 +91,7 @@ public class BaseTestSetup {
                 .when()
                 .put(baseURI);
     }
+
     protected static Response deleteSkill() {
         baseURI = BASE_URL + DELETE_SKILL_ENDPOINT;
 
@@ -97,6 +101,7 @@ public class BaseTestSetup {
                 .when()
                 .put(baseURI);
     }
+
     protected static Response showAllSkills() {
         baseURI = BASE_URL + SKILL_ENDPOINT;
 
@@ -108,7 +113,8 @@ public class BaseTestSetup {
                 .when()
                 .get(baseURI);
     }
-    protected static  Response createAndRegisterUser() {
+
+    protected static Response createAndRegisterUser() {
         baseURI = BASE_URL + REGISTER_ENDPOINT;
 
         FakeValuesService fakeValuesService = new FakeValuesService(
@@ -131,7 +137,8 @@ public class BaseTestSetup {
 
         return response;
     }
-    protected static  Response createAndRegisterUserReceiver() {
+
+    protected static Response createAndRegisterUserReceiver() {
         baseURI = BASE_URL + REGISTER_ENDPOINT;
 
         FakeValuesService fakeValuesService = new FakeValuesService(
@@ -154,7 +161,8 @@ public class BaseTestSetup {
 
         return response;
     }
-    protected static  ValidatableResponse loginUser() {
+
+    protected static ValidatableResponse loginUser() {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
         PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
@@ -177,7 +185,8 @@ public class BaseTestSetup {
 
         return responseBody;
     }
-    protected static  Response upgradeExpertiseProfile() {
+
+    protected static Response upgradeExpertiseProfile() {
 
         createAndRegisterUser();
         loginUser();
@@ -198,7 +207,8 @@ public class BaseTestSetup {
 
         return response;
     }
-    protected static  ValidatableResponse loginUserReceiver() {
+
+    protected static ValidatableResponse loginUserReceiver() {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
         PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
@@ -235,7 +245,7 @@ public class BaseTestSetup {
         System.out.println("Using Username: " + username);
         System.out.println("Using Password: " + password);
 
-        ValidatableResponse responseBody = getApplicationAuthenticationWithSpecificUser(username,password)
+        ValidatableResponse responseBody = getApplicationAuthenticationWithSpecificUser(username, password)
                 .when()
                 .post(baseURI)
                 .then()
@@ -245,6 +255,7 @@ public class BaseTestSetup {
         String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
         COOKIE_VALUE = CookieValue;
     }
+
     protected static Response showAllPosts() {
         baseURI = BASE_URL + GET_ALL_POSTS_ENDPOINT;
 
@@ -274,6 +285,7 @@ public class BaseTestSetup {
         USERNAME_UI = username;
         PASSWORD_UI = password;
     }
+
     protected static Response showAllProfilePosts() {
         baseURI = GET_PROFILE_POSTS;
 
@@ -284,7 +296,8 @@ public class BaseTestSetup {
                 .when()
                 .get(baseURI);
     }
-    protected static  Response createPost() {
+
+    protected static Response createPost() {
         baseURI = BASE_URL + CREATE_POST_ENDPOINT;
 
         Response response = given()
@@ -301,6 +314,7 @@ public class BaseTestSetup {
 
         return response;
     }
+
     protected static Response editProfilePost() {
         baseURI = BASE_URL + EDIT_POST;
 
@@ -314,6 +328,7 @@ public class BaseTestSetup {
                 .when()
                 .put(baseURI);
     }
+
     protected static Response likePost() {
         baseURI = BASE_URL + LIKE_POST;
 
@@ -324,6 +339,7 @@ public class BaseTestSetup {
                 .when()
                 .post(baseURI);
     }
+
     protected static Response deletePost() {
         baseURI = BASE_URL + DELETE_POSTS;
 
@@ -333,15 +349,16 @@ public class BaseTestSetup {
                 .when()
                 .delete(baseURI);
     }
-    protected static  Response createComment() {
+
+    protected static Response createComment() {
         baseURI = BASE_URL + COMMENT_ENDPOINT;
 
-        String commentBody = String.format(COMMENT_BODY,COMMENT_DESCRIPTION,POST_ID,USER_ID);
+        String commentBody = String.format(COMMENT_BODY, COMMENT_DESCRIPTION, POST_ID, USER_ID);
 
         Response response = RestAssured
                 .given()
                 .contentType(ContentType.JSON)
-                .header("Accept","*/*")
+                .header("Accept", "*/*")
                 .cookies("JSESSIONID", COOKIE_VALUE)
                 .body(commentBody)
                 .when()
@@ -351,9 +368,10 @@ public class BaseTestSetup {
 
         return response;
     }
+
     protected static Response showComment() {
 
-        baseURI = String.format(SHOW_CREATED_COMMENTS,COMMENT_ID);
+        baseURI = String.format(SHOW_CREATED_COMMENTS, COMMENT_ID);
 
         return RestAssured
                 .given()
@@ -361,6 +379,7 @@ public class BaseTestSetup {
                 .when()
                 .get(baseURI);
     }
+
     protected static Response sendRequest() {
         baseURI = BASE_URL + SEND_CONNECTION_REQUEST_ENDPOINT;
 
@@ -377,6 +396,7 @@ public class BaseTestSetup {
                 .all()
                 .post(baseURI);
     }
+
     protected static Response approveRequest() {
         baseURI = BASE_URL + CONNECTION_REQUEST_ENDPOINT + USER_ID_RECEIVER + CONNECTION_REQUEST_APPROVE_ENDPOINT;
 
@@ -393,9 +413,10 @@ public class BaseTestSetup {
         return response;
 
     }
+
     protected static Response editComment() {
 
-        baseURI = String.format(BASE_URL +EDITED_COMMENT,COMMENT_ID);
+        baseURI = String.format(BASE_URL + EDITED_COMMENT, COMMENT_ID);
 
         return RestAssured
                 .given()
@@ -404,6 +425,7 @@ public class BaseTestSetup {
                 .when()
                 .put(baseURI);
     }
+
     protected static Response deleteComment() {
         baseURI = BASE_URL + DELETE_COMMENT;
         Response response = RestAssured
@@ -415,9 +437,10 @@ public class BaseTestSetup {
                 .delete(baseURI);
         return response;
     }
+
     protected static Response likeComment() {
 
-        baseURI = String.format(BASE_URL + LIKED_COMMENT,COMMENT_ID);
+        baseURI = String.format(BASE_URL + LIKED_COMMENT, COMMENT_ID);
 
         return RestAssured
                 .given()

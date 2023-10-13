@@ -5,6 +5,8 @@ import io.restassured.response.Response;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
+import java.util.logging.Logger;
+
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.ShowMessages.*;
@@ -13,11 +15,13 @@ import static org.testng.Assert.*;
 
 
 public class PostControllerTest extends BaseTestSetup {
+
+    Logger logger = Logger.getLogger("");
+
     @Test
     public void createPostSuccessfullyTest() {
 
         createAndRegisterUser();
-
         loginUser();
 
         Response response = createPost();
@@ -28,8 +32,8 @@ public class PostControllerTest extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(postContent, POST_DESCRIPTION, ERROR_MESSAGE_DOES_NOT_MATCH_BODY);
 
-        System.out.println(SHOW_MESSAGE_RESPONSE_BODY+response.getBody().asPrettyString());
-        System.out.println(SHOW_MESSAGE_POST_CREATED_AND_POST_ID);
+        logger.info(SHOW_MESSAGE_RESPONSE_BODY + response.getBody().asPrettyString());
+        logger.info(SHOW_MESSAGE_POST_CREATED_AND_POST_ID);
 
     }
 
@@ -38,21 +42,19 @@ public class PostControllerTest extends BaseTestSetup {
 
         Response response = showAllPosts();
 
-        System.out.println(response.asString());
+        logger.info(response.asString());
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
 
-        System.out.println(SHOW_MESSAGE_GET_ALL_POSTS);
+        logger.info(SHOW_MESSAGE_GET_ALL_POSTS);
     }
 
     @Test
     public void showAllProfilePosts_Successful() {
 
         createAndRegisterUser();
-
         loginUser();
-
         createPost();
 
         Response response = showAllProfilePosts();
@@ -60,12 +62,12 @@ public class PostControllerTest extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asPrettyString();
 
-        System.out.println(SHOW_MESSAGE_RESPONSE_BODY + responseBody);
+        logger.info(SHOW_MESSAGE_RESPONSE_BODY + responseBody);
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertTrue(responseBody.length() > 2, ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
-        System.out.println(SHOW_MESSAGE_GET_ALL_PROFILE_POSTS);
+        logger.info(SHOW_MESSAGE_GET_ALL_PROFILE_POSTS);
     }
 
 
@@ -73,11 +75,8 @@ public class PostControllerTest extends BaseTestSetup {
     public void editPostsTest() {
 
         createAndRegisterUser();
-
         loginUser();
-
         createPost();
-
 
         Response response = editProfilePost();
 
@@ -87,18 +86,15 @@ public class PostControllerTest extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
-        System.out.println(SHOW_MESSAGE_EDITED_POST);
+        logger.info(SHOW_MESSAGE_EDITED_POST);
     }
 
 
     @Test
     public void dislikeProfilePostTest() {
 
-
         createAndRegisterUser();
-
         loginUser();
-
         createPost();
 
         Response response = likePost();
@@ -112,16 +108,14 @@ public class PostControllerTest extends BaseTestSetup {
         assertEquals(postIdFromResponse, POST_ID, ERROR_MESSAGE_DOES_NOT_MATCH_BODY);
         assertTrue(liked, ERROR_MESSAGE_LIKED_POST);
 
-        System.out.printf(SHOW_MESSAGE_POST_LIKED);
+        logger.info(SHOW_MESSAGE_POST_LIKED);
     }
 
     @Test
     public void deletePostsTest() {
 
         createAndRegisterUser();
-
         loginUser();
-
         createPost();
 
         Response response = deletePost();
@@ -132,8 +126,9 @@ public class PostControllerTest extends BaseTestSetup {
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
-        System.out.printf(SHOW_MESSAGE_POST_DELETED);
+        logger.info(SHOW_MESSAGE_POST_DELETED);
     }
+
     @AfterTest
     public void deletePostTearDown() {
         Response response = deletePost();

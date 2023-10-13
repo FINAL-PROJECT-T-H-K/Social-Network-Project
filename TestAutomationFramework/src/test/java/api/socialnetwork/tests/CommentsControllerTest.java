@@ -43,11 +43,8 @@ public class CommentsControllerTest extends BaseTestSetup {
     public void showCreatedCommentTest() {
 
         createAndRegisterUser();
-
         loginUser();
-
         createPost();
-
         createComment();
 
         Response response = showComment();
@@ -76,7 +73,7 @@ public class CommentsControllerTest extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asString();
 
-        System.out.println(responseBody);
+        logger.info(responseBody);
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
@@ -97,7 +94,7 @@ public class CommentsControllerTest extends BaseTestSetup {
         int expectedCommentId = Integer.parseInt(COMMENT_ID);
 
         boolean liked = response.jsonPath().getBoolean("liked");
-        System.out.println(response.getBody().asPrettyString());
+        logger.info(response.getBody().asPrettyString());
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(commentIdFromResponse, expectedCommentId, ERROR_MESSAGE_COMMENT_ID);
@@ -124,7 +121,7 @@ public class CommentsControllerTest extends BaseTestSetup {
 
         boolean liked = responseDisliked.jsonPath().getBoolean("liked");
 
-        System.out.println(responseDisliked.getBody().asPrettyString());
+        logger.info(responseDisliked.getBody().asPrettyString());
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(commentIdFromResponse, expectedCommentId, ERROR_MESSAGE_COMMENT_ID);

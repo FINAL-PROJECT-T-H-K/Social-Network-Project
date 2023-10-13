@@ -3,6 +3,7 @@ package api.socialnetwork.tests;
 import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+
 import java.util.logging.Logger;
 
 import static apisocialnetwork.Constants.*;
@@ -17,7 +18,6 @@ import static org.testng.Assert.assertTrue;
 
 public class SkillsControllerTest extends BaseTestSetup {
     static Logger logger = Logger.getLogger("");
-
 
     @Test
     public static void createSkillTest() {
