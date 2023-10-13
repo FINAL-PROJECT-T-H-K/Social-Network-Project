@@ -1,9 +1,7 @@
 package com.telerikacademy.testframework;
 
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -46,6 +44,47 @@ public class UserActions {
         element.click();
     }
 
+    public void sendKeys(String key, String value, Object... arguments) {
+        String locator = getLocatorValueByKey(key, arguments);
+
+        LOGGER.info("Clicking on element " + key);
+        WebElement element = driver.findElement(By.xpath(locator));
+        element.sendKeys(value);
+    }
+
+    public void keyboardActionArrowDown(String key) {
+
+        String locator = getLocatorValueByKey(key);
+
+        LOGGER.info("Clicking on element " + key);
+        WebElement element = driver.findElement(By.xpath(locator));
+
+        element.sendKeys(Keys.ARROW_DOWN);
+
+    }
+
+    public void keyboardActionEnter(String key) {
+
+        String locator = getLocatorValueByKey(key);
+
+        LOGGER.info("Clicking on element " + key);
+        WebElement element = driver.findElement(By.xpath(locator));
+
+        element.sendKeys(Keys.ENTER);
+
+    }
+
+    public void keyboardActionSpace(String key) {
+
+        String locator = getLocatorValueByKey(key);
+
+        LOGGER.info("Clicking on element " + key);
+        WebElement element = driver.findElement(By.xpath(locator));
+
+        element.sendKeys(Keys.SPACE);
+
+    }
+
     public void typeValueInField(String value, String field, Object... fieldArguments) {
         String locator = getLocatorValueByKey(field, fieldArguments);
         WebElement element = driver.findElement(By.xpath(locator));
@@ -69,6 +108,48 @@ public class UserActions {
         dragAndDrop.perform();
     }
 
+//    public void dragAndDrop2(String cardName, String listName) {
+//        //Actions class method to drag and drop
+//        Actions builder = new Actions(driver);
+//
+//        WebElement from = driver.findElement(By.xpath("//span[text()='" + cardName + "']"));
+//
+//        WebElement to = driver.findElement(By.xpath("//textarea[@aria-label='" + listName + "']"));
+//        //Perform drag and drop
+//        builder.dragAndDrop(from, to).build().perform();
+//
+//    }
+
+    public void refreshPage() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.navigate().refresh();
+
+    }
+
+    public void scrollDownInPage(String key) {
+
+        WebElement Element = driver.findElement(By.xpath(key));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        // Scrolling down the page till the element is found
+        js.executeScript("arguments[0].scrollIntoView();", Element);
+
+    }
+
+    public void mouseHoverBy(String key) {
+
+        String xpath = (getUIMappingByKey(key));
+        WebElement ele = driver.findElement(By.xpath(xpath));
+
+//Creating object of an Actions class
+        Actions action = new Actions(driver);
+
+//Performing the mouse hover action on the target element.
+        action.moveToElement(ele).perform();
+        ele.click();
+
+
+    }
+
     //############# WAITS #########
     public void waitForElementVisible(String locatorKey, Object... arguments) {
         int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
@@ -80,6 +161,19 @@ public class UserActions {
         int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
 
         waitForElementToBeClickableUntilTimeout(locatorKey, defaultTimeout, arguments);
+    }
+
+    public boolean isElementPresent(String locatorKey, Object... arguments) {
+        Duration timeout = Duration.ofSeconds(5);
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+        String locator = getLocatorValueByKey(locatorKey, arguments);
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+            return true;
+        } catch (TimeoutException ex) {
+            return false;
+        }
     }
 
     //############# WAITS #########
@@ -96,6 +190,18 @@ public class UserActions {
         Assertions.assertNotNull(driver.findElement(By.xpath(getUIMappingByKey(locator))),
                 format("Element with %s doesn't present.", locator));
     }
+
+//    public void assertElementPresentWithArg(String locator,  Object... arguments) {
+//        String formattedLocator = getLocatorValueByKey(locator, arguments);
+//        Assertions.assertNotNull(format("Element with %s doesn't present.", formattedLocator),
+//                driver.findElement(By.xpath(getUIMappingByKey(formattedLocator))));
+//    }
+
+//    public void assertElementPresent(String locator ) {
+//
+//        Assert.assertNotNull(format("Element with %s doesn't present.", locator),
+//                driver.findElement(By.xpath(getUIMappingByKey(locator))));
+//    }
 
     public void assertElementAttribute(String locator, String attributeName, String attributeValue) {
         // TODO: Implement the method
