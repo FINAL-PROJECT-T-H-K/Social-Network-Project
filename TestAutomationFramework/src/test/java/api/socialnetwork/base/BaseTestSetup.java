@@ -27,13 +27,12 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class BaseTestSetup {
-    public static final String REQUEST = "/request/";
+
 
     /**
      * Provided configuration resolve REST Assured issue with a POST request without request body.
      * Missing configuration leads to response status code 415 (Unsupported Media Type)
      */
-//    Just Testing Jenkins
     @BeforeSuite
     public void setup() {
         EncoderConfig encoderConfig = RestAssured.config().getEncoderConfig().appendDefaultContentCharsetToContentTypeIfUndefined(false);

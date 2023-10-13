@@ -1,11 +1,12 @@
-2023-10-13 22:46:19,704 INFO  [main] Initializing WebDriver
-2023-10-13 22:46:24,897 INFO  [main] Initializing WebDriver
-2023-10-13 22:46:26,105 INFO  [main] Initializing WebDriver
-2023-10-13 22:46:26,106 INFO  [main] Initializing WebDriver
-2023-10-13 22:46:26,107 INFO  [main] Initializing WebDriver
-2023-10-13 22:46:26,108 INFO  [main] Initializing WebDriver
-2023-10-13 22:46:26,108 INFO  [main] Initializing WebDriver
-2023-10-13 22:46:26,108 INFO  [main] Initializing WebDriver
-2023-10-13 22:46:26,109 INFO  [main] Initializing WebDriver
-2023-10-13 22:46:28,038 INFO  [main] Clicking on element register.page.submitButton
-2023-10-13 22:46:29,113 INFO  [main] Clicking on element register.page.successful.register
+2023-10-14 02:42:53,646 INFO  [main] Initializing WebDriver
+2023-10-14 02:42:59,467 INFO  [main] Initializing WebDriver
+2023-10-14 02:43:01,101 INFO  [main] Initializing WebDriver
+2023-10-14 02:43:01,103 INFO  [main] Initializing WebDriver
+2023-10-14 02:43:01,106 INFO  [main] Initializing WebDriver
+2023-10-14 02:43:01,107 INFO  [main] Initializing WebDriver
+2023-10-14 02:43:01,108 INFO  [main] Initializing WebDriver
+2023-10-14 02:43:01,109 INFO  [main] Initializing WebDriver
+2023-10-14 02:43:01,109 INFO  [main] Initializing WebDriver
+2023-10-14 02:43:03,480 INFO  [main] Clicking on element register.page.submitButton
+2023-10-14 02:43:05,842 INFO  [main] Clicking on element login.submit.button
+2023-10-14 02:43:07,490 INFO  [main] Quitting WebDriver

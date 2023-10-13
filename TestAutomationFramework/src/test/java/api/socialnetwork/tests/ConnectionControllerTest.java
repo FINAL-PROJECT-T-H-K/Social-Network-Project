@@ -3,6 +3,8 @@ import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import java.util.logging.Logger;
+
+import static apisocialnetwork.ErrorMessages.ERROR_MESSAGE_INCORRECT_STATUS;
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
@@ -20,9 +22,9 @@ public class ConnectionControllerTest extends BaseTestSetup {
         Response response = sendRequest();
 
         int statusCode = response.getStatusCode();
-        logger.info(response.getBody().asPrettyString());
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(statusCode, SC_OK, format(ERROR_MESSAGE_INCORRECT_STATUS, SC_OK));
 
+        logger.info(response.getBody().asPrettyString());
     }
 
 
@@ -39,7 +41,8 @@ public class ConnectionControllerTest extends BaseTestSetup {
         Response response = approveRequest();
 
         int statusCode = response.getStatusCode();
-        assertEquals(statusCode, SC_OK, format("Incorrect status code. Expected %s.", SC_OK));
+        assertEquals(statusCode, SC_OK, format(ERROR_MESSAGE_INCORRECT_STATUS, SC_OK));
+
         logger.info(response.getBody().asPrettyString());
 
     }

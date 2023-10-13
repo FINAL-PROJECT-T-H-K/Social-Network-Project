@@ -15,9 +15,6 @@ public class RegisterTests extends BaseTestSetup {
 
     @Test
     public void successfulRegisterUserTest() {
-
-        registerPage.navigateToPage();
-
         username = registerPage.generateUser();
         password = registerPage.generatePassword();
 
@@ -31,9 +28,6 @@ public class RegisterTests extends BaseTestSetup {
 
     @Test
     public void successfulRegisterAdminUserTest() {
-
-        registerPage.navigateToPage();
-
         adminUsername += registerPage.generateUser();
         adminPassword += registerPage.generatePassword();
 

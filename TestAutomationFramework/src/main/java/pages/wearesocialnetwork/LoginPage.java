@@ -10,9 +10,7 @@ public class LoginPage extends BaseSocialPage {
         super(driver, "social.network.login.page");
     }
 
-    public void loginUser(String userKey) {
-        String username = getConfigPropertyByKey("social.network.users." + userKey + ".username");
-        String password = getConfigPropertyByKey("social.network.users." + userKey + ".password");
+    public void loginUser(String username,String password) {
 
         navigateToPage();
 

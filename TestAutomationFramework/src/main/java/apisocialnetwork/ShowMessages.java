@@ -19,5 +19,4 @@ public class ShowMessages {
     public static final String SHOW_MESSAGE_GET_ALL_PROFILE_POSTS = "Successfully fetched all Profile posts.";
     public static final String SHOW_MESSAGE_SHOW_ALL_SKILLS = "Successfully fetched all Skills.";
     public static final String SHOW_MESSAGE_EDITED_POST = "Post was successfully edited";
-
 }

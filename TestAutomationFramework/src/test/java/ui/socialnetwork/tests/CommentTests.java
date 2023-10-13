@@ -26,7 +26,7 @@ public class CommentTests extends BaseTestSetup {
     public void likeCommentUnderThePostTests() {
         loginSocial();
 
-        postPageSocial.clickOnTheRecentPost();
+        postPage.clickOnTheRecentPost();
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userLikeCommentUnderThePost();
 
@@ -38,7 +38,7 @@ public class CommentTests extends BaseTestSetup {
     public void dislikeCommentUnderThePostTests() {
         loginSocial();
 
-        postPageSocial.clickOnTheRecentPost();
+        postPage.clickOnTheRecentPost();
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userDislikeCommentUnderThePost();
 
@@ -50,7 +50,7 @@ public class CommentTests extends BaseTestSetup {
     public void editCommentUnderThePostTests() {
         loginSocial();
 
-        postPageSocial.clickOnTheRecentPost();
+        postPage.clickOnTheRecentPost();
         commentPage.clickOnShowCommentsUnderThePost();
 
         editedComment = commentPage.generateRandomEditComment();
@@ -64,7 +64,7 @@ public class CommentTests extends BaseTestSetup {
     public void deleteCommentUnderThePostTests() {
         loginSocial();
 
-        postPageSocial.clickOnTheRecentPost();
+        postPage.clickOnTheRecentPost();
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userDeleteCommentUnderThePost();
 

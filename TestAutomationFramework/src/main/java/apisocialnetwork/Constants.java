@@ -2,6 +2,7 @@ package apisocialnetwork;
 public class Constants {
 
     public static final String APPLICATION_JSON = "application/json";
+    public static final String REQUEST = "/request/";
     public static  String SKILL_DESCRIPTION ;
     public static  String RANDOM_EMAIL ;
     public static final String EDITED_SKILLS = "Edited My Skills to ";

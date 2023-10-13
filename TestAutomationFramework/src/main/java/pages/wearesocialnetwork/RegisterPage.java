@@ -11,12 +11,14 @@ import static java.lang.String.format;
 public class RegisterPage extends BasePage {
     Random random = new Random();
     int randomCount;
+
     public RegisterPage(WebDriver driver) {
         super(driver, "social.network.register.page");
     }
 
-    public void registerUser(String generateUser,String generatePassword) {
-
+    public void registerUser(String generateUser, String generatePassword) {
+        navigateToPage();
+        
         actions.waitForElementClickable("register.page.usernameField");
         actions.typeValueInField(generateUser, "register.page.usernameField");
 
@@ -47,12 +49,13 @@ public class RegisterPage extends BasePage {
 
         return String.format("User%s", username);
     }
+
     public String generatePassword() {
         randomCount = random.nextInt(5);
         String passwordGenerate = "";
 
         while (randomCount >= 0) {
-            String randomPass = RandomStringUtils.randomAlphanumeric(1,7);
+            String randomPass = RandomStringUtils.randomAlphanumeric(1, 7);
             passwordGenerate = passwordGenerate.concat(randomPass);
             randomCount--;
         }
@@ -60,9 +63,9 @@ public class RegisterPage extends BasePage {
         return format("pass%s", passwordGenerate.trim());
     }
 
-   public void assertSuccessfulRegistration(){
-       actions.assertElementPresent("register.page.successful.register");
-       actions.clickElement("register.page.successful.register");
+    public void assertSuccessfulRegistration() {
+        actions.assertElementPresent("register.page.successful.register");
+        actions.clickElement("register.page.successful.register");
 
-   }
+    }
 }

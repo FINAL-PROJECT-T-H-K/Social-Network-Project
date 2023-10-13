@@ -1,9 +1,13 @@
 package api.socialnetwork.tests;
+
 import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+
 import java.util.logging.Logger;
+
 import static apisocialnetwork.Constants.COMMENT_DESCRIPTION;
 import static apisocialnetwork.Constants.COMMENT_ID;
 import static apisocialnetwork.ErrorMessages.*;
@@ -27,13 +31,12 @@ public class CommentsControllerTest extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         String commentContent = response.getBody().jsonPath().getString("content");
 
-        logger.info("Status Code: " + statusCode);
-        logger.info("Response Body: " + response.getBody().asPrettyString());
-
         assertTrue(isValid(COMMENT_BODY), ERROR_MESSAGE_BODY_NOT_VALID_JSON);
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(commentContent, COMMENT_DESCRIPTION, ERROR_MESSAGE_RESPONSE_CONTENT);
 
+        logger.info("Status Code: " + statusCode);
+        logger.info("Response Body: " + response.getBody().asPrettyString());
     }
 
     @Test
@@ -49,12 +52,12 @@ public class CommentsControllerTest extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         String createdCommentID = response.getBody().jsonPath().getString("commentId");
 
-        logger.info("Response Status Code: " + response.getStatusCode());
-        logger.info("Response Body: " + response.getBody().asString());
-
         assertNotNull(response.getBody().asPrettyString());
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(createdCommentID, COMMENT_ID, ERROR_MESSAGE_COMMENT_ID);
+
+        logger.info("Response Status Code: " + response.getStatusCode());
+        logger.info("Response Body: " + response.getBody().asString());
 
     }
 
@@ -70,10 +73,27 @@ public class CommentsControllerTest extends BaseTestSetup {
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asString();
 
-        logger.info(responseBody);
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
+        logger.info(responseBody);
+    }
+
+    @Test
+    public void deleteCommentTest() {
+
+        createAndRegisterUser();
+        loginUser();
+        createPost();
+        createComment();
+        Response response = deleteComment();
+        int statusCode = response.getStatusCode();
+        String responseBody = response.getBody().asString();
+
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
+        assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
+
+        logger.info(responseBody);
     }
 
     @Test
@@ -91,7 +111,6 @@ public class CommentsControllerTest extends BaseTestSetup {
         int expectedCommentId = Integer.parseInt(COMMENT_ID);
 
         boolean liked = response.jsonPath().getBoolean("liked");
-        logger.info(response.getBody().asPrettyString());
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(commentIdFromResponse, expectedCommentId, ERROR_MESSAGE_COMMENT_ID);
@@ -117,8 +136,7 @@ public class CommentsControllerTest extends BaseTestSetup {
         int expectedCommentId = Integer.parseInt(COMMENT_ID);
 
         boolean liked = responseDisliked.jsonPath().getBoolean("liked");
-
-        logger.info(responseDisliked.getBody().asPrettyString());
+        ;
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(commentIdFromResponse, expectedCommentId, ERROR_MESSAGE_COMMENT_ID);
@@ -128,16 +146,16 @@ public class CommentsControllerTest extends BaseTestSetup {
 
     }
 
-//    @AfterTest
-//    public void deletePostTearDown() {
-//        Response response = deletePost();
-//
-//        int statusCode = response.getStatusCode();
-//        String responseBody = response.getBody().asPrettyString();
-//        logger.info(responseBody);
-//
-//        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
-//        assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
-//
-//    }
+    @AfterTest
+    public void deletePostTearDown() {
+        Response response = deletePost();
+
+        int statusCode = response.getStatusCode();
+        String responseBody = response.getBody().asPrettyString();
+
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
+        assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
+
+        logger.info(responseBody);
+    }
 }

@@ -120,24 +120,23 @@ public class PostControllerTest extends BaseTestSetup {
 
     }
 
-//    @Test
-//    public void deletePostsTest() {
-//
-//        createAndRegisterUser();
-//        loginUser();
-//        createPost();
-//
-//        Response response = deletePost();
-//
-//        int statusCode = response.getStatusCode();
-//        String responseBody = response.getBody().asString();
-//
-//        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
-//        assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
-//
-//        logger.info(SHOW_MESSAGE_POST_DELETED);
-//    }
+    @Test
+    public void deletePostsTest() {
 
+        createAndRegisterUser();
+        loginUser();
+        createPost();
+
+        Response response = deletePost();
+
+        int statusCode = response.getStatusCode();
+        String responseBody = response.getBody().asString();
+
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
+        assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
+
+        logger.info(SHOW_MESSAGE_POST_DELETED);
+    }
 
     public void deletePostTearDown() {
 

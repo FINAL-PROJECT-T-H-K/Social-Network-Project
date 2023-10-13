@@ -5,21 +5,26 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 public class LoginTests extends BaseTestSetup {
 
+    String username="";
+    String password="";
     @Test
     public void successfullyUserAuthentication() {
 
-        loginPageSocial.loginUser("user");
+        username+= registerPage.generateUser();
+        password+= registerPage.generatePassword();
+        registerPage.registerUser(username,password);
+        loginPage.loginUser(username, password);
 
         //ASSERT
-        loginPageSocial.assertAuthenticatedUser();
+        loginPage.assertAuthenticatedUser();
     }
 
     @Test
     public void successfullyAdminUserAuthentication() {
 
-        loginPageSocial.loginAdminUser("user");
+        loginPage.loginAdminUser("user");
 
         //ASSERT
-        loginPageSocial.assertAdminAuthenticatedUser();
+        loginPage.assertAdminAuthenticatedUser();
     }
 }

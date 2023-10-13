@@ -88,8 +88,6 @@ public class SkillsControllerTest extends BaseTestSetup {
         assertTrue(responseBody.isEmpty(), ERROR_MESSAGE_RESPONSE_BODY_EMPTY);
 
         logger.info(SHOW_MESSAGE_EDITED_SKILL);
-
     }
-
 }
 
