@@ -1,10 +1,19 @@
 package com.telerikacademy.testframework;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Properties;
 
 public class UserActionNonImplemented {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserActionNonImplemented.class);
+    private final Driver driver;
+
+    public UserActionNonImplemented(Driver driver) {
+        this.driver = driver;
+    }
 
     public void hoverElement(String key, Object... arguments) {
         // TODO: Implement the method
@@ -14,10 +23,16 @@ public class UserActionNonImplemented {
     }
 
     public void switchToIFrame(String iframe) {
-        // TODO: Implement the method
-        // 1. Get iframe locator value from properties by key
-        // 2. Add Log entry for the action to be performed
-        // 3. Switch to the frame
+
+        // Get iframe locator value from properties by key
+        Properties uiMappings = PropertiesManager.PropertiesManagerEnum.INSTANCE.getUiMappings();
+        String iframeLocator = uiMappings.getProperty(iframe);
+
+        // Add Log entry for the action to be performed
+       LOGGER.info("Switching to iframe with key: " + iframe);
+
+        // Switch to the frame
+        driver.switchTo().frame(iframeLocator);
     }
 
     public boolean isElementPresent(String locator, Object... arguments) {
