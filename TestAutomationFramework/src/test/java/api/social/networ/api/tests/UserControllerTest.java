@@ -1,32 +1,27 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
+import apisocialnetwork.Utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
-import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.AfterEach;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.github.javafaker.service.FakeValuesService;
-import com.github.javafaker.service.RandomService;
-
-import java.util.Locale;
 import java.util.logging.Logger;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.ShowMessages.ERROR_MESSAGE_COOKIE_VALUE_IS_NOT_PRESENT;
 import static apisocialnetwork.ShowMessages.SHOW_MESSAGE_LOGIN_USED_USERNAME_PASSWORD_COOKIE;
-import static io.restassured.RestAssured.given;
-import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_MOVED_TEMPORARILY;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 public class UserControllerTest extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
-
+    Response response;
     @Test
     public void loginAndFetchCookiesTest() {
 
@@ -48,7 +43,7 @@ public class UserControllerTest extends BaseTestSetup {
         createAndRegisterUser();
         loginUser();
 
-        Response response = upgradeExpertiseProfile();
+         response = upgradeExpertiseProfile();
 
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = (JsonObject) jsonParser.parse(response.asString());
@@ -61,6 +56,10 @@ public class UserControllerTest extends BaseTestSetup {
 
     }
 
+    @AfterEach
+    public void cleanUp() {
+        Utils.deleteUser("username", response.jsonPath().getString("username"));
+    }
 }
 
 

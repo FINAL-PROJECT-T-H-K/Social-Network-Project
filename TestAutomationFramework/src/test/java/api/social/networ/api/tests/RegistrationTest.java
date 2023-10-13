@@ -1,8 +1,10 @@
 package api.social.networ.api.tests;
 
 import api.base.BaseTestSetup;
+import apisocialnetwork.Utils;
 import io.restassured.response.Response;
 import org.codehaus.groovy.transform.SourceURIASTTransformation;
+import org.junit.jupiter.api.AfterEach;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
@@ -17,11 +19,11 @@ import static org.testng.Assert.assertEquals;
 
 public class RegistrationTest extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
-
+    Response response;
     @Test
     public void registerUserTest() {
 
-        Response response = createAndRegisterUser();
+         response = createAndRegisterUser();
 
         int statusCode = response.getStatusCode();
         String responseReturnMessage = response.asPrettyString();
@@ -34,6 +36,11 @@ public class RegistrationTest extends BaseTestSetup {
         assertEquals(responseUsername, USERNAME, ERROR_MESSAGE_USERNAME);
 
         logger.info(SHOW_MESSAGE_RESPONSE_BODY + responseReturnMessage);
+    }
+
+    @AfterEach
+    public void cleanUp() {
+        Utils.deleteUser("username", response.jsonPath().getString("username"));
     }
 
 }
