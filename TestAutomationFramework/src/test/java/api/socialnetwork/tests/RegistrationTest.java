@@ -1,13 +1,10 @@
 package api.socialnetwork.tests;
-
 import api.socialnetwork.base.BaseTestSetup;
 import apisocialnetwork.Utils;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.testng.annotations.Test;
-
 import java.util.logging.Logger;
-
 import static apisocialnetwork.Constants.USERNAME;
 import static apisocialnetwork.Constants.USER_ID;
 import static apisocialnetwork.ErrorMessages.*;

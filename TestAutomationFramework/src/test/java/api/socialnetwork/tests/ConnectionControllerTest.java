@@ -1,11 +1,8 @@
 package api.socialnetwork.tests;
-
 import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
-
 import java.util.logging.Logger;
-
 import static java.lang.String.format;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;

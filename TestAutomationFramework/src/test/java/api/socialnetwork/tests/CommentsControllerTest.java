@@ -1,12 +1,9 @@
 package api.socialnetwork.tests;
-
 import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-
 import java.util.logging.Logger;
-
 import static apisocialnetwork.Constants.COMMENT_DESCRIPTION;
 import static apisocialnetwork.Constants.COMMENT_ID;
 import static apisocialnetwork.ErrorMessages.*;

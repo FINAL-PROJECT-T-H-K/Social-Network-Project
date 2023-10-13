@@ -1,5 +1,4 @@
 package api.socialnetwork.tests;
-
 import api.socialnetwork.base.BaseTestSetup;
 import apisocialnetwork.Utils;
 import com.google.gson.JsonObject;
@@ -9,9 +8,7 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.logging.Logger;
-
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.ShowMessages.ERROR_MESSAGE_COOKIE_VALUE_IS_NOT_PRESENT;
