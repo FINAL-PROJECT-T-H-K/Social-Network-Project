@@ -5,8 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import static com.telerikacademy.testframework.Utils.getConfigPropertyByKey;
-
 public class CustomWebDriverManager {
 
     public enum CustomWebDriverManagerEnum {
@@ -28,7 +26,7 @@ public class CustomWebDriverManager {
         }
 
         private WebDriver setupBrowser() {
-            String browserType = getConfigPropertyByKey("config.browserType");
+            String browserType = Utils.getConfigPropertyByKey("config.browserType");
             WebDriver driver;
             switch (browserType) {
                 case "chrome":

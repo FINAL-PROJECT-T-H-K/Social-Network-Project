@@ -1,6 +1,7 @@
 package com.telerikacademy.testframework;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,6 +11,7 @@ public class UserActionNonImplemented {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserActionNonImplemented.class);
     private final Driver driver;
+    public static WebDriverWait wait;
 
     public UserActionNonImplemented(Driver driver) {
         this.driver = driver;
@@ -29,7 +31,7 @@ public class UserActionNonImplemented {
         String iframeLocator = uiMappings.getProperty(iframe);
 
         // Add Log entry for the action to be performed
-       LOGGER.info("Switching to iframe with key: " + iframe);
+        LOGGER.info("Switching to iframe with key: " + iframe);
 
         // Switch to the frame
         driver.switchTo().frame(iframeLocator);

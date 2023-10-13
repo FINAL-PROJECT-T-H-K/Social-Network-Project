@@ -3,12 +3,12 @@
 <suite name="Main Suite">
     <test name="WeAre Social Network API Tests">
         <classes>
-            <class name="api.social.network.api.tests.RegistrationTest"/>
-            <class name="api.social.network.api.tests.UserControllerTest"/>
-            <class name="api.social.network.api.tests.SkillsControllerTest"/>
-            <class name="api.social.network.api.tests.ConnectionControllerTest"/>
-            <class name="api.social.network.api.tests.PostControllerTest"/>
-            <class name="api.social.network.api.tests.CommentsControllerTest"/>
+            <class name="api.socialnetwork.tests.RegistrationTest"/>
+            <class name="api.socialnetwork.tests.UserControllerTest"/>
+            <class name="api.socialnetwork.tests.SkillsControllerTest"/>
+            <class name="api.socialnetwork.tests.ConnectionControllerTest"/>
+            <class name="api.socialnetwork.tests.PostControllerTest"/>
+            <class name="api.socialnetwork.tests.CommentsControllerTest"/>
         </classes>
     </test>
 </suite>

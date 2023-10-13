@@ -8,38 +8,33 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-import static com.telerikacademy.testframework.Utils.LOGGER;
-import static com.telerikacademy.testframework.Utils.getConfigPropertyByKey;
-import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
-import static com.telerikacademy.testframework.Utils.getWebDriver;
-import static com.telerikacademy.testframework.Utils.tearDownWebDriver;
 import static java.lang.String.format;
 
 public class UserActions {
 
     final WebDriver driver;
-    int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
+    int defaultTimeout = Integer.parseInt(Utils.getConfigPropertyByKey("config.defaultTimeoutSeconds"));
 
     public WebDriver getDriver() {
         return driver;
     }
 
     public UserActions() {
-        this.driver = getWebDriver();
+        this.driver = Utils.getWebDriver();
     }
 
     public static void loadBrowser(String baseUrlKey) {
-        getWebDriver().get(getConfigPropertyByKey(baseUrlKey));
+        Utils.getWebDriver().get(Utils.getConfigPropertyByKey(baseUrlKey));
     }
 
     public static void quitDriver() {
-        tearDownWebDriver();
+        Utils.tearDownWebDriver();
     }
 
     public void clickElement(String key, Object... arguments) {
         String locator = getLocatorValueByKey(key, arguments);
 
-        LOGGER.info("Clicking on element " + key);
+        Utils.LOGGER.info("Clicking on element " + key);
         WebElement element = driver.findElement(By.xpath(locator));
         element.click();
     }
@@ -47,7 +42,7 @@ public class UserActions {
     public void sendKeys(String key, String value, Object... arguments) {
         String locator = getLocatorValueByKey(key, arguments);
 
-        LOGGER.info("Clicking on element " + key);
+        Utils.LOGGER.info("Clicking on element " + key);
         WebElement element = driver.findElement(By.xpath(locator));
         element.sendKeys(value);
     }
@@ -56,7 +51,7 @@ public class UserActions {
 
         String locator = getLocatorValueByKey(key);
 
-        LOGGER.info("Clicking on element " + key);
+        Utils.LOGGER.info("Clicking on element " + key);
         WebElement element = driver.findElement(By.xpath(locator));
 
         element.sendKeys(Keys.ARROW_DOWN);
@@ -67,7 +62,7 @@ public class UserActions {
 
         String locator = getLocatorValueByKey(key);
 
-        LOGGER.info("Clicking on element " + key);
+        Utils.LOGGER.info("Clicking on element " + key);
         WebElement element = driver.findElement(By.xpath(locator));
 
         element.sendKeys(Keys.ENTER);
@@ -78,7 +73,7 @@ public class UserActions {
 
         String locator = getLocatorValueByKey(key);
 
-        LOGGER.info("Clicking on element " + key);
+        Utils.LOGGER.info("Clicking on element " + key);
         WebElement element = driver.findElement(By.xpath(locator));
 
         element.sendKeys(Keys.SPACE);
@@ -137,7 +132,7 @@ public class UserActions {
 
     public void mouseHoverBy(String key) {
 
-        String xpath = (getUIMappingByKey(key));
+        String xpath = (Utils.getUIMappingByKey(key));
         WebElement ele = driver.findElement(By.xpath(xpath));
 
 //Creating object of an Actions class
@@ -152,13 +147,13 @@ public class UserActions {
 
     //############# WAITS #########
     public void waitForElementVisible(String locatorKey, Object... arguments) {
-        int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
+        int defaultTimeout = Integer.parseInt(Utils.getConfigPropertyByKey("config.defaultTimeoutSeconds"));
 
         waitForElementVisibleUntilTimeout(locatorKey, defaultTimeout, arguments);
     }
 
     public void waitForElementClickable(String locatorKey, Object... arguments) {
-        int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
+        int defaultTimeout = Integer.parseInt(Utils.getConfigPropertyByKey("config.defaultTimeoutSeconds"));
 
         waitForElementToBeClickableUntilTimeout(locatorKey, defaultTimeout, arguments);
     }
@@ -180,14 +175,14 @@ public class UserActions {
     public void waitForElementPresent(String locator, Object... arguments) {
         // TODO: Implement the method
         // 1. Initialize Wait utility with default timeout from properties
-        int defaultTimeout = Integer.parseInt(getConfigPropertyByKey("config.defaultTimeoutSeconds"));
+        int defaultTimeout = Integer.parseInt(Utils.getConfigPropertyByKey("config.defaultTimeoutSeconds"));
         // 2. Use the method that checks for Element present
         // 3. Fail the test with meaningful error message in case the element is not present
         waitForElementPresenceUntilTimeout(locator, defaultTimeout, arguments);
     }
 
     public void assertElementPresent(String locator) {
-        Assertions.assertNotNull(driver.findElement(By.xpath(getUIMappingByKey(locator))),
+        Assertions.assertNotNull(driver.findElement(By.xpath(Utils.getUIMappingByKey(locator))),
                 format("Element with %s doesn't present.", locator));
     }
 
@@ -215,11 +210,11 @@ public class UserActions {
     }
 
     private String getLocatorValueByKey(String locator) {
-        return format(getUIMappingByKey(locator));
+        return format(Utils.getUIMappingByKey(locator));
     }
 
     private String getLocatorValueByKey(String locator, Object[] arguments) {
-        return format(getUIMappingByKey(locator), arguments);
+        return String.format(Utils.getUIMappingByKey(locator), arguments);
     }
 
     private void waitForElementVisibleUntilTimeout(String locator, int seconds, Object... locatorArguments) {
