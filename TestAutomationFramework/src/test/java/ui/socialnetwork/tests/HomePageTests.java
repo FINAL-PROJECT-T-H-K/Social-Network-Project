@@ -14,9 +14,13 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void userCanScrollDownInHomePageTest() {
+    public void userCanScrollDownInHomePageTest() throws InterruptedException {
 
-        homePage.validateUserCanScrollDownInHomePage();
+        homePage.scrollDownInHomePage();
+        homePage.verifyScrollDownInHomePage();
+
+        homePage.scrollUpInHomePage();
+        homePage.verifyScrollUpInHomePage();
 
     }
 
@@ -75,6 +79,14 @@ public class HomePageTests extends BaseTestSetup {
 
         homePage.validateSearchBarShowsUsers();
 
+    }
+
+    @Test
+    public void searchUserByKnownUsernameTest(){
+        homePage.navigateToPage();
+        homePage.searchUserByKnownUsername();
+
+        homePage.validateSearchUserByKnownUsername();
     }
 
     @Test

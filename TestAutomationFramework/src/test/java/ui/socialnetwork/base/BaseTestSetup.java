@@ -35,10 +35,10 @@ public class BaseTestSetup {
 
     }
 
-    @AfterClass
-    public static void tearDown() {
-        UserActions.quitDriver();
-    }
+//    @AfterClass
+//    public static void tearDown() {
+//        UserActions.quitDriver();
+//    }
 
     //@BeforeAll
     public static void loginUser() {

@@ -130,6 +130,15 @@ public class UserActions {
 
     }
 
+    public void scrollDown(int pixels) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, " + pixels + ");");
+    }
+    public void scrollUp(int pixels) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, " + pixels + ");");
+    }
+
     public void mouseHoverBy(String key) {
 
         String xpath = (Utils.getUIMappingByKey(key));

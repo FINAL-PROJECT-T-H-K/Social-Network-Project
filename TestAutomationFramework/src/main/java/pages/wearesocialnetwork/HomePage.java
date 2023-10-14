@@ -9,20 +9,32 @@ public class HomePage extends BaseSocialPage {
 
 
     public void validateHomePageAccessAndLinksVisibility() {
-        actions.waitForElementVisible("//h1[text()='The Easiest Way to Hack the Crisis']");
-        actions.waitForElementVisible("nav.bar.brand");
-        actions.waitForElementVisible("register.button");
-        actions.waitForElementVisible("home.page.sign.in.button");
-        actions.waitForElementVisible("home.page.home.button");
-        actions.waitForElementVisible("home.page.latest.post.button");
-        actions.waitForElementVisible("home.page.about.us");
-        actions.waitForElementVisible("//button [@class='form-control btn btn-primary']");
+        actions.assertElementPresent("//h1[text()='The Easiest Way to Hack the Crisis']");
+        actions.assertElementPresent("nav.bar.brand");
+        actions.assertElementPresent("register.button");
+        actions.assertElementPresent("home.page.sign.in.button");
+        actions.assertElementPresent("home.page.home.button");
+        actions.assertElementPresent("home.page.latest.post.button");
+        actions.assertElementPresent("home.page.about.us");
+        actions.assertElementPresent("//button [@class='form-control btn btn-primary']");
+
+        System.out.println("HomePage successfully accesses without authentication with visibility of header and page links.");
 
     }
 
-    public void validateUserCanScrollDownInHomePage() {
+    public void validateUserCanScrollDownInHomePageToSpecificElement() {
         actions.scrollDownInPage("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]");
         actions.waitForElementToBeClickableUntilTimeout("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]", 5);
+    }
+
+    public void scrollDownInHomePage() {
+        actions.scrollDown(3000);
+
+    }
+
+    public void scrollUpInHomePage() {
+        actions.scrollUp(-3000);
+
     }
 
     public void clickOnRegisterButton() {
@@ -76,8 +88,20 @@ public class HomePage extends BaseSocialPage {
 
     }
 
+    public void searchUserByKnownUsername() {
+        actions.waitForElementVisible("//input[@id='searchParam2']");
+        actions.typeValueInField("Public Profile", "//input[@id='searchParam2']");
+        actions.clickElement("//button [@class='form-control btn btn-primary']");
+    }
+
     public void validateUserSearchByProfession() {
         actions.assertElementPresent("//span[@class='position' and text()='Hairdresser']");
+
+    }
+
+    public void validateSearchUserByKnownUsername() {
+        actions.assertElementPresent("//h2[text()='Public Profile']");
+        System.out.println("User with username 'Public Profile' is visible.");
 
     }
 
@@ -88,6 +112,17 @@ public class HomePage extends BaseSocialPage {
     public void validateAboutUsInformationDisplayed() {
         actions.assertElementPresent("about.us.information.message");
 
+    }
+
+    public void verifyScrollDownInHomePage() {
+        actions.assertElementPresent("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]");
+        actions.waitForElementToBeClickableUntilTimeout("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]", 3);
+        System.out.println("Scroll down action is successful 'Register' button is visible and clickable");
+    }
+
+    public void verifyScrollUpInHomePage() {
+        actions.assertElementPresent("//h1[text()='The Easiest Way to Hack the Crisis']");
+        System.out.println("Scroll up action is successful 'The Easiest Way to Hack the Crisis' header is visible.");
     }
 
     public void validateLatestPostsDisplayed() {
