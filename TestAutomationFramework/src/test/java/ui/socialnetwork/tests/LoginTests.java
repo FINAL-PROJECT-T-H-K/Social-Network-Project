@@ -12,10 +12,7 @@ public class LoginTests extends BaseTestSetup {
     @Test
     public void successfullyUserAuthentication() {
 
-        username += registerPage.generateUser();
-        password += registerPage.generatePassword();
-        registerPage.registerUser(username, password);
-        loginPage.loginUser(username, password);
+        loginUser();
 
         //ASSERT
         loginPage.assertAuthenticatedUser();
@@ -24,10 +21,7 @@ public class LoginTests extends BaseTestSetup {
     @Test
     public void successfullyAdminUserAuthentication() {
 
-        adminUsername += registerPage.generateUser();
-        password += registerPage.generatePassword();
-        registerPage.registerUser(username, password);
-        loginPage.loginUser(username, password);
+      loginAdmin();
 
         //ASSERT
         loginPage.assertAdminAuthenticatedUser();
