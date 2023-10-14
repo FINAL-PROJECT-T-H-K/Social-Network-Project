@@ -21,7 +21,7 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.typeValueInField(lastName, "profile.last.name");
 
         actions.waitForElementVisible("profile.birthday");
-        actions.typeValueInField("profile.birthday.date", "profile.birthday");
+        actions.typeValueInField("03/05/1987", "profile.birthday");
 
         actions.waitForElementClickable("profile.update.personal.profile.button");
         actions.clickElement("profile.update.personal.profile.button");

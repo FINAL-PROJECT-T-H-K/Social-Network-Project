@@ -1,15 +1,15 @@
-2023-10-14 16:06:28,354 INFO  [main] Initializing WebDriver
-2023-10-14 16:06:35,103 INFO  [main] Initializing WebDriver
-2023-10-14 16:06:38,168 INFO  [main] Initializing WebDriver
-2023-10-14 16:06:38,169 INFO  [main] Initializing WebDriver
-2023-10-14 16:06:38,169 INFO  [main] Initializing WebDriver
-2023-10-14 16:06:38,170 INFO  [main] Initializing WebDriver
-2023-10-14 16:06:38,171 INFO  [main] Initializing WebDriver
-2023-10-14 16:06:38,173 INFO  [main] Initializing WebDriver
-2023-10-14 16:06:38,174 INFO  [main] Initializing WebDriver
-2023-10-14 16:06:40,430 INFO  [main] Clicking on element register.page.submitButton
-2023-10-14 16:06:46,827 INFO  [main] Clicking on element login.submit.button
-2023-10-14 16:06:51,770 INFO  [main] Clicking on element profile.personal.page.button
-2023-10-14 16:06:57,617 INFO  [main] Clicking on element profile.editProfile.page.button
-2023-10-14 16:07:00,808 INFO  [main] Clicking on element profile.update.personal.profile.button
-2023-10-14 16:07:00,950 INFO  [main] Quitting WebDriver
+2023-10-14 17:33:17,796 INFO  [main] Initializing WebDriver
+2023-10-14 17:33:24,166 INFO  [main] Initializing WebDriver
+2023-10-14 17:33:35,781 INFO  [main] Initializing WebDriver
+2023-10-14 17:33:35,781 INFO  [main] Initializing WebDriver
+2023-10-14 17:33:35,781 INFO  [main] Initializing WebDriver
+2023-10-14 17:33:35,782 INFO  [main] Initializing WebDriver
+2023-10-14 17:33:35,786 INFO  [main] Initializing WebDriver
+2023-10-14 17:33:35,787 INFO  [main] Initializing WebDriver
+2023-10-14 17:33:35,787 INFO  [main] Initializing WebDriver
+2023-10-14 17:33:38,004 INFO  [main] Clicking on element register.page.submitButton
+2023-10-14 17:33:40,949 INFO  [main] Clicking on element login.submit.button
+2023-10-14 17:33:42,587 INFO  [main] Clicking on element profile.personal.page.button
+2023-10-14 17:33:44,288 INFO  [main] Clicking on element profile.editProfile.page.button
+2023-10-14 17:33:46,752 INFO  [main] Clicking on element profile.update.personal.profile.button
+2023-10-14 17:33:55,943 INFO  [main] Quitting WebDriver

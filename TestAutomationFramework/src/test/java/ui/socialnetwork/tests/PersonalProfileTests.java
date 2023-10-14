@@ -3,7 +3,10 @@ package ui.socialnetwork.tests;
 import org.junit.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
+import java.util.logging.Logger;
+
 public class PersonalProfileTests extends BaseTestSetup {
+    Logger logger = Logger.getLogger("");
     String firstName="first";
     String lastName="last";
     String email;
@@ -19,6 +22,7 @@ public class PersonalProfileTests extends BaseTestSetup {
         firstName += personalProfilePage.generateFirstName();
         lastName += personalProfilePage.generateLastName();
         personalProfilePage.setFirstLastNamesAndBirthdate(firstName, lastName);
+
 
         //assert should be added
 
