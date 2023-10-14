@@ -7,80 +7,97 @@ public class PersonalProfilePage extends BaseSocialPage {
     String firstName;
     String lastName;
     String email;
+    String personalInfo;
 
     public PersonalProfilePage(WebDriver driver) {
         super(driver, "social.network.homepage");
     }
 
     public void setFirstLastNamesAndBirthdate(String firstName, String lastName) {
-
         actions.waitForElementVisible("profile.first.name");
         actions.typeValueInField(firstName, "profile.first.name");
-
         actions.waitForElementVisible("profile.last.name");
         actions.typeValueInField(lastName, "profile.last.name");
-
         actions.waitForElementVisible("profile.birthday");
         actions.typeValueInField("03/05/1987", "profile.birthday");
 
-        actions.waitForElementClickable("profile.update.personal.profile.button");
-        actions.clickElement("profile.update.personal.profile.button");
     }
-
     public void updateUserProfileWithEmailAddress(String email) {
-
+        actions.deleteEmailFied();
         actions.waitForElementVisible("profile.email.address");
         actions.typeValueInField(email, "profile.email.address");
+    }
 
-        actions.waitForElementClickable("profile.update.personal.profile.button");
-        actions.clickElement("profile.update.personal.profile.button");
+    public void updateUserProfileWithGender() {
+        actions.waitForElementVisible("profile.inputGender");
+        actions.clickElement("profile.inputGender");
     }
 
     public void enterPersonalProfile() {
         actions.waitForElementVisible("profile.personal.page.button");
         actions.clickElement("profile.personal.page.button");
-
         actions.waitForElementClickable("profile.editProfile.page.button");
         actions.clickElement("profile.editProfile.page.button");
 
     }
-
-    public String generateFirstName() {
-        firstName += RandomStringUtils.randomAlphabetic(8);
-        return firstName;
+    public void clickOnUpdateProfileButton() {
+        actions.waitForElementClickable("profile.update.personal.profile.button");
+        actions.clickElement("profile.update.personal.profile.button");
     }
-
-    public String generateLastName() {
-        lastName += RandomStringUtils.randomAlphabetic(8);
-        return lastName;
-    }
-
-    public String generateEmail() {
-        email += RandomStringUtils.randomAlphabetic(2);
-        return email;
-    }
-
-    public void assertProfilesInformationUpdated() {
-        //still don't have
-
+    public void backToProfileInfo() {
+        actions.waitForElementClickable("profile.back.to.profile");
+        actions.clickElement("profile.back.to.profile");
     }
 
     public void updateJobSection() {
         actions.waitForElementClickable("profile.job.tittle");
         actions.clickElement("profile.job.tittle");
-
-        actions.waitForElementClickable("profile.update.job.button");
-        actions.clickElement("profile.update.job.button");
+        actions.waitForElementClickable("profile.update.job.tittle.button");
+        actions.clickElement("profile.update.job.tittle.button");
 
     }
-
     public void updateSkillsSection() {
         actions.waitForElementClickable("profile.skills.tittle");
         actions.typeValueInField("Quality Assurance", "profile.skills.tittle");
-
-        actions.waitForElementClickable("profile.job.tittle");
-        actions.clickElement("profile.updateSkills.button");
-
+        actions.waitForElementClickable("profile.skills.tittle");
+        actions.typeValueInField("7", "profile.update.availability");
+        actions.waitForElementClickable("profile.update.skills.button");
+        actions.clickElement("profile.update.skills.button");
     }
+    public void updateUserPublicInfo(String info) {
+        actions.waitForElementClickable("profile.input.info");
+        actions.typeValueInField(info, "profile.input.info");
+    }
+    public void updateCity() {
+        actions.waitForElementClickable("profile.input.city");
+        actions.clickElement("profile.input.city");
+    }
+    public void assertAvailabilityUpdated() {
+        actions.assertElementPresent("profile.update.skills.checker");
+    }
+    public void assertJobTitleUpdated() {
+        actions.assertElementPresent("latest.activity.button");
+        actions.assertElementPresent("latest.activity.button");
+    }
+    public void assertProfilesInformationUpdated() {
 
+        //don't implement
+    }
+    public String generateFirstName() {
+        firstName += RandomStringUtils.randomAlphabetic(8);
+        return firstName;
+    }
+    public String generateLastName() {
+        lastName += RandomStringUtils.randomAlphabetic(8);
+        return lastName;
+    }
+    public String generateRandomEmail() {
+        String username = RandomStringUtils.randomAlphabetic(10);
+        return username + "@gmail.com";
+    }
+    public String generateInfo() {
+        personalInfo += RandomStringUtils.randomAlphabetic(25);
+        return personalInfo;
+    }
 }
+

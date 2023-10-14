@@ -7,36 +7,47 @@ import java.util.logging.Logger;
 
 public class PersonalProfileTests extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
-    String firstName="first";
-    String lastName="last";
-    String email;
+    String firstName = "first";
+    String lastName = "last";
+    String email = "";
+    String personalInfo;
 
 
-    //IN PROGRESS
     @Test
     public void UpdateUserProfileWithFirstLastNameAndBirthdayTest() {
 
         loginUser();
-
         personalProfilePage.enterPersonalProfile();
         firstName += personalProfilePage.generateFirstName();
         lastName += personalProfilePage.generateLastName();
         personalProfilePage.setFirstLastNamesAndBirthdate(firstName, lastName);
+        personalProfilePage.clickOnUpdateProfileButton();
+        personalProfilePage.backToProfileInfo();
 
-
-        //assert should be added
+        //assert
+        personalProfilePage.assertProfilesInformationUpdated();
 
     }
 
-    @Test//IN PROGRESS
-    public void updateUserProfileEmailAddressTest() {
+    @Test
+    public void updateUserProfileWithFirstLastNameBirthdayGenderEmailPublicInfoCityTest() {
 
         loginUser();
-
         personalProfilePage.enterPersonalProfile();
-        email = personalProfilePage.generateEmail();
+        firstName += personalProfilePage.generateFirstName();
+        lastName += personalProfilePage.generateLastName();
+        personalProfilePage.setFirstLastNamesAndBirthdate(firstName, lastName);
+        email = personalProfilePage.generateRandomEmail();
         personalProfilePage.updateUserProfileWithEmailAddress(email);
+        personalProfilePage.updateUserProfileWithGender();
+        personalInfo += personalProfilePage.generateInfo();
+        personalProfilePage.updateUserPublicInfo(personalInfo);
+        personalProfilePage.updateCity();
+        personalProfilePage.clickOnUpdateProfileButton();
+
+        personalProfilePage.assertProfilesInformationUpdated();
     }
+
 
     @Test
     public void updatePersonalJobTittleInformationTest() {
@@ -45,19 +56,18 @@ public class PersonalProfileTests extends BaseTestSetup {
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.updateJobSection();
 
-
-        //assert should be added
+        //assert
+        personalProfilePage.assertJobTitleUpdated();
     }
 
-    @Test//IN PROGRESS
+    @Test
     public void updatePersonalSkillsInformationTest() {
         loginUser();
 
-        //update button is the same with jobTitleTes and the update is not successful
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.updateSkillsSection();
 
-
-
+        //assert
+        personalProfilePage.assertAvailabilityUpdated();
     }
 }

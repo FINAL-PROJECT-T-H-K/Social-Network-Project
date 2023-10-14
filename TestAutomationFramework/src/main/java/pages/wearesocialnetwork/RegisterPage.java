@@ -36,11 +36,11 @@ public class RegisterPage extends BasePage {
 
     }
     public String generateUser() {
-        int randomCount = random.nextInt(5);
+        int randomCount = random.nextInt(4);
         StringBuilder username = new StringBuilder();
 
         while (randomCount > 0) {
-            String randomLetters = RandomStringUtils.randomAlphabetic(4);
+            String randomLetters = RandomStringUtils.randomAlphabetic(6);
             username.append(randomLetters);
             randomCount--;
         }

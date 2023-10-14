@@ -97,7 +97,5 @@ public class HomePageTests extends BaseTestSetup {
         homePage.validateUserSearchByProfession();
 
     }
-
-
 }
 

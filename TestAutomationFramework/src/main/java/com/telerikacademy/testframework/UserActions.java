@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
@@ -206,7 +207,14 @@ public class UserActions {
         }
     }
 
-
+        public void selectFromDropdown(String key, String start, int target) {
+            Select drop = new Select(driver.findElement(By.xpath(key)));
+            drop.selectByVisibleText(start);
+            drop.selectByIndex(target);
+        }
+    public void deleteEmailFied() {
+        driver.findElement(By.xpath(Utils.getUIMappingByKey("profile.email.address"))).clear();
+    }
 
 //    public void assertElementPresentWithArg(String locator,  Object... arguments) {
 //        String formattedLocator = getLocatorValueByKey(locator, arguments);
