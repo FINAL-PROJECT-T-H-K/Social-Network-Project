@@ -44,12 +44,41 @@ public class HomePage extends BaseSocialPage {
 
     }
 
-//    public void clickOnUserSearchBar() {
-//        actions.waitForElementVisible("//input[@id=searchParam2]");
-//        actions.clickElement("//input[@id=searchParam2]");
-//        actions.typeValueInField("");
-//
-//    }
+    public void clickOnUserSearchBar() {
+        actions.waitForElementVisible("//button [@class='form-control btn btn-primary']");
+        actions.clickElement("//button [@class='form-control btn btn-primary']");
+        actions.waitForElementVisible("//p[@class='proile-rating']");
+
+    }
+
+    public void searchUserByProfession (){
+        actions.waitForElementVisible("//input[@id='searchParam1']");
+        actions.typeValueInField("Hairdresser","//input[@id='searchParam1']");
+        clickOnUserSearchBar();
+
+    }
+
+    public void validateHomePageAccessAndLinksVisibility (){
+        actions.waitForElementVisible("//h1[text()='The Easiest Way to Hack the Crisis']");
+        actions.waitForElementVisible("nav.bar.brand");
+        actions.waitForElementVisible("register.button");
+        actions.waitForElementVisible("home.page.sign.in.button");
+        actions.waitForElementVisible("home.page.home.button");
+        actions.waitForElementVisible("home.page.latest.post.button");
+        actions.waitForElementVisible("home.page.about.us");
+        actions.waitForElementVisible("//button [@class='form-control btn btn-primary']");
+
+
+
+    }
+    public void validateUserSearchByProfession(){
+        actions.assertElementPresent("//span[@class='position' and text()='Hairdresser']");
+
+    }
+
+    public void validateSearchBarShowsUsers(){
+        actions.assertElementPresent("//p[@class='proile-rating']");
+    }
 
     public void validateAboutUsInformationDisplayed() {
         actions.assertElementPresent("about.us.information.message");
@@ -60,7 +89,7 @@ public class HomePage extends BaseSocialPage {
         actions.assertElementPresent("latest.posts.message");
     }
 
-    public void validateHomeButtonDisplayed() {
+    public void validateWEareButtonNavigatesHomePage() {
         actions.assertElementPresent("nav.bar.brand");
     }
 

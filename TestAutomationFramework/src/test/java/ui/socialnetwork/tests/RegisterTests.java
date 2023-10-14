@@ -36,8 +36,8 @@ public class RegisterTests extends BaseTestSetup {
         //ASSERT
         registerPage.assertSuccessfulRegistration();
 
-        System.out.println(adminUsername);
-        System.out.println(adminPassword);
+//        System.out.println(adminUsername);
+//        System.out.println(adminPassword);
     }
 }
 
