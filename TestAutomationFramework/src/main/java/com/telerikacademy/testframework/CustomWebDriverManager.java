@@ -25,7 +25,7 @@ public class CustomWebDriverManager {
             return driver;
         }
 
-        private WebDriver setupBrowser() {
+        private WebDriver setupBrowser() { //add also headless run without browser
             String browserType = Utils.getConfigPropertyByKey("config.browserType");
             WebDriver driver;
             switch (browserType) {

@@ -7,6 +7,24 @@ public class HomePage extends BaseSocialPage {
         super(driver, "social.network.homepage");
     }
 
+
+    public void validateHomePageAccessAndLinksVisibility() {
+        actions.waitForElementVisible("//h1[text()='The Easiest Way to Hack the Crisis']");
+        actions.waitForElementVisible("nav.bar.brand");
+        actions.waitForElementVisible("register.button");
+        actions.waitForElementVisible("home.page.sign.in.button");
+        actions.waitForElementVisible("home.page.home.button");
+        actions.waitForElementVisible("home.page.latest.post.button");
+        actions.waitForElementVisible("home.page.about.us");
+        actions.waitForElementVisible("//button [@class='form-control btn btn-primary']");
+
+    }
+
+    public void validateUserCanScrollDownInHomePage() {
+        actions.scrollDownInPage("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]");
+        actions.waitForElementToBeClickableUntilTimeout("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]", 5);
+    }
+
     public void clickOnRegisterButton() {
         actions.waitForElementVisible("register.button");
         actions.clickElement("register.button");
@@ -51,32 +69,19 @@ public class HomePage extends BaseSocialPage {
 
     }
 
-    public void searchUserByProfession (){
+    public void searchUserByProfession() {
         actions.waitForElementVisible("//input[@id='searchParam1']");
-        actions.typeValueInField("Hairdresser","//input[@id='searchParam1']");
+        actions.typeValueInField("Hairdresser", "//input[@id='searchParam1']");
         clickOnUserSearchBar();
 
     }
 
-    public void validateHomePageAccessAndLinksVisibility (){
-        actions.waitForElementVisible("//h1[text()='The Easiest Way to Hack the Crisis']");
-        actions.waitForElementVisible("nav.bar.brand");
-        actions.waitForElementVisible("register.button");
-        actions.waitForElementVisible("home.page.sign.in.button");
-        actions.waitForElementVisible("home.page.home.button");
-        actions.waitForElementVisible("home.page.latest.post.button");
-        actions.waitForElementVisible("home.page.about.us");
-        actions.waitForElementVisible("//button [@class='form-control btn btn-primary']");
-
-
-
-    }
-    public void validateUserSearchByProfession(){
+    public void validateUserSearchByProfession() {
         actions.assertElementPresent("//span[@class='position' and text()='Hairdresser']");
 
     }
 
-    public void validateSearchBarShowsUsers(){
+    public void validateSearchBarShowsUsers() {
         actions.assertElementPresent("//p[@class='proile-rating']");
     }
 

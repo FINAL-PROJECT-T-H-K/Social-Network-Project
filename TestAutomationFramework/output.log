@@ -1,14 +1,9 @@
-2023-10-14 03:55:06,062 INFO  [main] Initializing WebDriver
-2023-10-14 03:55:14,538 INFO  [main] Initializing WebDriver
-2023-10-14 03:55:16,457 INFO  [main] Initializing WebDriver
-2023-10-14 03:55:16,458 INFO  [main] Initializing WebDriver
-2023-10-14 03:55:16,458 INFO  [main] Initializing WebDriver
-2023-10-14 03:55:16,459 INFO  [main] Initializing WebDriver
-2023-10-14 03:55:16,459 INFO  [main] Initializing WebDriver
-2023-10-14 03:55:16,460 INFO  [main] Initializing WebDriver
-2023-10-14 03:55:16,460 INFO  [main] Initializing WebDriver
-2023-10-14 03:55:19,490 INFO  [main] Clicking on element register.page.submitButton
-2023-10-14 03:55:22,838 INFO  [main] Clicking on element login.submit.button
-2023-10-14 03:55:24,865 INFO  [main] Clicking on element home.page.latest.post.button
-2023-10-14 03:58:32,693 INFO  [main] Clicking on element post.like.button
-2023-10-14 03:58:41,940 INFO  [main] Quitting WebDriver
+2023-10-14 04:59:00,584 INFO  [main] Initializing WebDriver
+2023-10-14 04:59:06,167 INFO  [main] Initializing WebDriver
+2023-10-14 04:59:08,132 INFO  [main] Initializing WebDriver
+2023-10-14 04:59:08,133 INFO  [main] Initializing WebDriver
+2023-10-14 04:59:08,133 INFO  [main] Initializing WebDriver
+2023-10-14 04:59:08,133 INFO  [main] Initializing WebDriver
+2023-10-14 04:59:08,134 INFO  [main] Initializing WebDriver
+2023-10-14 04:59:08,134 INFO  [main] Initializing WebDriver
+2023-10-14 04:59:08,134 INFO  [main] Initializing WebDriver

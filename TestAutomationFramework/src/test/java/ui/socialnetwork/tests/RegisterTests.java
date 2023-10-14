@@ -35,13 +35,10 @@ public class RegisterTests extends BaseTestSetup {
         //ASSERT
         registerPage.assertSuccessfulRegistration();
 
-<<<<<<< Updated upstream
 //        System.out.println(adminUsername);
 //        System.out.println(adminPassword);
-=======
         System.out.println(adminUsername);
         System.out.println(password);
->>>>>>> Stashed changes
     }
 }
 

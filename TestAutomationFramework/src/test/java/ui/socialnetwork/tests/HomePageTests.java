@@ -6,12 +6,20 @@ import ui.socialnetwork.base.BaseTestSetup;
 public class HomePageTests extends BaseTestSetup {
 
     @Test
-    public void verifyHomePageAccessAndLinksVisibilityTest(){
+    public void verifyHomePageAccessAndLinksVisibilityTest() {
         homePage.navigateToPage();
 
         homePage.validateHomePageAccessAndLinksVisibility();
 
     }
+
+    @Test
+    public void verifyUserCanScrollDownInHomePageTest() {
+
+        homePage.validateUserCanScrollDownInHomePage();
+
+    }
+
 
     @Test
     public void registerFormDisplayWhenRegisterButtonClickedTest() {
@@ -62,15 +70,16 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void searchAllUsersWhenSearchButtonClickedTest (){
+    public void searchAllUsersWhenSearchButtonClickedTest() {
         homePage.navigateToPage();
         homePage.clickOnUserSearchBar();
 
         homePage.validateSearchBarShowsUsers();
 
     }
+
     @Test
-    public void showUsersByProfessionWhenSearchByProfessionTest(){
+    public void showUsersByProfessionWhenSearchByProfessionTest() {
         homePage.navigateToPage();
         homePage.searchUserByProfession();
 

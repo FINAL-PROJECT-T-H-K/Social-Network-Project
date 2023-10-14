@@ -228,7 +228,7 @@ public class UserActions {
         }
     }
 
-    private void waitForElementToBeClickableUntilTimeout(String locator, int seconds, Object... locatorArguments) {
+    public void waitForElementToBeClickableUntilTimeout(String locator, int seconds, Object... locatorArguments) {
         Duration timeout = Duration.ofSeconds(seconds);
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         String xpath = getLocatorValueByKey(locator, locatorArguments);
