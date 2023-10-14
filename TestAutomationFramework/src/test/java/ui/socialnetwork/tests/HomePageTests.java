@@ -6,7 +6,7 @@ import ui.socialnetwork.base.BaseTestSetup;
 public class HomePageTests extends BaseTestSetup {
 
     @Test
-    public void verifyHomePageAccessAndLinksVisibilityTest() {
+    public void homePageAccessAndLinksVisibilityTest() {
         homePage.navigateToPage();
 
         homePage.validateHomePageAccessAndLinksVisibility();
@@ -14,7 +14,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void verifyUserCanScrollDownInHomePageTest() {
+    public void userCanScrollDownInHomePageTest() {
 
         homePage.validateUserCanScrollDownInHomePage();
 
