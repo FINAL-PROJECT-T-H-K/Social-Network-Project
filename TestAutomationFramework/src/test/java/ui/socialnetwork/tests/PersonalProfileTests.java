@@ -4,8 +4,8 @@ import org.junit.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 public class PersonalProfileTests extends BaseTestSetup {
-    String firstName;
-    String lastName;
+    String firstName="first";
+    String lastName="last";
     String email;
 
 
@@ -16,8 +16,8 @@ public class PersonalProfileTests extends BaseTestSetup {
         loginUser();
 
         personalProfilePage.enterPersonalProfile();
-        firstName = personalProfilePage.generateFirstName();
-        lastName = personalProfilePage.generateLastName();
+        firstName += personalProfilePage.generateFirstName();
+        lastName += personalProfilePage.generateLastName();
         personalProfilePage.setFirstLastNamesAndBirthdate(firstName, lastName);
 
         //assert should be added

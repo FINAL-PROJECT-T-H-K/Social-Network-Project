@@ -1,6 +1,7 @@
 package ui.socialnetwork.tests;
 
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import ui.socialnetwork.base.BaseTestSetup;
 
 public class CommentTests extends BaseTestSetup {
@@ -13,9 +14,8 @@ public class CommentTests extends BaseTestSetup {
         loginUser();
 
         homePage.clickOnLatestPostsButton();
-        commentText = commentPage.generateRandomComment();
         commentPage.clickOnExploreThePost();
-
+        commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
 
         //assert
@@ -26,9 +26,11 @@ public class CommentTests extends BaseTestSetup {
     @Test
     public void likeCommentUnderThePostTests() {
         loginUser();
-
-        postPage.clickOnTheRecentPost();
         postPage.createPublicPost();
+        homePage.clickOnHomeButton();
+        postPage.clickOnTheRecentPost();
+        commentText = commentPage.generateRandomComment();
+        commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userLikeCommentUnderThePost();
 
@@ -39,8 +41,11 @@ public class CommentTests extends BaseTestSetup {
     @Test
     public void dislikeCommentUnderThePostTests() {
         loginUser();
-
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
+        commentText = commentPage.generateRandomComment();
+        commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userDislikeCommentUnderThePost();
 
@@ -51,25 +56,53 @@ public class CommentTests extends BaseTestSetup {
     @Test
     public void editCommentUnderThePostTests() {
         loginUser();
-
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
+        commentText = commentPage.generateRandomComment();
+        commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
 
         editedComment = commentPage.generateRandomEditComment();
         commentPage.userEditCommentUnderThePost(editedComment);
 
         //assert
+        commentPage.verifyCommentЕdited();
 
     }
 
-    @Test  //maybe in @AfterClassMethod
+    @Test  //maybe in @AfterEach
     public void deleteCommentUnderThePostTests() {
-     //   loginSocial();
-
+        loginUser();
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
+        commentText = commentPage.generateRandomComment();
+        commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
+
         commentPage.userDeleteCommentUnderThePost();
 
-      //assert
+        //assert
+        commentPage.verifyCommentDeleted();
     }
+
+    ///////////////////////////////ADMIN USER IN PROGRESS
+    @Test
+    public void adminUserCreateCommentUnderThePostTests() {
+        loginAdmin();
+
+        homePage.clickOnLatestPostsButton();
+        commentPage.clickOnExploreThePost();
+        commentText = commentPage.generateRandomComment();
+        commentPage.createCommentUnderPost(commentText);
+
+        //assert
+        commentPage.verifyCommentCreated();
+
+    }
+    //   @AfterEach
+    //   public void tearDownTest(){
+    //       commentPage.userDeleteCommentUnderThePost();
+    //   }
 }

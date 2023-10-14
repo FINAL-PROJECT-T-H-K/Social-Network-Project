@@ -18,10 +18,11 @@ public class RegisterTests extends BaseTestSetup {
         password = registerPage.generatePassword();
 
         registerPage.registerUser(username, password);
-        logger.info(username);
-        logger.info(password);
+
         //ASSERT
         registerPage.assertSuccessfulRegistration();
+        logger.info(username);
+        logger.info(password);
 
     }
 
@@ -34,11 +35,8 @@ public class RegisterTests extends BaseTestSetup {
 
         //ASSERT
         registerPage.assertSuccessfulRegistration();
-
-//        System.out.println(adminUsername);
-//        System.out.println(adminPassword);
-        System.out.println(adminUsername);
-        System.out.println(password);
+        logger.info(adminUsername);
+        logger.info(password);
     }
 }
 

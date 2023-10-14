@@ -60,8 +60,8 @@ public class CommentPage extends BaseSocialPage {
         actions.waitForElementVisible("delete.comment.button");
         actions.clickElement("delete.comment.button");
 
-        actions.waitForElementVisible("delete.comment.button.confirm");
-        actions.clickElement("delete.comment.button.confirm");
+        actions.waitForElementVisible("delete.comment.drop.down.button");
+        actions.clickElement("delete.comment.drop.down.button");
 
         actions.waitForElementVisible("delete.comment.submit.button");
         actions.clickElement("delete.comment.submit.button");
@@ -73,7 +73,8 @@ public class CommentPage extends BaseSocialPage {
         actions.clickElement("explore.button");
     }
 
-    public void clickOnShowCommentsUnderThePost() {
+    public void clickOnShowCommentsUnderThePost()  {
+        actions.waitForElementVisible("show.comments.button");
         actions.waitForElementClickable("show.comments.button");
         actions.clickElement("show.comments.button");
 
@@ -92,6 +93,14 @@ public class CommentPage extends BaseSocialPage {
     public void verifyCommentCreated() {
         actions.assertElementPresent("show.comments.button");
     }
+    public void verifyCommentЕdited() {
+        actions.assertElementPresent("show.comments.button");
+    }
+    public void verifyCommentDeleted() {
+        actions.assertElementPresent("//h1[@class='mb-3 bread' and contains(text(), 'Comment deleted successfully')]");
+    }
+
+
 
     public String generateRandomComment() {
         commentText += RandomStringUtils.randomAlphabetic(15);

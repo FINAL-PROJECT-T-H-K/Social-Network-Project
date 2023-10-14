@@ -35,10 +35,10 @@ public class BaseTestSetup {
 
     }
 
-//    @AfterClass
-//    public static void tearDown() {
-//        UserActions.quitDriver();
-//    }
+    @AfterClass
+    public static void tearDown() {
+        UserActions.quitDriver();
+    }
 
     //@BeforeAll
     public static void loginUser() {
@@ -49,7 +49,7 @@ public class BaseTestSetup {
     }
 
     public static void loginAdmin() {
-        String username = "admin" + registerPage.generateUser();
+        String username = "admin" +registerPage.generateUser();
         String password = registerPage.generatePassword();
         registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);
