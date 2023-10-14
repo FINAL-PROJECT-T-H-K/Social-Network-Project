@@ -1,16 +1,16 @@
-2023-10-15 00:58:51,236 INFO  [main] Initializing WebDriver
-2023-10-15 00:58:58,304 INFO  [main] Initializing WebDriver
-2023-10-15 00:59:01,383 INFO  [main] Initializing WebDriver
-2023-10-15 00:59:01,384 INFO  [main] Initializing WebDriver
-2023-10-15 00:59:01,384 INFO  [main] Initializing WebDriver
-2023-10-15 00:59:01,385 INFO  [main] Initializing WebDriver
-2023-10-15 00:59:01,386 INFO  [main] Initializing WebDriver
-2023-10-15 00:59:01,386 INFO  [main] Initializing WebDriver
-2023-10-15 00:59:01,386 INFO  [main] Initializing WebDriver
-2023-10-15 00:59:05,004 INFO  [main] Clicking on element register.page.submitButton
-2023-10-15 00:59:08,000 INFO  [main] Clicking on element login.submit.button
-2023-10-15 00:59:09,869 INFO  [main] Clicking on element profile.personal.page.button
-2023-10-15 00:59:11,671 INFO  [main] Clicking on element profile.editProfile.page.button
-2023-10-15 00:59:14,564 INFO  [main] Clicking on element profile.inputGender
-2023-10-15 00:59:15,073 INFO  [main] Clicking on element profile.input.city
-2023-10-15 00:59:15,224 INFO  [main] Clicking on element profile.update.personal.profile.button
+2023-10-15 01:31:17,781 INFO  [main] Initializing WebDriver
+2023-10-15 01:31:24,522 INFO  [main] Initializing WebDriver
+2023-10-15 01:31:26,313 INFO  [main] Initializing WebDriver
+2023-10-15 01:31:26,314 INFO  [main] Initializing WebDriver
+2023-10-15 01:31:26,314 INFO  [main] Initializing WebDriver
+2023-10-15 01:31:26,315 INFO  [main] Initializing WebDriver
+2023-10-15 01:31:26,316 INFO  [main] Initializing WebDriver
+2023-10-15 01:31:26,317 INFO  [main] Initializing WebDriver
+2023-10-15 01:31:26,318 INFO  [main] Initializing WebDriver
+2023-10-15 01:31:28,953 INFO  [main] Clicking on element register.page.submitButton
+2023-10-15 01:31:32,123 INFO  [main] Clicking on element login.submit.button
+2023-10-15 01:31:34,062 INFO  [main] Clicking on element home.page.latest.post.button
+2023-10-15 01:31:56,402 INFO  [main] Clicking on element explore.button
+2023-10-15 01:31:58,872 INFO  [main] Clicking on element edit.post.button
+2023-10-15 01:32:00,789 INFO  [main] Clicking on element choose.public.post
+2023-10-15 01:32:01,307 INFO  [main] Clicking on element edit.post.submit.button

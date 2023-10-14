@@ -31,6 +31,8 @@ public class CommentTests extends BaseTestSetup {
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
+
+        //add scroll up
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userLikeCommentUnderThePost();
 
@@ -46,6 +48,8 @@ public class CommentTests extends BaseTestSetup {
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
+
+        //add scroll up
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userDislikeCommentUnderThePost();
 
@@ -61,6 +65,8 @@ public class CommentTests extends BaseTestSetup {
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
+
+        //add scroll up
         commentPage.clickOnShowCommentsUnderThePost();
 
         editedComment = commentPage.generateRandomEditComment();
@@ -79,8 +85,9 @@ public class CommentTests extends BaseTestSetup {
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
-        commentPage.clickOnShowCommentsUnderThePost();
 
+        //add scroll up
+        commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userDeleteCommentUnderThePost();
 
         //assert
@@ -99,8 +106,27 @@ public class CommentTests extends BaseTestSetup {
 
         //assert
         commentPage.verifyCommentCreated();
+    }
+    @Test
+    public void adminUserEditCommentUnderThePostTests() {
+        loginAdmin();
+
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
+        postPage.clickOnTheRecentPost();
+        commentText = commentPage.generateRandomComment();
+        commentPage.createCommentUnderPost(commentText);
+
+        //add scroll up
+        commentPage.clickOnShowCommentsUnderThePost();
+        editedComment = commentPage.generateRandomEditComment();
+        commentPage.userEditCommentUnderThePost(editedComment);
+
+        //assert
+        commentPage.verifyCommentЕdited();
 
     }
+
     //   @AfterEach
     //   public void tearDownTest(){
     //       commentPage.userDeleteCommentUnderThePost();

@@ -96,7 +96,7 @@ public class PostTests extends BaseTestSetup {
 
     //ADMIN USER TESTS//
     @Test
-    public void createPublicPostsAdminUserTest() {
+    public void adminUserCreatePublicPostsTest() {
         loginAdmin();
         postPage.createPublicPost();
 
