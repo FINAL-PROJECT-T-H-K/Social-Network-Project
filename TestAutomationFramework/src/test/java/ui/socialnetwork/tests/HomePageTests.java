@@ -20,7 +20,6 @@ public class HomePageTests extends BaseTestSetup {
 
     }
 
-
     @Test
     public void registerFormDisplayWhenRegisterButtonClickedTest() {
 
