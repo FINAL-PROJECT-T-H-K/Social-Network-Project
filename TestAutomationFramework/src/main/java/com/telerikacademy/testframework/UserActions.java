@@ -195,6 +195,19 @@ public class UserActions {
                 format("Element with %s doesn't present.", locator));
     }
 
+    public void assertElementNotPresent(String locator) {
+        By xpathLocator = By.xpath(Utils.getUIMappingByKey(locator));
+
+        try {
+            WebElement element = driver.findElement(xpathLocator);
+            Assertions.fail(format("Element with %s is present, but it shouldn't be.", locator));
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            // Element is not present, which is the expected behavior
+        }
+    }
+
+
+
 //    public void assertElementPresentWithArg(String locator,  Object... arguments) {
 //        String formattedLocator = getLocatorValueByKey(locator, arguments);
 //        Assertions.assertNotNull(format("Element with %s doesn't present.", formattedLocator),

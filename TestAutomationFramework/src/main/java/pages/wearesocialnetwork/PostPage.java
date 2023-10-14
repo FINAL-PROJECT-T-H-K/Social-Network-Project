@@ -44,6 +44,12 @@ public class PostPage extends BaseSocialPage {
 
     }
 
+    public void anonymousUserPrivatePostVisibility(){
+        actions.waitForElementClickable("home.page.latest.post.button");
+        actions.clickElement("home.page.latest.post.button");
+
+    }
+
     public void likePublicPost() {
 
 
@@ -85,6 +91,11 @@ public class PostPage extends BaseSocialPage {
 
         actions.waitForElementVisible("all.post.of.user");
 
+
+    }
+
+    public void validateAnonymousUserCannotSeePrivatePosts(){
+        actions.assertElementNotPresent("//span[text()='Public post: false']");
 
     }
     public void validatePostIsEdited() {

@@ -30,6 +30,18 @@ public class PostTests extends BaseTestSetup {
 
     }
 
+    @Test
+    public void anonymousUserCannotSeePrivatePostsTest() {
+        loginUser();
+        postPage.createPrivatePost();
+        homePage.clickOnHomeButton();
+        logoutPage.logoutSuccessfully();
+        homePage.clickOnLatestPostsButton();
+
+        postPage.validateAnonymousUserCannotSeePrivatePosts();
+
+    }
+
     ///replace like.post.button locator
     @Test
     public void likePostWhenClickLikeButtonTest() {
@@ -82,9 +94,7 @@ public class PostTests extends BaseTestSetup {
 
     }
 
-
-
-    //////////////////////////ADMIN TESTS
+    //ADMIN USER TESTS//
     @Test
     public void createPublicPostsAdminUserTest() {
         loginAdmin();
@@ -127,8 +137,9 @@ public class PostTests extends BaseTestSetup {
         postPage.validateTopicIsUnliked();
 
     }
+
     @Test
-    public void adminUsereditPostTest() {
+    public void adminUserEditPostTest() {
         loginAdmin();
         homePage.clickOnLatestPostsButton();
         commentPage.clickOnExploreThePost();

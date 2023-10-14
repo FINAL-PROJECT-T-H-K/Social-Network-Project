@@ -31,7 +31,7 @@ public class HomePageTests extends BaseTestSetup {
         homePage.clickOnRegisterButton();
 
         //ASSERT
-        homePage.validateRegisterFormDisplayed();
+        homePage.validateRegisterFormFullyDisplayed();
     }
 
     @Test

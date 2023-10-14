@@ -1,4 +1,5 @@
 package api.socialnetwork.tests;
+
 import api.socialnetwork.base.BaseTestSetup;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -11,6 +12,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.ShowMessages.*;

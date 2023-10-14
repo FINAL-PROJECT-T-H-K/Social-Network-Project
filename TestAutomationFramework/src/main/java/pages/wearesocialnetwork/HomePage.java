@@ -133,9 +133,13 @@ public class HomePage extends BaseSocialPage {
         actions.assertElementPresent("nav.bar.brand");
     }
 
-    public void validateRegisterFormDisplayed() {
+    public void validateRegisterFormFullyDisplayed() {
         actions.assertElementPresent("join.our.community");
         actions.assertElementPresent("register.page.usernameField");
+        actions.assertElementPresent("//input[@name='email']");
+        actions.assertElementPresent("//input[@name='password']");
+        actions.assertElementPresent("//input[@name='confirmPassword']");
+        actions.assertElementPresent("//input[@value = 'Register']");
     }
 
     public void validateLoginFormDisplayed() {
