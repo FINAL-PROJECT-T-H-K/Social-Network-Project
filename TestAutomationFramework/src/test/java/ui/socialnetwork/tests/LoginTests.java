@@ -5,14 +5,16 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 public class LoginTests extends BaseTestSetup {
 
-    String username="";
-    String password="";
+    String username = "";
+    String password = "";
+    String adminUsername = "admin";
+
     @Test
     public void successfullyUserAuthentication() {
 
-        username+= registerPage.generateUser();
-        password+= registerPage.generatePassword();
-        registerPage.registerUser(username,password);
+        username += registerPage.generateUser();
+        password += registerPage.generatePassword();
+        registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);
 
         //ASSERT
@@ -22,7 +24,10 @@ public class LoginTests extends BaseTestSetup {
     @Test
     public void successfullyAdminUserAuthentication() {
 
-        loginPage.loginAdminUser("user");
+        adminUsername += registerPage.generateUser();
+        password += registerPage.generatePassword();
+        registerPage.registerUser(username, password);
+        loginPage.loginUser(username, password);
 
         //ASSERT
         loginPage.assertAdminAuthenticatedUser();

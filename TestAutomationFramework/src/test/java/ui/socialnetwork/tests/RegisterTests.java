@@ -11,7 +11,6 @@ public class RegisterTests extends BaseTestSetup {
     String username;
     String password;
     String adminUsername = "admin";
-    String adminPassword;
 
     @Test
     public void successfulRegisterUserTest() {
@@ -29,15 +28,20 @@ public class RegisterTests extends BaseTestSetup {
     @Test
     public void successfulRegisterAdminUserTest() {
         adminUsername += registerPage.generateUser();
-        adminPassword += registerPage.generatePassword();
+        password += registerPage.generatePassword();
 
-        registerPage.registerUser(adminUsername, adminPassword);
+        registerPage.registerUser(adminUsername, password);
 
         //ASSERT
         registerPage.assertSuccessfulRegistration();
 
+<<<<<<< Updated upstream
 //        System.out.println(adminUsername);
 //        System.out.println(adminPassword);
+=======
+        System.out.println(adminUsername);
+        System.out.println(password);
+>>>>>>> Stashed changes
     }
 }
 

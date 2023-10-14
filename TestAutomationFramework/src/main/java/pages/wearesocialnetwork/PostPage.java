@@ -10,13 +10,13 @@ public class PostPage extends BaseSocialPage {
         super(driver, "social.network.homepage");
     }
 
-    public void createPublicPost(String generateDescription) {
-
+    public void createPublicPost() {
+        PostDescription = generateDescription();
         actions.waitForElementClickable("new.post.button");
         actions.clickElement("new.post.button");
 
         actions.waitForElementClickable("post.description");
-        actions.typeValueInField(generateDescription, "post.description");
+        actions.typeValueInField(PostDescription, "post.description");
 
         actions.waitForElementClickable("choose.public.post");
         actions.clickElement("choose.public.post");
@@ -27,13 +27,13 @@ public class PostPage extends BaseSocialPage {
 
     }
 
-    public void createPrivatePost(String generateDescription) {
-
+    public void createPrivatePost() {
+        PostDescription = generateDescription();
         actions.waitForElementClickable("new.post.button");
         actions.clickElement("new.post.button");
 
         actions.waitForElementClickable("post.description");
-        actions.typeValueInField(generateDescription, "post.description");
+        actions.typeValueInField(PostDescription, "post.description");
 
         actions.waitForElementClickable("choose.private.post");
         actions.clickElement("choose.private.post");
@@ -66,10 +66,35 @@ public class PostPage extends BaseSocialPage {
         actions.waitForElementVisible("post.dislike.button");
         actions.clickElement("post.dislike.button");
     }
+
+    public void userEditPost() {
+        PostDescription += generateDescription();
+
+        actions.waitForElementVisible("edit.post.button");
+        actions.clickElement("edit.post.button");
+
+        actions.waitForElementVisible("choose.public.post");
+        actions.clickElement("choose.public.post");
+
+        actions.waitForElementClickable("edit.comment.field");
+        actions.typeValueInField(PostDescription, "edit.comment.field");
+
+        actions.waitForElementVisible("edit.post.submit.button");
+        actions.clickElement("edit.post.submit.button");
+
+        actions.waitForElementVisible("all.post.of.user");
+
+
+    }
+    public void validatePostIsEdited() {
+        actions.assertElementPresent("all.post.of.user");
+    }
+
     public void validateTopicIsUnliked() {
         actions.assertElementPresent("post.like.button");
     }
-    public void deletePost(){
+
+    public void deletePost() {
         actions.waitForElementVisible("delete.post.button");
         actions.clickElement("delete.post.button");
 
@@ -91,18 +116,20 @@ public class PostPage extends BaseSocialPage {
         actions.waitForElementClickable("recently.post");
         actions.clickElement("recently.post");
     }
-    public void validatePostIsDeleted(){
+
+    public void validatePostIsDeleted() {
         actions.assertElementPresent("delete.post.message");
 
 
     }
-    public void validatePostIsLiked(){
+
+    public void validatePostIsLiked() {
         actions.assertElementPresent("post.dislike.button");
     }
 
-    public void verifyPostCreated(String generateDescription) {
+    public void verifyPostCreated() {
         actions.waitForElementClickable("explore.button");
-        System.out.printf("Post with title %s is created", generateDescription);
+
     }
 
     public void verifyPublicPostCreated() {
@@ -119,6 +146,5 @@ public class PostPage extends BaseSocialPage {
         return PostDescription;
     }
 
-    public void clickOnLatestPosts() {
-    }
+
 }

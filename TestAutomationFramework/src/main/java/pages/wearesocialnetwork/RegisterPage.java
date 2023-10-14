@@ -18,7 +18,7 @@ public class RegisterPage extends BasePage {
 
     public void registerUser(String generateUser, String generatePassword) {
         navigateToPage();
-        
+
         actions.waitForElementClickable("register.page.usernameField");
         actions.typeValueInField(generateUser, "register.page.usernameField");
 
@@ -35,8 +35,6 @@ public class RegisterPage extends BasePage {
         actions.clickElement("register.page.submitButton");
 
     }
-
-    //NEED EDIT
     public String generateUser() {
         int randomCount = random.nextInt(5);
         StringBuilder username = new StringBuilder();
@@ -51,16 +49,16 @@ public class RegisterPage extends BasePage {
     }
 
     public String generatePassword() {
-        randomCount = random.nextInt(5);
+        randomCount = random.nextInt(7);
         String passwordGenerate = "";
 
         while (randomCount >= 0) {
-            String randomPass = RandomStringUtils.randomAlphanumeric(1, 7);
+            String randomPass = RandomStringUtils.randomAlphanumeric(2, 7);
             passwordGenerate = passwordGenerate.concat(randomPass);
             randomCount--;
         }
 
-        return format("pass%s", passwordGenerate.trim());
+        return format("password%s", passwordGenerate.trim());
     }
 
     public void assertSuccessfulRegistration() {

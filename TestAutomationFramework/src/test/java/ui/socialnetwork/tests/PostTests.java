@@ -5,42 +5,40 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 
 public class PostTests extends BaseTestSetup {
-    String postDescription;
+
 
     @Test
     public void createPublicPostTest() {
-        loginSocial(); ///maybe in beforeAll
+        loginUser(); ///maybe in beforeAll
 
-        postDescription = postPage.generateDescription();
-        postPage.createPublicPost(postDescription);
+        postPage.createPublicPost();
 
         //Assert
-        postPage.verifyPostCreated(postDescription);
+        postPage.verifyPostCreated();
         postPage.verifyPublicPostCreated();
 
     }
+
     @Test
     public void createPublicPostsAdminUserTest() {
-        loginPage.loginAdminUser("user");
+        loginAdmin();
 
-        postDescription = postPage.generateDescription();
-        postPage.createPublicPost(postDescription);
+        postPage.createPublicPost();
 
         //Assert
-        postPage.verifyPostCreated(postDescription);
+        postPage.verifyPostCreated();
         postPage.verifyPublicPostCreated();
 
     }
 
     @Test
     public void createPrivatePostTest() {
-        loginSocial();    ///maybe in beforeAll
+        loginUser();    ///maybe in beforeAll
 
-        postDescription = postPage.generateDescription();
-        postPage.createPrivatePost(postDescription);
+        postPage.createPrivatePost();
 
         //assert
-        postPage.verifyPostCreated(postDescription);
+        postPage.verifyPostCreated();
         postPage.verifyPrivatePostCreated();
 
 
@@ -48,7 +46,7 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     public void likePostWhenClickLikeButtonTest() {
-        loginSocial();
+        loginUser();
 
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
@@ -59,7 +57,7 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     public void unlikePostWhenClickLikeButtonTest() {
-        loginSocial();
+        loginUser();
         homePage.clickOnLatestPostsButton();
 
         postPage.unlikePublicPost();
@@ -69,16 +67,28 @@ public class PostTests extends BaseTestSetup {
 
 
     }
-    @Test ///IN PROGRESS
+
+    @Test
     public void editPostTest() {
+        loginUser();
+
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
+        postPage.clickOnTheRecentPost();
+        postPage.userEditPost();
+
+        //assert
+        postPage.validatePostIsEdited();
 
     }
 
 
     @Test    ///MAYBE SHOULD BE IN @AFTERCLASS
     public void deletePostTest() {
-        loginSocial();
+        loginUser();
 
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
         postPage.deletePost();
         //assert

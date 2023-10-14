@@ -4,12 +4,13 @@ import org.junit.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 public class CommentTests extends BaseTestSetup {
+
     public String commentText;
     public String editedComment;
 
     @Test
     public void createCommentUnderThePostTests() {
-        loginSocial();
+        loginUser();
 
         homePage.clickOnLatestPostsButton();
         commentText = commentPage.generateRandomComment();
@@ -24,9 +25,10 @@ public class CommentTests extends BaseTestSetup {
 
     @Test
     public void likeCommentUnderThePostTests() {
-        loginSocial();
+        loginUser();
 
         postPage.clickOnTheRecentPost();
+        postPage.createPublicPost();
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userLikeCommentUnderThePost();
 
@@ -36,7 +38,7 @@ public class CommentTests extends BaseTestSetup {
 
     @Test
     public void dislikeCommentUnderThePostTests() {
-        loginSocial();
+        loginUser();
 
         postPage.clickOnTheRecentPost();
         commentPage.clickOnShowCommentsUnderThePost();
@@ -48,7 +50,7 @@ public class CommentTests extends BaseTestSetup {
 
     @Test
     public void editCommentUnderThePostTests() {
-        loginSocial();
+        loginUser();
 
         postPage.clickOnTheRecentPost();
         commentPage.clickOnShowCommentsUnderThePost();
@@ -62,7 +64,7 @@ public class CommentTests extends BaseTestSetup {
 
     @Test  //maybe in @AfterClassMethod
     public void deleteCommentUnderThePostTests() {
-        loginSocial();
+     //   loginSocial();
 
         postPage.clickOnTheRecentPost();
         commentPage.clickOnShowCommentsUnderThePost();

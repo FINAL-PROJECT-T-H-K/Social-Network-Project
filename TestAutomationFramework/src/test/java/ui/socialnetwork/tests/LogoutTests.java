@@ -8,7 +8,7 @@ public class LogoutTests extends BaseTestSetup {
 
     @Test
     public void validate_userLoggedSuccessful(){
-        loginSocial();
+        loginUser();
 
         logoutPage.logoutSuccessfully();
 

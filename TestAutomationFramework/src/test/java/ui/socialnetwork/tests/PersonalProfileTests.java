@@ -8,10 +8,12 @@ public class PersonalProfileTests extends BaseTestSetup {
     String lastName;
     String email;
 
+
+    //IN PROGRESS
     @Test
     public void UpdateUserProfileWithFirstLastNameAndBirthdayTest() {
 
-        loginSocial();
+        loginUser();
 
         personalProfilePage.enterPersonalProfile();
         firstName = personalProfilePage.generateFirstName();
@@ -25,7 +27,7 @@ public class PersonalProfileTests extends BaseTestSetup {
     @Test//IN PROGRESS
     public void updateUserProfileEmailAddressTest() {
 
-        loginSocial();
+        loginUser();
 
         personalProfilePage.enterPersonalProfile();
         email = personalProfilePage.generateEmail();
@@ -34,7 +36,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @Test
     public void updatePersonalJobTittleInformationTest() {
-        loginSocial();
+        loginUser();
 
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.updateJobSection();
@@ -45,7 +47,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @Test//IN PROGRESS
     public void updatePersonalSkillsInformationTest() {
-        loginSocial();
+        loginUser();
 
         //update button is the same with jobTitleTes and the update is not successful
         personalProfilePage.enterPersonalProfile();
