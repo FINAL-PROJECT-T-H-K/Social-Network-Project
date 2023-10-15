@@ -30,7 +30,6 @@ public class BaseTestSetup {
         logoutPage = new LogoutPage(driver);
         personalProfilePage = new PersonalProfilePage(driver);
         commentPage = new CommentPage(driver);
-
        // loginUser();
     }
     @AfterEach

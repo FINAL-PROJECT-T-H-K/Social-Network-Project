@@ -22,27 +22,8 @@ public class LoginPage extends BaseSocialPage {
 
         actions.clickElement("login.submit.button");
 
-        //actions.waitForElementVisible("header.member.menu.button");
-    }
-
-    public void loginAdminUser(String userKey) {
-        String usernameAdmin = getConfigPropertyByKey("social.network.admin." + userKey + ".username");
-        String passwordAdmin = getConfigPropertyByKey("social.network.admin." + userKey + ".password");
-
-        navigateToPage();
-
-        actions.waitForElementVisible("login.page.username");
-        actions.typeValueInField(usernameAdmin, "login.page.username");
-
-        actions.waitForElementVisible("login.page.password");
-        actions.typeValueInField(passwordAdmin, "login.page.password");
-
-        actions.clickElement("login.submit.button");
-
         actions.waitForElementVisible("header.member.menu.button");
     }
-
-
     public void assertAdminAuthenticatedUser() {
         actions.assertElementPresent("header.admin.member.button");
     }
