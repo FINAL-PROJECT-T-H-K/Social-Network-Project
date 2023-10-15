@@ -1,15 +1,15 @@
-2023-10-15 19:04:34,791 INFO  [main] Initializing WebDriver
-2023-10-15 19:04:43,463 INFO  [main] Initializing WebDriver
-2023-10-15 19:04:45,190 INFO  [main] Initializing WebDriver
-2023-10-15 19:04:45,191 INFO  [main] Initializing WebDriver
-2023-10-15 19:04:45,191 INFO  [main] Initializing WebDriver
-2023-10-15 19:04:45,196 INFO  [main] Initializing WebDriver
-2023-10-15 19:04:45,197 INFO  [main] Initializing WebDriver
-2023-10-15 19:04:45,197 INFO  [main] Initializing WebDriver
-2023-10-15 19:04:45,199 INFO  [main] Initializing WebDriver
-2023-10-15 19:04:47,830 INFO  [main] Clicking on element register.page.submitButton
-2023-10-15 19:04:50,464 INFO  [main] Clicking on element login.submit.button
-2023-10-15 19:04:52,383 INFO  [main] Clicking on element admin.zone.button
-2023-10-15 19:04:53,630 INFO  [main] Clicking on element admin.zone.button
-2023-10-15 19:04:54,279 INFO  [main] Clicking on element admin.view.all.users
-2023-10-15 19:04:56,271 INFO  [main] Quitting WebDriver
+2023-10-15 19:13:52,661 INFO  [main] Initializing WebDriver
+2023-10-15 19:14:00,287 INFO  [main] Initializing WebDriver
+2023-10-15 19:14:01,806 INFO  [main] Initializing WebDriver
+2023-10-15 19:14:01,807 INFO  [main] Initializing WebDriver
+2023-10-15 19:14:01,809 INFO  [main] Initializing WebDriver
+2023-10-15 19:14:01,810 INFO  [main] Initializing WebDriver
+2023-10-15 19:14:01,810 INFO  [main] Initializing WebDriver
+2023-10-15 19:14:01,811 INFO  [main] Initializing WebDriver
+2023-10-15 19:14:01,811 INFO  [main] Initializing WebDriver
+2023-10-15 19:14:04,334 INFO  [main] Clicking on element register.page.submitButton
+2023-10-15 19:14:06,788 INFO  [main] Clicking on element login.submit.button
+2023-10-15 19:14:08,605 INFO  [main] Clicking on element home.page.latest.post.button
+2023-10-15 19:14:16,519 INFO  [main] Clicking on element explore.button
+2023-10-15 19:14:19,574 INFO  [main] Clicking on element create.comments.button
+2023-10-15 19:14:23,260 INFO  [main] Quitting WebDriver

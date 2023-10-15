@@ -1,6 +1,5 @@
 package ui.socialnetwork.tests;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
@@ -14,12 +13,24 @@ public class AdminUserTests extends BaseTestSetup {
         loginAdmin();
     }
     @Test
+    public void adminUserAuthenticationTest() {
+        //ASSERT
+        loginPage.assertAdminAuthenticatedUser();
+    }
+    @Test
+    public void adminUserLoggedOutTest(){
+        logoutPage.logoutSuccessfully();
+
+        //ASSERT
+        logoutPage.assertSuccessfulLogout();
+        logoutPage.validateLoggedOut();
+    }
+    @Test
     public void adminUserViewAllUsersTest() {
         homePage.clickOnGoToAdminZoneButton();
         homePage.clickOnViewAllUsersButton();
-
+        //assert
         homePage.verifyAdminViewAllUsers();
-
     }
 
     @Test
@@ -30,6 +41,7 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.verifyPublicPostCreated();
 
     }
+
     @Test
     public void adminUserCreatePrivatePostsTest() {
         postPage.createPrivatePost();
@@ -38,6 +50,7 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.verifyPrivatePostCreated();
 
     }
+
     @Test
     public void adminUserLikePostWhenClickLikeButtonTest() {
         homePage.clickOnLatestPostsButton();
@@ -45,6 +58,7 @@ public class AdminUserTests extends BaseTestSetup {
         //assert
         postPage.validatePostIsLiked();
     }
+
     @Test
     public void adminUserDislikePostWhenClickLikeButtonTest() {
         homePage.clickOnLatestPostsButton();
@@ -53,6 +67,7 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.validateTopicIsUnliked();
 
     }
+
     @Test
     public void adminUserEditPostTest() {
         homePage.clickOnLatestPostsButton();
@@ -61,7 +76,8 @@ public class AdminUserTests extends BaseTestSetup {
         //assert
         postPage.validatePostIsEdited();
     }
-/////////////////////////////////////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////////////////////////////////////
     @Test
     public void adminUserCreateCommentUnderThePostTests() {
         homePage.clickOnLatestPostsButton();
@@ -70,6 +86,7 @@ public class AdminUserTests extends BaseTestSetup {
         commentPage.createCommentUnderPost(commentText);
         commentPage.verifyCommentCreated();
     }
+
     @Test
     public void likeCommentUnderThePostTests() {
         postPage.createPublicPost();
@@ -82,6 +99,7 @@ public class AdminUserTests extends BaseTestSetup {
         //assert
         commentPage.validateTopicIsLiked();
     }
+
     @Test
     public void dislikeCommentUnderThePostTests() {
         loginUser();
@@ -95,6 +113,7 @@ public class AdminUserTests extends BaseTestSetup {
         //assert
         commentPage.validateTopicIsUnliked();
     }
+
     @Test
     public void adminUserEditCommentUnderThePostTests() {
         postPage.createPublicPost();
@@ -108,6 +127,7 @@ public class AdminUserTests extends BaseTestSetup {
         //assert
         commentPage.verifyCommentЕdited();
     }
+
     @Test
     public void deleteCommentUnderThePostTests() {
         postPage.createPublicPost();
