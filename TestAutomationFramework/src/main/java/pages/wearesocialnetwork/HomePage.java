@@ -95,7 +95,7 @@ public class HomePage extends BaseSocialPage {
     }
 
     public void clickOnPersonalProfile() {
-        actions.waitForElementClickable("profile.editProfile.page.button");
+        actions.waitForElementClickable("profile.personal.page.button");
         actions.clickElement("profile.personal.page.button");
 
     }

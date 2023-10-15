@@ -111,7 +111,7 @@ public class PersonalProfileTests extends BaseTestSetup {
     public void approveAlreadySentConnectionRequestTest(){
 
         sendingConnectionRequestToAnotherUserTest();
-
+        logoutPage.logoutSuccessfully();
         loginPage.loginUser(USERNAME_RECEIVER, PASSWORD_RECEIVER);
         homePage.clickOnPersonalProfile();
         personalProfilePage.approveReceivedConnectionRequest();
