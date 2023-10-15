@@ -1,15 +1,28 @@
 package ui.socialnetwork.tests;
 
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 
 public class PostTests extends BaseTestSetup {
 
+    @BeforeEach
+    public void setupUser() {
+
+        loginUser();
+    }
+
+    @AfterEach
+    public void logOutUser() {
+        homePage.clickOnHomeButton();
+        logoutPage.logoutSuccessfully();
+    }
 
     @Test
     public void createPublicPostTest() {
-        loginUser(); ///maybe in beforeAll
+
         postPage.createPublicPost();
 
         //Assert
@@ -20,54 +33,51 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     public void createPrivatePostTest() {
-        loginUser();    ///maybe in beforeAll
         postPage.createPrivatePost();
 
         //assert
         postPage.verifyPostCreated();
         postPage.verifyPrivatePostCreated();
 
-
     }
 
     @Test
     public void anonymousUserCannotSeePrivatePostsTest() {
-        loginUser();
+
         postPage.createPrivatePost();
         homePage.clickOnHomeButton();
         logoutPage.logoutSuccessfully();
         homePage.clickOnLatestPostsButton();
 
         postPage.validateAnonymousUserCannotSeePrivatePosts();
+        loginUser();
 
     }
 
     ///replace like.post.button locator
     @Test
     public void likePostWhenClickLikeButtonTest() {
-        loginUser();
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
 
         //assert
         postPage.validatePostIsLiked();
+
     }
 
     @Test
     public void dislikePostWhenClickLikeButtonTest() {
-        loginUser();
+
         homePage.clickOnLatestPostsButton();
         postPage.dislikePublicPost();
 
         //assert
         postPage.validateTopicIsUnliked();
 
-
     }
 
     @Test
     public void editPostTest() {
-        loginUser();
 
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -76,13 +86,11 @@ public class PostTests extends BaseTestSetup {
 
         //assert
         postPage.validatePostIsEdited();
-
     }
 
 
     @Test    ///MAYBE SHOULD BE IN @AFTERCLASS
     public void deletePostTest() {
-        loginUser();
 
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -91,13 +99,16 @@ public class PostTests extends BaseTestSetup {
         //assert
         postPage.validatePostIsDeleted();
 
-
     }
 
     //ADMIN USER TESTS//
     @Test
+
     public void adminUserCreatePublicPostsTest() {
         loginAdmin();
+
+    public void createPublicPostsAdminUserTest() {
+
         postPage.createPublicPost();
 
         //Assert
@@ -108,7 +119,6 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     public void adminUserCreatePrivatePostsTest() {
-        loginAdmin();
         postPage.createPrivatePost();
 
         //Assert
@@ -119,7 +129,7 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     public void adminUserLikePostWhenClickLikeButtonTest() {
-        loginAdmin();
+
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
 
@@ -129,7 +139,7 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     public void adminUserDislikePostWhenClickLikeButtonTest() {
-        loginAdmin();
+
         homePage.clickOnLatestPostsButton();
         postPage.dislikePublicPost();
 
@@ -140,7 +150,6 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     public void adminUserEditPostTest() {
-        loginAdmin();
         homePage.clickOnLatestPostsButton();
         commentPage.clickOnExploreThePost();
         postPage.userEditPost();
@@ -149,5 +158,8 @@ public class PostTests extends BaseTestSetup {
         postPage.validatePostIsEdited();
 
     }
+
+    }
 }
+
 
