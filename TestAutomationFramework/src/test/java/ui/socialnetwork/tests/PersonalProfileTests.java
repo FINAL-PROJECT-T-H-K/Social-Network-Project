@@ -1,5 +1,6 @@
 package ui.socialnetwork.tests;
 
+import apisocialnetwork.Utils;
 import org.junit.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
@@ -11,21 +12,23 @@ public class PersonalProfileTests extends BaseTestSetup {
     String lastName = "last";
     String email = "";
     String personalInfo;
-
+    String email;
 
     @Test
     public void UpdateUserProfileWithFirstLastNameAndBirthdayTest() {
 
         loginUser();
         personalProfilePage.enterPersonalProfile();
-        firstName += personalProfilePage.generateFirstName();
-        lastName += personalProfilePage.generateLastName();
+        firstName += Utils.generateFirstName();
+        lastName += Utils.generateLastName();
         personalProfilePage.setFirstLastNamesAndBirthdate(firstName, lastName);
         personalProfilePage.clickOnUpdateProfileButton();
         personalProfilePage.backToProfileInfo();
 
         //assert
         personalProfilePage.assertProfilesInformationUpdated();
+        //assert should be added
+        personalProfilePage.validateFirstname(firstName);
 
     }
 
@@ -38,6 +41,7 @@ public class PersonalProfileTests extends BaseTestSetup {
         lastName += personalProfilePage.generateLastName();
         personalProfilePage.setFirstLastNamesAndBirthdate(firstName, lastName);
         email = personalProfilePage.generateRandomEmail();
+        email = Utils.generateEmail();
         personalProfilePage.updateUserProfileWithEmailAddress(email);
         personalProfilePage.updateUserProfileWithGender();
         personalInfo += personalProfilePage.generateInfo();
@@ -69,5 +73,6 @@ public class PersonalProfileTests extends BaseTestSetup {
 
         //assert
         personalProfilePage.assertAvailabilityUpdated();
+
     }
 }

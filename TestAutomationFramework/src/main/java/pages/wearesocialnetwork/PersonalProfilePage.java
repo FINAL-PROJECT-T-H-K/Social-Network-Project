@@ -1,9 +1,12 @@
 package pages.wearesocialnetwork;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class PersonalProfilePage extends BaseSocialPage {
+
     String firstName;
     String lastName;
     String email;
@@ -40,6 +43,7 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.clickElement("profile.editProfile.page.button");
 
     }
+
     public void clickOnUpdateProfileButton() {
         actions.waitForElementClickable("profile.update.personal.profile.button");
         actions.clickElement("profile.update.personal.profile.button");
@@ -47,6 +51,14 @@ public class PersonalProfilePage extends BaseSocialPage {
     public void backToProfileInfo() {
         actions.waitForElementClickable("profile.back.to.profile");
         actions.clickElement("profile.back.to.profile");
+    }
+
+    public void validateFirstname(String firstName) {
+        actions.waitForElementVisible("personal.profile.name.field");
+        String actualFirstname = driver.findElement(By.xpath("personal.profile.name.field")).getText();
+        Assertions.assertEquals(firstName, actualFirstname, String.format(
+                "Expected firstname is %s, but %s is found.", firstName, actualFirstname));
+
     }
 
     public void updateJobSection() {
