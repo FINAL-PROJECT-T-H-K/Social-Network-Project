@@ -17,8 +17,9 @@ public class LogoutPage extends BaseSocialPage {
     }
     public void assertSuccessfulLogout() {
         actions.waitForElementPresent("home.page.sign.in.button");;
+        ///use same locator key naming format pattern
     }
     public void validateLoggedOut() {
-        actions.waitForElementClickable("register.page.submitButton");
+        actions.waitForElementClickable("login.submit.button");
     }
 }

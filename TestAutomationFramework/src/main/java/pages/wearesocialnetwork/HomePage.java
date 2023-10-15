@@ -3,6 +3,7 @@ package pages.wearesocialnetwork;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BaseSocialPage {
+
     public HomePage(WebDriver driver) {
         super(driver, "social.network.homepage");
     }
@@ -66,6 +67,11 @@ public class HomePage extends BaseSocialPage {
 
     }
 
+    public void clickOnWeAreButton() {
+        actions.waitForElementClickable("nav.bar.brand");
+        actions.clickElement("nav.bar.brand");
+    }
+
     public void clickOnAboutUsButton() {
         actions.waitForElementVisible("home.page.about.us");
         actions.clickElement("home.page.about.us");
@@ -88,9 +94,9 @@ public class HomePage extends BaseSocialPage {
 
     }
 
-    public void searchUserByKnownUsername() {
+    public void searchUserByKnownUsername(String name) {
         actions.waitForElementVisible("//input[@id='searchParam2']");
-        actions.typeValueInField("Public Profile", "//input[@id='searchParam2']");
+        actions.typeValueInField(name, "//input[@id='searchParam2']");
         actions.clickElement("//button [@class='form-control btn btn-primary']");
     }
 
@@ -99,8 +105,8 @@ public class HomePage extends BaseSocialPage {
 
     }
 
-    public void validateSearchUserByKnownUsername() {
-        actions.assertElementPresent("//h2[text()='Public Profile']");
+    public void validateSearchUserByKnownUsername(String name) {
+        actions.assertElementPresent(String.format("//h2[text()='%s']",name));
         System.out.println("User with username 'Public Profile' is visible.");
 
     }
@@ -120,17 +126,14 @@ public class HomePage extends BaseSocialPage {
         System.out.println("Scroll down action is successful 'Register' button is visible and clickable");
     }
 
-    public void verifyScrollUpInHomePage() {
-        actions.assertElementPresent("//h1[text()='The Easiest Way to Hack the Crisis']");
+    public void validateHomePageHeader(String key) {
+        actions.assertElementVisible("weare.homepage.h1", key);
         System.out.println("Scroll up action is successful 'The Easiest Way to Hack the Crisis' header is visible.");
+        ///change printLNs with logger.info
     }
 
     public void validateLatestPostsDisplayed() {
         actions.assertElementPresent("latest.posts.message");
-    }
-
-    public void validateWEareButtonNavigatesHomePage() {
-        actions.assertElementPresent("nav.bar.brand");
     }
 
     public void validateRegisterFormFullyDisplayed() {

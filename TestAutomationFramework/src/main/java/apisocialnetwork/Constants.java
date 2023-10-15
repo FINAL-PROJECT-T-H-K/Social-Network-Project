@@ -30,5 +30,6 @@ public class Constants {
     public static String COOKIE_VALUE_RECEIVER;
     public static String SKILL_ID;
     public static String CONNECTION_ID;
+    public static String SEARCHABLE_NAME;
 
 }

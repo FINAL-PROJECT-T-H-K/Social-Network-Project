@@ -129,14 +129,26 @@ public class BaseTestSetup {
 
     protected static Response upgradeExpertiseProfile() {
 
-        createAndRegisterUser();
-        loginUser();
-
         baseURI = BASE_URL + API_USERS_AUTH + USER_ID + "/expertise";
 
         fakeValueGenerator("JobTitle?????", "JobTitles?????");
 
         Response response = given().contentType(ContentType.JSON).header("Accept", "*/*").cookie("JSESSIONID", COOKIE_VALUE).body(EXPERTISE_BODY).when().log().all().post(baseURI);
+
+        return response;
+    }
+
+    protected static Response updateUserProfile(String name) {
+
+        baseURI = BASE_URL + API_USERS_AUTH + USER_ID + "/personal";
+
+        Response response = given()
+                .contentType(ContentType.JSON)
+                .header("Accept", "*/*")
+                .queryParam("name", name)
+                .cookie("JSESSIONID", COOKIE_VALUE)
+                .body(PROFILE_BODY)
+                .when().log().all().post(baseURI);
 
         return response;
     }

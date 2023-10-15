@@ -196,6 +196,12 @@ public class UserActions {
                 format("Element with %s doesn't present.", locator));
     }
 
+
+    public void assertElementVisible(String locator, Object...arguments) {
+        Assertions.assertTrue(isElementVisible(locator, arguments),
+                format("Element with %s isn't visible.", locator));
+    }
+
     public void assertElementNotPresent(String locator) {
         By xpathLocator = By.xpath(Utils.getUIMappingByKey(locator));
 
@@ -281,15 +287,10 @@ public class UserActions {
     }
 
     public boolean isElementVisible(String locator, Object... arguments) {
-        // TODO: Implement the method
-        // 1. Get default timeout from properties
-        // 2. Initialize Wait utility
         Duration timeout = Duration.ofSeconds(defaultTimeout);
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         String xpath = getLocatorValueByKey(locator, arguments);
 
-        // 3. Try to wait for element visible
-        // 4. return true/false if the element is/not visible
         try {
             wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpath)));
             return true;

@@ -2,14 +2,13 @@ package ui.socialnetwork.base;
 
 import com.telerikacademy.testframework.CustomWebDriverManager;
 import com.telerikacademy.testframework.UserActions;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import pages.wearesocialnetwork.*;
 
 public class BaseTestSetup {
-    static UserActions actions = new UserActions();
+   public static UserActions actions = new UserActions();
     //PAGES
     public static HomePage homePage;
     public static PersonalProfilePage personalProfilePage;
@@ -19,8 +18,7 @@ public class BaseTestSetup {
     public static PostPage postPage;
     public static CommentPage commentPage;
 
-
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         UserActions.loadBrowser("social.network.homepage");
         WebDriver driver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
@@ -35,13 +33,14 @@ public class BaseTestSetup {
 
     }
 
-//    @AfterClass
-//    public static void tearDown() {
-//        UserActions.quitDriver();
-//    }
+    @AfterAll
+    public static void tearDown() {
+        UserActions.quitDriver();
+    }
 
     //@BeforeAll
     public static void loginUser() {
+        ///can we call API register user here use login here or from API
         String username = registerPage.generateUser();
         String password = registerPage.generatePassword();
         registerPage.registerUser(username, password);

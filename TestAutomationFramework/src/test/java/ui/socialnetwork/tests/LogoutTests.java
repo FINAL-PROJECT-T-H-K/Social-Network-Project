@@ -7,7 +7,7 @@ public class LogoutTests extends BaseTestSetup {
 
 
     @Test
-    public void validate_userLoggedSuccessful(){
+    public void validateUserLoggedOutSuccessfullyTest(){
         loginUser();
 
         logoutPage.logoutSuccessfully();

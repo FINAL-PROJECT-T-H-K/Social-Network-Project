@@ -1,33 +1,39 @@
 package ui.socialnetwork.tests;
 
+import api.socialnetwork.tests.UserControllerTest;
+import apisocialnetwork.Utils;
 import org.junit.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
+import static apisocialnetwork.Constants.RANDOM_EMAIL;
+import static apisocialnetwork.Constants.SEARCHABLE_NAME;
+
 public class HomePageTests extends BaseTestSetup {
+    String homePageHeader = "The Easiest Way to Hack the Crisis";
+    UserControllerTest userControllerTest = new UserControllerTest();
 
     @Test
     public void homePageAccessAndLinksVisibilityTest() {
-        homePage.navigateToPage();
-
+        //homePage.navigateToPage(); page is already being navigated
         homePage.validateHomePageAccessAndLinksVisibility();
 
     }
 
     @Test
-    public void userCanScrollDownInHomePageTest() throws InterruptedException {
+    public void userCanScrollDownInHomePageTest() {
 
-        homePage.scrollDownInHomePage();
+        actions.scrollDown(3000);
         homePage.verifyScrollDownInHomePage();
 
-        homePage.scrollUpInHomePage();
-        homePage.verifyScrollUpInHomePage();
+        actions.scrollUp(-3000);
+        homePage.validateHomePageHeader(homePageHeader);
 
     }
 
     @Test
     public void registerFormDisplayWhenRegisterButtonClickedTest() {
 
-        homePage.navigateToPage();
+        //homePage.navigateToPage();
         homePage.clickOnRegisterButton();
 
         //ASSERT
@@ -37,7 +43,7 @@ public class HomePageTests extends BaseTestSetup {
     @Test
     public void loginFormDisplayWhenSignInButtonClickedTest() {
 
-        homePage.navigateToPage();
+        //homePage.navigateToPage();
         homePage.clickOnSignInButton();
 
         //ASSERT
@@ -47,16 +53,16 @@ public class HomePageTests extends BaseTestSetup {
     @Test
     public void weAreButtonNavigatesHomePageTest() {
 
-        homePage.navigateToPage();
-        homePage.clickOnHomeButton();
+        //homePage.navigateToPage();
+        homePage.clickOnAboutUsButton();
+        homePage.clickOnWeAreButton();
 
-        //ASSERT
-        homePage.validateWEareButtonNavigatesHomePage();
+        homePage.validateHomePageHeader(homePageHeader);
     }
 
     @Test
     public void latestPostsDisplayWhenLatestPostButtonClickedTest() {
-        homePage.navigateToPage();
+
         homePage.clickOnLatestPostsButton();
 
         //ASSERT
@@ -65,7 +71,7 @@ public class HomePageTests extends BaseTestSetup {
 
     @Test
     public void aboutUsInformationDisplayedWhenAboutUsButtonClickedTest() {
-        homePage.navigateToPage();
+
         homePage.clickOnAboutUsButton();
 
         //ASSERT
@@ -74,7 +80,7 @@ public class HomePageTests extends BaseTestSetup {
 
     @Test
     public void searchAllUsersWhenSearchButtonClickedTest() {
-        homePage.navigateToPage();
+
         homePage.clickOnUserSearchBar();
 
         homePage.validateSearchBarShowsUsers();
@@ -82,16 +88,20 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void searchUserByKnownUsernameTest(){
-        homePage.navigateToPage();
-        homePage.searchUserByKnownUsername();
+    public void searchUserByKnownUsernameTest() {
+        SEARCHABLE_NAME = registerPage.generateUser();
+        RANDOM_EMAIL = Utils.generateRandomEmail();
+        System.out.println(SEARCHABLE_NAME);
+        userControllerTest.updateUserProfileTest();
 
-        homePage.validateSearchUserByKnownUsername();
+        homePage.searchUserByKnownUsername(SEARCHABLE_NAME + " randomLastName");
+
+        homePage.validateSearchUserByKnownUsername(SEARCHABLE_NAME + " randomLastName");
     }
 
     @Test
     public void showUsersByProfessionWhenSearchByProfessionTest() {
-        homePage.navigateToPage();
+
         homePage.searchUserByProfession();
 
         homePage.validateUserSearchByProfession();

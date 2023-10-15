@@ -18,6 +18,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.testng.Assert.assertEquals;
 
 public class UserControllerTest extends BaseTestSetup {
+
     Logger logger = Logger.getLogger("");
     Response response;
 
@@ -54,6 +55,22 @@ public class UserControllerTest extends BaseTestSetup {
         assertEquals(skill1Content, RANDOM_JOB_TITLE, ERROR_MESSAGE_JOB_TITLE);
 
     }
+
+    @Test
+    public void updateUserProfileTest() {
+
+        createAndRegisterUser();
+        loginUser();
+
+        response = updateUserProfile(SEARCHABLE_NAME);
+
+        int statusCode = response.getStatusCode();
+        assertEquals(statusCode, SC_OK, ERROR_MESSAGE_INCORRECT_STATUS);
+        //assertEquals(skill1Content, RANDOM_JOB_TITLE, ERROR_MESSAGE_JOB_TITLE);
+
+    }
+
+
 
     @AfterEach
     public void cleanUp() {

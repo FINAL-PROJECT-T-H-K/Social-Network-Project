@@ -57,6 +57,27 @@ public class JSONRequests {
             , USER_ID, RANDOM_JOB_TITLE_FIRST, RANDOM_JOB_TITLE);
 
 
+    public static final String PROFILE_BODY = String.format("{\n" +
+                    "    \"id\": %s,\n" +
+                    "    \"username\": \"%s\",\n" +
+                    "    \"email\": \"%s\",\n" +
+                    "    \"firstName\": \"%s\",\n" +
+                    "    \"lastName\": \"randomLastName\",\n" +
+                    "    \"sex\": \"MALE\",\n" +
+                    "    \"birthYear\": \"1999-09-09\",\n" +
+                    "    \"personalReview\": \"randomPhrase\",\n" +
+                    "    \"location\": {\n" +
+                    "        \"city\": {\n" +
+                    "            \"id\": 24,\n" +
+                    "            \"city\": \"Mantemouth\",\n" +
+                    "            \"country\": {}\n" +
+                    "            \n" +
+                    "        }\n" +
+                    "    }\n" +
+                    "}"
+            , USER_ID, USERNAME, RANDOM_EMAIL, SEARCHABLE_NAME);
+
+
     public static final String SKILLS_BODY = String.format("{\n" +
             "  \"category\": {\n" +
             "    \"id\": %d,\n" +

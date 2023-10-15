@@ -45,11 +45,9 @@ public class LoginPage extends BaseSocialPage {
 
     public void assertAdminAuthenticatedUser() {
         actions.assertElementPresent("header.admin.member.button");
-        actions.clickElement("header.admin.member.button");
     }
 
     public void assertAuthenticatedUser() {
         actions.assertElementPresent("header.member.menu.button");
-        //actions.clickElement("header.member.menu.button");
     }
 }

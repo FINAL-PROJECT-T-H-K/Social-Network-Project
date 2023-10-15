@@ -43,6 +43,18 @@ public class Utils {
         return "Password" + RandomStringUtils.randomAlphabetic(8);
     }
 
+    public static String generateFirstName() {
+        return RandomStringUtils.randomAlphabetic(8);
+    }
+
+    public static String generateLastName() {
+        return RandomStringUtils.randomAlphabetic(8);
+    }
+
+    public static String generateEmail() {
+        return RandomStringUtils.randomAlphabetic(2);
+    }
+
     public static boolean isValid(String json) {
         try {
             new JSONObject(json);
