@@ -2,12 +2,13 @@ package ui.socialnetwork.base;
 
 import com.telerikacademy.testframework.CustomWebDriverManager;
 import com.telerikacademy.testframework.UserActions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import pages.wearesocialnetwork.*;
 
 public class BaseTestSetup {
-   public static UserActions actions = new UserActions();
+    public static UserActions actions = new UserActions();
     //PAGES
     public static HomePage homePage;
     public static PersonalProfilePage personalProfilePage;
@@ -29,30 +30,28 @@ public class BaseTestSetup {
         logoutPage = new LogoutPage(driver);
         personalProfilePage = new PersonalProfilePage(driver);
         commentPage = new CommentPage(driver);
-       // loginUser();
     }
-//    @AfterEach
-//    public void tearDown() {
-//        UserActions.quitDriver();
-//    }
 
-    //@BeforeAll
+    @AfterEach
+    public void tearDown() {
+        UserActions.quitDriver();
+    }
+
     public static void registerAndLoginUser() {
-        ///can we call API register user here use login here or from API
         String username = registerPage.generateUser();
         String password = registerPage.generatePassword();
         registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);
     }
 
-    public static void loginUserWithParams(String username, String password){
+    public static void registerAndLoginUserWithParams(String username, String password) {
         ///can we call API register user here use login here or from API
         registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);
     }
 
     public static void loginAdmin() {
-        String username = "admin" +registerPage.generateUser();
+        String username = "admin" + registerPage.generateUser();
         String password = registerPage.generatePassword();
         registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);

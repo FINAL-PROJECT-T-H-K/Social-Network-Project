@@ -9,14 +9,17 @@ public class LoginTests extends BaseTestSetup {
     String username = "";
     String password = "";
     String adminUsername = "admin";
-    @BeforeEach
-    public void setupUser() {
-        registerAndLoginUser();
-    }
     @Test
     public void nonAdminUserAuthentication() {
+        registerAndLoginUser();
         //ASSERT
         loginPage.assertAuthenticatedUser();
+    }
+    @Test
+    public void adminUserAuthenticationTest() {
+        loginAdmin();
+        //ASSERT
+        loginPage.assertAdminAuthenticatedUser();
     }
     ///FEW MORE TEST
 }

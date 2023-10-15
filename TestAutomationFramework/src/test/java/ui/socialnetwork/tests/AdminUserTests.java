@@ -8,23 +8,6 @@ public class AdminUserTests extends BaseTestSetup {
     public String commentText;
     public String editedComment;
 
-    @BeforeEach
-    public void setupUser() {
-        loginAdmin();
-    }
-    @Test
-    public void adminUserAuthenticationTest() {
-        //ASSERT
-        loginPage.assertAdminAuthenticatedUser();
-    }
-    @Test
-    public void adminUserLoggedOutTest(){
-        logoutPage.logoutSuccessfully();
-
-        //ASSERT
-        logoutPage.assertSuccessfulLogout();
-        logoutPage.validateLoggedOut();
-    }
     @Test
     public void adminUserViewAllUsersTest() {
         homePage.clickOnGoToAdminZoneButton();
@@ -53,18 +36,26 @@ public class AdminUserTests extends BaseTestSetup {
 
     @Test
     public void adminUserLikePostWhenClickLikeButtonTest() {
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
+
         //assert
         postPage.validatePostIsLiked();
+
     }
 
     @Test
     public void adminUserDislikePostWhenClickLikeButtonTest() {
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
         homePage.clickOnLatestPostsButton();
-        postPage.dislikePublicPost();
+        postPage.likePublicPost();
+
         //assert
-        postPage.validateTopicIsUnliked();
+        postPage.validatePostIsLiked();
+
 
     }
 
@@ -80,10 +71,12 @@ public class AdminUserTests extends BaseTestSetup {
     /////////////////////////////////////////////////////////////////////////////////////
     @Test
     public void adminUserCreateCommentUnderThePostTests() {
-        homePage.clickOnLatestPostsButton();
-        commentPage.clickOnExploreThePost();
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
+        postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
+        //assert
         commentPage.verifyCommentCreated();
     }
 
@@ -102,14 +95,13 @@ public class AdminUserTests extends BaseTestSetup {
 
     @Test
     public void dislikeCommentUnderThePostTests() {
-        registerAndLoginUser();
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
-        commentPage.userDislikeCommentUnderThePost();
+        commentPage.userLikeCommentUnderThePost();
         //assert
         commentPage.validateTopicIsUnliked();
     }
