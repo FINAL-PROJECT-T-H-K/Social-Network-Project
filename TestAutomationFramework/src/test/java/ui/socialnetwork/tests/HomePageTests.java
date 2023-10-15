@@ -14,7 +14,6 @@ public class HomePageTests extends BaseTestSetup {
 
     @Test
     public void anonymousUserHomePageAccessAndLinksVisibilityTest() {
-        //homePage.navigateToPage(); page is already being navigated
         homePage.validateAnonymousUserHomePageAccessAndLinksVisibility();
 
     }
@@ -24,18 +23,16 @@ public class HomePageTests extends BaseTestSetup {
     @Test
     public void anonymousUserCanScrollDownInHomePageTest() {
 
-        actions.scrollDown(3000);
+        actions.scrollDown(3000);         ///transfer to helpereMethods class
         homePage.verifyScrollDownInHomePage();
 
-        actions.scrollUp(-3000);
+        actions.scrollUp(-3000);     ///transfer to helpereMethods class
         homePage.validateHomePageHeader(homePageHeader);
 
     }
 
     @Test
     public void anonymousUserRegisterFormDisplayWhenRegisterButtonClickedTest() {
-
-        //homePage.navigateToPage();
         homePage.clickOnRegisterButton();
 
         //ASSERT
@@ -44,8 +41,6 @@ public class HomePageTests extends BaseTestSetup {
 
     @Test
     public void anonymousUserLoginFormDisplayWhenSignInButtonClickedTest() {
-
-        //homePage.navigateToPage();
         homePage.clickOnSignInButton();
 
         //ASSERT
@@ -54,8 +49,6 @@ public class HomePageTests extends BaseTestSetup {
 
     @Test
     public void anonymousUserWeAreButtonNavigatesHomePageTest() {
-
-        //homePage.navigateToPage();
         homePage.clickOnAboutUsButton();
         homePage.clickOnWeAreButton();
 
