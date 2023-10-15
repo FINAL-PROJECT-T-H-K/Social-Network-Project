@@ -1,4 +1,5 @@
 package api.socialnetwork.tests;
+
 import api.socialnetwork.base.BaseTestSetup;
 import apisocialnetwork.Utils;
 import com.google.gson.JsonObject;
@@ -8,7 +9,9 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import java.util.logging.Logger;
+
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.ErrorMessages.*;
 import static apisocialnetwork.ShowMessages.ERROR_MESSAGE_COOKIE_VALUE_IS_NOT_PRESENT;
@@ -45,8 +48,7 @@ public class UserControllerTest extends BaseTestSetup {
 
         response = upgradeExpertiseProfile();
 
-        JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObject = (JsonObject) jsonParser.parse(response.asString());
+        JsonObject jsonObject = (JsonObject) JsonParser.parseString(response.asString());
         String skill1Content = String.valueOf(jsonObject.getAsJsonArray("skills").get(0).getAsJsonObject().get("skill"));
         skill1Content = skill1Content.replaceAll("[\"<>,]", "");
 
@@ -69,7 +71,6 @@ public class UserControllerTest extends BaseTestSetup {
         ///add one more assertion
 
     }
-
 
 
     @AfterEach

@@ -1,16 +1,9 @@
 package api.socialnetwork.tests;
 
 import api.socialnetwork.base.BaseTestSetup;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import io.restassured.response.Response;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 import static apisocialnetwork.Constants.*;
@@ -34,7 +27,7 @@ public class PostControllerTest extends BaseTestSetup {
         String postContent = response.getBody().jsonPath().getString("content");
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
-        assertEquals(postContent, POST_DESCRIPTION, ERROR_MESSAGE_DOES_NOT_MATCH_BODY);
+        assertEquals(postContent, POST_DESCRIPTION, ERROR_MESSAGE_POST_DESCRIPTION);
 
         logger.info(SHOW_MESSAGE_RESPONSE_BODY + response.getBody().asPrettyString());
         logger.info(SHOW_MESSAGE_POST_CREATED_AND_POST_ID);
@@ -113,7 +106,7 @@ public class PostControllerTest extends BaseTestSetup {
         String postIdFromResponse = response.jsonPath().getString("postId");
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
-        assertEquals(postIdFromResponse, POST_ID, ERROR_MESSAGE_DOES_NOT_MATCH_BODY);
+        assertEquals(postIdFromResponse, POST_ID, ERROR_MESSAGE_RESPONSE_BODY_POST_ID);
         assertTrue(liked, ERROR_MESSAGE_LIKED_POST);
 
         logger.info(SHOW_MESSAGE_POST_LIKED);

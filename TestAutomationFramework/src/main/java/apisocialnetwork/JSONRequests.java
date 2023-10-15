@@ -3,17 +3,6 @@ package apisocialnetwork;
 import static apisocialnetwork.Constants.*;
 
 public class JSONRequests {
-//    public static final String REGISTRATION_BODY = String.format("{\n" +
-//            "    \"category\": {\n" +
-//            "        \"id\": 100,\n" +
-//            "        \"name\": \"All\"\n" +
-//            "    },\n" +
-//            "    \"confirmPassword\": \"%s\",\n" +
-//            "    \"email\": \"%s\",\n" +
-//            "    \"password\": \"%s\",\n" +
-//            "    \"username\": \"%s\"\n" +
-//            "}", PASSWORD, RANDOM_EMAIL, PASSWORD, USERNAME);
-
     public static final String REGISTRATION_BODY ="{\n" +
             "    \"category\": {\n" +
             "        \"id\": 100,\n" +
@@ -45,7 +34,7 @@ public class JSONRequests {
             "  \"size\": 10\n" +
             "}";
 
-    public static final String EXPERTISE_BODY = String.format("{  \"availability\": 100,  " +
+    public static final String EXPERTISE_BODY = "{  \"availability\": 100,  " +
                     "\"category\": {" +
                     "    \"id\": 120,    " +
                     "\"name\": \"Hairdresser\"  }" +
@@ -54,10 +43,10 @@ public class JSONRequests {
                     "\"skill1\": \"%s\",  " +
                     "\"skills\": [    " +
                     "\"%s\"  ]}"
-            , USER_ID, RANDOM_JOB_TITLE_FIRST, RANDOM_JOB_TITLE);
+            ;
 
 
-    public static final String PROFILE_BODY = String.format("{\n" +
+    public static final String PROFILE_BODY = "{\n" +
                     "    \"id\": %s,\n" +
                     "    \"username\": \"%s\",\n" +
                     "    \"email\": \"%s\",\n" +
@@ -75,7 +64,7 @@ public class JSONRequests {
                     "        }\n" +
                     "    }\n" +
                     "}"
-            , USER_ID, USERNAME, RANDOM_EMAIL, SEARCHABLE_NAME);
+            ;
 
 
     public static final String SKILLS_BODY = String.format("{\n" +

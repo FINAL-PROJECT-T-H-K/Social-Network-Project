@@ -8,7 +8,7 @@ public class Endpoints {
     public static final String BASE_URL = "http://localhost:8081";
     public static final String REGISTER_ENDPOINT = "/api/users/";
     public static final String GET_ALL_POSTS_ENDPOINT = "/api/post/";
-    public static final String GET_PROFILE_POSTS = BASE_URL + "/api/users/" + USER_ID + "/posts";
+    public static final String GET_PROFILE_POSTS = "/api/users/" + "%s" + "/posts";
     public static final String COMMENT_ENDPOINT = "/api/comment/auth/creator";
     public static final String CREATE_POST_ENDPOINT = "/api/post/auth/creator";
     public static final String EDIT_POST_ENDPOINT = "/editor";
@@ -28,7 +28,7 @@ public class Endpoints {
             "&name=" + UNIQUE_NAME;
     public static final String LIKED_COMMENT = "/api/comment/auth/likesUp?commentId=" + "%s";
     public static final String DELETE_COMMENT = "/api/comment/auth/manager";
-    public static final String LIKE_POST = "/api/post/auth/likesUp?postId=" + POST_ID;
+    public static final String LIKE_POST = "/api/post/auth/likesUp?postId=" + "%s";
     public static final String EDIT_POST = "/api/post/auth/editor";
     public static final String API_USERS_AUTH = "/api/users/auth/";
     public static final String CONNECTION_REQUEST_ENDPOINT = "/api/auth/users/";

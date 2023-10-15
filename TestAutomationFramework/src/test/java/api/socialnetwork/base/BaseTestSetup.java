@@ -3,8 +3,6 @@ package api.socialnetwork.base;
 import apisocialnetwork.Utils;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
 import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import io.restassured.config.EncoderConfig;
@@ -14,8 +12,6 @@ import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeSuite;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import static apisocialnetwork.Constants.*;
@@ -27,8 +23,6 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class BaseTestSetup {
-
-
     /**
      * Provided configuration resolve REST Assured issue with a POST request without request body.
      * Missing configuration leads to response status code 415 (Unsupported Media Type)
@@ -95,7 +89,7 @@ public class BaseTestSetup {
         return response;
     }
 
-    protected static Response createAndRegisterUserReceiver() {
+    protected static void createAndRegisterUserReceiver() {
         baseURI = BASE_URL + REGISTER_ENDPOINT;
 
         FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-GB"), new RandomService());
@@ -109,7 +103,6 @@ public class BaseTestSetup {
 
         USER_ID_RECEIVER = response.getBody().asString().split(" ")[6];
 
-        return response;
     }
 
     protected static ValidatableResponse loginUser() {
@@ -128,32 +121,31 @@ public class BaseTestSetup {
     }
 
     protected static Response upgradeExpertiseProfile() {
-
         baseURI = BASE_URL + API_USERS_AUTH + USER_ID + "/expertise";
 
         fakeValueGenerator("JobTitle?????", "JobTitles?????");
+        String expertiseBody = String.format(EXPERTISE_BODY, USER_ID, RANDOM_JOB_TITLE_FIRST, RANDOM_JOB_TITLE);
 
-        Response response = given().contentType(ContentType.JSON).header("Accept", "*/*").cookie("JSESSIONID", COOKIE_VALUE).body(EXPERTISE_BODY).when().log().all().post(baseURI);
-
-        return response;
+        return given()
+                .contentType(ContentType.JSON)
+                .header("Accept", "*/*")
+                .cookie("JSESSIONID", COOKIE_VALUE)
+                .body(expertiseBody)
+                .when()
+                .log()
+                .all()
+                .post(baseURI);
     }
 
     public static Response updateUserProfile(String name) {
-
         baseURI = BASE_URL + API_USERS_AUTH + USER_ID + "/personal";
 
-        Response response = given()
-                .contentType(ContentType.JSON)
-                .header("Accept", "*/*")
-                .queryParam("name", name)
-                .cookie("JSESSIONID", COOKIE_VALUE)
-                .body(PROFILE_BODY)
-                .when().log().all().post(baseURI);
+        String profileBody = String.format(PROFILE_BODY ,USER_ID, USERNAME, RANDOM_EMAIL, SEARCHABLE_NAME);
 
-        return response;
+        return given().contentType(ContentType.JSON).header("Accept", "*/*").queryParam("name", name).cookie("JSESSIONID", COOKIE_VALUE).body(profileBody).when().log().all().post(baseURI);
     }
 
-    protected static ValidatableResponse loginUserReceiver() {
+    protected static void loginUserReceiver() {
         baseURI = BASE_URL + AUTHENTICATE_ENDPOINT;
 
         PreemptiveBasicAuthScheme preemptiveBasicAuthScheme = new PreemptiveBasicAuthScheme();
@@ -165,7 +157,6 @@ public class BaseTestSetup {
 
         COOKIE_VALUE_RECEIVER = responseBody.extract().cookies().get("JSESSIONID");
 
-        return responseBody;
     }
 
     public RequestSpecification getApplicationAuthenticationWithSpecificUser(String username, String password) {
@@ -180,8 +171,7 @@ public class BaseTestSetup {
 
         ValidatableResponse responseBody = getApplicationAuthenticationWithSpecificUser(username, password).when().post(baseURI).then().assertThat().statusCode(302);
 
-        String CookieValue = responseBody.extract().cookies().get("JSESSIONID");
-        COOKIE_VALUE = CookieValue;
+        COOKIE_VALUE = responseBody.extract().cookies().get("JSESSIONID");
     }
 
     protected static Response showAllPosts() {
@@ -190,24 +180,8 @@ public class BaseTestSetup {
         return given().queryParam("sorted", "true").queryParam("unsorted", "false").when().get(baseURI);
     }
 
-    public void registerUser(String username, String password) {
-
-        baseURI = BASE_URL + REGISTER_ENDPOINT;
-
-        String uniqueEmailReceiver = Utils.generateRandomEmail();
-
-        String uniqueUser = String.format(REGISTRATION_BODY, password, uniqueEmailReceiver, password, username);
-
-        Response response = RestAssured.given().contentType(APPLICATION_JSON).body(uniqueUser).when().post(baseURI);
-
-        String responseID = response.getBody().asString().split(" ")[6];
-        USER_ID = responseID;
-        USERNAME_UI = username;
-        PASSWORD_UI = password;
-    }
-
     protected static Response showAllProfilePosts() {
-        baseURI = GET_PROFILE_POSTS;
+        baseURI = BASE_URL + String.format(GET_PROFILE_POSTS,USER_ID);
 
         return given().contentType(ContentType.JSON).cookies("JSESSIONID", COOKIE_VALUE).body(PROFILE_POST).when().get(baseURI);
     }
@@ -229,7 +203,8 @@ public class BaseTestSetup {
     }
 
     protected static Response likePost() {
-        baseURI = BASE_URL + LIKE_POST;
+        baseURI = BASE_URL + String.format(LIKE_POST,POST_ID);
+
 
         return RestAssured.given().cookies("JSESSIONID", COOKIE_VALUE).contentType(ContentType.JSON).when().post(baseURI);
     }
@@ -254,7 +229,6 @@ public class BaseTestSetup {
     }
 
     protected static Response showComment() {
-
         baseURI = String.format(SHOW_CREATED_COMMENTS, COMMENT_ID);
 
         return RestAssured.given().cookies("JSESSIONID", COOKIE_VALUE).when().get(baseURI);
@@ -271,14 +245,11 @@ public class BaseTestSetup {
     protected static Response approveRequest() {
         baseURI = BASE_URL + CONNECTION_REQUEST_ENDPOINT + USER_ID_RECEIVER + CONNECTION_REQUEST_APPROVE_ENDPOINT;
 
-        Response response = given().contentType(ContentType.JSON).header("Accept", "*/*").cookie("JSESSIONID", COOKIE_VALUE_RECEIVER).queryParam("requestId", CONNECTION_ID).when().log().all().post(baseURI);
-
-        return response;
+        return given().contentType(ContentType.JSON).header("Accept", "*/*").cookie("JSESSIONID", COOKIE_VALUE_RECEIVER).queryParam("requestId", CONNECTION_ID).when().log().all().post(baseURI);
 
     }
 
     protected static Response editComment() {
-
         baseURI = String.format(BASE_URL + EDITED_COMMENT, COMMENT_ID);
 
         return RestAssured.given().cookies("JSESSIONID", COOKIE_VALUE).contentType(ContentType.JSON).when().put(baseURI);
@@ -286,12 +257,11 @@ public class BaseTestSetup {
 
     protected static Response deleteComment() {
         baseURI = BASE_URL + DELETE_COMMENT;
-        Response response = RestAssured.given().cookies("JSESSIONID", COOKIE_VALUE).queryParam("commentId", COMMENT_ID).contentType(ContentType.JSON).when().delete(baseURI);
-        return response;
+
+        return RestAssured.given().cookies("JSESSIONID", COOKIE_VALUE).queryParam("commentId", COMMENT_ID).contentType(ContentType.JSON).when().delete(baseURI);
     }
 
     protected static Response likeComment() {
-
         baseURI = String.format(BASE_URL + LIKED_COMMENT, COMMENT_ID);
 
         return RestAssured.given().cookies("JSESSIONID", COOKIE_VALUE).contentType(ContentType.JSON).when().post(baseURI);
