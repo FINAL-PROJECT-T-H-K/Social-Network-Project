@@ -66,15 +66,12 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.assertElementVisible("//h3[@class='mb-3 bread']");
 
     }
-
-    public void validateFirstname(String firstName) {
-        actions.waitForElementVisible("personal.profile.name.field");
-        String actualFirstname = driver.findElement(By.xpath("personal.profile.name.field")).getText();
-        Assertions.assertEquals(firstName, actualFirstname, String.format(
-                "Expected firstname is %s, but %s is found.", firstName, actualFirstname));
-
+    public void assertEmailUpdated(String email) {
+        actions.assertEmailFieldOnProfilePage(email);
     }
-
+    public void assertFirstLastNamesUpdated(String firstName, String lastName) {
+        actions.assertFirstLastNamesFieldOnProfilePage(firstName,lastName);
+    }
     public void updateJobSection() {
         actions.waitForElementClickable("profile.job.tittle");
         actions.clickElement("profile.job.tittle");
@@ -107,14 +104,12 @@ public class PersonalProfilePage extends BaseSocialPage {
     }
 
     public void assertJobTitleUpdated() {
-        actions.assertElementPresent("latest.activity.button");
-        actions.assertElementPresent("latest.activity.button");
+        String spanText = driver.findElement(By.xpath("//span[text()='Translator']")).getText();
+        Assertions.assertFalse(spanText.isEmpty(), "The text inside the span is not empty.");
+
+
     }
 
-    public void assertProfilesInformationUpdated() {
-
-        //don't implement
-    }
 
     public String generateFirstName() {
         firstName += RandomStringUtils.randomAlphabetic(8);

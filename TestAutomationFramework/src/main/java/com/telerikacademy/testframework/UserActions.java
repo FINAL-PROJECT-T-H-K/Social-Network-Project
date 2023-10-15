@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 import static java.lang.String.format;
@@ -135,6 +136,7 @@ public class UserActions {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, " + pixels + ");");
     }
+
     public void scrollUp(int pixels) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, " + pixels + ");");
@@ -145,10 +147,8 @@ public class UserActions {
         String xpath = (Utils.getUIMappingByKey(key));
         WebElement ele = driver.findElement(By.xpath(xpath));
 
-//Creating object of an Actions class
         Actions action = new Actions(driver);
 
-//Performing the mouse hover action on the target element.
         action.moveToElement(ele).perform();
         ele.click();
 
@@ -196,8 +196,22 @@ public class UserActions {
                 format("Element with %s doesn't present.", locator));
     }
 
+    public void assertEmailFieldOnProfilePage(String email) {
+        String xpath = String.format("//div[@class='row' and contains(string(), 'Email')]//div[@class='col-md-6' and contains(string(), '%s')]", email);
+        String actualEmail = driver.findElement(By.xpath(xpath)).getText();
+        Assertions.assertEquals(email, actualEmail, String.format(
+                "Expected email is %s, but %s is found.", email, actualEmail));
+    }
 
-    public void assertElementVisible(String locator, Object...arguments) {
+    public void assertFirstLastNamesFieldOnProfilePage(String firstName, String lastName) {
+        String fullName = firstName + " " + lastName;
+        String xpath = String.format("//div[@class='row' and contains(string(), 'Name')]//div[@class='col-md-6' and contains(string(), '%s')]", fullName);
+        String actualFullName = driver.findElement(By.xpath(xpath)).getText();
+        Assertions.assertEquals(fullName, actualFullName, String.format(
+                "Expected Full Name is %s, but %s is found.", fullName, actualFullName));
+    }
+
+    public void assertElementVisible(String locator, Object... arguments) {
         Assertions.assertTrue(isElementVisible(locator, arguments),
                 format("Element with %s isn't visible.", locator));
     }
@@ -213,11 +227,12 @@ public class UserActions {
         }
     }
 
-        public void selectFromDropdown(String key, String start, int target) {
-            Select drop = new Select(driver.findElement(By.xpath(key)));
-            drop.selectByVisibleText(start);
-            drop.selectByIndex(target);
-        }
+    public void selectFromDropdown(String key, String start, int target) {
+        Select drop = new Select(driver.findElement(By.xpath(key)));
+        drop.selectByVisibleText(start);
+        drop.selectByIndex(target);
+    }
+
     public void deleteEmailFied() {
         driver.findElement(By.xpath(Utils.getUIMappingByKey("profile.email.address"))).clear();
     }

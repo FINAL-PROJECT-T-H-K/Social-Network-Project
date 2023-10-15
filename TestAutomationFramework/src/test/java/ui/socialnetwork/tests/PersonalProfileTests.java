@@ -1,6 +1,5 @@
 package ui.socialnetwork.tests;
 
-import api.socialnetwork.tests.ConnectionControllerTest;
 import apisocialnetwork.Utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,9 +29,8 @@ public class PersonalProfileTests extends BaseTestSetup {
         personalProfilePage.backToProfileInfo();
 
         //assert
-        personalProfilePage.assertProfilesInformationUpdated();
-        //assert should be added
-        personalProfilePage.validateFirstname(firstName);
+        personalProfilePage.assertFirstLastNamesUpdated(firstName,lastName);
+
 
     }
 
@@ -51,7 +49,10 @@ public class PersonalProfileTests extends BaseTestSetup {
         personalProfilePage.clickOnUpdateProfileButton();
         personalProfilePage.backToProfileInfo();
 
-        personalProfilePage.assertProfilesInformationUpdated();
+        //assert
+        personalProfilePage.assertFirstLastNamesUpdated(firstName,lastName);
+        personalProfilePage.assertEmailUpdated(email);
+
     }
 
 

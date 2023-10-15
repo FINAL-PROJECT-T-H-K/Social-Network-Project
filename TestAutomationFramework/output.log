@@ -1,16 +1,16 @@
-2023-10-16 00:00:24,445 INFO  [main] Initializing WebDriver
-2023-10-16 00:00:31,211 INFO  [main] Initializing WebDriver
-2023-10-16 00:00:32,795 INFO  [main] Initializing WebDriver
-2023-10-16 00:00:32,795 INFO  [main] Initializing WebDriver
-2023-10-16 00:00:32,796 INFO  [main] Initializing WebDriver
-2023-10-16 00:00:32,796 INFO  [main] Initializing WebDriver
-2023-10-16 00:00:32,797 INFO  [main] Initializing WebDriver
-2023-10-16 00:00:32,797 INFO  [main] Initializing WebDriver
-2023-10-16 00:00:32,797 INFO  [main] Initializing WebDriver
-2023-10-16 00:00:35,368 INFO  [main] Clicking on element register.page.submitButton
-2023-10-16 00:00:37,760 INFO  [main] Clicking on element login.submit.button
-2023-10-16 00:00:39,570 INFO  [main] Clicking on element profile.personal.page.button
-2023-10-16 00:00:41,182 INFO  [main] Clicking on element profile.editProfile.page.button
-2023-10-16 00:00:43,892 INFO  [main] Clicking on element profile.update.personal.profile.button
-2023-10-16 00:00:52,297 INFO  [main] Clicking on element profile.back.to.profile
-2023-10-16 00:00:53,941 INFO  [main] Quitting WebDriver
+2023-10-16 02:17:45,860 INFO  [main] Initializing WebDriver
+2023-10-16 02:17:52,313 INFO  [main] Initializing WebDriver
+2023-10-16 02:17:53,096 INFO  [main] Initializing WebDriver
+2023-10-16 02:17:53,096 INFO  [main] Initializing WebDriver
+2023-10-16 02:17:53,097 INFO  [main] Initializing WebDriver
+2023-10-16 02:17:53,098 INFO  [main] Initializing WebDriver
+2023-10-16 02:17:53,098 INFO  [main] Initializing WebDriver
+2023-10-16 02:17:53,099 INFO  [main] Initializing WebDriver
+2023-10-16 02:17:53,100 INFO  [main] Initializing WebDriver
+2023-10-16 02:17:56,302 INFO  [main] Clicking on element register.page.submitButton
+2023-10-16 02:17:58,762 INFO  [main] Clicking on element login.submit.button
+2023-10-16 02:18:00,570 INFO  [main] Clicking on element profile.personal.page.button
+2023-10-16 02:18:02,222 INFO  [main] Clicking on element profile.editProfile.page.button
+2023-10-16 02:18:03,910 INFO  [main] Clicking on element profile.job.tittle
+2023-10-16 02:18:04,101 INFO  [main] Clicking on element profile.update.job.tittle.button
+2023-10-16 02:18:06,642 INFO  [main] Quitting WebDriver
