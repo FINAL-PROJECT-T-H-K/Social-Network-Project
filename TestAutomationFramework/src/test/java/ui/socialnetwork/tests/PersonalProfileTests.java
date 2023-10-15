@@ -2,7 +2,6 @@ package ui.socialnetwork.tests;
 
 import api.socialnetwork.tests.ConnectionControllerTest;
 import apisocialnetwork.Utils;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
@@ -84,11 +83,13 @@ public class PersonalProfileTests extends BaseTestSetup {
         personalProfilePage.assertAvailabilityUpdated();
 
     }
+
     @Test
-    public void sendingConnectionRequestToAnotherUserTest(){
+    public void sendingConnectionRequestToAnotherUserTest() {
         USERNAME_RECEIVER = Utils.generateUniqueUsername();
         PASSWORD_RECEIVER = Utils.generateUniquePassword();
-        loginUserWithParams(USERNAME_RECEIVER, PASSWORD_RECEIVER);
+        registerAndLoginUserWithParams(USERNAME_RECEIVER, PASSWORD_RECEIVER);
+
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.setFirstLastNamesAndBirthdate(USERNAME_RECEIVER, USERNAME_RECEIVER);
         personalProfilePage.clickOnUpdateProfileButton();
@@ -97,7 +98,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
         USERNAME_SENDER = Utils.generateUniqueUsername();
         PASSWORD_SENDER = Utils.generateUniquePassword();
-        loginUserWithParams(USERNAME_SENDER, PASSWORD_SENDER);
+        registerAndLoginUserWithParams(USERNAME_SENDER, PASSWORD_SENDER);
         homePage.searchUserByKnownUsername(USERNAME_RECEIVER);
         homePage.clickOnUserAfterSearch();
         homePage.sendConnectionToSearchedUser();
@@ -108,7 +109,7 @@ public class PersonalProfileTests extends BaseTestSetup {
     }
 
     @Test
-    public void approveAlreadySentConnectionRequestTest(){
+    public void approveAlreadySentConnectionRequestTest() {
 
         sendingConnectionRequestToAnotherUserTest();
         logoutPage.logoutSuccessfully();
