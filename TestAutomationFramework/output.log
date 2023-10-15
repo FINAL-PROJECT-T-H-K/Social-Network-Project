@@ -1,16 +1,21 @@
-2023-10-15 01:31:17,781 INFO  [main] Initializing WebDriver
-2023-10-15 01:31:24,522 INFO  [main] Initializing WebDriver
-2023-10-15 01:31:26,313 INFO  [main] Initializing WebDriver
-2023-10-15 01:31:26,314 INFO  [main] Initializing WebDriver
-2023-10-15 01:31:26,314 INFO  [main] Initializing WebDriver
-2023-10-15 01:31:26,315 INFO  [main] Initializing WebDriver
-2023-10-15 01:31:26,316 INFO  [main] Initializing WebDriver
-2023-10-15 01:31:26,317 INFO  [main] Initializing WebDriver
-2023-10-15 01:31:26,318 INFO  [main] Initializing WebDriver
-2023-10-15 01:31:28,953 INFO  [main] Clicking on element register.page.submitButton
-2023-10-15 01:31:32,123 INFO  [main] Clicking on element login.submit.button
-2023-10-15 01:31:34,062 INFO  [main] Clicking on element home.page.latest.post.button
-2023-10-15 01:31:56,402 INFO  [main] Clicking on element explore.button
-2023-10-15 01:31:58,872 INFO  [main] Clicking on element edit.post.button
-2023-10-15 01:32:00,789 INFO  [main] Clicking on element choose.public.post
-2023-10-15 01:32:01,307 INFO  [main] Clicking on element edit.post.submit.button
+2023-10-15 04:13:53,468 INFO  [main] Initializing WebDriver
+2023-10-15 04:14:00,392 INFO  [main] Initializing WebDriver
+2023-10-15 04:14:02,992 INFO  [main] Initializing WebDriver
+2023-10-15 04:14:02,995 INFO  [main] Initializing WebDriver
+2023-10-15 04:14:03,000 INFO  [main] Initializing WebDriver
+2023-10-15 04:14:03,000 INFO  [main] Initializing WebDriver
+2023-10-15 04:14:03,001 INFO  [main] Initializing WebDriver
+2023-10-15 04:14:03,001 INFO  [main] Initializing WebDriver
+2023-10-15 04:14:03,002 INFO  [main] Initializing WebDriver
+2023-10-15 04:14:06,601 INFO  [main] Clicking on element register.page.submitButton
+2023-10-15 04:14:09,085 INFO  [main] Clicking on element login.submit.button
+2023-10-15 04:14:10,691 INFO  [main] Clicking on element new.post.button
+2023-10-15 04:14:12,804 INFO  [main] Clicking on element choose.public.post
+2023-10-15 04:14:12,937 INFO  [main] Clicking on element create.post.button
+2023-10-15 04:14:14,911 INFO  [main] Clicking on element home.page.home.button
+2023-10-15 04:14:16,188 INFO  [main] Clicking on element profile.personal.page.button
+2023-10-15 04:14:18,487 INFO  [main] Clicking on element latest.activity.button
+2023-10-15 04:14:19,227 INFO  [main] Clicking on element recently.post
+2023-10-15 04:14:21,771 INFO  [main] Clicking on element create.comments.button
+2023-10-15 04:14:24,887 INFO  [main] Clicking on element show.comments.button
+2023-10-15 04:15:15,476 INFO  [main] Clicking on element like.comment.button

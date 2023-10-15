@@ -10,7 +10,6 @@ public class PostTests extends BaseTestSetup {
 
     @BeforeEach
     public void setupUser() {
-
         loginUser();
     }
 
@@ -107,6 +106,9 @@ public class PostTests extends BaseTestSetup {
     public void adminUserCreatePublicPostsTest() {
         loginAdmin();
 
+    }
+
+    @Test
     public void createPublicPostsAdminUserTest() {
 
         postPage.createPublicPost();
@@ -159,7 +161,6 @@ public class PostTests extends BaseTestSetup {
 
     }
 
-    }
 }
 
 

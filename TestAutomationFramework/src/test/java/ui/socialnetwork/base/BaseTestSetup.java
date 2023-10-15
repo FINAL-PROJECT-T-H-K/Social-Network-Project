@@ -3,6 +3,7 @@ package ui.socialnetwork.base;
 import com.telerikacademy.testframework.CustomWebDriverManager;
 import com.telerikacademy.testframework.UserActions;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import pages.wearesocialnetwork.*;
@@ -33,10 +34,10 @@ public class BaseTestSetup {
 
     }
 
-    @AfterAll
-    public static void tearDown() {
-        UserActions.quitDriver();
-    }
+//    @AfterAll
+//    public static void tearDown() {
+//        UserActions.quitDriver();
+//    }
 
     //@BeforeAll
     public static void loginUser() {

@@ -74,7 +74,7 @@ public class CommentPage extends BaseSocialPage {
     }
 
     public void clickOnShowCommentsUnderThePost()  {
-        actions.waitForElementVisible("show.comments.button");
+        actions.scrollUp(-500);
         actions.waitForElementClickable("show.comments.button");
         actions.clickElement("show.comments.button");
 

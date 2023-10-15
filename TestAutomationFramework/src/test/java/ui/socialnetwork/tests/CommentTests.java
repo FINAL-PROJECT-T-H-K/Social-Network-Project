@@ -1,13 +1,19 @@
 package ui.socialnetwork.tests;
 
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 public class CommentTests extends BaseTestSetup {
 
     public String commentText;
     public String editedComment;
+
+    @BeforeEach
+    public void setupLogin (){
+
+        loginUser();
+    }
 
     @Test
     public void createCommentUnderThePostTests() {
@@ -25,14 +31,13 @@ public class CommentTests extends BaseTestSetup {
 
     @Test
     public void likeCommentUnderThePostTests() {
-        loginUser();
+
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
 
-        //add scroll up
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userLikeCommentUnderThePost();
 
