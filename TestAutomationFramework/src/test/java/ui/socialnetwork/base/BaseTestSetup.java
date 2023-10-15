@@ -33,16 +33,22 @@ public class BaseTestSetup {
 
        // loginUser();
     }
-    @AfterEach
-    public void tearDown() {
-        UserActions.quitDriver();
-    }
+//    @AfterEach
+//    public void tearDown() {
+//        UserActions.quitDriver();
+//    }
 
     //@BeforeAll
     public static void loginUser() {
         ///can we call API register user here use login here or from API
         String username = registerPage.generateUser();
         String password = registerPage.generatePassword();
+        registerPage.registerUser(username, password);
+        loginPage.loginUser(username, password);
+    }
+
+    public static void loginUserWithParams(String username, String password){
+        ///can we call API register user here use login here or from API
         registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);
     }

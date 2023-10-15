@@ -1,62 +1,21 @@
-2023-10-15 17:58:22,331 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:26,889 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:28,067 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:28,067 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:28,067 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:28,068 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:28,069 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:28,069 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:28,069 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:29,927 INFO  [main] Clicking on element register.page.submitButton
-2023-10-15 17:58:31,588 INFO  [main] Clicking on element login.submit.button
-2023-10-15 17:58:32,814 INFO  [main] Clicking on element new.post.button
-2023-10-15 17:58:34,109 INFO  [main] Clicking on element choose.private.post
-2023-10-15 17:58:34,247 INFO  [main] Clicking on element create.post.button
-2023-10-15 17:58:35,977 INFO  [main] Clicking on element home.page.home.button
-2023-10-15 17:58:36,869 INFO  [main] Clicking on element logout.button
-2023-10-15 17:58:37,292 INFO  [main] Clicking on element home.page.latest.post.button
-2023-10-15 17:58:40,563 INFO  [main] Clicking on element register.page.submitButton
-2023-10-15 17:58:42,072 INFO  [main] Clicking on element login.submit.button
-2023-10-15 17:58:43,203 INFO  [main] Quitting WebDriver
-2023-10-15 17:58:43,592 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:47,089 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:47,090 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:47,090 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:47,091 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:47,092 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:47,092 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:47,092 INFO  [main] Initializing WebDriver
-2023-10-15 17:58:48,737 INFO  [main] Clicking on element register.page.submitButton
-2023-10-15 17:58:50,176 INFO  [main] Clicking on element login.submit.button
-2023-10-15 17:58:51,375 INFO  [main] Clicking on element new.post.button
-2023-10-15 17:58:52,639 INFO  [main] Clicking on element choose.public.post
-2023-10-15 17:58:52,744 INFO  [main] Clicking on element create.post.button
-2023-10-15 17:58:54,413 INFO  [main] Clicking on element home.page.home.button
-2023-10-15 17:58:55,346 INFO  [main] Clicking on element profile.personal.page.button
-2023-10-15 17:58:57,305 INFO  [main] Clicking on element latest.activity.button
-2023-10-15 17:58:57,968 INFO  [main] Clicking on element recently.post
-2023-10-15 17:58:59,593 INFO  [main] Clicking on element delete.post.button
-2023-10-15 17:59:01,029 INFO  [main] Clicking on element delete.drop.down.button
-2023-10-15 17:59:01,106 INFO  [main] Clicking on element delete.submit.button
-2023-10-15 17:59:02,308 INFO  [main] Quitting WebDriver
-2023-10-15 17:59:02,685 INFO  [main] Initializing WebDriver
-2023-10-15 17:59:06,390 INFO  [main] Initializing WebDriver
-2023-10-15 17:59:06,391 INFO  [main] Initializing WebDriver
-2023-10-15 17:59:06,391 INFO  [main] Initializing WebDriver
-2023-10-15 17:59:06,391 INFO  [main] Initializing WebDriver
-2023-10-15 17:59:06,391 INFO  [main] Initializing WebDriver
-2023-10-15 17:59:06,391 INFO  [main] Initializing WebDriver
-2023-10-15 17:59:06,392 INFO  [main] Initializing WebDriver
-2023-10-15 17:59:08,437 INFO  [main] Clicking on element register.page.submitButton
-2023-10-15 17:59:10,082 INFO  [main] Clicking on element login.submit.button
-2023-10-15 17:59:11,365 INFO  [main] Clicking on element home.page.latest.post.button
-2023-10-15 17:59:14,573 INFO  [main] Clicking on element post.like.button
-2023-10-15 18:00:04,786 INFO  [main] Quitting WebDriver
-2023-10-15 18:00:05,156 INFO  [main] Initializing WebDriver
-2023-10-15 18:00:10,168 INFO  [main] Initializing WebDriver
-2023-10-15 18:00:10,168 INFO  [main] Initializing WebDriver
-2023-10-15 18:00:10,168 INFO  [main] Initializing WebDriver
-2023-10-15 18:00:10,168 INFO  [main] Initializing WebDriver
-2023-10-15 18:00:10,169 INFO  [main] Initializing WebDriver
-2023-10-15 18:00:10,169 INFO  [main] Initializing WebDriver
-2023-10-15 18:00:10,169 INFO  [main] Initializing WebDriver
+2023-10-15 20:11:57,238 INFO  [main] Initializing WebDriver
+2023-10-15 20:12:02,820 INFO  [main] Initializing WebDriver
+2023-10-15 20:12:04,954 INFO  [main] Initializing WebDriver
+2023-10-15 20:12:04,955 INFO  [main] Initializing WebDriver
+2023-10-15 20:12:04,955 INFO  [main] Initializing WebDriver
+2023-10-15 20:12:04,956 INFO  [main] Initializing WebDriver
+2023-10-15 20:12:04,956 INFO  [main] Initializing WebDriver
+2023-10-15 20:12:04,956 INFO  [main] Initializing WebDriver
+2023-10-15 20:12:04,957 INFO  [main] Initializing WebDriver
+2023-10-15 20:12:06,945 INFO  [main] Clicking on element register.page.submitButton
+2023-10-15 20:12:09,086 INFO  [main] Clicking on element login.submit.button
+2023-10-15 20:12:11,297 INFO  [main] Clicking on element profile.personal.page.button
+2023-10-15 20:12:13,470 INFO  [main] Clicking on element profile.editProfile.page.button
+2023-10-15 20:12:15,305 INFO  [main] Clicking on element profile.update.personal.profile.button
+2023-10-15 20:12:22,094 INFO  [main] Clicking on element profile.back.to.profile
+2023-10-15 20:12:23,862 INFO  [main] Clicking on element logout.button
+2023-10-15 20:12:25,437 INFO  [main] Clicking on element register.page.submitButton
+2023-10-15 20:12:27,140 INFO  [main] Clicking on element login.submit.button
+2023-10-15 20:12:29,806 INFO  [main] Clicking on element //button [@class='form-control btn btn-primary']
+2023-10-15 20:12:30,770 INFO  [main] Clicking on element //a[@class='btn btn-primary']
+2023-10-15 20:12:32,918 INFO  [main] Clicking on element //input[@class='btn btn-primary']

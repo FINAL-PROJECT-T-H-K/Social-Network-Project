@@ -87,6 +87,18 @@ public class HomePage extends BaseSocialPage {
 
     }
 
+    public void clickOnUserAfterSearch() {
+        actions.waitForElementVisible("//a[@class='btn btn-primary']");
+        actions.clickElement("//a[@class='btn btn-primary']");
+
+    }
+
+    public void sendConnectionToSearchedUser() {
+        actions.waitForElementVisible("//input[@class='btn btn-primary']");
+        actions.clickElement("//input[@class='btn btn-primary']");
+
+    }
+
     public void searchUserByProfession() {
         actions.waitForElementVisible("//input[@id='searchParam1']");
         actions.typeValueInField("Hairdresser", "//input[@id='searchParam1']");
@@ -105,8 +117,17 @@ public class HomePage extends BaseSocialPage {
 
     }
 
+    public void verifySuccessfulConnectionRequestMessage() {
+        actions.waitForElementVisible("//div[text()='Good job! You have send friend request!']");
+        actions.assertElementPresent("//div[text()='Good job! You have send friend request!']");
+    }
+
+    public void validateSearchedUsernameInSearchResults(String firstName, String lastName) {
+        actions.assertElementVisible("homepage.searchresult.username", firstName, lastName);
+    }
+
     public void validateSearchUserByKnownUsername(String name) {
-        actions.assertElementPresent(String.format("//h2[text()='%s']",name));
+        actions.assertElementPresent(String.format("//h2[text()='%s']", name));
         System.out.println("User with username 'Public Profile' is visible.");
 
     }
