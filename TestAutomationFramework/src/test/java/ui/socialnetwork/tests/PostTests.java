@@ -7,18 +7,12 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 public class PostTests extends BaseTestSetup {
 
-    //close browser after each test and open new browser
 
     @BeforeEach
     public void setupUser() {
         registerAndLoginUser();
     }
 
-//    @AfterEach
-//    public void logOutUser() {
-//        homePage.clickOnHomeButton();
-//        logoutPage.logoutSuccessfully();
-//    }
 
     @Test
     public void createPublicPostTest() {
@@ -53,10 +47,10 @@ public class PostTests extends BaseTestSetup {
         registerAndLoginUser();
 
     }
-
-    ///replace like.post.button locator
     @Test
     public void likePostWhenClickLikeButtonTest() {
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
 
@@ -67,7 +61,8 @@ public class PostTests extends BaseTestSetup {
 
     @Test
     public void dislikePostWhenClickLikeButtonTest() {
-
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
         homePage.clickOnLatestPostsButton();
         postPage.dislikePublicPost();
 

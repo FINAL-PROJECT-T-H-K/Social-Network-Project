@@ -36,16 +36,14 @@ public class BaseTestSetup {
 //        UserActions.quitDriver();
 //    }
 
-    //@BeforeAll
     public static void registerAndLoginUser() {
-        ///can we call API register user here use login here or from API
         String username = registerPage.generateUser();
         String password = registerPage.generatePassword();
         registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);
     }
 
-    public static void loginUserWithParams(String username, String password){
+    public static void registerAndLoginUserWithParams(String username, String password){
         ///can we call API register user here use login here or from API
         registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);

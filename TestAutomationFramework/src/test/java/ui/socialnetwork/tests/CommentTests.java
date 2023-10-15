@@ -15,8 +15,9 @@ public class CommentTests extends BaseTestSetup {
 
     @Test
     public void createCommentUnderThePostTests() {
-        homePage.clickOnLatestPostsButton();
-        commentPage.clickOnExploreThePost();
+        postPage.createPublicPost();
+        homePage.clickOnHomeButton();
+        postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
 
