@@ -11,7 +11,6 @@ public class ConnectionTests extends BaseTestSetup {
     private static String PASSWORD_RECEIVER;
     private static String USERNAME_RECEIVER;
     Utils utils = new Utils();
-    ConnectionControllerTest connectionControllerTest = new ConnectionControllerTest();
     @Test
     public void sendingConnectionRequestToAnotherUserTest() {
         USERNAME_RECEIVER = Utils.generateUniqueUsername();
@@ -33,9 +32,7 @@ public class ConnectionTests extends BaseTestSetup {
 
         homePage.validateSearchedUsernameInSearchResults(USERNAME_RECEIVER, USERNAME_RECEIVER);
         homePage.verifySuccessfulConnectionRequestMessage();
-
     }
-
     @Test
     public void approveAlreadySentConnectionRequestTest() {
 
@@ -48,5 +45,5 @@ public class ConnectionTests extends BaseTestSetup {
         personalProfilePage.validateReceivedConnectionRequestApproved();
 
     }
-
+    //@Test Disconnect from connected user
 }
