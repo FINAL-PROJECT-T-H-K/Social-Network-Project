@@ -114,7 +114,6 @@ public class HomePage extends BaseSocialPage {
 
     public void validateUserSearchByProfession() {
         actions.assertElementPresent("//span[@class='position' and text()='Hairdresser']");
-
     }
 
     public void verifySuccessfulConnectionRequestMessage() {
@@ -129,7 +128,6 @@ public class HomePage extends BaseSocialPage {
     public void validateSearchUserByKnownUsername(String name) {
         actions.assertElementPresent(String.format("//h2[text()='%s']", name));
         System.out.println("User with username 'Public Profile' is visible.");
-
     }
 
     public void validateSearchBarShowsUsers() {
@@ -170,6 +168,19 @@ public class HomePage extends BaseSocialPage {
         actions.assertElementPresent("login.page.message");
         actions.assertElementPresent("login.page.username");
     }
+    public void clickOnGoToAdminZoneButton(){
+        actions.waitForElementVisible("admin.zone.button");
+        actions.clickElement("admin.zone.button");
+    }
+    public void clickOnViewAllUsersButton(){
+        actions.waitForElementVisible("admin.zone.button");
+        actions.clickElement("admin.zone.button");
 
+        actions.waitForElementVisible("admin.view.all.users");
+        actions.clickElement("admin.view.all.users");
 
+    }
+    public void verifyAdminViewAllUsers() {
+        actions.assertElementPresent("admin.view.off.all.user");
+    }
 }
