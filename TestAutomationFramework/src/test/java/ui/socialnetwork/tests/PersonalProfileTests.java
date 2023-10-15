@@ -88,7 +88,7 @@ public class PersonalProfileTests extends BaseTestSetup {
     public void sendingConnectionRequestToAnotherUserTest() {
         USERNAME_RECEIVER = Utils.generateUniqueUsername();
         PASSWORD_RECEIVER = Utils.generateUniquePassword();
-        registerAndLoginUserWithParams(USERNAME_RECEIVER, PASSWORD_RECEIVER);
+//        registerAndLoginUserWithParams(USERNAME_RECEIVER, PASSWORD_RECEIVER);
 
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.setFirstLastNamesAndBirthdate(USERNAME_RECEIVER, USERNAME_RECEIVER);
@@ -98,7 +98,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
         USERNAME_SENDER = Utils.generateUniqueUsername();
         PASSWORD_SENDER = Utils.generateUniquePassword();
-        registerAndLoginUserWithParams(USERNAME_SENDER, PASSWORD_SENDER);
+//        registerAndLoginUserWithParams(USERNAME_SENDER, PASSWORD_SENDER);
         homePage.searchUserByKnownUsername(USERNAME_RECEIVER);
         homePage.clickOnUserAfterSearch();
         homePage.sendConnectionToSearchedUser();
