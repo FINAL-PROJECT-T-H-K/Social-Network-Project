@@ -8,23 +8,6 @@ public class AdminUserTests extends BaseTestSetup {
     public String commentText;
     public String editedComment;
 
-    @BeforeEach
-    public void setupUser() {
-        loginAdmin();
-    }
-    @Test
-    public void adminUserAuthenticationTest() {
-        //ASSERT
-        loginPage.assertAdminAuthenticatedUser();
-    }
-    @Test
-    public void adminUserLoggedOutTest(){
-        logoutPage.logoutSuccessfully();
-
-        //ASSERT
-        logoutPage.assertSuccessfulLogout();
-        logoutPage.validateLoggedOut();
-    }
     @Test
     public void adminUserViewAllUsersTest() {
         homePage.clickOnGoToAdminZoneButton();

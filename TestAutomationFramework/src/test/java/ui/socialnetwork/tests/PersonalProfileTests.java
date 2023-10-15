@@ -2,12 +2,17 @@ package ui.socialnetwork.tests;
 
 import api.socialnetwork.tests.ConnectionControllerTest;
 import apisocialnetwork.Utils;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 import java.util.logging.Logger;
 
 public class PersonalProfileTests extends BaseTestSetup {
+    @BeforeEach
+    public void setupUser() {
+        registerAndLoginUser();
+    }
 
     Logger logger = Logger.getLogger("");
     String firstName = "first";
@@ -17,8 +22,6 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @Test
     public void updateUserProfileWithMustHaveFieldsTest() {
-
-        registerAndLoginUser();
         personalProfilePage.enterPersonalProfile();
         firstName += Utils.generateFirstName();
         lastName += Utils.generateLastName();
@@ -35,8 +38,6 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @Test
     public void updateUserProfileWithFirstLastNameBirthdayGenderEmailPublicInfoCityTest() {
-
-        registerAndLoginUser();
         personalProfilePage.enterPersonalProfile();
         firstName += personalProfilePage.generateFirstName();
         lastName += personalProfilePage.generateLastName();
@@ -56,8 +57,6 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @Test
     public void updatePersonalJobTittleInformationTest() {
-        registerAndLoginUser();
-
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.updateJobSection();
 
@@ -67,8 +66,6 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @Test
     public void updatePersonalSkillsInformationTest() {
-        registerAndLoginUser();
-
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.updateSkillsSection();
 

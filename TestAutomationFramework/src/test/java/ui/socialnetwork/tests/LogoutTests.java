@@ -5,13 +5,18 @@ import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 public class LogoutTests extends BaseTestSetup {
-    @BeforeEach
-    public void setupUser() {
-        registerAndLoginUser();
-    }
-
     @Test
-    public void nonAdminUserLoggedOutTest(){
+    public void nonAdminUserLoggedOutTest() {
+        registerAndLoginUser();
+        logoutPage.logoutSuccessfully();
+
+        //ASSERT
+        logoutPage.assertSuccessfulLogout();
+        logoutPage.validateLoggedOut();
+    }
+    @Test
+    public void adminUserLoggedOutTest(){
+        loginAdmin();
         logoutPage.logoutSuccessfully();
 
         //ASSERT
