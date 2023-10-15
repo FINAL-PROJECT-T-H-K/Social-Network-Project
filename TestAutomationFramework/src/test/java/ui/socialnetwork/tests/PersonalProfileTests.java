@@ -12,7 +12,7 @@ public class PersonalProfileTests extends BaseTestSetup {
     String lastName = "last";
     String email = "";
     String personalInfo;
-    String email;
+
 
     @Test
     public void UpdateUserProfileWithFirstLastNameAndBirthdayTest() {

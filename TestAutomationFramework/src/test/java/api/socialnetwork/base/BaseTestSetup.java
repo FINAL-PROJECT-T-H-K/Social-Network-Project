@@ -138,7 +138,7 @@ public class BaseTestSetup {
         return response;
     }
 
-    protected static Response updateUserProfile(String name) {
+    public static Response updateUserProfile(String name) {
 
         baseURI = BASE_URL + API_USERS_AUTH + USER_ID + "/personal";
 

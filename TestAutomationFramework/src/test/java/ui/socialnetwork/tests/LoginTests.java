@@ -21,12 +21,10 @@ public class LoginTests extends BaseTestSetup {
     @Test
     public void successfullyAdminUserAuthentication() {
 
-      loginAdmin();
+        loginAdmin();
 
         //ASSERT
         loginPage.assertAdminAuthenticatedUser();
     }
-
-
     ///FEW MORE TEST
 }

@@ -66,7 +66,7 @@ public class UserControllerTest extends BaseTestSetup {
 
         int statusCode = response.getStatusCode();
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_INCORRECT_STATUS);
-        //assertEquals(skill1Content, RANDOM_JOB_TITLE, ERROR_MESSAGE_JOB_TITLE);
+        ///add one more assertion
 
     }
 

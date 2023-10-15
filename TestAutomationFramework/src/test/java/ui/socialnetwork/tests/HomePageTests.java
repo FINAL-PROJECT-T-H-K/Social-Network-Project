@@ -2,7 +2,7 @@ package ui.socialnetwork.tests;
 
 import api.socialnetwork.tests.UserControllerTest;
 import apisocialnetwork.Utils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 import static apisocialnetwork.Constants.RANDOM_EMAIL;
