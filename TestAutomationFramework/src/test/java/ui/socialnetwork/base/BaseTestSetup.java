@@ -51,11 +51,6 @@ public class BaseTestSetup {
         loginPage.loginUser(username, password);
     }
 
-    public static void loginUser(){
-
-
-    }
-
     public static void loginAdmin() {
         String username = "admin" +registerPage.generateUser();
         String password = registerPage.generatePassword();
