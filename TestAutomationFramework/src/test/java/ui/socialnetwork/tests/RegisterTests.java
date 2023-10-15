@@ -1,6 +1,7 @@
 package ui.socialnetwork.tests;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 import java.util.logging.Logger;
@@ -12,13 +13,11 @@ public class RegisterTests extends BaseTestSetup {
     String password;
     String adminUsername = "admin";
 
-    @Test
-    public void successfulRegisterUserTest() {
+   @Test
+    public void nonAdminUserRegisterTest() {
         username = registerPage.generateUser();
         password = registerPage.generatePassword();
-
         registerPage.registerUser(username, password);
-
         //ASSERT
         registerPage.assertSuccessfulRegistration();
         logger.info(username);
@@ -27,12 +26,10 @@ public class RegisterTests extends BaseTestSetup {
     }
 
     @Test
-    public void successfulRegisterAdminUserTest() {
+    public void adminUserRegisterTest() {
         adminUsername += registerPage.generateUser();
         password += registerPage.generatePassword();
-
         registerPage.registerUser(adminUsername, password);
-
         //ASSERT
         registerPage.assertSuccessfulRegistration();
         logger.info(adminUsername);
