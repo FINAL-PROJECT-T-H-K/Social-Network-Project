@@ -84,7 +84,7 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.waitForElementClickable("profile.skills.tittle");
         actions.typeValueInField("Quality Assurance", "profile.skills.tittle");
         actions.waitForElementClickable("profile.skills.tittle");
-        actions.typeValueInField("7", "profile.update.availability");
+        actions.typeValueInField("168", "profile.update.availability");
         actions.waitForElementClickable("profile.update.skills.button");
         actions.clickElement("profile.update.skills.button");
     }
