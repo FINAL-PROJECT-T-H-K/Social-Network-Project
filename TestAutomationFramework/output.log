@@ -1,16 +1,18 @@
-2023-10-16 02:17:45,860 INFO  [main] Initializing WebDriver
-2023-10-16 02:17:52,313 INFO  [main] Initializing WebDriver
-2023-10-16 02:17:53,096 INFO  [main] Initializing WebDriver
-2023-10-16 02:17:53,096 INFO  [main] Initializing WebDriver
-2023-10-16 02:17:53,097 INFO  [main] Initializing WebDriver
-2023-10-16 02:17:53,098 INFO  [main] Initializing WebDriver
-2023-10-16 02:17:53,098 INFO  [main] Initializing WebDriver
-2023-10-16 02:17:53,099 INFO  [main] Initializing WebDriver
-2023-10-16 02:17:53,100 INFO  [main] Initializing WebDriver
-2023-10-16 02:17:56,302 INFO  [main] Clicking on element register.page.submitButton
-2023-10-16 02:17:58,762 INFO  [main] Clicking on element login.submit.button
-2023-10-16 02:18:00,570 INFO  [main] Clicking on element profile.personal.page.button
-2023-10-16 02:18:02,222 INFO  [main] Clicking on element profile.editProfile.page.button
-2023-10-16 02:18:03,910 INFO  [main] Clicking on element profile.job.tittle
-2023-10-16 02:18:04,101 INFO  [main] Clicking on element profile.update.job.tittle.button
-2023-10-16 02:18:06,642 INFO  [main] Quitting WebDriver
+2023-10-16 02:34:34,009 INFO  [main] Initializing WebDriver
+2023-10-16 02:34:41,229 INFO  [main] Initializing WebDriver
+2023-10-16 02:34:42,946 INFO  [main] Initializing WebDriver
+2023-10-16 02:34:42,947 INFO  [main] Initializing WebDriver
+2023-10-16 02:34:42,947 INFO  [main] Initializing WebDriver
+2023-10-16 02:34:42,948 INFO  [main] Initializing WebDriver
+2023-10-16 02:34:42,949 INFO  [main] Initializing WebDriver
+2023-10-16 02:34:42,949 INFO  [main] Initializing WebDriver
+2023-10-16 02:34:42,950 INFO  [main] Initializing WebDriver
+2023-10-16 02:34:45,480 INFO  [main] Clicking on element register.page.submitButton
+2023-10-16 02:34:48,049 INFO  [main] Clicking on element login.submit.button
+2023-10-16 02:34:49,884 INFO  [main] Clicking on element new.post.button
+2023-10-16 02:34:51,510 INFO  [main] Clicking on element choose.public.post
+2023-10-16 02:34:51,767 INFO  [main] Clicking on element create.post.button
+2023-10-16 02:34:54,003 INFO  [main] Clicking on element home.page.home.button
+2023-10-16 02:34:55,402 INFO  [main] Clicking on element home.page.latest.post.button
+2023-10-16 02:36:21,590 INFO  [main] Clicking on element post.like.button
+2023-10-16 02:36:23,378 INFO  [main] Quitting WebDriver

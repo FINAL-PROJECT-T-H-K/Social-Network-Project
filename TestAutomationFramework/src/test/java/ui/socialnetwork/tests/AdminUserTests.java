@@ -1,12 +1,24 @@
 package ui.socialnetwork.tests;
 
+import apisocialnetwork.Utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
+import java.util.logging.Logger;
+
 public class AdminUserTests extends BaseTestSetup {
+    Logger logger = Logger.getLogger("");
+    String firstName = "first";
+    String lastName = "last";
+    String email = "";
+    String personalInfo;
     public String commentText;
     public String editedComment;
+    @BeforeEach
+    public void setupLogin (){
+        loginAdmin();
+    }
 
     @Test
     public void adminUserViewAllUsersTest() {
@@ -54,7 +66,7 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.likePublicPost();
 
         //assert
-        postPage.validatePostIsLiked();
+        postPage.validateTopicIsUnliked();
 
 
     }
@@ -131,5 +143,26 @@ public class AdminUserTests extends BaseTestSetup {
         commentPage.userDeleteCommentUnderThePost();
         //assert
         commentPage.verifyCommentDeleted();
+    }
+
+    @Test
+    public void adminUserUpdateProfileWithFirstLastNameBirthdayGenderEmailPublicInfoCityTest() {
+        personalProfilePage.enterPersonalProfile();
+        firstName += Utils.generateFirstName();
+        lastName += Utils.generateLastName();
+        personalProfilePage.setFirstLastNamesAndBirthdate(firstName, lastName);
+        email = personalProfilePage.generateRandomEmail();
+        personalProfilePage.updateUserProfileWithEmailAddress(email);
+        personalProfilePage.updateUserProfileWithGender();
+        personalInfo += personalProfilePage.generateInfo();
+        personalProfilePage.updateUserPublicInfo(personalInfo);
+        personalProfilePage.updateCity();
+        personalProfilePage.clickOnUpdateProfileButton();
+        personalProfilePage.backToProfileInfo();
+
+        //assert
+        personalProfilePage.assertFirstLastNamesUpdated(firstName,lastName);
+        personalProfilePage.assertEmailUpdated(email);
+
     }
 }
