@@ -2,9 +2,8 @@ package ui.socialnetwork.base;
 
 import com.telerikacademy.testframework.CustomWebDriverManager;
 import com.telerikacademy.testframework.UserActions;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import pages.wearesocialnetwork.*;
 
@@ -19,8 +18,8 @@ public class BaseTestSetup {
     public static PostPage postPage;
     public static CommentPage commentPage;
 
-    @BeforeAll
-    public static void setUp() {
+    @BeforeEach
+    public void setUp() {
         UserActions.loadBrowser("social.network.homepage");
         WebDriver driver = CustomWebDriverManager.CustomWebDriverManagerEnum.INSTANCE.getDriver();
 
@@ -32,12 +31,12 @@ public class BaseTestSetup {
         personalProfilePage = new PersonalProfilePage(driver);
         commentPage = new CommentPage(driver);
 
+       // loginUser();
     }
-
-//    @AfterAll
-//    public static void tearDown() {
-//        UserActions.quitDriver();
-//    }
+    @AfterEach
+    public void tearDown() {
+        UserActions.quitDriver();
+    }
 
     //@BeforeAll
     public static void loginUser() {

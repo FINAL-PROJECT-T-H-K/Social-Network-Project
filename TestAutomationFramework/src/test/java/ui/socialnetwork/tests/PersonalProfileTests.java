@@ -1,7 +1,7 @@
 package ui.socialnetwork.tests;
 
 import apisocialnetwork.Utils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 import java.util.logging.Logger;
@@ -15,7 +15,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
 
     @Test
-    public void UpdateUserProfileWithFirstLastNameAndBirthdayTest() {
+    public void updateUserProfileWithMustHaveFieldsTest() {
 
         loginUser();
         personalProfilePage.enterPersonalProfile();

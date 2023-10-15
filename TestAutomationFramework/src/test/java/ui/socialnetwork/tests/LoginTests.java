@@ -1,6 +1,6 @@
 package ui.socialnetwork.tests;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 public class LoginTests extends BaseTestSetup {
@@ -19,7 +19,7 @@ public class LoginTests extends BaseTestSetup {
     }
 
     @Test
-    public void successfullyAdminUserAuthentication() {
+    public void successfullyAdminUserAuthenticationTest() {
 
         loginAdmin();
 

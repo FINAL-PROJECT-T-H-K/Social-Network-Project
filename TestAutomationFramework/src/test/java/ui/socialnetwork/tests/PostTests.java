@@ -8,16 +8,18 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 public class PostTests extends BaseTestSetup {
 
+    //close browser after each test and open new browser
+
     @BeforeEach
     public void setupUser() {
         loginUser();
     }
 
-    @AfterEach
-    public void logOutUser() {
-        homePage.clickOnHomeButton();
-        logoutPage.logoutSuccessfully();
-    }
+//    @AfterEach
+//    public void logOutUser() {
+//        homePage.clickOnHomeButton();
+//        logoutPage.logoutSuccessfully();
+//    }
 
     @Test
     public void createPublicPostTest() {
