@@ -39,17 +39,17 @@ public class PersonalProfileTests extends BaseTestSetup {
     @Test
     public void updateUserProfileWithFirstLastNameBirthdayGenderEmailPublicInfoCityTest() {
         personalProfilePage.enterPersonalProfile();
-        firstName += personalProfilePage.generateFirstName();
-        lastName += personalProfilePage.generateLastName();
+        firstName += Utils.generateFirstName();
+        lastName += Utils.generateLastName();
         personalProfilePage.setFirstLastNamesAndBirthdate(firstName, lastName);
         email = personalProfilePage.generateRandomEmail();
-        email = Utils.generateEmail();
         personalProfilePage.updateUserProfileWithEmailAddress(email);
         personalProfilePage.updateUserProfileWithGender();
         personalInfo += personalProfilePage.generateInfo();
         personalProfilePage.updateUserPublicInfo(personalInfo);
         personalProfilePage.updateCity();
         personalProfilePage.clickOnUpdateProfileButton();
+        personalProfilePage.backToProfileInfo();
 
         personalProfilePage.assertProfilesInformationUpdated();
     }
