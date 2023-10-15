@@ -10,7 +10,7 @@ public class CommentTests extends BaseTestSetup {
 
     @BeforeEach
     public void setupLogin (){
-        loginUser();
+        registerAndLoginUser();
     }
 
     @Test

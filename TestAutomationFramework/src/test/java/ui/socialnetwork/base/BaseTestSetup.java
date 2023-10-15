@@ -2,7 +2,6 @@ package ui.socialnetwork.base;
 
 import com.telerikacademy.testframework.CustomWebDriverManager;
 import com.telerikacademy.testframework.UserActions;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import pages.wearesocialnetwork.*;
@@ -38,7 +37,7 @@ public class BaseTestSetup {
 //    }
 
     //@BeforeAll
-    public static void loginUser() {
+    public static void registerAndLoginUser() {
         ///can we call API register user here use login here or from API
         String username = registerPage.generateUser();
         String password = registerPage.generatePassword();
@@ -50,6 +49,11 @@ public class BaseTestSetup {
         ///can we call API register user here use login here or from API
         registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);
+    }
+
+    public static void loginUser(){
+
+
     }
 
     public static void loginAdmin() {

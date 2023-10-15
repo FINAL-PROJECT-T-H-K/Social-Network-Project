@@ -11,7 +11,7 @@ public class LoginTests extends BaseTestSetup {
     String adminUsername = "admin";
     @BeforeEach
     public void setupUser() {
-        loginUser();
+        registerAndLoginUser();
     }
     @Test
     public void nonAdminUserAuthentication() {

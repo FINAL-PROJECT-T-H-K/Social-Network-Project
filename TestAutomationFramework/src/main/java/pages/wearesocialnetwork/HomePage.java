@@ -9,7 +9,7 @@ public class HomePage extends BaseSocialPage {
     }
 
 
-    public void validateHomePageAccessAndLinksVisibility() {
+    public void validateAnonymousUserHomePageAccessAndLinksVisibility() {
         actions.assertElementPresent("//h1[text()='The Easiest Way to Hack the Crisis']");
         actions.assertElementPresent("nav.bar.brand");
         actions.assertElementPresent("register.button");
@@ -23,20 +23,15 @@ public class HomePage extends BaseSocialPage {
 
     }
 
+
+
+
+
     public void validateUserCanScrollDownInHomePageToSpecificElement() {
         actions.scrollDownInPage("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]");
         actions.waitForElementToBeClickableUntilTimeout("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]", 5);
     }
 
-    public void scrollDownInHomePage() {
-        actions.scrollDown(3000);
-
-    }
-
-    public void scrollUpInHomePage() {
-        actions.scrollUp(-3000);
-
-    }
 
     public void clickOnRegisterButton() {
         actions.waitForElementVisible("register.button");
@@ -96,6 +91,17 @@ public class HomePage extends BaseSocialPage {
     public void sendConnectionToSearchedUser() {
         actions.waitForElementVisible("//input[@class='btn btn-primary']");
         actions.clickElement("//input[@class='btn btn-primary']");
+
+    }
+
+    public void clickOnPersonalProfile() {
+        actions.waitForElementClickable("profile.editProfile.page.button");
+        actions.clickElement("profile.personal.page.button");
+
+    }
+
+    public void validatePersonalProfileButton (){
+        actions.assertElementVisible("profile.editProfile.page.button");
 
     }
 

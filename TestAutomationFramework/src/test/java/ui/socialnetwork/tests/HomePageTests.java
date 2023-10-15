@@ -13,14 +13,16 @@ public class HomePageTests extends BaseTestSetup {
     UserControllerTest userControllerTest = new UserControllerTest();
 
     @Test
-    public void homePageAccessAndLinksVisibilityTest() {
+    public void anonymousUserHomePageAccessAndLinksVisibilityTest() {
         //homePage.navigateToPage(); page is already being navigated
-        homePage.validateHomePageAccessAndLinksVisibility();
+        homePage.validateAnonymousUserHomePageAccessAndLinksVisibility();
 
     }
 
+    ///add homepage visibility for authenticated users.
+
     @Test
-    public void userCanScrollDownInHomePageTest() {
+    public void anonymousUserCanScrollDownInHomePageTest() {
 
         actions.scrollDown(3000);
         homePage.verifyScrollDownInHomePage();
@@ -31,7 +33,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void registerFormDisplayWhenRegisterButtonClickedTest() {
+    public void anonymousUserRegisterFormDisplayWhenRegisterButtonClickedTest() {
 
         //homePage.navigateToPage();
         homePage.clickOnRegisterButton();
@@ -41,7 +43,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void loginFormDisplayWhenSignInButtonClickedTest() {
+    public void anonymousUserLoginFormDisplayWhenSignInButtonClickedTest() {
 
         //homePage.navigateToPage();
         homePage.clickOnSignInButton();
@@ -51,7 +53,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void weAreButtonNavigatesHomePageTest() {
+    public void anonymousUserWeAreButtonNavigatesHomePageTest() {
 
         //homePage.navigateToPage();
         homePage.clickOnAboutUsButton();
@@ -61,7 +63,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void latestPostsDisplayWhenLatestPostButtonClickedTest() {
+    public void anonymousUserLatestPostsDisplayWhenLatestPostButtonClickedTest() {
 
         homePage.clickOnLatestPostsButton();
 
@@ -70,7 +72,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void aboutUsInformationDisplayedWhenAboutUsButtonClickedTest() {
+    public void anonymousUserAboutUsInformationDisplayedWhenAboutUsButtonClickedTest() {
 
         homePage.clickOnAboutUsButton();
 
@@ -79,7 +81,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void searchAllUsersWhenSearchButtonClickedTest() {
+    public void anonymousUserSearchAllUsersWhenSearchButtonClickedTest() {
 
         homePage.clickOnUserSearchBar();
 
@@ -88,7 +90,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void searchUserByKnownUsernameTest() {
+    public void anonymousUserSearchUserByKnownUsernameTest() {
         SEARCHABLE_NAME = registerPage.generateUser();
         RANDOM_EMAIL = Utils.generateRandomEmail();
         System.out.println(SEARCHABLE_NAME);
@@ -100,7 +102,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
-    public void showUsersByProfessionWhenSearchByProfessionTest() {
+    public void anonymousUserShowUsersByProfessionWhenSearchByProfessionTest() {
 
         homePage.searchUserByProfession();
 
@@ -108,4 +110,10 @@ public class HomePageTests extends BaseTestSetup {
 
     }
 }
+
+//    @Test
+//    public void authenticatedUserLinks
+//    //@Test authenticatedUserHomePagLinks Tests
+//
+//}
 

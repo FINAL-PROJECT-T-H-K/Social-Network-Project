@@ -1,21 +1,9 @@
-2023-10-15 20:11:57,238 INFO  [main] Initializing WebDriver
-2023-10-15 20:12:02,820 INFO  [main] Initializing WebDriver
-2023-10-15 20:12:04,954 INFO  [main] Initializing WebDriver
-2023-10-15 20:12:04,955 INFO  [main] Initializing WebDriver
-2023-10-15 20:12:04,955 INFO  [main] Initializing WebDriver
-2023-10-15 20:12:04,956 INFO  [main] Initializing WebDriver
-2023-10-15 20:12:04,956 INFO  [main] Initializing WebDriver
-2023-10-15 20:12:04,956 INFO  [main] Initializing WebDriver
-2023-10-15 20:12:04,957 INFO  [main] Initializing WebDriver
-2023-10-15 20:12:06,945 INFO  [main] Clicking on element register.page.submitButton
-2023-10-15 20:12:09,086 INFO  [main] Clicking on element login.submit.button
-2023-10-15 20:12:11,297 INFO  [main] Clicking on element profile.personal.page.button
-2023-10-15 20:12:13,470 INFO  [main] Clicking on element profile.editProfile.page.button
-2023-10-15 20:12:15,305 INFO  [main] Clicking on element profile.update.personal.profile.button
-2023-10-15 20:12:22,094 INFO  [main] Clicking on element profile.back.to.profile
-2023-10-15 20:12:23,862 INFO  [main] Clicking on element logout.button
-2023-10-15 20:12:25,437 INFO  [main] Clicking on element register.page.submitButton
-2023-10-15 20:12:27,140 INFO  [main] Clicking on element login.submit.button
-2023-10-15 20:12:29,806 INFO  [main] Clicking on element //button [@class='form-control btn btn-primary']
-2023-10-15 20:12:30,770 INFO  [main] Clicking on element //a[@class='btn btn-primary']
-2023-10-15 20:12:32,918 INFO  [main] Clicking on element //input[@class='btn btn-primary']
+2023-10-15 21:37:56,776 INFO  [main] Initializing WebDriver
+2023-10-15 21:38:02,075 INFO  [main] Initializing WebDriver
+2023-10-15 21:38:03,619 INFO  [main] Initializing WebDriver
+2023-10-15 21:38:03,622 INFO  [main] Initializing WebDriver
+2023-10-15 21:38:03,625 INFO  [main] Initializing WebDriver
+2023-10-15 21:38:03,626 INFO  [main] Initializing WebDriver
+2023-10-15 21:38:03,627 INFO  [main] Initializing WebDriver
+2023-10-15 21:38:03,629 INFO  [main] Initializing WebDriver
+2023-10-15 21:38:03,630 INFO  [main] Initializing WebDriver

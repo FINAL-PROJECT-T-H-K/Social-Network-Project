@@ -1,6 +1,5 @@
 package ui.socialnetwork.tests;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
@@ -12,7 +11,7 @@ public class PostTests extends BaseTestSetup {
 
     @BeforeEach
     public void setupUser() {
-        loginUser();
+        registerAndLoginUser();
     }
 
 //    @AfterEach
@@ -51,7 +50,7 @@ public class PostTests extends BaseTestSetup {
         homePage.clickOnLatestPostsButton();
 
         postPage.validateAnonymousUserCannotSeePrivatePosts();
-        loginUser();
+        registerAndLoginUser();
 
     }
 

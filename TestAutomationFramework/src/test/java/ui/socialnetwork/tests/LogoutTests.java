@@ -7,7 +7,7 @@ import ui.socialnetwork.base.BaseTestSetup;
 public class LogoutTests extends BaseTestSetup {
     @BeforeEach
     public void setupUser() {
-        loginUser();
+        registerAndLoginUser();
     }
 
     @Test

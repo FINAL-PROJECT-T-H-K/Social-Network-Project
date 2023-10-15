@@ -25,6 +25,7 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.typeValueInField("03/05/1987", "profile.birthday");
 
     }
+
     public void updateUserProfileWithEmailAddress(String email) {
         actions.deleteEmailFied();
         actions.waitForElementVisible("profile.email.address");
@@ -48,9 +49,22 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.waitForElementClickable("profile.update.personal.profile.button");
         actions.clickElement("profile.update.personal.profile.button");
     }
+
     public void backToProfileInfo() {
         actions.waitForElementClickable("profile.back.to.profile");
         actions.clickElement("profile.back.to.profile");
+    }
+
+    public void approveReceivedConnectionRequest() {
+        actions.waitForElementVisible("//input[@class='btn btn-primary']");
+        actions.clickElement("//input[@class='btn btn-primary']");
+        actions.waitForElementVisible("//input[@class='btn btn-primary py-2']");
+        actions.clickElement("//input[@class='btn btn-primary py-2']");
+    }
+
+    public void validateReceivedConnectionRequestApproved() {
+        actions.assertElementVisible("//h3[@class='mb-3 bread']");
+
     }
 
     public void validateFirstname(String firstName) {
@@ -68,6 +82,7 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.clickElement("profile.update.job.tittle.button");
 
     }
+
     public void updateSkillsSection() {
         actions.waitForElementClickable("profile.skills.tittle");
         actions.typeValueInField("Quality Assurance", "profile.skills.tittle");
@@ -76,37 +91,46 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.waitForElementClickable("profile.update.skills.button");
         actions.clickElement("profile.update.skills.button");
     }
+
     public void updateUserPublicInfo(String info) {
         actions.waitForElementClickable("profile.input.info");
         actions.typeValueInField(info, "profile.input.info");
     }
+
     public void updateCity() {
         actions.waitForElementClickable("profile.input.city");
         actions.clickElement("profile.input.city");
     }
+
     public void assertAvailabilityUpdated() {
         actions.assertElementPresent("profile.update.skills.checker");
     }
+
     public void assertJobTitleUpdated() {
         actions.assertElementPresent("latest.activity.button");
         actions.assertElementPresent("latest.activity.button");
     }
+
     public void assertProfilesInformationUpdated() {
 
         //don't implement
     }
+
     public String generateFirstName() {
         firstName += RandomStringUtils.randomAlphabetic(8);
         return firstName;
     }
+
     public String generateLastName() {
         lastName += RandomStringUtils.randomAlphabetic(8);
         return lastName;
     }
+
     public String generateRandomEmail() {
         String username = RandomStringUtils.randomAlphabetic(10);
         return username + "@gmail.com";
     }
+
     public String generateInfo() {
         personalInfo += RandomStringUtils.randomAlphabetic(25);
         return personalInfo;

@@ -102,7 +102,7 @@ public class AdminUserTests extends BaseTestSetup {
 
     @Test
     public void dislikeCommentUnderThePostTests() {
-        loginUser();
+        registerAndLoginUser();
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();

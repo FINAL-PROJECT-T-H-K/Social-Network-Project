@@ -1,21 +1,19 @@
 package ui.socialnetwork.tests;
 
 import api.socialnetwork.tests.ConnectionControllerTest;
-import api.socialnetwork.tests.UserControllerTest;
 import apisocialnetwork.Utils;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 import java.util.logging.Logger;
 
-import static apisocialnetwork.Constants.*;
-
 public class PersonalProfileTests extends BaseTestSetup {
 
-    public static String USERNAME_SENDER;
-    public static String PASSWORD_SENDER;
-    public static String PASSWORD_RECEIVER;
-    public static String USERNAME_RECEIVER;
+    private static String USERNAME_SENDER;
+    private static String PASSWORD_SENDER;
+    private static String PASSWORD_RECEIVER;
+    private static String USERNAME_RECEIVER;
 
     Utils utils = new Utils();
     ConnectionControllerTest connectionControllerTest = new ConnectionControllerTest();
@@ -25,11 +23,10 @@ public class PersonalProfileTests extends BaseTestSetup {
     String email = "";
     String personalInfo;
 
-
     @Test
     public void updateUserProfileWithMustHaveFieldsTest() {
 
-        loginUser();
+        registerAndLoginUser();
         personalProfilePage.enterPersonalProfile();
         firstName += Utils.generateFirstName();
         lastName += Utils.generateLastName();
@@ -47,7 +44,7 @@ public class PersonalProfileTests extends BaseTestSetup {
     @Test
     public void updateUserProfileWithFirstLastNameBirthdayGenderEmailPublicInfoCityTest() {
 
-        loginUser();
+        registerAndLoginUser();
         personalProfilePage.enterPersonalProfile();
         firstName += personalProfilePage.generateFirstName();
         lastName += personalProfilePage.generateLastName();
@@ -67,7 +64,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @Test
     public void updatePersonalJobTittleInformationTest() {
-        loginUser();
+        registerAndLoginUser();
 
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.updateJobSection();
@@ -78,7 +75,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @Test
     public void updatePersonalSkillsInformationTest() {
-        loginUser();
+        registerAndLoginUser();
 
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.updateSkillsSection();
@@ -110,17 +107,17 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     }
 
-    public void searchUserByKnownUsernameTest() {
-        UserControllerTest userControllerTest = new UserControllerTest();
+    @Test
+    public void approveAlreadySentConnectionRequestTest(){
 
-        SEARCHABLE_NAME = registerPage.generateUser();
-        RANDOM_EMAIL = Utils.generateRandomEmail();
-        System.out.println(SEARCHABLE_NAME);
-        userControllerTest.updateUserProfileTest();
+        sendingConnectionRequestToAnotherUserTest();
 
+        loginPage.loginUser(USERNAME_RECEIVER, PASSWORD_RECEIVER);
+        homePage.clickOnPersonalProfile();
+        personalProfilePage.approveReceivedConnectionRequest();
 
-        homePage.searchUserByKnownUsername(SEARCHABLE_NAME + " randomLastName");
+        personalProfilePage.validateReceivedConnectionRequestApproved();
 
-        homePage.validateSearchUserByKnownUsername(SEARCHABLE_NAME + " randomLastName");
     }
+
 }
