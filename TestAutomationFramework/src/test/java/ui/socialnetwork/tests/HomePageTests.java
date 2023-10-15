@@ -17,16 +17,13 @@ public class HomePageTests extends BaseTestSetup {
         homePage.validateAnonymousUserHomePageAccessAndLinksVisibility();
 
     }
-
-    ///add homepage visibility for authenticated users.
-
     @Test
     public void anonymousUserCanScrollDownInHomePageTest() {
 
-        actions.scrollDown(3000);         ///transfer to helpereMethods class
+        actions.scrollDown(3000);         ///transfer to another class
         homePage.verifyScrollDownInHomePage();
 
-        actions.scrollUp(-3000);     ///transfer to helpereMethods class
+        actions.scrollUp(-3000);    ///transfer to another class
         homePage.validateHomePageHeader(homePageHeader);
 
     }
