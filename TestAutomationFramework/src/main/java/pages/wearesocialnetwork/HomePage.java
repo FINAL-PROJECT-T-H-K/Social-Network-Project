@@ -107,6 +107,7 @@ public class HomePage extends BaseSocialPage {
         actions.waitForElementClickable("//input[@value='disconnect']");
         actions.clickElement("//input[@value='disconnect']");
     }
+
     public void validatePersonalProfileButton() {
         actions.assertElementVisible("profile.editProfile.page.button");
 
@@ -147,6 +148,7 @@ public class HomePage extends BaseSocialPage {
         actions.assertElementPresent(String.format("//h2[text()='%s']", name));
         logger.info("User with username 'Public Profile' is visible.");
     }
+
     public void validateDisconnectionFromAlreadyConnectedUser() {
 
         actions.waitForElementClickable("//input[@value='connect']");
@@ -177,36 +179,39 @@ public class HomePage extends BaseSocialPage {
         logger.info("Scroll up action is successful 'The Easiest Way to Hack the Crisis' header is visible.");
     }
 
-        public void validateLatestPostsDisplayed () {
-            actions.assertElementPresent("latest.posts.message");
-        }
-
-        public void validateRegisterFormFullyDisplayed () {
-            actions.assertElementPresent("join.our.community");
-            actions.assertElementPresent("register.page.usernameField");
-            actions.assertElementPresent("//input[@name='email']");
-            actions.assertElementPresent("//input[@name='password']");
-            actions.assertElementPresent("//input[@name='confirmPassword']");
-            actions.assertElementPresent("//input[@value = 'Register']");
-        }
-
-        public void validateLoginFormDisplayed () {
-            actions.assertElementPresent("login.page.message");
-            actions.assertElementPresent("login.page.username");
-        }
-        public void clickOnGoToAdminZoneButton () {
-            actions.waitForElementVisible("admin.zone.button");
-            actions.clickElement("admin.zone.button");
-        }
-        public void clickOnViewAllUsersButton () {
-            actions.waitForElementVisible("admin.zone.button");
-            actions.clickElement("admin.zone.button");
-
-            actions.waitForElementVisible("admin.view.all.users");
-            actions.clickElement("admin.view.all.users");
-
-        }
-        public void verifyAdminViewAllUsers () {
-            actions.assertElementPresent("admin.view.off.all.user");
-        }
+    public void validateLatestPostsDisplayed() {
+        actions.assertElementPresent("latest.posts.message");
     }
+
+    public void validateRegisterFormFullyDisplayed() {
+        actions.assertElementPresent("join.our.community");
+        actions.assertElementPresent("register.page.usernameField");
+        actions.assertElementPresent("//input[@name='email']");
+        actions.assertElementPresent("//input[@name='password']");
+        actions.assertElementPresent("//input[@name='confirmPassword']");
+        actions.assertElementPresent("//input[@value = 'Register']");
+    }
+
+    public void validateLoginFormDisplayed() {
+        actions.assertElementPresent("login.page.message");
+        actions.assertElementPresent("login.page.username");
+    }
+
+    public void clickOnGoToAdminZoneButton() {
+        actions.waitForElementVisible("admin.zone.button");
+        actions.clickElement("admin.zone.button");
+    }
+
+    public void clickOnViewAllUsersButton() {
+        actions.waitForElementVisible("admin.zone.button");
+        actions.clickElement("admin.zone.button");
+
+        actions.waitForElementVisible("admin.view.all.users");
+        actions.clickElement("admin.view.all.users");
+
+    }
+
+    public void verifyAdminViewAllUsers() {
+        actions.assertElementPresent("admin.view.off.all.user");
+    }
+}

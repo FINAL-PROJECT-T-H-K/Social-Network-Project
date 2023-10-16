@@ -6,6 +6,13 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Properties;
 
 public class Utils {
@@ -34,6 +41,26 @@ public class Utils {
         return value != null ? value : key;
     }
 
+    public static LocalDateTime getCurrentDateTime() {
+        return LocalDateTime.now();
+    }
+
+    public static String formatDateTime(LocalDateTime dateTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        return dateTime.format(formatter);
+    }
+
+    public static long compareDates(String dateStr1, String dateStr2) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        LocalDateTime dateTime1 = LocalDateTime.parse(dateStr1, formatter);
+        LocalDateTime dateTime2 = LocalDateTime.parse(dateStr2, formatter);
+
+        Duration duration = Duration.between(dateTime1, dateTime2);
+
+        // Convert the duration to minutes
+        return duration.toMinutes();
+
+    }
 
 
 }

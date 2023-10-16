@@ -1,12 +1,21 @@
 package pages.wearesocialnetwork;
 
+import com.telerikacademy.testframework.Utils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.time.LocalDateTime;
+
+import static com.telerikacademy.testframework.Utils.formatDateTime;
+import static com.telerikacademy.testframework.Utils.getCurrentDateTime;
 
 public class CommentPage extends BaseSocialPage {
 
     public String commentText = "My comment is ";
     public String editCommentText = "Edit comment to: ";
+
     public CommentPage(WebDriver driver) {
         super(driver, "social.network.homepage");
     }
@@ -73,7 +82,7 @@ public class CommentPage extends BaseSocialPage {
         actions.clickElement("explore.button");
     }
 
-    public void clickOnShowCommentsUnderThePost()  {
+    public void clickOnShowCommentsUnderThePost() {
         actions.scrollUp(-500);
         actions.waitForElementClickable("show.comments.button");
         actions.clickElement("show.comments.button");
@@ -93,24 +102,34 @@ public class CommentPage extends BaseSocialPage {
     public void verifyFirstCommentCreated() {
         actions.assertElementPresent("show.comments.button");
     }
+
     public void verifyCommentЕdited() {
         actions.assertElementPresent("show.comments.button");
     }
+
     public void verifyCommentDeleted() {
         actions.assertElementPresent("//h1[@class='mb-3 bread' and contains(text(), 'Comment deleted successfully')]");
     }
 
-    public void validateCommentCreatedWithText(String comment){
+    public void validateCommentCreatedWithText(String comment) {
         actions.assertElementVisible("comment.content", comment);
     }
 
-    public void validateCommentAddedInTheLast1Minute(){
+    public void validateCommentAddedInTheLast1Minute() {
+
+        LocalDateTime currentDateTime = getCurrentDateTime();
+        String formattedDateTime = formatDateTime(currentDateTime);
+
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        actions.assertElementAttribute("comment.time.created", "innerText", "1m");
+        String commentDateTime = actions.readTextFromElement("comment.time.created");
+        long result = Utils.compareDates(formattedDateTime, commentDateTime);
+
+        Assertions.assertTrue(result < 1);
+
     }
 
     public String generateRandomComment() {

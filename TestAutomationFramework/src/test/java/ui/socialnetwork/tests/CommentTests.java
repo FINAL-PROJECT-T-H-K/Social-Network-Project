@@ -5,8 +5,12 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
+import java.time.LocalDateTime;
+
 import static com.telerikacademy.testframework.Constants.commentText;
 import static com.telerikacademy.testframework.Constants.editedComment;
+import static com.telerikacademy.testframework.Utils.formatDateTime;
+import static com.telerikacademy.testframework.Utils.getCurrentDateTime;
 
 public class CommentTests extends BaseTestSetup {
 
@@ -27,8 +31,7 @@ public class CommentTests extends BaseTestSetup {
 
         commentPage.verifyFirstCommentCreated();
         commentPage.validateCommentCreatedWithText(commentText);
-
-        // commentPage.validateCommentAddedInTheLast1Minute();
+        commentPage.validateCommentAddedInTheLast1Minute();
     }
 
     @Test
@@ -89,6 +92,7 @@ public class CommentTests extends BaseTestSetup {
         //assert
         commentPage.verifyCommentDeleted();
     }
+
     //   @AfterEach
     //   public void tearDownTest(){
     //       commentPage.userDeleteCommentUnderThePost();

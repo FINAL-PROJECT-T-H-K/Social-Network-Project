@@ -35,10 +35,10 @@ public class BaseTestSetup {
         commentPage = new CommentPage(driver);
     }
 
-//    @AfterEach
-//    public void tearDown() {
-//        UserActions.quitDriver();
-//    }
+    @AfterEach
+    public void tearDown() {
+        UserActions.quitDriver();
+    }
 
 
     //@BeforeAll
