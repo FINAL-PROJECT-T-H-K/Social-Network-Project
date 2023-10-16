@@ -23,7 +23,7 @@ public class HomePage extends BaseSocialPage {
         actions.assertElementPresent("home.page.home.button");
         actions.assertElementPresent("home.page.latest.post.button");
         actions.assertElementPresent("home.page.about.us");
-        actions.assertElementPresent("//button [@class='form-control btn btn-primary']");
+        actions.assertElementPresent("search.button");
 
         logger.info("HomePage successfully accesses without authentication with visibility of header and page links.");
 

@@ -7,18 +7,17 @@ import ui.socialnetwork.base.BaseTestSetup;
 public class LoginTests extends BaseTestSetup {
 
     @Test
-    @Tag("https://t-h-k-qa50-final-project.atlassian.net/jira/software/c/projects/FHKT/issues/FHKT-15")
+    @Tag("FHKT-15")
     public void nonAdminUserAuthentication() {
-        registerAndLoginUser();
+        registerAndLoginUser();          //SEPARATE METHOD
         //ASSERT
         loginPage.assertAuthenticatedUser();
     }
     @Test
-    @Tag("https://t-h-k-qa50-final-project.atlassian.net/jira/software/c/projects/FHKT/issues/FHKT-17")
+    @Tag("FHKT-17")
     public void adminUserAuthenticationTest() {
         loginAdmin();
         //ASSERT
         loginPage.assertAdminAuthenticatedUser();
     }
-    ///FEW MORE TEST
 }

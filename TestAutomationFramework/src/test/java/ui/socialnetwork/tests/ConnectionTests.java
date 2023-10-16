@@ -1,13 +1,22 @@
 package ui.socialnetwork.tests;
+
 import apisocialnetwork.Utils;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
+
+import java.util.logging.Logger;
 
 import static com.telerikacademy.testframework.Constants.*;
 
 public class ConnectionTests extends BaseTestSetup {
+//   public String USERNAME_SENDER_UI;
+//   public String PASSWORD_SENDER_UI;
+//   public String PASSWORD_RECEIVER_UI;
+//   public String USERNAME_RECEIVER_UI;
 
     @Test
+    @Tag("FHKT-105")
     public void sendingConnectionRequestToAnotherUserTest() {
         USERNAME_RECEIVER_UI = Utils.generateUniqueUsername();
         PASSWORD_RECEIVER_UI = Utils.generateUniquePassword();
@@ -32,6 +41,7 @@ public class ConnectionTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-106")
     public void approveAlreadySentConnectionRequestTest() {
 
         USERNAME_RECEIVER_UI = Utils.generateUniqueUsername();
@@ -62,6 +72,7 @@ public class ConnectionTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-107")
     public void disconnectFromAlreadyConnectedUserTest() {
 
         USERNAME_RECEIVER_UI = Utils.generateUniqueUsername();
