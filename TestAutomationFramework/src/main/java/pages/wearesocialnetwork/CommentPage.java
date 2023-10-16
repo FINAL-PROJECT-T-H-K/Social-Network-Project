@@ -108,7 +108,7 @@ public class CommentPage extends BaseSocialPage {
     }
 
     public void verifyCommentDeleted() {
-        actions.assertElementPresent("//h1[@class='mb-3 bread' and contains(text(), 'Comment deleted successfully')]");
+        actions.assertElementPresent("comment.delete.comment");
     }
 
     public void validateCommentCreatedWithText(String comment) {
