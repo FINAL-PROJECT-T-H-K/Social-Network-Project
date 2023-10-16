@@ -23,6 +23,8 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @Test
     public void updateUserProfileWithMustHaveFieldsTest() {
+
+        registerAndLoginUser();
         personalProfilePage.enterPersonalProfile();
         firstName += Utils.generateFirstName();
         lastName += Utils.generateLastName();
@@ -31,8 +33,7 @@ public class PersonalProfileTests extends BaseTestSetup {
         personalProfilePage.backToProfileInfo();
 
         //assert
-        personalProfilePage.assertFirstLastNamesUpdated(firstName,lastName);
-
+        personalProfilePage.assertFirstLastNamesUpdated(firstName, lastName);
 
     }
 
@@ -52,7 +53,7 @@ public class PersonalProfileTests extends BaseTestSetup {
         personalProfilePage.backToProfileInfo();
 
         //assert
-        personalProfilePage.assertFirstLastNamesUpdated(firstName,lastName);
+        personalProfilePage.assertFirstLastNamesUpdated(firstName, lastName);
         personalProfilePage.assertEmailUpdated(email);
 
     }
@@ -77,4 +78,6 @@ public class PersonalProfileTests extends BaseTestSetup {
         personalProfilePage.assertAvailabilityUpdated();
 
     }
+
+
 }

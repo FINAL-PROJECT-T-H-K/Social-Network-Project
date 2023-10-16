@@ -18,7 +18,7 @@ public class HomePageTests extends BaseTestSetup {
 
     }
     @Test
-    public void anonymousUserCanScrollDownInHomePageTest() {
+    public void anonymousUserCanScrollDownAndUpInHomePageTest() {
 
         actions.scrollDown(3000);         ///transfer to another class
         homePage.verifyScrollDownInHomePage();
@@ -84,7 +84,7 @@ public class HomePageTests extends BaseTestSetup {
         SEARCHABLE_NAME = registerPage.generateUser();
         RANDOM_EMAIL = Utils.generateRandomEmail();
         System.out.println(SEARCHABLE_NAME);
-        userControllerTest.updateUserProfileTest();
+        userControllerTest.updateUserProfileTest(); ///do not call test, call method
 
         homePage.searchUserByKnownUsername(SEARCHABLE_NAME + " randomLastName");
 

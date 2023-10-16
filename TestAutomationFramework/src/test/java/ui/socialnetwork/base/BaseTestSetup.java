@@ -1,5 +1,6 @@
 package ui.socialnetwork.base;
 
+import apisocialnetwork.Utils;
 import com.telerikacademy.testframework.CustomWebDriverManager;
 import com.telerikacademy.testframework.UserActions;
 import org.junit.jupiter.api.AfterEach;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import pages.wearesocialnetwork.*;
 
 public class BaseTestSetup {
+    protected static String USERNAME_RECEIVER;
+    protected static String PASSWORD_RECEIVER;
     public static UserActions actions = new UserActions();
     //PAGES
     public static HomePage homePage;
@@ -32,12 +35,15 @@ public class BaseTestSetup {
         commentPage = new CommentPage(driver);
     }
 
-    @AfterEach
-    public void tearDown() {
-        UserActions.quitDriver();
-    }
+//    @AfterEach
+//    public void tearDown() {
+//        UserActions.quitDriver();
+//    }
 
+
+    //@BeforeAll
     public static void registerAndLoginUser() {
+        ///can we call API register user here use login here or from API
         String username = registerPage.generateUser();
         String password = registerPage.generatePassword();
         registerPage.registerUser(username, password);
@@ -58,5 +64,6 @@ public class BaseTestSetup {
         registerPage.registerUser(username, password);
         loginPage.loginUser(username, password);
     }
+
 }
 

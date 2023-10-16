@@ -1,10 +1,31 @@
-2023-10-16 17:45:09,629 INFO  [main] Initializing WebDriver
-2023-10-16 17:45:17,579 INFO  [main] Initializing WebDriver
-2023-10-16 17:46:18,101 INFO  [main] Initializing WebDriver
-2023-10-16 17:46:18,103 INFO  [main] Initializing WebDriver
-2023-10-16 17:46:18,103 INFO  [main] Initializing WebDriver
-2023-10-16 17:46:18,103 INFO  [main] Initializing WebDriver
-2023-10-16 17:46:18,104 INFO  [main] Initializing WebDriver
-2023-10-16 17:46:18,104 INFO  [main] Initializing WebDriver
-2023-10-16 17:46:18,104 INFO  [main] Initializing WebDriver
-2023-10-16 17:46:18,226 INFO  [main] Quitting WebDriver
+2023-10-16 20:48:24,223 INFO  [main] Initializing WebDriver
+2023-10-16 20:48:31,324 INFO  [main] Initializing WebDriver
+2023-10-16 20:48:33,937 INFO  [main] Initializing WebDriver
+2023-10-16 20:48:33,937 INFO  [main] Initializing WebDriver
+2023-10-16 20:48:33,938 INFO  [main] Initializing WebDriver
+2023-10-16 20:48:33,938 INFO  [main] Initializing WebDriver
+2023-10-16 20:48:33,938 INFO  [main] Initializing WebDriver
+2023-10-16 20:48:33,939 INFO  [main] Initializing WebDriver
+2023-10-16 20:48:33,939 INFO  [main] Initializing WebDriver
+2023-10-16 20:48:36,293 INFO  [main] Clicking on element register.page.submitButton
+2023-10-16 20:48:38,655 INFO  [main] Clicking on element login.submit.button
+2023-10-16 20:48:40,205 INFO  [main] Clicking on element profile.personal.page.button
+2023-10-16 20:48:41,828 INFO  [main] Clicking on element profile.editProfile.page.button
+2023-10-16 20:48:43,855 INFO  [main] Clicking on element profile.update.personal.profile.button
+2023-10-16 20:48:50,742 INFO  [main] Clicking on element profile.back.to.profile
+2023-10-16 20:48:52,058 INFO  [main] Clicking on element logout.button
+2023-10-16 20:48:53,753 INFO  [main] Clicking on element register.page.submitButton
+2023-10-16 20:48:55,570 INFO  [main] Clicking on element login.submit.button
+2023-10-16 20:48:57,242 INFO  [main] Clicking on element //button [@class='form-control btn btn-primary']
+2023-10-16 20:48:58,059 INFO  [main] Clicking on element //a[@class='btn btn-primary']
+2023-10-16 20:48:59,557 INFO  [main] Clicking on element //input[@class='btn btn-primary']
+2023-10-16 20:49:01,617 INFO  [main] Clicking on element logout.button
+2023-10-16 20:49:02,852 INFO  [main] Clicking on element login.submit.button
+2023-10-16 20:49:04,218 INFO  [main] Clicking on element profile.personal.page.button
+2023-10-16 20:49:05,475 INFO  [main] Clicking on element //input[@class='btn btn-primary']
+2023-10-16 20:49:06,774 INFO  [main] Clicking on element //input[@class='btn btn-primary py-2']
+2023-10-16 20:49:07,973 INFO  [main] Clicking on element logout.button
+2023-10-16 20:49:09,088 INFO  [main] Clicking on element login.submit.button
+2023-10-16 20:49:10,621 INFO  [main] Clicking on element //button [@class='form-control btn btn-primary']
+2023-10-16 20:49:11,383 INFO  [main] Clicking on element //a[@class='btn btn-primary']
+2023-10-16 20:49:12,808 INFO  [main] Clicking on element //input[@value='disconnect']

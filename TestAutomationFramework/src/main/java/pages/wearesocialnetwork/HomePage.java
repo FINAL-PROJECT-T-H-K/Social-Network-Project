@@ -100,6 +100,10 @@ public class HomePage extends BaseSocialPage {
 
     }
 
+    public void disconnectFromAlreadyConnectedUser() {
+        actions.waitForElementClickable("//input[@value='disconnect']");
+        actions.clickElement("//input[@value='disconnect']");
+    }
     public void validatePersonalProfileButton() {
         actions.assertElementVisible("profile.editProfile.page.button");
 
@@ -134,6 +138,10 @@ public class HomePage extends BaseSocialPage {
     public void validateSearchUserByKnownUsername(String name) {
         actions.assertElementPresent(String.format("//h2[text()='%s']", name));
         logger.info("User with username 'Public Profile' is visible.");
+    }
+    public void validateDisconnectionFromAlreadyConnectedUser() {
+        actions.waitForElementClickable("//input[@value='connect']");
+
     }
 
     public void validateSearchBarShowsUsers() {

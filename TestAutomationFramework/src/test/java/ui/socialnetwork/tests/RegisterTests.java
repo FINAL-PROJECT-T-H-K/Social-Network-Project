@@ -14,7 +14,7 @@ public class RegisterTests extends BaseTestSetup {
     String password;
     String adminUsername = "admin";
 
-   @Test
+    @Test
     public void nonAdminUserRegisterTest() {
         username = registerPage.generateUser();
         password = registerPage.generatePassword();

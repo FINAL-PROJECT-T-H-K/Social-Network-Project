@@ -127,9 +127,6 @@ public class PersonalProfilePage extends BaseSocialPage {
 
     }
 
-
-
-
     public String generateFirstName() {
         firstName += RandomStringUtils.randomAlphabetic(8);
         return firstName;
