@@ -18,8 +18,6 @@ public class PersonalProfileTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-280")
     public void updateUserProfileWithMustHaveFieldsTest() {
-
-        registerAndLoginUser();
         personalProfilePage.enterPersonalProfile();
         firstName += Utils.generateFirstName();
         lastName += Utils.generateLastName();
