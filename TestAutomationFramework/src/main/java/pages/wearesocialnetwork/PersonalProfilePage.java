@@ -12,7 +12,6 @@ import static com.telerikacademy.testframework.Constants.*;
 public class PersonalProfilePage extends BaseSocialPage {
 
     Logger logger = Logger.getLogger("");
-
     String firstName;
     String lastName;
     String email;

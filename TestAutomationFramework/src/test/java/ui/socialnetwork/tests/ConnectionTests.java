@@ -1,20 +1,11 @@
 package ui.socialnetwork.tests;
-
 import apisocialnetwork.Utils;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
-import java.util.logging.Logger;
-
 import static com.telerikacademy.testframework.Constants.*;
 
 public class ConnectionTests extends BaseTestSetup {
-//   public String USERNAME_SENDER_UI;
-//   public String PASSWORD_SENDER_UI;
-//   public String PASSWORD_RECEIVER_UI;
-//   public String USERNAME_RECEIVER_UI;
-
-    Logger logger = Logger.getLogger("");
 
     @Test
     public void sendingConnectionRequestToAnotherUserTest() {

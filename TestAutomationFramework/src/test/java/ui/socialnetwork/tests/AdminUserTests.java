@@ -12,7 +12,6 @@ import static com.telerikacademy.testframework.Constants.*;
 public class AdminUserTests extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
 
-
     @BeforeEach
     public void setupLogin() {
         loginAdmin();
@@ -65,7 +64,6 @@ public class AdminUserTests extends BaseTestSetup {
 
         //assert
         postPage.validateTopicIsUnliked();
-
 
     }
 

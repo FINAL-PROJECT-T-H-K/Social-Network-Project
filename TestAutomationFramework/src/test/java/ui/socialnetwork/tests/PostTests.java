@@ -11,7 +11,6 @@ public class PostTests extends BaseTestSetup {
         registerAndLoginUser();
     }
 
-
     @Test
     public void createPublicPostTest() {
 

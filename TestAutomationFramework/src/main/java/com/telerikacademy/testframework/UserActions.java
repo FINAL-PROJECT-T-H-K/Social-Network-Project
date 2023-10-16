@@ -237,6 +237,16 @@ public class UserActions {
         driver.findElement(By.xpath(Utils.getUIMappingByKey("profile.email.address"))).clear();
     }
 
+    public String readTextFromElement (String key, Object... arguments) {
+        String locator = getLocatorValueByKey(key, arguments);
+        Utils.LOGGER.info("Reading text from element " + key);
+        WebElement element = driver.findElement(By.xpath(locator));
+
+        String text = element.getText();
+
+       return text;
+    }
+
 //    public void assertElementPresentWithArg(String locator,  Object... arguments) {
 //        String formattedLocator = getLocatorValueByKey(locator, arguments);
 //        Assertions.assertNotNull(format("Element with %s doesn't present.", formattedLocator),
