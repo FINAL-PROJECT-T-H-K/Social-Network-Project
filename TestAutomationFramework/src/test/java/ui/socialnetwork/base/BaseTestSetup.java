@@ -44,6 +44,8 @@ public class BaseTestSetup {
         loginPage.loginUser(username, password);
     }
 
+
+    //Transfer to another class
     public static void registerAndLoginUserWithParams(String username, String password) {
         ///can we call API register user here use login here or from API
         registerPage.registerUser(username, password);

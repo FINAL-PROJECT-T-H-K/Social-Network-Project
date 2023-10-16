@@ -46,4 +46,9 @@ public class ConnectionTests extends BaseTestSetup {
 
     }
     //@Test Disconnect from connected user
+    @Test
+    public void disconnectFromConnectionRequestTest() {
+
+
+    }
 }

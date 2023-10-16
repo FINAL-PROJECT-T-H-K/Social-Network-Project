@@ -146,7 +146,7 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
-    public void adminUserUpdateProfileWithFirstLastNameBirthdayGenderEmailPublicInfoCityTest() {
+    public void adminUserUpdateUserProfileWithFirstLastNameBirthdayGenderEmailPublicInfoCityTest() {
         personalProfilePage.enterPersonalProfile();
         firstName += Utils.generateFirstName();
         lastName += Utils.generateLastName();

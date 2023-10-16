@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 public class LogoutTests extends BaseTestSetup {
+    String logoutPageHeader = "Login Page";
+
     @Test
     public void nonAdminUserLoggedOutTest() {
         registerAndLoginUser();
@@ -12,7 +14,7 @@ public class LogoutTests extends BaseTestSetup {
 
         //ASSERT
         logoutPage.assertSuccessfulLogout();
-        logoutPage.validateLoggedOut();
+        logoutPage.validateLogoutPage(logoutPageHeader);
     }
     @Test
     public void adminUserLoggedOutTest(){
@@ -21,6 +23,6 @@ public class LogoutTests extends BaseTestSetup {
 
         //ASSERT
         logoutPage.assertSuccessfulLogout();
-        logoutPage.validateLoggedOut();
+        logoutPage.validateLogoutPage(logoutPageHeader);
     }
 }

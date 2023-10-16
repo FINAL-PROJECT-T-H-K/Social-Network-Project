@@ -49,6 +49,15 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.waitForElementClickable("profile.update.personal.profile.button");
         actions.clickElement("profile.update.personal.profile.button");
     }
+    public void clickOnNewFriendRequests(){
+        actions.waitForElementClickable("personal.profile.new.request.button");
+        actions.clickElement("personal.profile.new.request.button");
+    }
+    public void clickOnConnect() {
+        actions.waitForElementClickable("//input[@class='btn btn-primary' and @value='connect']");
+        actions.clickElement("//input[@class='btn btn-primary' and @value='connect']");
+
+    }
 
     public void backToProfileInfo() {
         actions.waitForElementClickable("profile.back.to.profile");
@@ -130,5 +139,7 @@ public class PersonalProfilePage extends BaseSocialPage {
         personalInfo += RandomStringUtils.randomAlphabetic(25);
         return personalInfo;
     }
+
+
 }
 

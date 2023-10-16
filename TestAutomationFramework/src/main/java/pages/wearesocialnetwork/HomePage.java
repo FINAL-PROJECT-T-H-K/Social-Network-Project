@@ -2,7 +2,10 @@ package pages.wearesocialnetwork;
 
 import org.openqa.selenium.WebDriver;
 
+import java.util.logging.Logger;
+
 public class HomePage extends BaseSocialPage {
+    Logger logger = Logger.getLogger("");
 
     public HomePage(WebDriver driver) {
         super(driver, "social.network.homepage");
@@ -22,9 +25,6 @@ public class HomePage extends BaseSocialPage {
         System.out.println("HomePage successfully accesses without authentication with visibility of header and page links.");
 
     }
-
-
-
 
 
     public void validateUserCanScrollDownInHomePageToSpecificElement() {
@@ -100,7 +100,7 @@ public class HomePage extends BaseSocialPage {
 
     }
 
-    public void validatePersonalProfileButton (){
+    public void validatePersonalProfileButton() {
         actions.assertElementVisible("profile.editProfile.page.button");
 
     }
@@ -133,7 +133,7 @@ public class HomePage extends BaseSocialPage {
 
     public void validateSearchUserByKnownUsername(String name) {
         actions.assertElementPresent(String.format("//h2[text()='%s']", name));
-        System.out.println("User with username 'Public Profile' is visible.");
+        logger.info("User with username 'Public Profile' is visible.");
     }
 
     public void validateSearchBarShowsUsers() {
@@ -148,45 +148,44 @@ public class HomePage extends BaseSocialPage {
     public void verifyScrollDownInHomePage() {
         actions.assertElementPresent("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]");
         actions.waitForElementToBeClickableUntilTimeout("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]", 3);
-        System.out.println("Scroll down action is successful 'Register' button is visible and clickable");
+        logger.info("Scroll down action is successful 'Register' button is visible and clickable");
     }
 
     public void validateHomePageHeader(String key) {
         actions.assertElementVisible("weare.homepage.h1", key);
-        System.out.println("Scroll up action is successful 'The Easiest Way to Hack the Crisis' header is visible.");
-        ///change printLNs with logger.info
+        logger.info("Scroll up action is successful 'The Easiest Way to Hack the Crisis' header is visible.");
     }
 
-    public void validateLatestPostsDisplayed() {
-        actions.assertElementPresent("latest.posts.message");
-    }
+        public void validateLatestPostsDisplayed () {
+            actions.assertElementPresent("latest.posts.message");
+        }
 
-    public void validateRegisterFormFullyDisplayed() {
-        actions.assertElementPresent("join.our.community");
-        actions.assertElementPresent("register.page.usernameField");
-        actions.assertElementPresent("//input[@name='email']");
-        actions.assertElementPresent("//input[@name='password']");
-        actions.assertElementPresent("//input[@name='confirmPassword']");
-        actions.assertElementPresent("//input[@value = 'Register']");
-    }
+        public void validateRegisterFormFullyDisplayed () {
+            actions.assertElementPresent("join.our.community");
+            actions.assertElementPresent("register.page.usernameField");
+            actions.assertElementPresent("//input[@name='email']");
+            actions.assertElementPresent("//input[@name='password']");
+            actions.assertElementPresent("//input[@name='confirmPassword']");
+            actions.assertElementPresent("//input[@value = 'Register']");
+        }
 
-    public void validateLoginFormDisplayed() {
-        actions.assertElementPresent("login.page.message");
-        actions.assertElementPresent("login.page.username");
-    }
-    public void clickOnGoToAdminZoneButton(){
-        actions.waitForElementVisible("admin.zone.button");
-        actions.clickElement("admin.zone.button");
-    }
-    public void clickOnViewAllUsersButton(){
-        actions.waitForElementVisible("admin.zone.button");
-        actions.clickElement("admin.zone.button");
+        public void validateLoginFormDisplayed () {
+            actions.assertElementPresent("login.page.message");
+            actions.assertElementPresent("login.page.username");
+        }
+        public void clickOnGoToAdminZoneButton () {
+            actions.waitForElementVisible("admin.zone.button");
+            actions.clickElement("admin.zone.button");
+        }
+        public void clickOnViewAllUsersButton () {
+            actions.waitForElementVisible("admin.zone.button");
+            actions.clickElement("admin.zone.button");
 
-        actions.waitForElementVisible("admin.view.all.users");
-        actions.clickElement("admin.view.all.users");
+            actions.waitForElementVisible("admin.view.all.users");
+            actions.clickElement("admin.view.all.users");
 
+        }
+        public void verifyAdminViewAllUsers () {
+            actions.assertElementPresent("admin.view.off.all.user");
+        }
     }
-    public void verifyAdminViewAllUsers() {
-        actions.assertElementPresent("admin.view.off.all.user");
-    }
-}

@@ -3,23 +3,30 @@ package pages.wearesocialnetwork;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
+import java.util.logging.Logger;
+
 public class LogoutPage extends BaseSocialPage {
+    Logger logger = Logger.getLogger("");
+
     public LogoutPage(WebDriver driver) {
         super(driver, "social.network.homepage");
 
 
     }
+
     @Test
     public void logoutSuccessfully() {
         actions.waitForElementClickable("logout.button");
         actions.clickElement("logout.button");
 
     }
+
     public void assertSuccessfulLogout() {
-        actions.waitForElementPresent("home.page.sign.in.button");;
-        ///use same locator key naming format pattern
+        actions.assertElementPresent("home.page.sign.in.button");
     }
-    public void validateLoggedOut() {
-        actions.waitForElementClickable("login.submit.button");
+
+    public void validateLogoutPage(String key) {
+        actions.assertElementVisible("logout.page.text", key);
+        logger.info("You have been logged out.");
     }
 }

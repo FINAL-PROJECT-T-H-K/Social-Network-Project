@@ -45,7 +45,7 @@ public class RegisterPage extends BasePage {
             randomCount--;
         }
 
-        return String.format("User%s", username);
+        return String.format("Users%s", username);
     }
 
     public String generatePassword() {

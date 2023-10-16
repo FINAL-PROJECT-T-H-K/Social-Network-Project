@@ -1,18 +1,13 @@
-2023-10-16 02:34:34,009 INFO  [main] Initializing WebDriver
-2023-10-16 02:34:41,229 INFO  [main] Initializing WebDriver
-2023-10-16 02:34:42,946 INFO  [main] Initializing WebDriver
-2023-10-16 02:34:42,947 INFO  [main] Initializing WebDriver
-2023-10-16 02:34:42,947 INFO  [main] Initializing WebDriver
-2023-10-16 02:34:42,948 INFO  [main] Initializing WebDriver
-2023-10-16 02:34:42,949 INFO  [main] Initializing WebDriver
-2023-10-16 02:34:42,949 INFO  [main] Initializing WebDriver
-2023-10-16 02:34:42,950 INFO  [main] Initializing WebDriver
-2023-10-16 02:34:45,480 INFO  [main] Clicking on element register.page.submitButton
-2023-10-16 02:34:48,049 INFO  [main] Clicking on element login.submit.button
-2023-10-16 02:34:49,884 INFO  [main] Clicking on element new.post.button
-2023-10-16 02:34:51,510 INFO  [main] Clicking on element choose.public.post
-2023-10-16 02:34:51,767 INFO  [main] Clicking on element create.post.button
-2023-10-16 02:34:54,003 INFO  [main] Clicking on element home.page.home.button
-2023-10-16 02:34:55,402 INFO  [main] Clicking on element home.page.latest.post.button
-2023-10-16 02:36:21,590 INFO  [main] Clicking on element post.like.button
-2023-10-16 02:36:23,378 INFO  [main] Quitting WebDriver
+2023-10-16 03:44:07,587 INFO  [main] Initializing WebDriver
+2023-10-16 03:44:16,224 INFO  [main] Initializing WebDriver
+2023-10-16 03:44:17,144 INFO  [main] Initializing WebDriver
+2023-10-16 03:44:17,145 INFO  [main] Initializing WebDriver
+2023-10-16 03:44:17,145 INFO  [main] Initializing WebDriver
+2023-10-16 03:44:17,146 INFO  [main] Initializing WebDriver
+2023-10-16 03:44:17,146 INFO  [main] Initializing WebDriver
+2023-10-16 03:44:17,147 INFO  [main] Initializing WebDriver
+2023-10-16 03:44:17,148 INFO  [main] Initializing WebDriver
+2023-10-16 03:44:21,185 INFO  [main] Clicking on element register.page.submitButton
+2023-10-16 03:44:23,652 INFO  [main] Clicking on element login.submit.button
+2023-10-16 03:44:25,423 INFO  [main] Clicking on element logout.button
+2023-10-16 03:44:26,169 INFO  [main] Quitting WebDriver
