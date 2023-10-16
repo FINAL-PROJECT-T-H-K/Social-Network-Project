@@ -10,10 +10,7 @@ import java.util.logging.Logger;
 import static com.telerikacademy.testframework.Constants.*;
 
 public class ConnectionTests extends BaseTestSetup {
-//   public String USERNAME_SENDER_UI;
-//   public String PASSWORD_SENDER_UI;
-//   public String PASSWORD_RECEIVER_UI;
-//   public String USERNAME_RECEIVER_UI;
+
 
     @Test
     @Tag("FHKT-105")
@@ -104,6 +101,5 @@ public class ConnectionTests extends BaseTestSetup {
         homePage.disconnectFromAlreadyConnectedUser();
 
         homePage.validateDisconnectionFromAlreadyConnectedUser();
-
     }
 }

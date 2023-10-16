@@ -133,7 +133,7 @@ public class AdminUserTests extends BaseTestSetup {
 
     @Test
     @Tag("FHKT-64")
-    public void deleteCommentUnderThePostTests() {
+    public void adminUserDeleteCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();

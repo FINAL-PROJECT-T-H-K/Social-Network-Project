@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
-import java.util.logging.Logger;
-
 import static com.telerikacademy.testframework.Constants.*;
 
 public class PersonalProfileTests extends BaseTestSetup {
