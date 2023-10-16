@@ -74,7 +74,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
         //
         personalProfilePage.assertAvailability();
-        personalProfilePage.assertAvailabilityUpdated(skillInfo);
+        personalProfilePage.assertAvailabilityUpdated();
 
     }
 }

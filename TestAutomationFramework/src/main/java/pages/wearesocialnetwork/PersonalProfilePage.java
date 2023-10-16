@@ -108,10 +108,11 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.clickElement("profile.input.city");
     }
 
-    public void assertAvailabilityUpdated(String text) {
-        String xpath = String.format("//div[@class='col-md-4 sidebar']//span[text()='%s']", text);
+    public void assertAvailabilityUpdated() {
+        String xpath = "//span[text()='Quality Assurance']";
+        actions.waitForElementVisible(xpath);
         String spanText = driver.findElement(By.xpath(xpath)).getText();
-        Assertions.assertEquals(text, spanText, "Expected text does not match the actual text.");
+        Assertions.assertEquals("Quality Assurance", spanText, "Expected text does not match the actual text.");
     }
     public void assertAvailability() {
         actions.assertElementPresent("//h3[@class='heading-sidebar']");
