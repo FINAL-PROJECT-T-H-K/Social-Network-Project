@@ -7,16 +7,14 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 import java.util.logging.Logger;
 
+import static com.telerikacademy.testframework.Constants.*;
+
 public class AdminUserTests extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
-    String firstName = "first";
-    String lastName = "last";
-    String email = "";
-    String personalInfo;
-    public String commentText;
-    public String editedComment;
+
+
     @BeforeEach
-    public void setupLogin (){
+    public void setupLogin() {
         loginAdmin();
     }
 
@@ -89,7 +87,7 @@ public class AdminUserTests extends BaseTestSetup {
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         //assert
-        commentPage.verifyCommentCreated();
+        commentPage.verifyFirstCommentCreated();
     }
 
     @Test
@@ -161,7 +159,7 @@ public class AdminUserTests extends BaseTestSetup {
         personalProfilePage.backToProfileInfo();
 
         //assert
-        personalProfilePage.assertFirstLastNamesUpdated(firstName,lastName);
+        personalProfilePage.assertFirstLastNamesUpdated(firstName, lastName);
         personalProfilePage.assertEmailUpdated(email);
 
     }

@@ -7,9 +7,9 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 import static apisocialnetwork.Constants.RANDOM_EMAIL;
 import static apisocialnetwork.Constants.SEARCHABLE_NAME;
+import static com.telerikacademy.testframework.Constants.homePageHeader;
 
 public class HomePageTests extends BaseTestSetup {
-    String homePageHeader = "The Easiest Way to Hack the Crisis";
     UserControllerTest userControllerTest = new UserControllerTest();
 
     @Test

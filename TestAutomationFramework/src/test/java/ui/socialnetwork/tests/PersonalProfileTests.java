@@ -7,19 +7,15 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 import java.util.logging.Logger;
 
+import static com.telerikacademy.testframework.Constants.*;
+
 public class PersonalProfileTests extends BaseTestSetup {
 
     @BeforeEach
     public void setupUser() {
         registerAndLoginUser();
     }
-
     Logger logger = Logger.getLogger("");
-    String firstName = "first";
-    String lastName = "last";
-    String email = "";
-    String personalInfo;
-    String skillInfo = "Quality Assurance";
 
     @Test
     public void updateUserProfileWithMustHaveFieldsTest() {

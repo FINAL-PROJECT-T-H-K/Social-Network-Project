@@ -4,12 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
+import static com.telerikacademy.testframework.Constants.commentText;
+import static com.telerikacademy.testframework.Constants.editedComment;
+
 public class CommentTests extends BaseTestSetup {
-    public String commentText;
-    public String editedComment;
 
     @BeforeEach
-    public void setupLogin (){
+    public void setupLogin() {
         registerAndLoginUser();
     }
 
@@ -20,10 +21,14 @@ public class CommentTests extends BaseTestSetup {
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
+        commentPage.clickOnShowCommentsUnderThePost();
 
-        //assert
-        commentPage.verifyCommentCreated();
+        commentPage.verifyFirstCommentCreated();
+        commentPage.validateCommentCreatedWithText(commentText);
+
+        // commentPage.validateCommentAddedInTheLast1Minute();
     }
+
     @Test
     public void likeCommentUnderThePostTests() {
         postPage.createPublicPost();
@@ -66,6 +71,7 @@ public class CommentTests extends BaseTestSetup {
         commentPage.verifyCommentЕdited();
 
     }
+
     @Test
     public void deleteCommentUnderThePostTests() {
         postPage.createPublicPost();

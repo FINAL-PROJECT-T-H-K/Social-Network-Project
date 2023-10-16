@@ -7,12 +7,11 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 import java.util.logging.Logger;
 
+import static com.telerikacademy.testframework.Constants.*;
+
 public class RegisterTests extends BaseTestSetup {
 
     Logger logger = Logger.getLogger("");
-    String username;
-    String password;
-    String adminUsername = "admin";
 
     @Test
     public void nonAdminUserRegisterTest() {

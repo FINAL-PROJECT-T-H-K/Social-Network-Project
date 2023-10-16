@@ -5,7 +5,13 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.logging.Logger;
+
+import static com.telerikacademy.testframework.Constants.*;
+
 public class PersonalProfilePage extends BaseSocialPage {
+
+    Logger logger = Logger.getLogger("");
 
     String firstName;
     String lastName;
@@ -73,6 +79,10 @@ public class PersonalProfilePage extends BaseSocialPage {
 
     public void validateReceivedConnectionRequestApproved() {
         actions.assertElementVisible("//h3[@class='mb-3 bread']");
+        logger.info(String.format("Username with %s, and password with %s, sent connection request.",
+                USERNAME_SENDER_UI, PASSWORD_SENDER_UI));
+        logger.info(String.format("User with username %s, and password %s, approved connection request of user %s",
+                USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI, USERNAME_SENDER_UI));
 
     }
     public void assertEmailUpdated(String email) {

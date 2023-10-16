@@ -4,8 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
+import static com.telerikacademy.testframework.Constants.logoutPageHeader;
+
 public class LogoutTests extends BaseTestSetup {
-    String logoutPageHeader = "Login Page";
 
     @Test
     public void nonAdminUserLoggedOutTest() {

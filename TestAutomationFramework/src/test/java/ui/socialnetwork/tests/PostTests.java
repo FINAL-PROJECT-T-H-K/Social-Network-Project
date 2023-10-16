@@ -4,9 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
-
 public class PostTests extends BaseTestSetup {
-
 
     @BeforeEach
     public void setupUser() {
@@ -47,6 +45,7 @@ public class PostTests extends BaseTestSetup {
         registerAndLoginUser();
 
     }
+
     @Test
     public void likePostWhenClickLikeButtonTest() {
         postPage.createPublicPost();

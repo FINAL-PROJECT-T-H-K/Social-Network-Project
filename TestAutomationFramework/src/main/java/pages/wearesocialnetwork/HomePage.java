@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.logging.Logger;
 
+import static com.telerikacademy.testframework.Constants.*;
+import static com.telerikacademy.testframework.Constants.USERNAME_RECEIVER_UI;
+
 public class HomePage extends BaseSocialPage {
     Logger logger = Logger.getLogger("");
 
@@ -129,6 +132,11 @@ public class HomePage extends BaseSocialPage {
     public void verifySuccessfulConnectionRequestMessage() {
         actions.waitForElementVisible("//div[text()='Good job! You have send friend request!']");
         actions.assertElementPresent("//div[text()='Good job! You have send friend request!']");
+
+        logger.info(String.format("Username with %s, and password with %s, sent connection request.",
+                USERNAME_SENDER_UI, PASSWORD_SENDER_UI));
+        logger.info(String.format("Username with %s, and password with %s, received connection request.",
+                USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI));
     }
 
     public void validateSearchedUsernameInSearchResults(String firstName, String lastName) {
@@ -140,7 +148,12 @@ public class HomePage extends BaseSocialPage {
         logger.info("User with username 'Public Profile' is visible.");
     }
     public void validateDisconnectionFromAlreadyConnectedUser() {
+
         actions.waitForElementClickable("//input[@value='connect']");
+        logger.info(String.format("User with username %s, and password %s, approved connection request of user %s",
+                USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI, USERNAME_SENDER_UI));
+        logger.info(String.format("User with username %s, and password with %s, disconnected from the user with username %s.",
+                USERNAME_SENDER_UI, PASSWORD_SENDER_UI, USERNAME_RECEIVER_UI));
 
     }
 

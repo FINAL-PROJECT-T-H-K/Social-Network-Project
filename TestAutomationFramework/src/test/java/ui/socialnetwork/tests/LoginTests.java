@@ -7,9 +7,6 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 public class LoginTests extends BaseTestSetup {
 
-    String username = "";
-    String password = "";
-    String adminUsername = "admin";
     @Test
     @Tag("https://t-h-k-qa50-final-project.atlassian.net/jira/software/c/projects/FHKT/issues/FHKT-15")
     public void nonAdminUserAuthentication() {

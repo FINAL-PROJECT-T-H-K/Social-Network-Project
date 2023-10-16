@@ -90,7 +90,7 @@ public class CommentPage extends BaseSocialPage {
         actions.assertElementPresent("like.comment.button");
     }
 
-    public void verifyCommentCreated() {
+    public void verifyFirstCommentCreated() {
         actions.assertElementPresent("show.comments.button");
     }
     public void verifyCommentЕdited() {
@@ -100,7 +100,18 @@ public class CommentPage extends BaseSocialPage {
         actions.assertElementPresent("//h1[@class='mb-3 bread' and contains(text(), 'Comment deleted successfully')]");
     }
 
+    public void validateCommentCreatedWithText(String comment){
+        actions.assertElementVisible("comment.content", comment);
+    }
 
+    public void validateCommentAddedInTheLast1Minute(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        actions.assertElementAttribute("comment.time.created", "innerText", "1m");
+    }
 
     public String generateRandomComment() {
         commentText += RandomStringUtils.randomAlphabetic(15);
