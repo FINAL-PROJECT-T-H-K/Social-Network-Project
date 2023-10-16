@@ -36,7 +36,7 @@ public class RegisterPage extends BasePage {
 
     }
     public String generateUser() {
-        int randomCount = random.nextInt(4);
+        int randomCount = random.nextInt(3) + 1;
         StringBuilder username = new StringBuilder();
 
         while (randomCount > 0) {
@@ -45,11 +45,11 @@ public class RegisterPage extends BasePage {
             randomCount--;
         }
 
-        return String.format("Users%s", username);
+        return "User" + username;
     }
 
     public String generatePassword() {
-        randomCount = random.nextInt(7);
+        int randomCount = random.nextInt(5) + 1;
         String passwordGenerate = "";
 
         while (randomCount >= 0) {
@@ -58,7 +58,7 @@ public class RegisterPage extends BasePage {
             randomCount--;
         }
 
-        return format("password%s", passwordGenerate.trim());
+        return "password" + passwordGenerate.trim();
     }
 
     public void assertSuccessfulRegistration() {

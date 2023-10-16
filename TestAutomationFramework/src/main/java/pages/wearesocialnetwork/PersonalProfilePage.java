@@ -93,7 +93,7 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.waitForElementClickable("profile.skills.tittle");
         actions.typeValueInField("Quality Assurance", "profile.skills.tittle");
         actions.waitForElementClickable("profile.skills.tittle");
-        actions.typeValueInField("168", "profile.update.availability");
+        actions.typeValueInField("16", "profile.update.availability");
         actions.waitForElementClickable("profile.update.skills.button");
         actions.clickElement("profile.update.skills.button");
     }
@@ -108,9 +108,16 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.clickElement("profile.input.city");
     }
 
-    public void assertAvailabilityUpdated() {
-        actions.assertElementPresent("profile.update.skills.checker");
+    public void assertAvailabilityUpdated(String text) {
+        String xpath = String.format("//div[@class='col-md-4 sidebar']//span[text()='%s']", text);
+        String spanText = driver.findElement(By.xpath(xpath)).getText();
+        Assertions.assertEquals(text, spanText, "Expected text does not match the actual text.");
     }
+    public void assertAvailability() {
+        actions.assertElementPresent("//h3[@class='heading-sidebar']");
+    }
+
+
 
     public void assertJobTitleUpdated() {
         String spanText = driver.findElement(By.xpath("//span[text()='Translator']")).getText();
@@ -118,6 +125,8 @@ public class PersonalProfilePage extends BaseSocialPage {
 
 
     }
+
+
 
 
     public String generateFirstName() {

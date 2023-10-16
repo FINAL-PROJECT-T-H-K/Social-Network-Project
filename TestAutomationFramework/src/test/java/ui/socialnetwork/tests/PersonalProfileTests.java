@@ -8,6 +8,7 @@ import ui.socialnetwork.base.BaseTestSetup;
 import java.util.logging.Logger;
 
 public class PersonalProfileTests extends BaseTestSetup {
+
     @BeforeEach
     public void setupUser() {
         registerAndLoginUser();
@@ -18,6 +19,7 @@ public class PersonalProfileTests extends BaseTestSetup {
     String lastName = "last";
     String email = "";
     String personalInfo;
+    String skillInfo = "Quality Assurance";
 
     @Test
     public void updateUserProfileWithMustHaveFieldsTest() {
@@ -70,8 +72,9 @@ public class PersonalProfileTests extends BaseTestSetup {
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.updateSkillsSection();
 
-        //assert
-        personalProfilePage.assertAvailabilityUpdated();
+        //
+        personalProfilePage.assertAvailability();
+        personalProfilePage.assertAvailabilityUpdated(skillInfo);
 
     }
 }

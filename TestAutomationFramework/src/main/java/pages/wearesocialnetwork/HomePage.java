@@ -22,7 +22,7 @@ public class HomePage extends BaseSocialPage {
         actions.assertElementPresent("home.page.about.us");
         actions.assertElementPresent("//button [@class='form-control btn btn-primary']");
 
-        System.out.println("HomePage successfully accesses without authentication with visibility of header and page links.");
+        logger.info("HomePage successfully accesses without authentication with visibility of header and page links.");
 
     }
 
