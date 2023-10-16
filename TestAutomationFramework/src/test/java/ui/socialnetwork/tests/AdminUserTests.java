@@ -109,7 +109,7 @@ public class AdminUserTests extends BaseTestSetup {
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
-        commentPage.userLikeCommentUnderThePost();
+        commentPage.userDislikeCommentUnderThePost();
         //assert
         commentPage.validateTopicIsUnliked();
     }
