@@ -1,6 +1,7 @@
 package ui.socialnetwork.tests;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
@@ -15,6 +16,7 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-31")
     public void createCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -30,6 +32,7 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-275")
     public void likeCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -44,6 +47,7 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-276")
     public void dislikeCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -52,12 +56,12 @@ public class CommentTests extends BaseTestSetup {
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userDislikeCommentUnderThePost();
-
         //assert
         commentPage.validateTopicIsUnliked();
     }
 
     @Test
+    @Tag("FHKT-277")
     public void editCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -73,6 +77,7 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-278")
     public void deleteCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();

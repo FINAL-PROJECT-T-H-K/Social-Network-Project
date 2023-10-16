@@ -94,10 +94,6 @@ public class PostTests extends BaseTestSetup {
         postPage.validatePostIsDeleted();
 
     }
-
-    //ADMIN USER TESTS//
-
-
 }
 
 

@@ -13,7 +13,8 @@ public class RegisterTests extends BaseTestSetup {
 
     Logger logger = Logger.getLogger("");
 
-    @Test
+   @Test
+   @Tag("FHKT-264")
     public void nonAdminUserRegisterTest() {
         username = registerPage.generateUser();
         password = registerPage.generatePassword();
@@ -24,9 +25,8 @@ public class RegisterTests extends BaseTestSetup {
         logger.info(password);
 
     }
-
-
     @Test
+    @Tag("FHKT-265")
     public void adminUserRegisterTest() {
         adminUsername += registerPage.generateUser();
         password += registerPage.generatePassword();

@@ -2,15 +2,12 @@ package ui.socialnetwork.tests;
 
 import apisocialnetwork.Utils;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
-
-import java.util.logging.Logger;
-
 import static com.telerikacademy.testframework.Constants.*;
 
 public class AdminUserTests extends BaseTestSetup {
-    Logger logger = Logger.getLogger("");
 
 
     @BeforeEach
@@ -19,6 +16,7 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-263")
     public void adminUserViewAllUsersTest() {
         homePage.clickOnGoToAdminZoneButton();
         homePage.clickOnViewAllUsersButton();
@@ -27,6 +25,7 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-267")
     public void adminUserCreatePublicPostsTest() {
         postPage.createPublicPost();
         //Assert
@@ -36,6 +35,7 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-268")
     public void adminUserCreatePrivatePostsTest() {
         postPage.createPrivatePost();
         //Assert
@@ -45,31 +45,30 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-269")
     public void adminUserLikePostWhenClickLikeButtonTest() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
-
         //assert
         postPage.validatePostIsLiked();
 
     }
 
     @Test
+    @Tag("FHKT-270")
     public void adminUserDislikePostWhenClickLikeButtonTest() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
-
         //assert
         postPage.validateTopicIsUnliked();
-
-
     }
 
     @Test
+    @Tag("FHKT-58")
     public void adminUserEditPostTest() {
         homePage.clickOnLatestPostsButton();
         commentPage.clickOnExploreThePost();
@@ -77,9 +76,8 @@ public class AdminUserTests extends BaseTestSetup {
         //assert
         postPage.validatePostIsEdited();
     }
-
-    /////////////////////////////////////////////////////////////////////////////////////
     @Test
+    @Tag("FHKT-271")
     public void adminUserCreateCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -91,7 +89,8 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
-    public void likeCommentUnderThePostTests() {
+    @Tag("FHKT-273")
+    public void adminUserLikeCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
@@ -104,7 +103,8 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
-    public void dislikeCommentUnderThePostTests() {
+    @Tag("FHKT-274")
+    public void adminUserDislikeCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
@@ -117,6 +117,7 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-62")
     public void adminUserEditCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -131,6 +132,7 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-64")
     public void deleteCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -144,6 +146,7 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-262")
     public void adminUserUpdateUserProfileWithFirstLastNameBirthdayGenderEmailPublicInfoCityTest() {
         personalProfilePage.enterPersonalProfile();
         firstName += Utils.generateFirstName();
