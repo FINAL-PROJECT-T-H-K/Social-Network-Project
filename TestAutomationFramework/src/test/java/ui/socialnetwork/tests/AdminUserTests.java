@@ -111,9 +111,9 @@ public class AdminUserTests extends BaseTestSetup {
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
-        commentPage.userLikeCommentUnderThePost();
+        commentPage.userDeleteCommentUnderThePost();
         //assert
-        commentPage.validateTopicIsUnliked();
+        commentPage.verifyCommentDeleted();
     }
 
     @Test
@@ -133,7 +133,7 @@ public class AdminUserTests extends BaseTestSetup {
 
     @Test
     @Tag("FHKT-64")
-    public void deleteCommentUnderThePostTests() {
+    public void adminUserDeleteCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();

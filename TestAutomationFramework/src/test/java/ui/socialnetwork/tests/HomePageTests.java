@@ -13,7 +13,8 @@ import static com.telerikacademy.testframework.Constants.homePageHeader;
 public class HomePageTests extends BaseTestSetup {
     UserControllerTest userControllerTest = new UserControllerTest();
 
-    @Test//MAYBE DELETE
+    @Test
+    @Tag("FHKT-162")
     public void anonymousUserHomePageAccessAndLinksVisibilityTest() {
         homePage.validateAnonymousUserHomePageAccessAndLinksVisibility();
     }
@@ -76,6 +77,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-284")
     public void anonymousUserSearchUserByKnownUsernameTest() {
         SEARCHABLE_NAME = registerPage.generateUser();
         RANDOM_EMAIL = Utils.generateRandomEmail();
@@ -86,6 +88,7 @@ public class HomePageTests extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-285")
     public void anonymousUserShowUsersByProfessionWhenSearchByProfessionTest() {
         homePage.searchUserByProfession();
         homePage.validateUserSearchByProfession();

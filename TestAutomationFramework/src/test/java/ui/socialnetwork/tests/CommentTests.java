@@ -35,7 +35,7 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
-    @Tag("FHKT-275")
+    @Tag("FHKT-255")
     public void likeCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -50,7 +50,7 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
-    @Tag("FHKT-276")
+    @Tag("FHKT-113")
     public void dislikeCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -64,7 +64,7 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
-    @Tag("FHKT-277")
+    @Tag("FHKT-257")
     public void editCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
@@ -80,7 +80,7 @@ public class CommentTests extends BaseTestSetup {
     }
 
     @Test
-    @Tag("FHKT-278")
+    @Tag("FHKT-254")
     public void deleteCommentUnderThePostTests() {
         postPage.createPublicPost();
         homePage.clickOnHomeButton();
