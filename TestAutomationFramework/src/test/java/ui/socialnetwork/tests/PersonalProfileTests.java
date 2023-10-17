@@ -12,7 +12,10 @@ public class PersonalProfileTests extends BaseTestSetup {
 
     @BeforeEach
     public void setupUser() {
-        registerAndLoginUser();
+        username += registerPage.generateUser();
+        password += registerPage.generatePassword();
+        registerUser(username, password);
+        loginUser(username,password);
     }
 
     @Test

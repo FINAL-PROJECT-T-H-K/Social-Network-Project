@@ -5,11 +5,17 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
+import static com.telerikacademy.testframework.Constants.password;
+import static com.telerikacademy.testframework.Constants.username;
+
 public class PostTests extends BaseTestSetup {
 
     @BeforeEach
     public void setupUser() {
-        registerAndLoginUser();
+        username += registerPage.generateUser();
+        password += registerPage.generatePassword();
+        registerUser(username, password);
+        loginUser(username,password);
     }
 
     @Test
@@ -42,7 +48,7 @@ public class PostTests extends BaseTestSetup {
         homePage.clickOnLatestPostsButton();
 
         postPage.validateAnonymousUserCannotSeePrivatePosts();
-        registerAndLoginUser();
+      //  registerAndLoginUser();
 
     }
 

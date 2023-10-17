@@ -9,8 +9,6 @@ import org.openqa.selenium.WebDriver;
 import pages.wearesocialnetwork.*;
 
 public class BaseTestSetup {
-    protected static String USERNAME_RECEIVER;
-    protected static String PASSWORD_RECEIVER;
     public static UserActions actions = new UserActions();
     //PAGES
     public static HomePage homePage;
@@ -40,26 +38,11 @@ public class BaseTestSetup {
         UserActions.quitDriver();
     }
 
-    public static void registerAndLoginUser() {
-        String username = registerPage.generateUser();
-        String password = registerPage.generatePassword();
+    public static void registerUser(String username, String password) {
         registerPage.registerUser(username, password);
+    }
+    public static void loginUser(String username, String password){
         loginPage.loginUser(username, password);
     }
-
-
-    //Transfer to another class
-    public static void registerAndLoginUserWithParams(String username, String password) {
-        registerPage.registerUser(username, password);
-        loginPage.loginUser(username, password);
-    }
-
-    public static void loginAdmin() {
-        String username = "admin" + registerPage.generateUser();
-        String password = registerPage.generatePassword();
-        registerPage.registerUser(username, password);
-        loginPage.loginUser(username, password);
-    }
-
 }
 

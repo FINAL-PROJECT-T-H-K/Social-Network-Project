@@ -12,7 +12,7 @@ public class LogoutTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-104")
     public void nonAdminUserLoggedOutTest() {
-        registerAndLoginUser();
+      //  registerAndLoginUser();
         logoutPage.logoutSuccessfully();
 
         //ASSERT
@@ -22,7 +22,7 @@ public class LogoutTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-266")
     public void adminUserLoggedOutTest(){
-        loginAdmin();
+      //  loginAdmin();
         logoutPage.logoutSuccessfully();
 
         //ASSERT

@@ -12,7 +12,10 @@ public class AdminUserTests extends BaseTestSetup {
 
     @BeforeEach
     public void setupLogin() {
-        loginAdmin();
+        adminUsername += registerPage.generateUser();
+        password += registerPage.generatePassword();
+        registerUser(adminUsername, password);
+        loginUser(adminUsername,password);
     }
 
     @Test

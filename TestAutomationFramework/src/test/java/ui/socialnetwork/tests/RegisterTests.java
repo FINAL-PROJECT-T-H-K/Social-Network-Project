@@ -11,26 +11,29 @@ import static com.telerikacademy.testframework.Constants.*;
 
 public class RegisterTests extends BaseTestSetup {
 
+
     Logger logger = Logger.getLogger("");
 
-   @Test
-   @Tag("FHKT-264")
+    @Test
+    @Tag("FHKT-264")
     public void nonAdminUserRegisterTest() {
-        username = registerPage.generateUser();
-        password = registerPage.generatePassword();
-        registerPage.registerUser(username, password);
+        username += registerPage.generateUser();
+        password += registerPage.generatePassword();
+        registerUser(username, password);
+
         //ASSERT
         registerPage.assertSuccessfulRegistration();
         logger.info(username);
         logger.info(password);
 
     }
+
     @Test
     @Tag("FHKT-265")
     public void adminUserRegisterTest() {
         adminUsername += registerPage.generateUser();
         password += registerPage.generatePassword();
-        registerPage.registerUser(adminUsername, password);
+        registerUser(adminUsername, password);
         //ASSERT
         registerPage.assertSuccessfulRegistration();
         logger.info(adminUsername);

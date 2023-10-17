@@ -1,5 +1,6 @@
 package ui.socialnetwork.tests;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -7,16 +8,19 @@ import ui.socialnetwork.base.BaseTestSetup;
 
 import java.time.LocalDateTime;
 
-import static com.telerikacademy.testframework.Constants.commentText;
-import static com.telerikacademy.testframework.Constants.editedComment;
+import static com.telerikacademy.testframework.Constants.*;
+import static com.telerikacademy.testframework.Constants.password;
 import static com.telerikacademy.testframework.Utils.formatDateTime;
 import static com.telerikacademy.testframework.Utils.getCurrentDateTime;
 
 public class CommentTests extends BaseTestSetup {
 
     @BeforeEach
-    public void setupLogin() {
-        registerAndLoginUser();
+    public void setupUser() {
+        username += registerPage.generateUser();
+        password += registerPage.generatePassword();
+        registerUser(username, password);
+        loginUser(username,password);
     }
 
     @Test
@@ -93,8 +97,4 @@ public class CommentTests extends BaseTestSetup {
         commentPage.verifyCommentDeleted();
     }
 
-    //   @AfterEach
-    //   public void tearDownTest(){
-    //       commentPage.userDeleteCommentUnderThePost();
-    //   }
 }
