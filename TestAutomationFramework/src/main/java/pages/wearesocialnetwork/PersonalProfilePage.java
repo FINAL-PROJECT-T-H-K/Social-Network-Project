@@ -12,10 +12,10 @@ import static com.telerikacademy.testframework.Constants.*;
 public class PersonalProfilePage extends BaseSocialPage {
 
     Logger logger = Logger.getLogger("");
-    String firstName;
-    String lastName;
-    String email;
-    String personalInfo;
+   private String firstName;
+   private String lastName;
+   private String email;
+   private String personalInfo;
 
     public PersonalProfilePage(WebDriver driver) {
         super(driver, "social.network.homepage");
