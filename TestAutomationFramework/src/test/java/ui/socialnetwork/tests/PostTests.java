@@ -26,7 +26,6 @@ public class PostTests extends BaseTestSetup {
     @Tag("FHKT-109")
     public void createPrivatePostTest() {
         postPage.createPrivatePost();
-
         //assert
         postPage.verifyPostCreated();
         postPage.verifyPrivatePostCreated();
