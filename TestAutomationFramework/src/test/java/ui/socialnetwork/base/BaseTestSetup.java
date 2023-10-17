@@ -1,6 +1,6 @@
 package ui.socialnetwork.base;
 
-import apisocialnetwork.Utils;
+
 import com.telerikacademy.testframework.CustomWebDriverManager;
 import com.telerikacademy.testframework.UserActions;
 import org.junit.jupiter.api.AfterEach;
@@ -38,25 +38,11 @@ public class BaseTestSetup {
         UserActions.quitDriver();
     }
 
-    public static void registerAndLoginUser() {
-        String username = registerPage.generateUser();
-        String password = registerPage.generatePassword();
+    public static void registerUser(String username, String password) {
         registerPage.registerUser(username, password);
+    }
+    public static void loginUser(String username, String password){
         loginPage.loginUser(username, password);
     }
-
-    //Transfer to another class
-    public static void registerAndLoginUserWithParams(String username, String password) {
-        registerPage.registerUser(username, password);
-        loginPage.loginUser(username, password);
-    }
-
-    public static void loginAdmin() {
-        String username = "admin" + registerPage.generateUser();
-        String password = registerPage.generatePassword();
-        registerPage.registerUser(username, password);
-        loginPage.loginUser(username, password);
-    }
-
 }
 
