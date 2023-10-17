@@ -59,8 +59,8 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.clickElement("personal.profile.new.request.button");
     }
     public void clickOnConnect() {
-        actions.waitForElementClickable("//input[@class='btn btn-primary' and @value='connect']");
-        actions.clickElement("//input[@class='btn btn-primary' and @value='connect']");
+        actions.waitForElementClickable("send.connection.button");
+        actions.clickElement("send.connection.button");
 
     }
 
@@ -70,14 +70,14 @@ public class PersonalProfilePage extends BaseSocialPage {
     }
 
     public void approveReceivedConnectionRequest() {
-        actions.waitForElementVisible("//input[@class='btn btn-primary']");
-        actions.clickElement("//input[@class='btn btn-primary']");
-        actions.waitForElementVisible("//input[@class='btn btn-primary py-2']");
-        actions.clickElement("//input[@class='btn btn-primary py-2']");
+        actions.waitForElementVisible("see.new.connection.requests.button");
+        actions.clickElement("see.new.connection.requests.button");
+        actions.waitForElementVisible("approve.connection.request.button");
+        actions.clickElement("approve.connection.request.button");
     }
 
     public void validateReceivedConnectionRequestApproved() {
-        actions.assertElementVisible("//h3[@class='mb-3 bread']");
+        actions.assertElementVisible("no.pending.request.message ");
         logger.info(String.format("Username with %s, and password with %s, sent connection request.",
                 USERNAME_SENDER_UI, PASSWORD_SENDER_UI));
         logger.info(String.format("User with username %s, and password %s, approved connection request of user %s",
@@ -124,7 +124,7 @@ public class PersonalProfilePage extends BaseSocialPage {
         Assertions.assertEquals("Quality Assurance", spanText, "Expected text does not match the actual text.");
     }
     public void assertAvailability() {
-        actions.assertElementPresent("//h3[@class='heading-sidebar']");
+        actions.assertElementPresent("personal.info.availability");
     }
 
 

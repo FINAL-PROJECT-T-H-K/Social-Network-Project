@@ -23,7 +23,7 @@ public class HomePage extends BaseSocialPage {
         actions.assertElementPresent("home.page.home.button");
         actions.assertElementPresent("home.page.latest.post.button");
         actions.assertElementPresent("home.page.about.us");
-        actions.assertElementPresent("search.button");
+        actions.assertElementPresent("user.search.button");
 
         logger.info("HomePage successfully accessed without authentication with visibility of header and page links.");
 
@@ -81,19 +81,19 @@ public class HomePage extends BaseSocialPage {
     public void clickOnUserSearchBar() {
         actions.waitForElementVisible("user.search.button");
         actions.clickElement("user.search.button");
-        actions.waitForElementVisible("user.membersince.field");
+        actions.waitForElementVisible("user.member.since.field");
 
     }
 
     public void clickOnUserAfterSearch() {
-        actions.waitForElementVisible("//a[@class='btn btn-primary']");
-        actions.clickElement("//a[@class='btn btn-primary']");
+        actions.waitForElementVisible("see.profile.button");
+        actions.clickElement("see.profile.button");
 
     }
 
     public void sendConnectionToSearchedUser() {
-        actions.waitForElementVisible("//input[@class='btn btn-primary']");
-        actions.clickElement("//input[@class='btn btn-primary']");
+        actions.waitForElementVisible("send.connection.button");
+        actions.clickElement("send.connection.button");
 
     }
 
@@ -104,8 +104,8 @@ public class HomePage extends BaseSocialPage {
     }
 
     public void disconnectFromAlreadyConnectedUser() {
-        actions.waitForElementClickable("//input[@value='disconnect']");
-        actions.clickElement("//input[@value='disconnect']");
+        actions.waitForElementClickable("user.disconnect.button");
+        actions.clickElement("user.disconnect.button");
     }
 
     public void validatePersonalProfileButton() {
@@ -114,25 +114,25 @@ public class HomePage extends BaseSocialPage {
     }
 
     public void searchUserByProfession() {
-        actions.waitForElementVisible("//input[@id='searchParam1']");
-        actions.typeValueInField("Hairdresser", "//input[@id='searchParam1']");
+        actions.waitForElementVisible("home.profession.input.field");
+        actions.typeValueInField("Hairdresser", "home.profession.input.field");
         clickOnUserSearchBar();
 
     }
 
     public void searchUserByKnownUsername(String name) {
-        actions.waitForElementVisible("//input[@id='searchParam2']");
-        actions.typeValueInField(name, "//input[@id='searchParam2']");
-        actions.clickElement("//button [@class='form-control btn btn-primary']");
+        actions.waitForElementVisible("home.username.search.input");
+        actions.typeValueInField(name, "home.username.search.input");
+        actions.clickElement("user.search.button");
     }
 
-    public void validateUserSearchByProfession() {
-        actions.assertElementPresent("//span[@class='position' and text()='Hairdresser']");
+    public void validateUserSearchByProfession(String profession) {
+        actions.assertElementVisible("user.search.result.profession.field", profession);
     }
 
     public void verifySuccessfulConnectionRequestMessage() {
-        actions.waitForElementVisible("//div[text()='Good job! You have send friend request!']");
-        actions.assertElementPresent("//div[text()='Good job! You have send friend request!']");
+        actions.waitForElementVisible("connection.request.sent.success");
+        actions.assertElementPresent("connection.request.sent.success");
 
         logger.info(String.format("Username with %s, and password with %s, sent connection request.",
                 USERNAME_SENDER_UI, PASSWORD_SENDER_UI));
@@ -141,17 +141,17 @@ public class HomePage extends BaseSocialPage {
     }
 
     public void validateSearchedUsernameInSearchResults(String firstName, String lastName) {
-        actions.assertElementVisible("homepage.searchresult.username", firstName, lastName);
+        actions.assertElementVisible("homepage.search.result.username", firstName, lastName);
     }
 
     public void validateSearchUserByKnownUsername(String name) {
-        actions.assertElementPresent(String.format("//h2[text()='%s']", name));
+        actions.assertElementPresent(String.format("user.search.result.username.field", name));
         logger.info("User with username 'Public Profile' is visible.");
     }
 
     public void validateDisconnectionFromAlreadyConnectedUser() {
 
-        actions.waitForElementClickable("//input[@value='connect']");
+        actions.waitForElementClickable("send.connection.button");
         logger.info(String.format("User with username %s, and password %s, approved connection request of user %s",
                 USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI, USERNAME_SENDER_UI));
         logger.info(String.format("User with username %s, and password with %s, disconnected from the user with username %s.",
@@ -160,7 +160,7 @@ public class HomePage extends BaseSocialPage {
     }
 
     public void validateSearchBarShowsUsers() {
-        actions.assertElementPresent("//p[@class='proile-rating']");
+        actions.assertElementPresent("user.member.since.field");
     }
 
     public void validateAboutUsInformationDisplayed() {
@@ -169,8 +169,8 @@ public class HomePage extends BaseSocialPage {
     }
 
     public void verifyScrollDownInHomePage() {
-        actions.assertElementPresent("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]");
-        actions.waitForElementToBeClickableUntilTimeout("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]", 3);
+        actions.assertElementPresent("register.button.bottom");
+        actions.waitForElementToBeClickableUntilTimeout("register.button.bottom", 3);
         logger.info("Scroll down action is successful 'Register' button is visible and clickable");
     }
 
@@ -186,10 +186,10 @@ public class HomePage extends BaseSocialPage {
     public void validateRegisterFormFullyDisplayed() {
         actions.assertElementPresent("join.our.community");
         actions.assertElementPresent("register.page.usernameField");
-        actions.assertElementPresent("//input[@name='email']");
-        actions.assertElementPresent("//input[@name='password']");
-        actions.assertElementPresent("//input[@name='confirmPassword']");
-        actions.assertElementPresent("//input[@value = 'Register']");
+        actions.assertElementPresent("register.page.emailField");
+        actions.assertElementPresent("register.page.passwordField");
+        actions.assertElementPresent("register.page.confirmPasswordField");
+        actions.assertElementPresent("register.page.submitButton");
     }
 
     public void validateLoginFormDisplayed() {

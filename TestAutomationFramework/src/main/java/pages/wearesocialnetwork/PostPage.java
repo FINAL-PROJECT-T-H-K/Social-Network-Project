@@ -140,7 +140,7 @@ public class PostPage extends BaseSocialPage {
     }
 
     public void verifyPostCreated() {
-        actions.waitForElementClickable("explore.button");
+        actions.waitForElementClickable("see.profile.button");
 
     }
 

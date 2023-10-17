@@ -3,7 +3,6 @@ package pages.wearesocialnetwork;
 import com.telerikacademy.testframework.Utils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.time.LocalDateTime;
@@ -78,8 +77,8 @@ public class CommentPage extends BaseSocialPage {
     }
 
     public void clickOnExploreThePost() {
-        actions.waitForElementClickable("explore.button");
-        actions.clickElement("explore.button");
+        actions.waitForElementClickable("see.profile.button");
+        actions.clickElement("see.profile.button");
     }
 
     public void clickOnShowCommentsUnderThePost() {
