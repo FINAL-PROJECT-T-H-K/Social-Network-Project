@@ -11,7 +11,9 @@ public class Constants {
     public static String email = "";
     public static String personalInfo;
     public static String commentText;
+    public static String postDescription;
     public static String editedComment;
+    public static String editedPost;
     public static String homePageHeader = "The Easiest Way to Hack the Crisis";
     public static String logoutPageHeader = "Login Page";
     public static String skillInfo = "Quality Assurance";

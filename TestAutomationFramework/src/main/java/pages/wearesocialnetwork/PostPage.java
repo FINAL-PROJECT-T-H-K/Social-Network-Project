@@ -1,22 +1,31 @@
 package pages.wearesocialnetwork;
 
+import com.telerikacademy.testframework.Utils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
+import java.time.LocalDateTime;
+
+import static com.telerikacademy.testframework.Utils.formatDateTime;
+import static com.telerikacademy.testframework.Utils.getCurrentDateTime;
+
 public class PostPage extends BaseSocialPage {
-    public String PostDescription = "My Post: ";
+    public String postDescription = "My Post: ";
+
+    public String editPostText = "Edit post to: ";
 
     public PostPage(WebDriver driver) {
         super(driver, "social.network.homepage");
     }
 
-    public void createPublicPost() {
-        PostDescription = generateDescription();
+    public void createPublicPost(String postBody) {
+        postDescription = postBody;
         actions.waitForElementClickable("new.post.button");
         actions.clickElement("new.post.button");
 
         actions.waitForElementClickable("post.description");
-        actions.typeValueInField(PostDescription, "post.description");
+        actions.typeValueInField(postDescription, "post.description");
 
         actions.waitForElementClickable("choose.public.post");
         actions.clickElement("choose.public.post");
@@ -27,13 +36,13 @@ public class PostPage extends BaseSocialPage {
 
     }
 
-    public void createPrivatePost() {
-        PostDescription = generateDescription();
+    public void createPrivatePost(String postBody) {
+        postDescription = postBody;
         actions.waitForElementClickable("new.post.button");
         actions.clickElement("new.post.button");
 
         actions.waitForElementClickable("post.description");
-        actions.typeValueInField(PostDescription, "post.description");
+        actions.typeValueInField(postDescription, "post.description");
 
         actions.waitForElementClickable("choose.private.post");
         actions.clickElement("choose.private.post");
@@ -44,7 +53,7 @@ public class PostPage extends BaseSocialPage {
 
     }
 
-    public void anonymousUserPrivatePostVisibility(){
+    public void anonymousUserPrivatePostVisibility() {
         actions.waitForElementClickable("home.page.latest.post.button");
         actions.clickElement("home.page.latest.post.button");
 
@@ -62,6 +71,7 @@ public class PostPage extends BaseSocialPage {
         actions.clickElement("post.like.button");
 
         actions.waitForElementVisible("post.dislike.button");
+        actions.waitForElementVisible("//span[@class='position']");
     }
 
     public void dislikePublicPost() {
@@ -74,8 +84,8 @@ public class PostPage extends BaseSocialPage {
         actions.clickElement("post.dislike.button");
     }
 
-    public void userEditPost() {
-        PostDescription += generateDescription();
+    public void userEditPost(String postBody) {
+        editPostText += generateDescription();
 
         actions.waitForElementVisible("edit.post.button");
         actions.clickElement("edit.post.button");
@@ -84,7 +94,7 @@ public class PostPage extends BaseSocialPage {
         actions.clickElement("choose.public.post");
 
         actions.waitForElementClickable("edit.comment.field");
-        actions.typeValueInField(PostDescription, "edit.comment.field");
+        actions.typeValueInField(postBody, "edit.comment.field");
 
         actions.waitForElementVisible("edit.post.submit.button");
         actions.clickElement("edit.post.submit.button");
@@ -94,12 +104,53 @@ public class PostPage extends BaseSocialPage {
 
     }
 
-    public void validateAnonymousUserCannotSeePrivatePosts(){
+    public void validatePostCreatedInTheLast1Minute() {
+
+        LocalDateTime currentDateTime = getCurrentDateTime();
+        String formattedDateTime = formatDateTime(currentDateTime);
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String commentDateTime = actions.readTextFromElement("posts.time.created");
+        long result = Utils.compareDates(formattedDateTime, commentDateTime);
+
+        Assertions.assertTrue(result < 1);
+
+    }
+
+    public void validateAnonymousUserCannotSeePrivatePosts() {
         actions.assertElementNotPresent("//span[text()='Public post: false']");
 
     }
+
     public void validatePostIsEdited() {
         actions.assertElementPresent("all.post.of.user");
+    }
+
+    public void validatePostEditedWithText(String postName) {
+        actions.assertElementVisible("//p[text()='%s']", postName);
+    }
+
+    public int getLikeCount(String locator) {
+        String likesOfElement = actions.readTextFromElement(locator);
+        System.out.println("like content:" + likesOfElement);
+        int pos = likesOfElement.indexOf(":");
+        String strNumber = likesOfElement.substring(pos + 1);
+        int likeCount = Integer.parseInt(strNumber.trim());
+        return likeCount;
+
+    }
+    public void verifyPostLikeAmountIncreasedByOne(String locator, int oldLikeCount) {
+
+        int likeCount = getLikeCount(locator);
+        actions.assertValueIncreasedBy(1, likeCount - oldLikeCount);
+    }
+
+    public void validatePostCreatedWithText(String comment) {
+        actions.assertElementVisible("comment.content", comment);
     }
 
     public void validateTopicIsUnliked() {
@@ -153,10 +204,8 @@ public class PostPage extends BaseSocialPage {
 
     }
 
-    public String generateDescription() {
-        PostDescription += RandomStringUtils.randomAlphabetic(15);
-        return PostDescription;
+    public static String generateDescription() {
+        return RandomStringUtils.randomAlphabetic(15);
     }
-
 
 }

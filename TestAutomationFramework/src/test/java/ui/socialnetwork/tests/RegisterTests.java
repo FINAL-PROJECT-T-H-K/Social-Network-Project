@@ -17,6 +17,7 @@ public class RegisterTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-264")
     public void nonAdminUserRegisterTest() {
+        ///username = "username" + registeredPage.generatedUser();
         username += registerPage.generateUser();
         password += registerPage.generatePassword();
         registerUser(username, password);

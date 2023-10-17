@@ -191,10 +191,16 @@ public class UserActions {
         waitForElementPresenceUntilTimeout(locator, defaultTimeout, arguments);
     }
 
-    public void assertElementPresent(String locator ) {
+    public void assertElementPresent(String locator) {
         Assertions.assertNotNull(driver.findElement(By.xpath(Utils.getUIMappingByKey(locator))),
                 format("Element with %s doesn't present.", locator));
     }
+
+    public void assertValueIncreasedBy(int actual, int expected) {
+        Assertions.assertEquals(actual, expected, String.format("Actual value: %s is not equal to the expected value: %s one.",
+                actual, expected));
+    }
+
 
     public void assertEmailFieldOnProfilePage(String email) {
         String xpath = String.format("//div[@class='row' and contains(string(), 'Email')]//div[@class='col-md-6' and contains(string(), '%s')]", email);
@@ -241,6 +247,7 @@ public class UserActions {
         String locator = getLocatorValueByKey(key, arguments);
         Utils.LOGGER.info("Reading text from element " + key);
         WebElement element = driver.findElement(By.xpath(locator));
+        System.out.println(element.toString());
 
         String text = element.getText();
 

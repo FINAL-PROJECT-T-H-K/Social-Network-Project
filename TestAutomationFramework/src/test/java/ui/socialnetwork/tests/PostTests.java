@@ -3,15 +3,16 @@ package ui.socialnetwork.tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import pages.wearesocialnetwork.PostPage;
 import ui.socialnetwork.base.BaseTestSetup;
 
-import static com.telerikacademy.testframework.Constants.password;
-import static com.telerikacademy.testframework.Constants.username;
+import static com.telerikacademy.testframework.Constants.*;
 
 public class PostTests extends BaseTestSetup {
 
     @BeforeEach
     public void setupUser() {
+        postDescription = "My Post:" + PostPage.generateDescription();
         username += registerPage.generateUser();
         password += registerPage.generatePassword();
         registerUser(username, password);
@@ -21,20 +22,23 @@ public class PostTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-26")
     public void createPublicPostTest() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         //Assert
         postPage.verifyPostCreated();
         postPage.verifyPublicPostCreated();
+        postPage.validatePostCreatedInTheLast1Minute();
+
 
     }
 
     @Test
     @Tag("FHKT-109")
     public void createPrivatePostTest() {
-        postPage.createPrivatePost();
+        postPage.createPrivatePost(postDescription);
         //assert
         postPage.verifyPostCreated();
         postPage.verifyPrivatePostCreated();
+        postPage.validatePostCreatedInTheLast1Minute();
 
     }
 
@@ -42,7 +46,7 @@ public class PostTests extends BaseTestSetup {
     @Tag("FHKT-142")
     public void anonymousUserCannotSeePrivatePostsTest() {
 
-        postPage.createPrivatePost();
+        postPage.createPrivatePost(postDescription);
         homePage.clickOnHomeButton();
         logoutPage.logoutSuccessfully();
         homePage.clickOnLatestPostsButton();
@@ -55,7 +59,7 @@ public class PostTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-35")
     public void likePostWhenClickLikeButtonTest() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
@@ -68,7 +72,7 @@ public class PostTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-113")
     public void dislikePostWhenClickLikeButtonTest() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         homePage.clickOnLatestPostsButton();
         postPage.dislikePublicPost();
@@ -80,20 +84,20 @@ public class PostTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-253")
     public void editPostTest() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
-        postPage.userEditPost();
+        postPage.userEditPost(postDescription);
 
         //assert
         postPage.validatePostIsEdited();
+        postPage.validatePostEditedWithText(editedPost);
     }
-
 
     @Test
     @Tag("FHKT-283")///MAYBE SHOULD BE IN @AFTERCLASS
     public void deletePostTest() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
         postPage.deletePost();

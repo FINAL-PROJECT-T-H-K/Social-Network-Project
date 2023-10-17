@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 import static com.telerikacademy.testframework.Utils.formatDateTime;
 import static com.telerikacademy.testframework.Utils.getCurrentDateTime;
+import static pages.wearesocialnetwork.PostPage.generateDescription;
 
 public class CommentPage extends BaseSocialPage {
 
@@ -19,9 +20,9 @@ public class CommentPage extends BaseSocialPage {
         super(driver, "social.network.homepage");
     }
 
-    public void createCommentUnderPost(String generateRandomComment) {
+    public void createCommentUnderPost(String commentBody) {
         actions.waitForElementClickable("create.comments.fields");
-        actions.typeValueInField(generateRandomComment, "create.comments.fields");
+        actions.typeValueInField(commentBody, "create.comments.fields");
 
         actions.waitForElementClickable("create.comments.button");
         actions.clickElement("create.comments.button");
@@ -52,6 +53,7 @@ public class CommentPage extends BaseSocialPage {
     }
 
     public void userEditCommentUnderThePost(String generateRandomComment) {
+        editCommentText = generateDescription();
         actions.waitForElementVisible("edit.comment.button");
         actions.clickElement("edit.comment.button");
 
@@ -85,15 +87,16 @@ public class CommentPage extends BaseSocialPage {
         actions.scrollUp(-500);
         actions.waitForElementClickable("show.comments.button");
         actions.clickElement("show.comments.button");
+        actions.waitForElementVisible("like.amount.comment/post");
 
     }
 
 
-    public void validateTopicIsLiked() {
+    public void validateCommentIsLiked() {
         actions.assertElementPresent("dislike.comment.button");
     }
 
-    public void validateTopicIsUnliked() {
+    public void validateCommentIsUnliked() {
         actions.waitForElementVisible("like.comment.button");
         actions.assertElementPresent("like.comment.button");
     }
@@ -112,6 +115,26 @@ public class CommentPage extends BaseSocialPage {
 
     public void validateCommentCreatedWithText(String comment) {
         actions.assertElementVisible("comment.content", comment);
+    }
+
+    public void validateCommentEditedWithText(String comment) {
+        actions.assertElementVisible("comment.content", comment);
+    }
+
+    public int getLikeCount(String locator) {
+        String likesOfElement = actions.readTextFromElement(locator);
+        System.out.println("like content:" + likesOfElement);
+        int pos = likesOfElement.indexOf(":");
+        String strNumber = likesOfElement.substring(pos + 1);
+        int likeCount = Integer.parseInt(strNumber.trim());
+        return likeCount;
+
+    }
+
+    public void verifyLikeAmountIncreasedByOne(String locator, int oldLikeCount) {
+
+        int likeCount = getLikeCount(locator);
+        actions.assertValueIncreasedBy(1, likeCount - oldLikeCount);
     }
 
     public void validateCommentAddedInTheLast1Minute() {

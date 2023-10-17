@@ -4,7 +4,9 @@ import apisocialnetwork.Utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import pages.wearesocialnetwork.PostPage;
 import ui.socialnetwork.base.BaseTestSetup;
+
 import static com.telerikacademy.testframework.Constants.*;
 
 public class AdminUserTests extends BaseTestSetup {
@@ -12,10 +14,20 @@ public class AdminUserTests extends BaseTestSetup {
 
     @BeforeEach
     public void setupLogin() {
+        postDescription = "My Post:" + PostPage.generateDescription();
         adminUsername += registerPage.generateUser();
         password += registerPage.generatePassword();
         registerUser(adminUsername, password);
-        loginUser(adminUsername,password);
+        loginUser(adminUsername, password);
+    }
+
+    @Test
+    @Tag("FHKT-263")
+    public void adminHomePageLinkTest() {
+        homePage.verifyAdminZoneLinkVisibility();
+        homePage.clickOnGoToAdminZoneButton();
+
+        homePage.verifyAdminZonePageAccess();
     }
 
     @Test
@@ -30,44 +42,46 @@ public class AdminUserTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-267")
     public void adminUserCreatePublicPostsTest() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         //Assert
         postPage.verifyPostCreated();
         postPage.verifyPublicPostCreated();
-
+        postPage.validatePostCreatedInTheLast1Minute();
+        postPage.validatePostCreatedWithText(postDescription);
     }
 
     @Test
     @Tag("FHKT-268")
     public void adminUserCreatePrivatePostsTest() {
-        postPage.createPrivatePost();
+        postPage.createPrivatePost(postDescription);
         //Assert
         postPage.verifyPostCreated();
         postPage.verifyPrivatePostCreated();
-
+        postPage.validatePostCreatedInTheLast1Minute();
+        postPage.validatePostCreatedWithText(postDescription);
     }
 
     @Test
     @Tag("FHKT-269")
-    public void adminUserLikePostWhenClickLikeButtonTest() {
-        postPage.createPublicPost();
-        homePage.clickOnHomeButton();
+    public void adminUserLikeLatestPostWhenClickLikeButtonTest() {
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
         //assert
         postPage.validatePostIsLiked();
+        //validate like amount increased by 1
 
     }
 
     @Test
     @Tag("FHKT-270")
     public void adminUserDislikePostWhenClickLikeButtonTest() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         homePage.clickOnLatestPostsButton();
         postPage.likePublicPost();
         //assert
         postPage.validateTopicIsUnliked();
+        //assert like amount decreased by 1.
     }
 
     @Test
@@ -75,54 +89,62 @@ public class AdminUserTests extends BaseTestSetup {
     public void adminUserEditPostTest() {
         homePage.clickOnLatestPostsButton();
         commentPage.clickOnExploreThePost();
-        postPage.userEditPost();
+        postPage.userEditPost(postDescription);
         //assert
         postPage.validatePostIsEdited();
+        //assert edited post content
     }
+
     @Test
     @Tag("FHKT-271")
     public void adminUserCreateCommentUnderThePostTests() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         //assert
+
         commentPage.verifyFirstCommentCreated();
+        commentPage.validateCommentCreatedWithText(commentText);
+        commentPage.validateCommentAddedInTheLast1Minute();
     }
 
     @Test
     @Tag("FHKT-273")
     public void adminUserLikeCommentUnderThePostTests() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
-        commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
+
+        int oldLikeCount = commentPage.getLikeCount("//span[@class='position']");
         commentPage.userLikeCommentUnderThePost();
+
         //assert
-        commentPage.validateTopicIsLiked();
+        commentPage.validateCommentIsLiked();
+        commentPage.verifyLikeAmountIncreasedByOne("//span[@class='position']",oldLikeCount);
     }
 
     @Test
     @Tag("FHKT-274")
     public void adminUserDislikeCommentUnderThePostTests() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
-        commentPage.userDeleteCommentUnderThePost();
+        commentPage.userDislikeCommentUnderThePost();
         //assert
-        commentPage.verifyCommentDeleted();
+        commentPage.validateCommentIsUnliked();
     }
 
     @Test
     @Tag("FHKT-62")
     public void adminUserEditCommentUnderThePostTests() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();
@@ -130,14 +152,16 @@ public class AdminUserTests extends BaseTestSetup {
         commentPage.clickOnShowCommentsUnderThePost();
         editedComment = commentPage.generateRandomEditComment();
         commentPage.userEditCommentUnderThePost(editedComment);
+        commentPage.clickOnShowCommentsUnderThePost();
         //assert
-        commentPage.verifyCommentЕdited();
+        commentPage.validateCommentEditedWithText(editedComment);
+        commentPage.validateCommentAddedInTheLast1Minute();
     }
 
     @Test
     @Tag("FHKT-64")
     public void adminUserDeleteCommentUnderThePostTests() {
-        postPage.createPublicPost();
+        postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
         commentText = commentPage.generateRandomComment();

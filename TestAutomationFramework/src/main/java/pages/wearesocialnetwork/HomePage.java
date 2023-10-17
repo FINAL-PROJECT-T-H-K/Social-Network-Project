@@ -214,4 +214,12 @@ public class HomePage extends BaseSocialPage {
     public void verifyAdminViewAllUsers() {
         actions.assertElementPresent("admin.view.off.all.user");
     }
+
+    public void verifyAdminZoneLinkVisibility() {
+        actions.assertElementPresent("admin.zone.button");
+    }
+
+    public void verifyAdminZonePageAccess() {
+        actions.assertElementPresent("admin.zone.page.header");
+    }
 }
