@@ -13,13 +13,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Locale;
-import java.util.logging.Logger;
 
 import static apisocialnetwork.Constants.*;
 import static apisocialnetwork.Constants.RANDOM_EMAIL;
 
 public class Utils {
-    Logger logger = Logger.getLogger("");
 
     public static String generateRandomEmail() {
         RandomStringGenerator generator = new RandomStringGenerator.Builder()

@@ -14,10 +14,10 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SkillsControllerTest extends BaseTestSetup {
-    Logger logger = Logger.getLogger("");
+    static Logger logger = Logger.getLogger("");
 
     @Test
-    public void createSkillTest() {
+    public static void createSkillTest() {
 
         Response response = createSkill();
 
@@ -37,7 +37,7 @@ public class SkillsControllerTest extends BaseTestSetup {
     }
 
     @Test
-    public void getAllSkillsTest() {
+    public static void getAllSkillsTest() {
 
         Response response = showAllSkills();
 
@@ -55,7 +55,7 @@ public class SkillsControllerTest extends BaseTestSetup {
     }
 
     @Test
-    public void deleteSkillTest() {
+    public static void deleteSkillTest() {
 
         if (isNull(SKILL_ID)) {
             createSkill();

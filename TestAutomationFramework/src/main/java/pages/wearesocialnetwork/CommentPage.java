@@ -13,8 +13,8 @@ import static com.telerikacademy.testframework.Utils.getCurrentDateTime;
 
 public class CommentPage extends BaseSocialPage {
 
-    private String commentText = "My comment is ";
-    private String editCommentText = "Edit comment to: ";
+    public String commentText = "My comment is ";
+    public String editCommentText = "Edit comment to: ";
 
     public CommentPage(WebDriver driver) {
         super(driver, "social.network.homepage");

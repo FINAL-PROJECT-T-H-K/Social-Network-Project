@@ -10,6 +10,7 @@ import static java.lang.String.format;
 
 public class RegisterPage extends BasePage {
     Random random = new Random();
+    int randomCount;
 
     public RegisterPage(WebDriver driver) {
         super(driver, "social.network.register.page");

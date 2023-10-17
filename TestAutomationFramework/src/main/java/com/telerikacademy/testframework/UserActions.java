@@ -9,9 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.function.Supplier;
 
-import static com.telerikacademy.testframework.Utils.getUIMappingByKey;
 import static java.lang.String.format;
 
 public class UserActions {
@@ -146,7 +144,7 @@ public class UserActions {
 
     public void mouseHoverBy(String key) {
 
-        String xpath = (getUIMappingByKey(key));
+        String xpath = (Utils.getUIMappingByKey(key));
         WebElement ele = driver.findElement(By.xpath(xpath));
 
         Actions action = new Actions(driver);
@@ -194,7 +192,7 @@ public class UserActions {
     }
 
     public void assertElementPresent(String locator) {
-        Assertions.assertNotNull(driver.findElement(By.xpath(getUIMappingByKey(locator))),
+        Assertions.assertNotNull(driver.findElement(By.xpath(Utils.getUIMappingByKey(locator))),
                 format("Element with %s doesn't present.", locator));
     }
 
@@ -219,7 +217,7 @@ public class UserActions {
     }
 
     public void assertElementNotPresent(String locator) {
-        By xpathLocator = By.xpath(getUIMappingByKey(locator));
+        By xpathLocator = By.xpath(Utils.getUIMappingByKey(locator));
 
         try {
             WebElement element = driver.findElement(xpathLocator);
@@ -236,7 +234,7 @@ public class UserActions {
     }
 
     public void deleteEmailFied() {
-        driver.findElement(By.xpath(getUIMappingByKey("profile.email.address"))).clear();
+        driver.findElement(By.xpath(Utils.getUIMappingByKey("profile.email.address"))).clear();
     }
 
     public String readTextFromElement (String key, Object... arguments) {
@@ -251,8 +249,8 @@ public class UserActions {
 
 //    public void assertElementPresentWithArg(String locator,  Object... arguments) {
 //        String formattedLocator = getLocatorValueByKey(locator, arguments);
-//        Assertions.assertNotNull((Object) format("Element with %s doesn't present.", formattedLocator),
-//                (Supplier<String>) driver.findElement(By.xpath(getUIMappingByKey(formattedLocator))));
+//        Assertions.assertNotNull(format("Element with %s doesn't present.", formattedLocator),
+//                driver.findElement(By.xpath(getUIMappingByKey(formattedLocator))));
 //    }
 
 //    public void assertElementPresent(String locator ) {
@@ -273,11 +271,11 @@ public class UserActions {
     }
 
     private String getLocatorValueByKey(String locator) {
-        return format(getUIMappingByKey(locator));
+        return format(Utils.getUIMappingByKey(locator));
     }
 
     private String getLocatorValueByKey(String locator, Object[] arguments) {
-        return String.format(getUIMappingByKey(locator), arguments);
+        return String.format(Utils.getUIMappingByKey(locator), arguments);
     }
 
     private void waitForElementVisibleUntilTimeout(String locator, int seconds, Object... locatorArguments) {
@@ -312,6 +310,7 @@ public class UserActions {
             Assertions.fail("Element with locator: '" + xpath + "' was not found.");
         }
     }
+
     public boolean isElementVisible(String locator, Object... arguments) {
         Duration timeout = Duration.ofSeconds(defaultTimeout);
         WebDriverWait wait = new WebDriverWait(driver, timeout);

@@ -13,25 +13,26 @@ public class HomePage extends BaseSocialPage {
     public HomePage(WebDriver driver) {
         super(driver, "social.network.homepage");
     }
-    
+
+
     public void validateAnonymousUserHomePageAccessAndLinksVisibility() {
-        actions.assertElementPresent("homepage.header.name");
+        actions.assertElementPresent("//h1[text()='The Easiest Way to Hack the Crisis']");
         actions.assertElementPresent("nav.bar.brand");
         actions.assertElementPresent("register.button");
         actions.assertElementPresent("home.page.sign.in.button");
         actions.assertElementPresent("home.page.home.button");
         actions.assertElementPresent("home.page.latest.post.button");
         actions.assertElementPresent("home.page.about.us");
-        actions.assertElementPresent("user.search.button");
+        actions.assertElementPresent("search.button");
 
-        logger.info("HomePage successfully accessed without authentication with visibility of header and page links.");
+        logger.info("HomePage successfully accesses without authentication with visibility of header and page links.");
 
     }
 
 
     public void validateUserCanScrollDownInHomePageToSpecificElement() {
-        actions.scrollDownInPage("register.button.bottom");
-        actions.waitForElementToBeClickableUntilTimeout("register.button.bottom", 5);
+        actions.scrollDownInPage("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]");
+        actions.waitForElementToBeClickableUntilTimeout("(//a[@class='nav-link' and contains(text(), 'REGISTER')])[2]", 5);
     }
 
 
@@ -78,9 +79,9 @@ public class HomePage extends BaseSocialPage {
     }
 
     public void clickOnUserSearchBar() {
-        actions.waitForElementVisible("user.search.button");
-        actions.clickElement("user.search.button");
-        actions.waitForElementVisible("user.membersince.field");
+        actions.waitForElementVisible("//button [@class='form-control btn btn-primary']");
+        actions.clickElement("//button [@class='form-control btn btn-primary']");
+        actions.waitForElementVisible("//p[@class='proile-rating']");
 
     }
 

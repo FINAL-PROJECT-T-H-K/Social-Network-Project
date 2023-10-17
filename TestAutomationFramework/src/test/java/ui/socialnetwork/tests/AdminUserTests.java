@@ -9,6 +9,7 @@ import static com.telerikacademy.testframework.Constants.*;
 
 public class AdminUserTests extends BaseTestSetup {
 
+
     @BeforeEach
     public void setupLogin() {
         adminUsername += registerPage.generateUser();

@@ -1,5 +1,6 @@
 package api.securitytesting;
 
+import com.telerikacademy.testframework.CustomWebDriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
 import org.testng.annotations.Test;
 import org.zaproxy.clientapi.core.ApiResponse;
 import org.zaproxy.clientapi.core.ClientApi;
@@ -15,9 +17,9 @@ import org.zaproxy.clientapi.core.ClientApiException;
 
 public class ZAPSecurityTest {
 
-   private static final String ZAP_PROXY_ADDRESS = "localhost";
-   private static final int ZAP_PROXY_PORT = 8080;
-   private static final String ZAP_API_KEY = "ivn8s36c2f29v9g490q03vh4hi";
+    static final String ZAP_PROXY_ADDRESS = "localhost";
+    static final int ZAP_PROXY_PORT = 8080;
+    static final String ZAP_API_KEY = "ivn8s36c2f29v9g490q03vh4hi";
 
     private WebDriver driver;
     private ClientApi api;
@@ -66,7 +68,7 @@ public class ZAPSecurityTest {
             }
 
         }
-       driver.quit();
+       //driver.quit();
     }
 
 }
