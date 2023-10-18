@@ -14,6 +14,7 @@ public class PostTests extends BaseTestSetup {
     String username = "";
     String password = "";
     String postDescription = "My Post:";
+    String editPostText = "Edit post to: ";
 
     @BeforeEach
     public void setupUser() {
@@ -88,14 +89,13 @@ public class PostTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-253")
     public void editPostTest() {
-        postPage.createPublicPost(postDescription);
-        homePage.clickOnHomeButton();
-        postPage.clickOnTheRecentPost();
-        postPage.userEditPost(postDescription);
-
+        homePage.clickOnLatestPostsButton();
+        commentPage.clickOnExploreThePost();
+        editPostText += generateDescription();
+        postPage.userEditPost(editPostText);
         //assert
+        postPage.validatePostEditedWithText(editPostText);
         postPage.validatePostIsEdited();
-        postPage.validatePostEditedWithText(editedPost);
     }
 
     @Test

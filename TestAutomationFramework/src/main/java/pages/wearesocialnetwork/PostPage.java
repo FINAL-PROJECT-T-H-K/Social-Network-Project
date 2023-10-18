@@ -131,7 +131,7 @@ public class PostPage extends BaseSocialPage {
     }
 
     public void validatePostEditedWithText(String postName) {
-        actions.assertElementVisible("//p[text()='%s']", postName);
+        actions.assertElementVisible("post.content", postName);
     }
 
     public int getLikeCount(String locator) {

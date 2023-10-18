@@ -121,6 +121,7 @@ public class CommentPage extends BaseSocialPage {
         actions.assertElementVisible("comment.content", comment);
     }
 
+
     public int getLikeCount(String locator) {
         String likesOfElement = actions.readTextFromElement(locator);
         System.out.println("like content:" + likesOfElement);

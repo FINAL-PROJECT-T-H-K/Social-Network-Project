@@ -13,6 +13,7 @@ import static pages.wearesocialnetwork.PostPage.generateDescription;
 public class AdminUserTests extends BaseTestSetup {
     String adminUsername = "admin";
     String postDescription = "My Post: ";
+    String editPostText = "Edit post to: ";
     String password = "";
     String commentText = "Comment: ";
     String firstName = "";
@@ -96,10 +97,12 @@ public class AdminUserTests extends BaseTestSetup {
     public void adminUserEditPostTest() {
         homePage.clickOnLatestPostsButton();
         commentPage.clickOnExploreThePost();
-        postPage.userEditPost(postDescription);
+        editPostText += generateDescription();
+        postPage.userEditPost(editPostText);
         //assert
+        postPage.validatePostEditedWithText(editPostText);
         postPage.validatePostIsEdited();
-        //assert edited post content
+
     }
 
     @Test
