@@ -36,29 +36,13 @@ public class RegisterPage extends BasePage {
 
     }
     public String generateUser() {
-        int randomCount = random.nextInt(3) + 1;
-        StringBuilder username = new StringBuilder();
-
-        while (randomCount > 0) {
-            String randomLetters = RandomStringUtils.randomAlphabetic(6);
-            username.append(randomLetters);
-            randomCount--;
-        }
-
+        String username = RandomStringUtils.randomAlphabetic(4);
         return "User" + username;
     }
 
     public String generatePassword() {
-        int randomCount = random.nextInt(5) + 1;
-        String passwordGenerate = "";
-
-        while (randomCount >= 0) {
-            String randomPass = RandomStringUtils.randomAlphanumeric(2, 7);
-            passwordGenerate = passwordGenerate.concat(randomPass);
-            randomCount--;
-        }
-
-        return "password" + passwordGenerate.trim();
+        String randomPass = RandomStringUtils.randomAlphabetic(5);
+        return "password" + randomPass;
     }
 
     public void assertSuccessfulRegistration() {

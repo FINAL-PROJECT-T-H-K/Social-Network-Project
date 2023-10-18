@@ -6,17 +6,18 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
-
-import static com.telerikacademy.testframework.Constants.*;
-
 public class ConnectionTests extends BaseTestSetup {
+    String usernameReceiver;
+    String passwordReceiver;
+    String usernameSender;
+    String passwordSender;
 
     @BeforeEach
     public void setupLogin() {
-        USERNAME_RECEIVER_UI = Utils.generateUniqueUsername();
-        PASSWORD_RECEIVER_UI = Utils.generateUniquePassword();
-        registerUser(USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI);
-        loginUser(USERNAME_RECEIVER_UI,PASSWORD_RECEIVER_UI);
+        usernameReceiver = Utils.generateUniqueUsername();
+        passwordReceiver = Utils.generateUniquePassword();
+        registerUser(usernameReceiver, passwordReceiver);
+        loginUser(usernameReceiver, passwordReceiver);
     }
 
     @Test
@@ -24,20 +25,20 @@ public class ConnectionTests extends BaseTestSetup {
     public void sendingConnectionRequestToAnotherUserTest() {
 
         personalProfilePage.enterPersonalProfile();
-        personalProfilePage.setFirstLastNamesAndBirthdate(USERNAME_RECEIVER_UI, USERNAME_RECEIVER_UI);
+        personalProfilePage.setFirstLastNamesAndBirthdate(usernameReceiver, usernameReceiver);
         personalProfilePage.clickOnUpdateProfileButton();
         personalProfilePage.backToProfileInfo();
         logoutPage.logoutSuccessfully();
 
-        USERNAME_SENDER_UI = Utils.generateUniqueUsername();
-        PASSWORD_SENDER_UI = Utils.generateUniquePassword();
-        registerUser(USERNAME_SENDER_UI, PASSWORD_SENDER_UI);
-        loginUser(USERNAME_SENDER_UI,PASSWORD_SENDER_UI);
-        homePage.searchUserByKnownUsername(USERNAME_RECEIVER_UI);
+        usernameSender = Utils.generateUniqueUsername();
+        passwordSender = Utils.generateUniquePassword();
+        registerUser(usernameSender, passwordSender);
+        loginUser(usernameSender, passwordSender);
+        homePage.searchUserByKnownUsername(usernameReceiver);
         homePage.clickOnUserAfterSearch();
         homePage.sendConnectionToSearchedUser();
 
-        homePage.validateSearchedUsernameInSearchResults(USERNAME_RECEIVER_UI, USERNAME_RECEIVER_UI);
+        homePage.validateSearchedUsernameInSearchResults(usernameReceiver, usernameReceiver);
         homePage.verifySuccessfulConnectionRequestMessage();
 
     }
@@ -47,21 +48,21 @@ public class ConnectionTests extends BaseTestSetup {
     public void approveAlreadySentConnectionRequestTest() {
 
         personalProfilePage.enterPersonalProfile();
-        personalProfilePage.setFirstLastNamesAndBirthdate(USERNAME_RECEIVER_UI, USERNAME_RECEIVER_UI);
+        personalProfilePage.setFirstLastNamesAndBirthdate(usernameReceiver, usernameReceiver);
         personalProfilePage.clickOnUpdateProfileButton();
         personalProfilePage.backToProfileInfo();
         logoutPage.logoutSuccessfully();
 
-        USERNAME_SENDER_UI = Utils.generateUniqueUsername();
-        PASSWORD_SENDER_UI = Utils.generateUniquePassword();
-        registerUser(USERNAME_SENDER_UI, PASSWORD_SENDER_UI);
-        loginUser(USERNAME_SENDER_UI,PASSWORD_SENDER_UI);
-        homePage.searchUserByKnownUsername(USERNAME_RECEIVER_UI);
+        usernameSender = Utils.generateUniqueUsername();
+        passwordSender = Utils.generateUniquePassword();
+        registerUser(usernameSender, passwordSender);
+        loginUser(usernameSender, passwordSender);
+        homePage.searchUserByKnownUsername(usernameReceiver);
         homePage.clickOnUserAfterSearch();
         homePage.sendConnectionToSearchedUser();
 
         logoutPage.logoutSuccessfully();
-        loginPage.loginUser(USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI);
+        loginPage.loginUser(usernameReceiver, passwordReceiver);
         homePage.clickOnPersonalProfile();
         personalProfilePage.approveReceivedConnectionRequest();
 
@@ -74,27 +75,27 @@ public class ConnectionTests extends BaseTestSetup {
     @Tag("FHKT-107")
     public void disconnectFromAlreadyConnectedUserTest() {
         personalProfilePage.enterPersonalProfile();
-        personalProfilePage.setFirstLastNamesAndBirthdate(USERNAME_RECEIVER_UI, USERNAME_RECEIVER_UI);
+        personalProfilePage.setFirstLastNamesAndBirthdate(usernameReceiver, usernameReceiver);
         personalProfilePage.clickOnUpdateProfileButton();
         personalProfilePage.backToProfileInfo();
         logoutPage.logoutSuccessfully();
 
-        USERNAME_SENDER_UI = Utils.generateUniqueUsername();
-        PASSWORD_SENDER_UI = Utils.generateUniquePassword();
-        registerUser(USERNAME_SENDER_UI, PASSWORD_SENDER_UI);
-        loginUser(USERNAME_SENDER_UI,PASSWORD_SENDER_UI);
-        homePage.searchUserByKnownUsername(USERNAME_RECEIVER_UI);
+        usernameSender = Utils.generateUniqueUsername();
+        passwordSender = Utils.generateUniquePassword();
+        registerUser(usernameSender, passwordSender);
+        loginUser(usernameSender, passwordSender);
+        homePage.searchUserByKnownUsername(usernameReceiver);
         homePage.clickOnUserAfterSearch();
         homePage.sendConnectionToSearchedUser();
 
         logoutPage.logoutSuccessfully();
-        loginPage.loginUser(USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI);
+        loginPage.loginUser(usernameReceiver, passwordReceiver);
         homePage.clickOnPersonalProfile();
         personalProfilePage.approveReceivedConnectionRequest();
 
         logoutPage.logoutSuccessfully();
-        loginPage.loginUser(USERNAME_SENDER_UI, PASSWORD_SENDER_UI);
-        homePage.searchUserByKnownUsername(USERNAME_RECEIVER_UI);
+        loginPage.loginUser(usernameSender, passwordSender);
+        homePage.searchUserByKnownUsername(usernameReceiver);
         homePage.clickOnUserAfterSearch();
         homePage.disconnectFromAlreadyConnectedUser();
 

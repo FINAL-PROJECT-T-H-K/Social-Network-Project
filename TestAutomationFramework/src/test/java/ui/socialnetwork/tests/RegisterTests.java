@@ -11,8 +11,10 @@ import static com.telerikacademy.testframework.Constants.*;
 
 public class RegisterTests extends BaseTestSetup {
 
+    String username = "";
+    String password = "";
+    String adminUsername = "admin";
 
-    Logger logger = Logger.getLogger("");
 
     @Test
     @Tag("FHKT-264")
@@ -24,8 +26,6 @@ public class RegisterTests extends BaseTestSetup {
 
         //ASSERT
         registerPage.assertSuccessfulRegistration();
-        logger.info(username);
-        logger.info(password);
 
     }
 
@@ -37,8 +37,6 @@ public class RegisterTests extends BaseTestSetup {
         registerUser(adminUsername, password);
         //ASSERT
         registerPage.assertSuccessfulRegistration();
-        logger.info(adminUsername);
-        logger.info(password);
     }
 }
 

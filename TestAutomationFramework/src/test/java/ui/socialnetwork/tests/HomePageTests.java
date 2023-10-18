@@ -20,16 +20,6 @@ public class HomePageTests extends BaseTestSetup {
     public void anonymousUserHomePageAccessAndLinksVisibilityTest() {
         homePage.validateAnonymousUserHomePageAccessAndLinksVisibility();
     }
-
-    @Test
-    @Tag("FHKT-167")
-    public void anonymousUserCanScrollDownAndUpInHomePageTest() {
-        actions.scrollDown(3000);         ///transfer to another class
-        homePage.verifyScrollDownInHomePage();
-        actions.scrollUp(-3000);    ///transfer to another class
-        homePage.validateHomePageHeader(homePageHeader);
-    }
-
     @Test
     @Tag("FHKT-146")
     public void anonymousUserRegisterFormDisplayWhenRegisterButtonClickedTest() {

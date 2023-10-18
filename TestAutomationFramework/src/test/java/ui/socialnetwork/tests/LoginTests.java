@@ -7,6 +7,9 @@ import ui.socialnetwork.base.BaseTestSetup;
 import static com.telerikacademy.testframework.Constants.*;
 
 public class LoginTests extends BaseTestSetup {
+    String username = "";
+    String password = "";
+    String adminUsername = "admin";
     @Test
     @Tag("FHKT-15")
     public void nonAdminUserAuthentication() {
@@ -23,7 +26,7 @@ public class LoginTests extends BaseTestSetup {
         adminUsername += registerPage.generateUser();
         password += registerPage.generatePassword();
         registerUser(adminUsername, password);
-        loginUser(adminUsername,password);
+        loginUser(adminUsername, password);
         //ASSERT
         loginPage.assertAdminAuthenticatedUser();
     }

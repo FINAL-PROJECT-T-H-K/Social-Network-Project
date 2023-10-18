@@ -7,14 +7,19 @@ import org.junit.jupiter.api.Test;
 import pages.wearesocialnetwork.PostPage;
 import ui.socialnetwork.base.BaseTestSetup;
 
-import static com.telerikacademy.testframework.Constants.*;
-import static com.telerikacademy.testframework.Constants.password;
+import static pages.wearesocialnetwork.PostPage.generateDescription;
 
 public class CommentTests extends BaseTestSetup {
 
+    String username = "";
+    String password = "";
+    String postDescription = "My Post :";
+    String commentText = "";
+    String editedComment = "";
+
     @BeforeEach
     public void setupUser() {
-        postDescription = "My Post:" + PostPage.generateDescription();
+        postDescription += generateDescription();
         commentText = commentPage.generateRandomComment();
         editedComment = commentPage.generateRandomEditComment();
         username += registerPage.generateUser();
@@ -46,12 +51,12 @@ public class CommentTests extends BaseTestSetup {
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
 
-        int oldLikeCount = commentPage.getLikeCount("//span[@class='position']");
+        int oldLikeCount = commentPage.getLikeCount("comment.old.comment");
         commentPage.userLikeCommentUnderThePost();
 
         //assert
         commentPage.validateCommentIsLiked();
-        commentPage.verifyLikeAmountIncreasedByOne("//span[@class='position']",oldLikeCount);
+        commentPage.verifyLikeAmountIncreasedByOne("comment.old.comment", oldLikeCount);
     }
 
     @Test

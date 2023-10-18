@@ -8,13 +8,20 @@ import pages.wearesocialnetwork.PostPage;
 import ui.socialnetwork.base.BaseTestSetup;
 
 import static com.telerikacademy.testframework.Constants.*;
+import static pages.wearesocialnetwork.PostPage.generateDescription;
 
 public class AdminUserTests extends BaseTestSetup {
-
+    String adminUsername = "admin";
+    String postDescription = "My Post: ";
+    String password = "";
+    String commentText = "Comment: ";
+    String firstName = "";
+    String lastName = "";
+    String email = "";
 
     @BeforeEach
     public void setupLogin() {
-        postDescription = "My Post:" + PostPage.generateDescription();
+        postDescription += generateDescription();
         adminUsername += registerPage.generateUser();
         password += registerPage.generatePassword();
         registerUser(adminUsername, password);
@@ -101,7 +108,7 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
-        commentText = commentPage.generateRandomComment();
+        commentText += commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         //assert
 
@@ -119,12 +126,12 @@ public class AdminUserTests extends BaseTestSetup {
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
 
-        int oldLikeCount = commentPage.getLikeCount("//span[@class='position']");
+        int oldLikeCount = commentPage.getLikeCount("comment.old.comment");
         commentPage.userLikeCommentUnderThePost();
 
         //assert
         commentPage.validateCommentIsLiked();
-        commentPage.verifyLikeAmountIncreasedByOne("//span[@class='position']",oldLikeCount);
+        commentPage.verifyLikeAmountIncreasedByOne("comment.old.comment", oldLikeCount);
     }
 
     @Test
@@ -133,7 +140,7 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
-        commentText = commentPage.generateRandomComment();
+        commentText += commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userDislikeCommentUnderThePost();
@@ -147,7 +154,7 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
-        commentText = commentPage.generateRandomComment();
+        commentText += commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
         editedComment = commentPage.generateRandomEditComment();
@@ -164,7 +171,7 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
-        commentText = commentPage.generateRandomComment();
+        commentText += commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
         commentPage.clickOnShowCommentsUnderThePost();
         commentPage.userDeleteCommentUnderThePost();

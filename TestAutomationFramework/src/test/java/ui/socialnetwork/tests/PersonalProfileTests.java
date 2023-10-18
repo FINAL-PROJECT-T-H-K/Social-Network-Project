@@ -9,13 +9,18 @@ import ui.socialnetwork.base.BaseTestSetup;
 import static com.telerikacademy.testframework.Constants.*;
 
 public class PersonalProfileTests extends BaseTestSetup {
+    String username = "";
+    String password = "";
+    String firstName = "first";
+    String lastName = "last";
+    String email = "";
 
     @BeforeEach
     public void setupUser() {
         username += registerPage.generateUser();
         password += registerPage.generatePassword();
         registerUser(username, password);
-        loginUser(username,password);
+        loginUser(username, password);
     }
 
     @Test
@@ -74,7 +79,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
         //assert
         personalProfilePage.assertAvailability();
-      //  personalProfilePage.assertAvailabilityUpdated();
+        //  personalProfilePage.assertAvailabilityUpdated();
 
     }
 

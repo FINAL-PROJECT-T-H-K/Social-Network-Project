@@ -4,11 +4,13 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.logging.Logger;
 
-import static com.telerikacademy.testframework.Constants.*;
-import static com.telerikacademy.testframework.Constants.USERNAME_RECEIVER_UI;
 
 public class HomePage extends BaseSocialPage {
     Logger logger = Logger.getLogger("");
+    String usernameReceiver;
+    String passwordReceiver;
+    String usernameSender;
+    String passwordSender;
 
     public HomePage(WebDriver driver) {
         super(driver, "social.network.homepage");
@@ -27,12 +29,6 @@ public class HomePage extends BaseSocialPage {
 
         logger.info("HomePage successfully accessed without authentication with visibility of header and page links.");
 
-    }
-
-
-    public void validateUserCanScrollDownInHomePageToSpecificElement() {
-        actions.scrollDownInPage("register.button.bottom");
-        actions.waitForElementToBeClickableUntilTimeout("register.button.bottom", 5);
     }
 
 
@@ -135,9 +131,9 @@ public class HomePage extends BaseSocialPage {
         actions.assertElementPresent("connection.request.sent.success");
 
         logger.info(String.format("Username with %s, and password with %s, sent connection request.",
-                USERNAME_SENDER_UI, PASSWORD_SENDER_UI));
+                usernameSender, passwordSender));
         logger.info(String.format("Username with %s, and password with %s, received connection request.",
-                USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI));
+                usernameReceiver, passwordReceiver));
     }
 
     public void validateSearchedUsernameInSearchResults(String firstName, String lastName) {
@@ -153,9 +149,9 @@ public class HomePage extends BaseSocialPage {
 
         actions.waitForElementClickable("send.connection.button");
         logger.info(String.format("User with username %s, and password %s, approved connection request of user %s",
-                USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI, USERNAME_SENDER_UI));
+                usernameReceiver, passwordReceiver, usernameSender));
         logger.info(String.format("User with username %s, and password with %s, disconnected from the user with username %s.",
-                USERNAME_SENDER_UI, PASSWORD_SENDER_UI, USERNAME_RECEIVER_UI));
+                usernameSender, passwordSender, usernameReceiver));
 
     }
 

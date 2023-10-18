@@ -7,16 +7,21 @@ import pages.wearesocialnetwork.PostPage;
 import ui.socialnetwork.base.BaseTestSetup;
 
 import static com.telerikacademy.testframework.Constants.*;
+import static pages.wearesocialnetwork.PostPage.generateDescription;
 
 public class PostTests extends BaseTestSetup {
 
+    String username = "";
+    String password = "";
+    String postDescription = "My Post:";
+
     @BeforeEach
     public void setupUser() {
-        postDescription = "My Post:" + PostPage.generateDescription();
+        postDescription += generateDescription();
         username += registerPage.generateUser();
         password += registerPage.generatePassword();
         registerUser(username, password);
-        loginUser(username,password);
+        loginUser(username, password);
     }
 
     @Test
@@ -52,7 +57,7 @@ public class PostTests extends BaseTestSetup {
         homePage.clickOnLatestPostsButton();
 
         postPage.validateAnonymousUserCannotSeePrivatePosts();
-      //  registerAndLoginUser();
+        //  registerAndLoginUser();
 
     }
 
@@ -78,7 +83,6 @@ public class PostTests extends BaseTestSetup {
         postPage.dislikePublicPost();
         //assert
         postPage.validateTopicIsUnliked();
-
     }
 
     @Test
@@ -95,7 +99,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    @Tag("FHKT-283")///MAYBE SHOULD BE IN @AFTERCLASS
+    @Tag("FHKT-283")
     public void deletePostTest() {
         postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();

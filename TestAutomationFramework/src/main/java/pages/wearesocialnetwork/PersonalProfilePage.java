@@ -10,11 +10,11 @@ import java.util.logging.Logger;
 import static com.telerikacademy.testframework.Constants.*;
 
 public class PersonalProfilePage extends BaseSocialPage {
-
+    String usernameReceiver;
+    String passwordReceiver;
+    String usernameSender;
+    String passwordSender;
     Logger logger = Logger.getLogger("");
-    String firstName;
-    String lastName;
-    String email;
     String personalInfo;
 
     public PersonalProfilePage(WebDriver driver) {
@@ -77,11 +77,11 @@ public class PersonalProfilePage extends BaseSocialPage {
     }
 
     public void validateReceivedConnectionRequestApproved() {
-        actions.assertElementVisible("no.pending.request.message ");
+        actions.assertElementVisible("no.pending.request.message");
         logger.info(String.format("Username with %s, and password with %s, sent connection request.",
-                USERNAME_SENDER_UI, PASSWORD_SENDER_UI));
+                usernameSender, passwordSender));
         logger.info(String.format("User with username %s, and password %s, approved connection request of user %s",
-                USERNAME_RECEIVER_UI, PASSWORD_RECEIVER_UI, USERNAME_SENDER_UI));
+                usernameReceiver, passwordReceiver, usernameSender));
 
     }
     public void assertEmailUpdated(String email) {
@@ -135,17 +135,6 @@ public class PersonalProfilePage extends BaseSocialPage {
 
 
     }
-
-    public String generateFirstName() {
-        firstName += RandomStringUtils.randomAlphabetic(8);
-        return firstName;
-    }
-
-    public String generateLastName() {
-        lastName += RandomStringUtils.randomAlphabetic(8);
-        return lastName;
-    }
-
     public String generateRandomEmail() {
         String username = RandomStringUtils.randomAlphabetic(10);
         return username + "@gmail.com";
