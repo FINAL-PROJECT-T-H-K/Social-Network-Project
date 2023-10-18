@@ -5,6 +5,7 @@
 /**/out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+*/target/*
 
 # User-specific stuff
 /**/.idea/**/workspace.xml
