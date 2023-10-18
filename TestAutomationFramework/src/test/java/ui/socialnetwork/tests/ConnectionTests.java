@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 public class ConnectionTests extends BaseTestSetup {
-    String usernameReceiver;
-    String passwordReceiver;
-    String usernameSender;
-    String passwordSender;
+    String usernameReceiver="";
+    String passwordReceiver="";
+    String usernameSender="";
+    String passwordSender="";
 
     @BeforeEach
     public void setupLogin() {
-        usernameReceiver = Utils.generateUniqueUsername();
-        passwordReceiver = Utils.generateUniquePassword();
+        usernameReceiver = registerPage.generateUser();
+        passwordReceiver = registerPage.generatePassword();
         registerUser(usernameReceiver, passwordReceiver);
         loginUser(usernameReceiver, passwordReceiver);
     }
@@ -30,8 +30,8 @@ public class ConnectionTests extends BaseTestSetup {
         personalProfilePage.backToProfileInfo();
         logoutPage.logoutSuccessfully();
 
-        usernameSender = Utils.generateUniqueUsername();
-        passwordSender = Utils.generateUniquePassword();
+        usernameSender = registerPage.generateUser();
+        passwordSender = registerPage.generatePassword();
         registerUser(usernameSender, passwordSender);
         loginUser(usernameSender, passwordSender);
         homePage.searchUserByKnownUsername(usernameReceiver);

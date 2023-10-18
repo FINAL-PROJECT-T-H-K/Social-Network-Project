@@ -1,15 +1,16 @@
-2023-10-18 16:01:13,456 INFO  [main] Initializing WebDriver
-2023-10-18 16:01:20,562 INFO  [main] Initializing WebDriver
-2023-10-18 16:01:21,391 INFO  [main] Initializing WebDriver
-2023-10-18 16:01:21,394 INFO  [main] Initializing WebDriver
-2023-10-18 16:01:21,395 INFO  [main] Initializing WebDriver
-2023-10-18 16:01:21,396 INFO  [main] Initializing WebDriver
-2023-10-18 16:01:21,396 INFO  [main] Initializing WebDriver
-2023-10-18 16:01:21,397 INFO  [main] Initializing WebDriver
-2023-10-18 16:01:21,398 INFO  [main] Initializing WebDriver
-2023-10-18 16:01:24,187 INFO  [main] Clicking on element register.page.submitButton
-2023-10-18 16:01:26,859 INFO  [main] Clicking on element login.submit.button
-2023-10-18 16:01:28,665 INFO  [main] Clicking on element home.page.latest.post.button
-2023-10-18 16:01:52,408 INFO  [main] Clicking on element post.like.button
-2023-10-18 16:01:54,809 INFO  [main] Reading text from element //span[@class='position']
-2023-10-18 16:01:54,853 INFO  [main] Quitting WebDriver
+2023-10-18 16:35:19,177 INFO  [main] Initializing WebDriver
+2023-10-18 16:35:30,650 INFO  [main] Initializing WebDriver
+2023-10-18 16:35:32,472 INFO  [main] Initializing WebDriver
+2023-10-18 16:35:32,473 INFO  [main] Initializing WebDriver
+2023-10-18 16:35:32,474 INFO  [main] Initializing WebDriver
+2023-10-18 16:35:32,480 INFO  [main] Initializing WebDriver
+2023-10-18 16:35:32,481 INFO  [main] Initializing WebDriver
+2023-10-18 16:35:32,482 INFO  [main] Initializing WebDriver
+2023-10-18 16:35:32,484 INFO  [main] Initializing WebDriver
+2023-10-18 16:35:35,112 INFO  [main] Clicking on element register.page.submitButton
+2023-10-18 16:35:37,676 INFO  [main] Clicking on element login.submit.button
+2023-10-18 16:35:39,680 INFO  [main] Clicking on element new.post.button
+2023-10-18 16:35:41,639 INFO  [main] Clicking on element choose.public.post
+2023-10-18 16:35:41,927 INFO  [main] Clicking on element create.post.button
+2023-10-18 16:35:47,532 INFO  [main] Reading text from element posts.time.created
+2023-10-18 16:35:47,670 INFO  [main] Quitting WebDriver

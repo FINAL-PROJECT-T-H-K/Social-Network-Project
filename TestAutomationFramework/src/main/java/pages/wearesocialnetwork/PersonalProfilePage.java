@@ -12,8 +12,8 @@ import static com.telerikacademy.testframework.Constants.*;
 public class PersonalProfilePage extends BaseSocialPage {
     String usernameReceiver = "first";
     String passwordReceiver = "last";
-    String usernameSender;
-    String passwordSender;
+    String usernameSender="";
+    String passwordSender="";
     Logger logger = Logger.getLogger("");
     String personalInfo;
 
@@ -152,7 +152,5 @@ public class PersonalProfilePage extends BaseSocialPage {
         personalInfo += RandomStringUtils.randomAlphabetic(25);
         return personalInfo;
     }
-
-
 }
 

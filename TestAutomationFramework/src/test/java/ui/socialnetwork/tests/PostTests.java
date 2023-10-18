@@ -33,6 +33,7 @@ public class PostTests extends BaseTestSetup {
         postPage.verifyPostCreated();
         postPage.verifyPublicPostCreated();
         postPage.validatePostCreatedInTheLast1Minute();
+        postPage.validatePostCreatedWithText(postDescription);
 
 
     }
