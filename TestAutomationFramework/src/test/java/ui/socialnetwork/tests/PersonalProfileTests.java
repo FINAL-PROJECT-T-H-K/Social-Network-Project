@@ -57,7 +57,6 @@ public class PersonalProfileTests extends BaseTestSetup {
         //assert
         personalProfilePage.assertFirstLastNamesUpdated(firstName, lastName);
         personalProfilePage.assertEmailUpdated(email);
-
     }
 
 

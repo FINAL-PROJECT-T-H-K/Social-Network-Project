@@ -76,9 +76,9 @@ public class AdminUserTests extends BaseTestSetup {
         //assert
         postPage.validatePostIsLiked();
 
-        //IN PROGRESS
-       // int oldLikeCount = commentPage.getLikeCount("comment.old.comment");
-       // commentPage.verifyLikeAmountIncreasedByOne("comment.old.comment", oldLikeCount);
+
+        int oldLikeCount = commentPage.getLikeCount("//span[@class='position']");
+        commentPage.verifyLikeAmountIncreasedByOne("//span[@class='position']", oldLikeCount);
         //validate like amount increased by 1
 
     }
