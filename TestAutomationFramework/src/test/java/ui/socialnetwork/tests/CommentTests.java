@@ -1,10 +1,8 @@
 package ui.socialnetwork.tests;
 
-import com.telerikacademy.testframework.Constants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.wearesocialnetwork.PostPage;
 import ui.socialnetwork.base.BaseTestSetup;
 
 import static pages.wearesocialnetwork.PostPage.generateDescription;

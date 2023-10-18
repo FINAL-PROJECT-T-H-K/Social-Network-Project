@@ -71,8 +71,7 @@ public class HomePageTests extends BaseTestSetup {
     public void anonymousUserSearchUserByKnownUsernameTest() {
         SEARCHABLE_NAME = registerPage.generateUser();
         RANDOM_EMAIL = Utils.generateRandomEmail();
-        System.out.println(SEARCHABLE_NAME);
-        userControllerTest.updateUserProfileTest(); ///do not call test, call method
+        userControllerTest.updateUserProfileTest();
         homePage.searchUserByKnownUsername(SEARCHABLE_NAME + " randomLastName");
         homePage.validateSearchUserByKnownUsername(SEARCHABLE_NAME + " randomLastName");
     }
