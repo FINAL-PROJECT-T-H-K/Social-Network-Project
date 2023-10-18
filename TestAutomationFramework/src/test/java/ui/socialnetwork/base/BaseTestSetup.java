@@ -33,15 +33,16 @@ public class BaseTestSetup {
         commentPage = new CommentPage(driver);
     }
 
-//    @AfterEach
-//    public void tearDown() {
-//        UserActions.quitDriver();
-//    }
+    @AfterEach
+    public void tearDown() {
+        UserActions.quitDriver();
+    }
 
     public static void registerUser(String username, String password) {
         registerPage.registerUser(username, password);
     }
-    public static void loginUser(String username, String password){
+
+    public static void loginUser(String username, String password) {
         loginPage.loginUser(username, password);
     }
 }
