@@ -10,8 +10,8 @@ import java.util.logging.Logger;
 import static com.telerikacademy.testframework.Constants.*;
 
 public class PersonalProfilePage extends BaseSocialPage {
-    String usernameReceiver;
-    String passwordReceiver;
+    String usernameReceiver = "first";
+    String passwordReceiver = "last";
     String usernameSender;
     String passwordSender;
     Logger logger = Logger.getLogger("");
@@ -54,10 +54,12 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.waitForElementClickable("profile.update.personal.profile.button");
         actions.clickElement("profile.update.personal.profile.button");
     }
-    public void clickOnNewFriendRequests(){
+
+    public void clickOnNewFriendRequests() {
         actions.waitForElementClickable("personal.profile.new.request.button");
         actions.clickElement("personal.profile.new.request.button");
     }
+
     public void clickOnConnect() {
         actions.waitForElementClickable("send.connection.button");
         actions.clickElement("send.connection.button");
@@ -84,12 +86,15 @@ public class PersonalProfilePage extends BaseSocialPage {
                 usernameReceiver, passwordReceiver, usernameSender));
 
     }
+
     public void assertEmailUpdated(String email) {
         actions.assertEmailFieldOnProfilePage(email);
     }
+
     public void assertFirstLastNamesUpdated(String firstName, String lastName) {
-        actions.assertFirstLastNamesFieldOnProfilePage(firstName,lastName);
+        actions.assertFirstLastNamesFieldOnProfilePage(firstName, lastName);
     }
+
     public void updateJobSection() {
         actions.waitForElementClickable("profile.job.tittle");
         actions.clickElement("profile.job.tittle");
@@ -117,24 +122,27 @@ public class PersonalProfilePage extends BaseSocialPage {
         actions.clickElement("profile.input.city");
     }
 
-    public void assertAvailabilityUpdated() {
-        String xpath = "//span[text()='Quality Assurance']";
+    public void assertAvailabilityUpdated(String skill) {
+        actions.clickElement("profile.personal.info");
+        String xpath = String.format("//span[text()='%s']",skill);
         actions.waitForElementVisible(xpath);
         String spanText = driver.findElement(By.xpath(xpath)).getText();
-        Assertions.assertEquals("Quality Assurance", spanText, "Expected text does not match the actual text.");
+        Assertions.assertEquals(skill, spanText, "Expected availability does not match the actual availability.");
     }
+
     public void assertAvailability() {
         actions.assertElementPresent("personal.info.availability");
     }
 
 
-
-    public void assertJobTitleUpdated() {
-        String spanText = driver.findElement(By.xpath("//span[text()='Translator']")).getText();
-        Assertions.assertFalse(spanText.isEmpty(), "The text inside the span is not empty.");
-
-
+    public void assertJobTitleUpdated(String jobTitle) {
+        actions.clickElement("profile.personal.info");
+        String xpath = String.format("//span[text()='%s']",jobTitle);
+        actions.waitForElementVisible(xpath);
+        String spanText = driver.findElement(By.xpath(xpath)).getText();
+        Assertions.assertEquals(jobTitle, spanText, "Expected job title does not match the actual job title.");
     }
+
     public String generateRandomEmail() {
         String username = RandomStringUtils.randomAlphabetic(10);
         return username + "@gmail.com";

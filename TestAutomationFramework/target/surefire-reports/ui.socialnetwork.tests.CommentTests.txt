@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ui.socialnetwork.tests.CommentTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 168.266 s - in ui.socialnetwork.tests.CommentTests

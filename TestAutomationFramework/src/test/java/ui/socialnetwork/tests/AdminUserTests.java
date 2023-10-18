@@ -4,7 +4,6 @@ import apisocialnetwork.Utils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.wearesocialnetwork.PostPage;
 import ui.socialnetwork.base.BaseTestSetup;
 
 import static com.telerikacademy.testframework.Constants.*;
@@ -76,6 +75,10 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.likePublicPost();
         //assert
         postPage.validatePostIsLiked();
+
+        //IN PROGRESS
+       // int oldLikeCount = commentPage.getLikeCount("comment.old.comment");
+       // commentPage.verifyLikeAmountIncreasedByOne("comment.old.comment", oldLikeCount);
         //validate like amount increased by 1
 
     }

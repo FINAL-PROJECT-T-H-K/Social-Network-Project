@@ -1,0 +1,50 @@
+-------------------------------------------------------------------------------
+Test set: ui.socialnetwork.tests.HomePageTests
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 187.421 s <<< FAILURE! - in ui.socialnetwork.tests.HomePageTests
+ui.socialnetwork.tests.HomePageTests.anonymousUserSearchUserByKnownUsernameTest  Time elapsed: 14.886 s  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//h2[text()='%s']"}
+  (Session info: chrome=118.0.5993.71)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.11.0', revision: '040bc5406b'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.17'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [176fdbc26d791735cab1708b5783c9d6, findElement {using=xpath, value=//h2[text()='%s']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 118.0.5993.71, chrome: {chromedriverVersion: 118.0.5993.70 (e52f33f30b91..., userDataDir: C:\Users\xstan\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62306}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62306/devtoo..., se:cdpVersion: 118.0.5993.71, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 176fdbc26d791735cab1708b5783c9d6
+	at jdk.internal.reflect.GeneratedConstructorAccessor39.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at com.telerikacademy.testframework.UserActions.assertElementPresent(UserActions.java:195)
+	at pages.wearesocialnetwork.HomePage.validateSearchUserByKnownUsername(HomePage.java:144)
+	at ui.socialnetwork.tests.HomePageTests.anonymousUserSearchUserByKnownUsernameTest(HomePageTests.java:79)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+
+ui.socialnetwork.tests.HomePageTests.anonymousUserShowUsersByProfessionWhenSearchByProfessionTest  Time elapsed: 24.195 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Element with user.search.result.profession.field isn't visible. ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:210)
+	at com.telerikacademy.testframework.UserActions.assertElementVisible(UserActions.java:221)
+	at pages.wearesocialnetwork.HomePage.validateUserSearchByProfession(HomePage.java:126)
+	at ui.socialnetwork.tests.HomePageTests.anonymousUserShowUsersByProfessionWhenSearchByProfessionTest(HomePageTests.java:86)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+

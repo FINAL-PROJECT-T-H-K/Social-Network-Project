@@ -66,9 +66,8 @@ public class PersonalProfileTests extends BaseTestSetup {
     public void updatePersonalJobTittleInformationTest() {
         personalProfilePage.enterPersonalProfile();
         personalProfilePage.updateJobSection();
-
         //assert
-        personalProfilePage.assertJobTitleUpdated();
+        personalProfilePage.assertJobTitleUpdated(jobTitle);
     }
 
     @Test
@@ -79,7 +78,7 @@ public class PersonalProfileTests extends BaseTestSetup {
 
         //assert
         personalProfilePage.assertAvailability();
-        //  personalProfilePage.assertAvailabilityUpdated();
+        personalProfilePage.assertAvailabilityUpdated(skillInfo);
 
     }
 
