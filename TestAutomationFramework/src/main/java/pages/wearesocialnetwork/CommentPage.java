@@ -104,11 +104,7 @@ public class CommentPage extends BaseSocialPage {
     public void verifyFirstCommentCreated() {
         actions.assertElementPresent("show.comments.button");
     }
-
-    public void verifyCommentЕdited() {
-        actions.assertElementPresent("show.comments.button");
-    }
-
+    
     public void verifyCommentDeleted() {
         actions.assertElementPresent("comment.delete.comment");
     }
