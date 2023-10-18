@@ -141,7 +141,7 @@ public class HomePage extends BaseSocialPage {
     }
 
     public void validateSearchUserByKnownUsername(String name) {
-        actions.assertElementPresent(String.format("user.search.result.username.field", name));
+        actions.assertElementVisible("user.search.result.username.field", name);
         logger.info("User with username 'Public Profile' is visible.");
     }
 

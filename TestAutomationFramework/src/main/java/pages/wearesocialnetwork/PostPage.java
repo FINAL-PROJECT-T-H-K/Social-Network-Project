@@ -61,13 +61,11 @@ public class PostPage extends BaseSocialPage {
 
     public void likePublicPost() {
 
-
         if (actions.isElementVisible("post.dislike.button")) {
             actions.clickElement("post.dislike.button");
         }
 
         actions.waitForElementVisible("post.like.button");
-        actions.waitForElementClickable("post.like.button");
         actions.clickElement("post.like.button");
 
         actions.waitForElementVisible("post.dislike.button");
@@ -187,6 +185,7 @@ public class PostPage extends BaseSocialPage {
     }
 
     public void validatePostIsLiked() {
+        actions.waitForElementVisible("post.dislike.button");
         actions.assertElementPresent("post.dislike.button");
     }
 

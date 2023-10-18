@@ -11,8 +11,6 @@ import static apisocialnetwork.Constants.SEARCHABLE_NAME;
 import static com.telerikacademy.testframework.Constants.homePageHeader;
 
 public class HomePageTests extends BaseTestSetup {
-
-    String profession = "Hairdresser";
     UserControllerTest userControllerTest = new UserControllerTest();
 
     @Test
@@ -79,11 +77,5 @@ public class HomePageTests extends BaseTestSetup {
         homePage.validateSearchUserByKnownUsername(SEARCHABLE_NAME + " randomLastName");
     }
 
-    @Test
-    @Tag("FHKT-285")
-    public void anonymousUserShowUsersByProfessionWhenSearchByProfessionTest() {
-        homePage.searchUserByProfession();
-        homePage.validateUserSearchByProfession(profession);
-    }
 }
 

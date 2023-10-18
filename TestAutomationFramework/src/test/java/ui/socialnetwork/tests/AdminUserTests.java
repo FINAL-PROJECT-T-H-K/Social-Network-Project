@@ -22,6 +22,8 @@ public class AdminUserTests extends BaseTestSetup {
     @BeforeEach
     public void setupLogin() {
         postDescription += generateDescription();
+        commentText = commentPage.generateRandomComment();
+        editedComment = commentPage.generateRandomEditComment();
         adminUsername += registerPage.generateUser();
         password += registerPage.generatePassword();
         registerUser(adminUsername, password);
@@ -76,11 +78,6 @@ public class AdminUserTests extends BaseTestSetup {
         //assert
         postPage.validatePostIsLiked();
 
-
-      //  int oldLikeCount = commentPage.getLikeCount("//span[@class='position']");
-      //  commentPage.verifyLikeAmountIncreasedByOne("//span[@class='position']", oldLikeCount);
-      //  //validate like amount increased by 1
-
     }
 
     @Test
@@ -92,7 +89,6 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.likePublicPost();
         //assert
         postPage.validateTopicIsUnliked();
-        //assert like amount decreased by 1.
     }
 
     @Test
@@ -114,9 +110,8 @@ public class AdminUserTests extends BaseTestSetup {
         postPage.createPublicPost(postDescription);
         homePage.clickOnHomeButton();
         postPage.clickOnTheRecentPost();
-        commentText += commentPage.generateRandomComment();
         commentPage.createCommentUnderPost(commentText);
-        //assert
+        commentPage.clickOnShowCommentsUnderThePost();
 
         commentPage.verifyFirstCommentCreated();
         commentPage.validateCommentCreatedWithText(commentText);
