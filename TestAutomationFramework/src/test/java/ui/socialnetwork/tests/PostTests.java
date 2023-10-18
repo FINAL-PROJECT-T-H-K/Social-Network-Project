@@ -89,8 +89,9 @@ public class PostTests extends BaseTestSetup {
     @Test
     @Tag("FHKT-253")
     public void editPostTest() {
-        homePage.clickOnLatestPostsButton();
-        commentPage.clickOnExploreThePost();
+        postPage.createPublicPost(postDescription);
+        homePage.clickOnHomeButton();
+        postPage.clickOnTheRecentPost();
         editPostText += generateDescription();
         postPage.userEditPost(editPostText);
         //assert
