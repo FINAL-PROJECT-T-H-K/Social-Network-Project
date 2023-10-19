@@ -21,7 +21,7 @@ Explore the various sections of our repository for a more detailed view of our p
 0.0 **[Project Specifications](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00ProjectSpecifications)**
       - Contains the detailed project specifications provided by the client which contains functionalities of the application.
    
-   - **[Test Requirements](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00TestRequirements)**
+0.0 **[Test Requirements](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00TestRequirements)**
       - Contains the detailed test requirements for the the given project specifications. 
 
 1. **[WEAre Test Plan](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan)**
