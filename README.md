@@ -19,10 +19,10 @@ We have adopted the Agile Scrumban methodology, organizing our work into sprints
 Explore the various sections of our repository for a more detailed view of our project:
 
 0.0 **[Project Specifications](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00ProjectSpecifications)**
-      - Contains the detailed project specifications provided by the client which contains functionalities of the application.
-   
+   - Contains the detailed test plan for the project.
+
 0.0 **[Test Requirements](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00TestRequirements)**
-      - Contains the detailed test requirements for the the given project specifications. 
+   - Provides insights into team scheduling and test scheduling, along with associated dates.
 
 1. **[WEAre Test Plan](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan)**
    - Contains the detailed test plan for the project.
