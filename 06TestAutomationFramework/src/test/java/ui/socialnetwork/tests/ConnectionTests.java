@@ -60,14 +60,12 @@ public class ConnectionTests extends BaseTestSetup {
         homePage.searchUserByKnownUsername(usernameReceiver);
         homePage.clickOnUserAfterSearch();
         homePage.sendConnectionToSearchedUser();
-
         logoutPage.logoutSuccessfully();
         loginPage.loginUser(usernameReceiver, passwordReceiver);
         homePage.clickOnPersonalProfile();
-        personalProfilePage.approveReceivedConnectionRequest();
 
+        personalProfilePage.approveReceivedConnectionRequest();
         personalProfilePage.validateReceivedConnectionRequestApproved();
-        //assert friendlist increased by 1
 
     }
 

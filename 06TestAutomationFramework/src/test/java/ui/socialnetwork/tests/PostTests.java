@@ -50,7 +50,7 @@ public class PostTests extends BaseTestSetup {
     }
 
     @Test
-    @Tag("FHKT-142") /// ??
+    @Tag("FHKT-142")
     public void anonymousUserCannotSeePrivatePostsTest() {
 
         postPage.createPrivatePost(postDescription);
@@ -59,7 +59,6 @@ public class PostTests extends BaseTestSetup {
         homePage.clickOnLatestPostsButton();
 
         postPage.validateAnonymousUserCannotSeePrivatePosts();
-        //  registerAndLoginUser();
 
     }
 
