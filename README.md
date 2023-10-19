@@ -1,33 +1,33 @@
-# WEare Social Network Project Repository
+WEAre Social Network Project Repository
+Table of Contents
+Overview
+Testing Strategy
+Repository Structure and Links
+Overview
+Welcome to the WEAre Social Network project repository, created as part of our final project at Telerik Academy. This repository provides comprehensive details and reports on the testing of the WEAre Social Network project. Our social network is designed to connect individuals who can mutually benefit by exchanging skills and services. Users can create posts, leave comments, and show appreciation through likes.
 
-## Table of Contents
-1.Overview 
+Testing Strategy
+We have adopted the Agile Scrumban methodology, organizing our work into sprints. For more information about our testing approach and strategies, please visit our 01WEareTestPlan folder.
 
-2.Testing Strategy
+Repository Structure and Links
+Explore the various sections of our repository for a more detailed view of our project:
 
-3.Repository Structure
+WEAre Test Plan
 
-## Overview 
-This repository is made for our Final project in Telerik Academy and contains WEAre Social Network project's testing details and reports. WEAre social network aims to connect people who can benefit and exchange skills and services with other members
-with enabling users to create posts, comments, send likes. 
+Contains the detailed test plan for the project.
+Team and Test Schedule
 
-## Testing Strategy
-We have used Agile Scrumban methodology and we have worked and organized with sprints. You can visit our [01WEareTestPlan folder](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan) for more info. 
+Provides insights into team scheduling and test scheduling, along with associated dates.
+Jira Templates and Reports
 
-## Repository Structure and Shortcut Links
-1.[WEare Test Plan](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan) - Contains test plan of the project.
+Includes templates used for creating Jira test cases and reports, including the Jira Test Coverage report and Test Plan report.
+Rest API Performance Testing and Reports
 
-2.[Team And Test Schedule](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/02TeamAndTestSchedule) - Contains team scheduling and test scheduling with dates.
+This section contains the Postman collection and environment files, as well as a batch file to run the collection and generate a Newman htmlextra report.
+Test Automation Framework (Rest API & UI Testing)
 
-3.[Jira Templates And Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/03JiraTemplatesAndReports) - Contains the templates that we have used while creating Jira test cases and Jira Test Coverage report & Test Plan report.
+Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file for detailed navigation instructions.
+JMeter Performance Testing and Report
 
-4.[Rest Api Performance Testing And Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/04RestApiTestingPostmanAndNewmanReport) - This folder has the Postman collection&environment together with a bat file to run the collection and generate a Newman htmlextra report.
-
-5.[Test Automation Framework/Rest API/UI Testing](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/TestAutomationFramework) - Folder contains RestAssured tests from API and Selenium UI tests. See readme file inside the project
-for more detailed navigation.
-
-5.[JMeter Performance Testing And Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport) - Contains Performance Testing from Jmeter and instructions.
-
-
-
-
+Contains performance testing conducted with JMeter and provides associated instructions.
+Feel free to explore each section to gain a comprehensive understanding of our project's testing and development process. Your interest and support are greatly appreciated as we continue to refine and enhance the WEAre Social Network project.
