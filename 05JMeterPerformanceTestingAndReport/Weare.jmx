@@ -52,16 +52,6 @@
             <stringProp name="Argument.value">SomeContentForPost</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="randomUsername" elementType="Argument">
-            <stringProp name="Argument.name">randomUsername</stringProp>
-            <stringProp name="Argument.value">${__RandomString(8,qwertyuiopasdfghjklzxcvbnm)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="randomPassword" elementType="Argument">
-            <stringProp name="Argument.name">randomPassword</stringProp>
-            <stringProp name="Argument.value">${__RandomString(8,qwertyuiopasdfghjklzxcvbnm)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -112,8 +102,8 @@
       <hashTree/>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Stress Test " enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="973066148">
-            <stringProp name="48625">100</stringProp>
+          <collectionProp name="1764072566">
+            <stringProp name="1691">50</stringProp>
             <stringProp name="0">0</stringProp>
             <stringProp name="48873">180</stringProp>
             <stringProp name="48">0</stringProp>
@@ -143,7 +133,7 @@
     },&#xd;
 &#xd;
     &quot;confirmPassword&quot;: &quot;${randomPassword}&quot;,&#xd;
-    &quot;email&quot;: &quot;random@Email.com&quot;,&#xd;
+    &quot;email&quot;: &quot;${randomEmail}&quot;,&#xd;
     &quot;password&quot;: &quot;${randomPassword}&quot;,&#xd;
     &quot;username&quot;: &quot;${randomUsername}&quot;&#xd;
 }</stringProp>
@@ -188,6 +178,22 @@
             <boolProp name="Assertion.assume_success">false</boolProp>
             <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def generatedPassword = &quot;Pass${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(4)}${new Random().nextInt(9)}${org.apache.commons.lang3.RandomStringUtils.random(1, &apos;!@#$%^&amp;*&apos;)}&quot;
+def generatedUsername = &quot;newUser${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(6)}&quot;
+def generatedEmail = &quot;${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(5)}${new Random().nextInt(9999)}@abv.bg&quot;
+
+
+vars.put(&quot;randomPassword&quot;, generatedPassword)
+vars.put(&quot;randomUsername&quot;, generatedUsername)
+vars.put(&quot;randomEmail&quot;, generatedEmail)
+</stringProp>
+          </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login" enabled="true">
@@ -510,7 +516,7 @@
           <boolProp name="exclude_checkbox_state">false</boolProp>
         </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -623,12 +629,12 @@
       </hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Load Test " enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-1027840129">
-            <stringProp name="1598">20</stringProp>
+          <collectionProp name="-1140714151">
+            <stringProp name="1660">40</stringProp>
             <stringProp name="0">0</stringProp>
-            <stringProp name="1660">40</stringProp>
-            <stringProp name="48687">120</stringProp>
-            <stringProp name="1660">40</stringProp>
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="1629">30</stringProp>
           </collectionProp>
         </collectionProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -654,7 +660,7 @@
     },&#xd;
 &#xd;
     &quot;confirmPassword&quot;: &quot;${randomPassword}&quot;,&#xd;
-    &quot;email&quot;: &quot;random@Email.com&quot;,&#xd;
+    &quot;email&quot;: &quot;${randomEmail}&quot;,&#xd;
     &quot;password&quot;: &quot;${randomPassword}&quot;,&#xd;
     &quot;username&quot;: &quot;${randomUsername}&quot;&#xd;
 }</stringProp>
@@ -699,6 +705,22 @@
             <boolProp name="Assertion.assume_success">false</boolProp>
             <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def generatedPassword = &quot;Pass${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(4)}${new Random().nextInt(9)}${org.apache.commons.lang3.RandomStringUtils.random(1, &apos;!@#$%^&amp;*&apos;)}&quot;
+def generatedUsername = &quot;newUser${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(6)}&quot;
+def generatedEmail = &quot;${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(5)}${new Random().nextInt(9999)}@abv.bg&quot;
+
+
+vars.put(&quot;randomPassword&quot;, generatedPassword)
+vars.put(&quot;randomUsername&quot;, generatedUsername)
+vars.put(&quot;randomEmail&quot;, generatedEmail)
+</stringProp>
+          </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login" enabled="true">
@@ -1021,7 +1043,7 @@
           <boolProp name="exclude_checkbox_state">false</boolProp>
         </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1134,8 +1156,8 @@
       </hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Endurance Test " enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="912675865">
-            <stringProp name="1567">10</stringProp>
+          <collectionProp name="-425974502">
+            <stringProp name="1629">30</stringProp>
             <stringProp name="0">0</stringProp>
             <stringProp name="1660">40</stringProp>
             <stringProp name="53430">600</stringProp>
@@ -1165,7 +1187,7 @@
     },&#xd;
 &#xd;
     &quot;confirmPassword&quot;: &quot;${randomPassword}&quot;,&#xd;
-    &quot;email&quot;: &quot;random@Email.com&quot;,&#xd;
+    &quot;email&quot;: &quot;${randomEmail}&quot;,&#xd;
     &quot;password&quot;: &quot;${randomPassword}&quot;,&#xd;
     &quot;username&quot;: &quot;${randomUsername}&quot;&#xd;
 }</stringProp>
@@ -1210,6 +1232,22 @@
             <boolProp name="Assertion.assume_success">false</boolProp>
             <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def generatedPassword = &quot;Pass${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(4)}${new Random().nextInt(9)}${org.apache.commons.lang3.RandomStringUtils.random(1, &apos;!@#$%^&amp;*&apos;)}&quot;
+def generatedUsername = &quot;newUser${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(6)}&quot;
+def generatedEmail = &quot;${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(5)}${new Random().nextInt(9999)}@abv.bg&quot;
+
+
+vars.put(&quot;randomPassword&quot;, generatedPassword)
+vars.put(&quot;randomUsername&quot;, generatedUsername)
+vars.put(&quot;randomEmail&quot;, generatedEmail)
+</stringProp>
+          </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login" enabled="true">
@@ -1532,7 +1570,7 @@
           <boolProp name="exclude_checkbox_state">false</boolProp>
         </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1645,68 +1683,33 @@
       </hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Spike Test " enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="780578626">
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="0">0</stringProp>
-            <stringProp name="1598">20</stringProp>
-            <stringProp name="50547">300</stringProp>
+          <collectionProp name="-839049867">
             <stringProp name="1629">30</stringProp>
-          </collectionProp>
-          <collectionProp name="30194974">
-            <stringProp name="1598">20</stringProp>
+            <stringProp name="48">0</stringProp>
             <stringProp name="1567">10</stringProp>
-            <stringProp name="1572">15</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="10">10</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48">0</stringProp>
           </collectionProp>
-          <collectionProp name="1084528255">
+          <collectionProp name="-1880022367">
+            <stringProp name="1629">30</stringProp>
             <stringProp name="1598">20</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="-1031390175">
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="1629">30</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
+          <collectionProp name="-899587103">
+            <stringProp name="1629">30</stringProp>
             <stringProp name="1660">40</stringProp>
-            <stringProp name="1572">15</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="382863126">
-            <stringProp name="1598">20</stringProp>
-            <stringProp name="1753">70</stringProp>
-            <stringProp name="1572">15</stringProp>
-            <stringProp name="53">5</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="-703036565">
-            <stringProp name="1598">20</stringProp>
-            <stringProp name="48687">120</stringProp>
-            <stringProp name="1598">20</stringProp>
-            <stringProp name="1598">20</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="348745075">
-            <stringProp name="1598">20</stringProp>
-            <stringProp name="48780">150</stringProp>
-            <stringProp name="1572">15</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="1379930749">
-            <stringProp name="1598">20</stringProp>
-            <stringProp name="48873">180</stringProp>
-            <stringProp name="1572">15</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="1177273088">
-            <stringProp name="1598">20</stringProp>
-            <stringProp name="49710">240</stringProp>
-            <stringProp name="1572">15</stringProp>
-            <stringProp name="53">5</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="-1981971915">
-            <stringProp name="1598">20</stringProp>
-            <stringProp name="49834">280</stringProp>
-            <stringProp name="1572">15</stringProp>
-            <stringProp name="53">5</stringProp>
-            <stringProp name="10">10</stringProp>
+            <stringProp name="1660">40</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="48">0</stringProp>
           </collectionProp>
         </collectionProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -1732,7 +1735,7 @@
     },&#xd;
 &#xd;
     &quot;confirmPassword&quot;: &quot;${randomPassword}&quot;,&#xd;
-    &quot;email&quot;: &quot;random@Email.com&quot;,&#xd;
+    &quot;email&quot;: &quot;${randomEmail}&quot;,&#xd;
     &quot;password&quot;: &quot;${randomPassword}&quot;,&#xd;
     &quot;username&quot;: &quot;${randomUsername}&quot;&#xd;
 }</stringProp>
@@ -1777,6 +1780,22 @@
             <boolProp name="Assertion.assume_success">false</boolProp>
             <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def generatedPassword = &quot;Pass${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(4)}${new Random().nextInt(9)}${org.apache.commons.lang3.RandomStringUtils.random(1, &apos;!@#$%^&amp;*&apos;)}&quot;
+def generatedUsername = &quot;newUser${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(6)}&quot;
+def generatedEmail = &quot;${org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(5)}${new Random().nextInt(9999)}@abv.bg&quot;
+
+
+vars.put(&quot;randomPassword&quot;, generatedPassword)
+vars.put(&quot;randomUsername&quot;, generatedUsername)
+vars.put(&quot;randomEmail&quot;, generatedEmail)
+</stringProp>
+          </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login" enabled="true">
@@ -2099,7 +2118,7 @@
           <boolProp name="exclude_checkbox_state">false</boolProp>
         </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -2345,7 +2364,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
