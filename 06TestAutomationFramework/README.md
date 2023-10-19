@@ -24,6 +24,7 @@
 
 **3. Generating HTML Report**
 - An HTML report named `emailable-report.html` will be generated under the `test-output` directory.
+- Latest report is `emailable-report.html`.
 
 ## Running Instructions for Selenium UI Tests
 
@@ -42,6 +43,7 @@
 
 **4. Generating Report**
 - The test report will be generated in the `T-H-K\TestAutomationFramework\target\site\surefire-report.html` file.
+- Latest report is `ui-selenium-report-surefire-report.html`
 
 ## Running Instructions for API Security Test
 
