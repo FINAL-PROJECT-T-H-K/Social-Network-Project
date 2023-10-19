@@ -34,7 +34,8 @@
 - UI Tests are located under the `ui.socialnetwork.tests` package.
 
 **2. Running UI Tests Suite**
-- To run the UI test suite, navigate to your cloned repository on your local machine.
+- To run the UI test suite, navigate to your cloned repository on your local machine. Or directly run it in the
+- project's command with right-clicking on `seleniumRunBat.bat` file.
 
 **3. Double-Click to Run Tests**
 - Execute the tests by double-clicking on the `seleniumRunBat.bat` file.
