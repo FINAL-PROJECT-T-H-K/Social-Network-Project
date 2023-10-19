@@ -16,7 +16,15 @@ We have adopted the Agile Scrumban methodology, organizing our work into sprints
 
 ## Repository Structure and Links
 
-Explore the various sections of our repository for a more detailed view of our project:
+# Project Sections
+
+0.0. **[Project Specifications](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00ProjectSpecifications)**
+  
+    - Contains the detailed test plan for the project.
+
+0.0. **[Test Requirements](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00TestRequirements)**
+  
+    - Provides insights into team scheduling and test scheduling, along with associated dates.
 
 1. **[WEAre Test Plan](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan)**
    - Contains the detailed test plan for the project.
@@ -34,7 +42,7 @@ Explore the various sections of our repository for a more detailed view of our p
    - Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file inside the project for detailed navigation instructions.
 
 6. **[JMeter Performance Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport)**
-   - Contains performance testing conducted with JMeter and provides associated instructions.
+   - Contains performance testing conducted with JMeter and provides associated instructions and Jmeter report inside [(index.html)](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport/ReportFolderJMeter) folder.
   
 6. **[ZAP Security Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/07ZAPSecurityTestingReport)**
    - Contains performance testing conducted with JMeter and provides associated instructions.
