@@ -12,8 +12,8 @@ import static com.telerikacademy.testframework.Constants.*;
 public class PersonalProfilePage extends BaseSocialPage {
     String usernameReceiver = "first";
     String passwordReceiver = "last";
-    String usernameSender="";
-    String passwordSender="";
+    String usernameSender = "";
+    String passwordSender = "";
     Logger logger = Logger.getLogger("");
     String personalInfo;
 
@@ -124,7 +124,7 @@ public class PersonalProfilePage extends BaseSocialPage {
 
     public void assertAvailabilityUpdated(String skill) {
         actions.clickElement("profile.personal.info");
-        String xpath = String.format("//span[text()='%s']",skill);
+        String xpath = String.format("//span[text()='%s']", skill);
         actions.waitForElementVisible(xpath);
         String spanText = driver.findElement(By.xpath(xpath)).getText();
         Assertions.assertEquals(skill, spanText, "Expected availability does not match the actual availability.");
@@ -137,7 +137,7 @@ public class PersonalProfilePage extends BaseSocialPage {
 
     public void assertJobTitleUpdated(String jobTitle) {
         actions.clickElement("profile.personal.info");
-        String xpath = String.format("//span[text()='%s']",jobTitle);
+        String xpath = String.format("//span[text()='%s']", jobTitle);
         actions.waitForElementVisible(xpath);
         String spanText = driver.findElement(By.xpath(xpath)).getText();
         Assertions.assertEquals(jobTitle, spanText, "Expected job title does not match the actual job title.");

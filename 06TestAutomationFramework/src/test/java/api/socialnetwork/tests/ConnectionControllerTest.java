@@ -1,7 +1,9 @@
 package api.socialnetwork.tests;
+
 import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+
 import java.util.logging.Logger;
 
 import static apisocialnetwork.ErrorMessages.ERROR_MESSAGE_INCORRECT_STATUS;

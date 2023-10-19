@@ -18,6 +18,7 @@ public class HomePageTests extends BaseTestSetup {
     public void anonymousUserHomePageAccessAndLinksVisibilityTest() {
         homePage.validateAnonymousUserHomePageAccessAndLinksVisibility();
     }
+
     @Test
     @Tag("FHKT-146")
     public void anonymousUserRegisterFormDisplayWhenRegisterButtonClickedTest() {

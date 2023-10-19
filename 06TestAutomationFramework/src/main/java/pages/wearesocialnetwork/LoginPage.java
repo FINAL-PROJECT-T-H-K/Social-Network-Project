@@ -10,7 +10,7 @@ public class LoginPage extends BaseSocialPage {
         super(driver, "social.network.login.page");
     }
 
-    public void loginUser(String username,String password) {
+    public void loginUser(String username, String password) {
 
         navigateToPage();
 
@@ -24,6 +24,7 @@ public class LoginPage extends BaseSocialPage {
 
         actions.waitForElementVisible("header.member.menu.button");
     }
+
     public void assertAdminAuthenticatedUser() {
         actions.assertElementPresent("header.admin.member.button");
     }

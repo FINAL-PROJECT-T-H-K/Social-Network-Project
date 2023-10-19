@@ -1,10 +1,13 @@
 package api.socialnetwork.tests;
+
 import api.socialnetwork.base.BaseTestSetup;
 import apisocialnetwork.Utils;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.testng.annotations.Test;
+
 import java.util.logging.Logger;
+
 import static apisocialnetwork.Constants.USERNAME;
 import static apisocialnetwork.Constants.USER_ID;
 import static apisocialnetwork.ErrorMessages.*;
@@ -28,7 +31,7 @@ public class RegistrationTest extends BaseTestSetup {
         String responseID = response.getBody().asString().split(" ")[6];
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_INCORRECT_STATUS);
-        assertEquals(responseReturnMessage, String.format(CORRECT_REGISTER_RETURN_MESSAGE,USERNAME,USER_ID), "Response message is incorrect.");
+        assertEquals(responseReturnMessage, String.format(CORRECT_REGISTER_RETURN_MESSAGE, USERNAME, USER_ID), "Response message is incorrect.");
         assertEquals(responseID, USER_ID, ERROR_MESSAGE_USER_ID);
         assertEquals(responseUsername, USERNAME, ERROR_MESSAGE_USERNAME);
 

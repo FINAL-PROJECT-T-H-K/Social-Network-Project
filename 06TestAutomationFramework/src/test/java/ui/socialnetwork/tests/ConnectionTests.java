@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 import ui.socialnetwork.base.BaseTestSetup;
 
 public class ConnectionTests extends BaseTestSetup {
-    String usernameReceiver="";
-    String passwordReceiver="";
-    String usernameSender="";
-    String passwordSender="";
+    String usernameReceiver = "";
+    String passwordReceiver = "";
+    String usernameSender = "";
+    String passwordSender = "";
 
     @BeforeEach
     public void setupLogin() {

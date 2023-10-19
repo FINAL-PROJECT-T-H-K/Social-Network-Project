@@ -10,16 +10,18 @@ public class LoginTests extends BaseTestSetup {
     String username = "";
     String password = "";
     String adminUsername = "admin";
+
     @Test
     @Tag("FHKT-15")
     public void nonAdminUserAuthentication() {
         username += registerPage.generateUser();
         password += registerPage.generatePassword();
         registerUser(username, password);
-        loginUser(username,password);
+        loginUser(username, password);
         //ASSERT
         loginPage.assertAuthenticatedUser();
     }
+
     @Test
     @Tag("FHKT-17")
     public void adminUserAuthenticationTest() {

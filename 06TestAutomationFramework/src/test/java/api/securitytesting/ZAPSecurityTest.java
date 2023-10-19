@@ -1,6 +1,5 @@
 package api.securitytesting;
 
-import com.telerikacademy.testframework.CustomWebDriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -68,7 +67,7 @@ public class ZAPSecurityTest {
             }
 
         }
-       //driver.quit();
+        //driver.quit();
     }
 
 }

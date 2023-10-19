@@ -6,6 +6,6 @@ public class Constants {
     public static String homePageHeader = "The Easiest Way to Hack the Crisis";
     public static String logoutPageHeader = "Login Page";
     public static String skillInfo = "Quality Assurance";
-    public static String jobTitle="Translator";
+    public static String jobTitle = "Translator";
 
 }

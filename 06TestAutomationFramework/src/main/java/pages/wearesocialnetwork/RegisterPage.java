@@ -9,8 +9,6 @@ import java.util.Random;
 import static java.lang.String.format;
 
 public class RegisterPage extends BasePage {
-    Random random = new Random();
-    int randomCount;
 
     public RegisterPage(WebDriver driver) {
         super(driver, "social.network.register.page");
@@ -35,6 +33,7 @@ public class RegisterPage extends BasePage {
         actions.clickElement("register.page.submitButton");
 
     }
+
     public String generateUser() {
         String username = RandomStringUtils.randomAlphabetic(4);
         return "User" + username;

@@ -1,6 +1,4 @@
 package api.socialnetwork.base;
-
-import apisocialnetwork.Utils;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
 import io.restassured.RestAssured;
@@ -140,7 +138,7 @@ public class BaseTestSetup {
     public static Response updateUserProfile(String name) {
         baseURI = BASE_URL + API_USERS_AUTH + USER_ID + "/personal";
 
-        String profileBody = String.format(PROFILE_BODY ,USER_ID, USERNAME, RANDOM_EMAIL, SEARCHABLE_NAME);
+        String profileBody = String.format(PROFILE_BODY, USER_ID, USERNAME, RANDOM_EMAIL, SEARCHABLE_NAME);
 
         return given().contentType(ContentType.JSON).header("Accept", "*/*").queryParam("name", name).cookie("JSESSIONID", COOKIE_VALUE).body(profileBody).when().log().all().post(baseURI);
     }
@@ -181,7 +179,7 @@ public class BaseTestSetup {
     }
 
     protected static Response showAllProfilePosts() {
-        baseURI = BASE_URL + String.format(GET_PROFILE_POSTS,USER_ID);
+        baseURI = BASE_URL + String.format(GET_PROFILE_POSTS, USER_ID);
 
         return given().contentType(ContentType.JSON).cookies("JSESSIONID", COOKIE_VALUE).body(PROFILE_POST).when().get(baseURI);
     }
@@ -203,7 +201,7 @@ public class BaseTestSetup {
     }
 
     protected static Response likePost() {
-        baseURI = BASE_URL + String.format(LIKE_POST,POST_ID);
+        baseURI = BASE_URL + String.format(LIKE_POST, POST_ID);
 
 
         return RestAssured.given().cookies("JSESSIONID", COOKIE_VALUE).contentType(ContentType.JSON).when().post(baseURI);
