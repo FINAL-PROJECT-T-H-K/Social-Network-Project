@@ -1,6 +1,39 @@
-# Social Network Project
-Welcome to the Social Network Project, your go-to resource for getting started with this exciting project.
-ADD 
-1-Overview of repo
-2-Testing strategy
-3-Repo structure
+# WEAre Social Network Project Repository
+
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Testing Strategy](#testing-strategy)
+3. [Repository Structure and Links](#repository-structure-and-links)
+
+## Overview
+
+Welcome to the WEAre Social Network project repository, created as part of our final project at Telerik Academy. This repository provides comprehensive details and reports on the testing of the WEAre Social Network project. Our social network is designed to connect individuals who can mutually benefit by exchanging skills and services. Users can create posts, leave comments, and show appreciation through likes.
+
+## Testing Strategy
+
+We have adopted the Agile Scrumban methodology, organizing our work into sprints. For more information about our testing approach and strategies, please visit our [01WEareTestPlan folder](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan).
+
+## Repository Structure and Links
+
+Explore the various sections of our repository for a more detailed view of our project:
+
+1. **[WEAre Test Plan](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan)**
+   - Contains the detailed test plan for the project.
+
+2. **[Team and Test Schedule](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/02TeamAndTestSchedule)**
+   - Provides insights into team scheduling and test scheduling, along with associated dates.
+
+3. **[Jira Templates and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/03JiraTemplatesAndReports)**
+   - Includes templates used for creating Jira test cases and reports, including the Jira Test Coverage report and Test Plan report.
+
+4. **[Rest API Performance Testing and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/04RestApiTestingPostmanAndNewmanReport)**
+   - This section contains the Postman collection and environment files, as well as a batch file to run the collection and generate a Newman htmlextra report.
+
+5. **[Test Automation Framework (Rest API & UI Testing)](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/TestAutomationFramework)**
+   - Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file inside the project for detailed navigation instructions.
+
+6. **[JMeter Performance Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport)**
+   - Contains performance testing conducted with JMeter and provides associated instructions.
+
+Feel free to explore each section to gain a comprehensive understanding of our project's testing and development process. Your interest and support are greatly appreciated as we continue to refine and enhance the WEAre Social Network project.
