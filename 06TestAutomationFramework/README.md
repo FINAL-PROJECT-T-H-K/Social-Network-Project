@@ -9,7 +9,7 @@
 - Open the project located in the `TestAutomationFramework[test-automation-framework]` directory using IntelliJ IDEA.
 
 **3. Build the Project**
-- Build the project to set up the required dependencies.
+- Build the project with `JDK 11` and set up the required dependencies.
 
 ## Running Instructions for API Tests
 
@@ -23,7 +23,7 @@
 - To run the API test suite, right-click on the `api-testsuite.xml` file and select "Run."
 
 **3. Generating HTML Report**
-- An HTML report will be generated under the `test-output` directory.
+- An HTML report named `emailable-report.html` will be generated under the `test-output` directory.
 
 ## Running Instructions for Selenium UI Tests
 
@@ -34,7 +34,7 @@
 - UI Tests are located under the `ui.socialnetwork.tests` package.
 
 **2. Running UI Tests Suite**
-- To run the UI test suite, navigate to your cloned repository on your local machine. Or directly run it in the
+- Select step 2 or step 3. To run the UI test suite, navigate to your cloned repository on your local machine. Or directly run it in the
 - project's command with right-clicking on `seleniumRunBat.bat` file.
 
 **3. Double-Click to Run Tests**
