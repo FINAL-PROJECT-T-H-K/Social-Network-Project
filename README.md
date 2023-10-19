@@ -31,7 +31,7 @@ Explore the various sections of our repository for a more detailed view of our p
    - This section contains the Postman collection and environment files, as well as a batch file to run the collection and generate a Newman htmlextra report.
 
 5. **[Test Automation Framework (Rest API & UI Testing)](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/TestAutomationFramework)**
-   - Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file for detailed navigation instructions.
+   - Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file inside the project for detailed navigation instructions.
 
 6. **[JMeter Performance Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport)**
    - Contains performance testing conducted with JMeter and provides associated instructions.
