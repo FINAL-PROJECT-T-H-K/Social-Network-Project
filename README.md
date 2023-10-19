@@ -16,35 +16,44 @@ We have adopted the Agile Scrumban methodology, organizing our work into sprints
 
 ## Repository Structure and Links
 
+# Project Sections
+
 Explore the various sections of our repository for a more detailed view of our project:
 
-0.0. **[Project Specifications](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00ProjectSpecifications)**
-     
-      - Contains the detailed test plan for the project.
+## 0.0. [Project Specifications](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00ProjectSpecifications)
 
-0.0. **[Test Requirements](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00TestRequirements)**
-     
-      - Provides insights into team scheduling and test scheduling, along with associated dates.
+- Contains the detailed test plan for the project.
 
-1. **[WEAre Test Plan](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan)**
-   - Contains the detailed test plan for the project.
+## 0.0. [Test Requirements](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00TestRequirements)
 
-2. **[Team and Test Schedule](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/02TeamAndTestSchedule)**
-   - Provides insights into team scheduling and test scheduling, along with associated dates.
+- Provides insights into team scheduling and test scheduling, along with associated dates.
 
-3. **[Jira Templates and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/03JiraTemplatesAndReports)**
-   - Includes templates used for creating Jira test cases and reports, including the Jira Test Coverage report and Test Plan report.
+## 1. [WEAre Test Plan](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan)
 
-4. **[Rest API Postman Testing and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/04RestApiTestingPostmanAndNewmanReport)**
-   - This section contains the Postman collection and environment files, as well as a batch file to run the collection and generate a Newman htmlextra report.
+- Contains the detailed test plan for the project.
 
-5. **[Test Automation Framework Rest API & UI Testing](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/06TestAutomationFramework)**
-   - Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file inside the project for detailed navigation instructions.
+## 2. [Team and Test Schedule](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/02TeamAndTestSchedule)
 
-6. **[JMeter Performance Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport)**
-   - Contains performance testing conducted with JMeter and provides associated instructions and Jmeter report inside [(index.html)](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport/ReportFolderJMeter) folder.
-  
-6. **[ZAP Security Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/07ZAPSecurityTestingReport)**
-   - Contains performance testing conducted with JMeter and provides associated instructions.
+- Provides insights into team scheduling and test scheduling, along with associated dates.
+
+## 3. [Jira Templates and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/03JiraTemplatesAndReports)
+
+- Includes templates used for creating Jira test cases and reports, including the Jira Test Coverage report and Test Plan report.
+
+## 4. [Rest API Postman Testing and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/04RestApiTestingPostmanAndNewmanReport)
+
+- This section contains the Postman collection and environment files, as well as a batch file to run the collection and generate a Newman htmlextra report.
+
+## 5. [Test Automation Framework Rest API & UI Testing](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/06TestAutomationFramework)
+
+- Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file inside the project for detailed navigation instructions.
+
+## 6. [JMeter Performance Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport)
+
+- Contains performance testing conducted with JMeter and provides associated instructions and Jmeter report inside [index.html](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport/ReportFolderJMeter) folder.
+
+## 6. [ZAP Security Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/07ZAPSecurityTestingReport)
+
+- Contains performance testing conducted with JMeter and provides associated instructions.
 
 Feel free to explore each section to gain a comprehensive understanding of our project's testing and development process. Your interest and support are greatly appreciated as we continue to refine and enhance the WEAre Social Network project.
