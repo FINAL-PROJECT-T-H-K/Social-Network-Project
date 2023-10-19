@@ -36,8 +36,7 @@ We have adopted the Agile Scrumban methodology, organizing our work into sprints
    - Includes templates used for creating Jira test cases and reports, including the Jira Test Coverage report and Test Plan report.
 
 4. **[Rest API Postman Testing and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/04RestApiTestingPostmanAndNewmanReport)**
-   - This section contains the Postman collection and environment files, as well as a batch file to run the collection and generate a Newman htmlextra report. Latest report is
-   - added into this directory.
+   - This section contains the Postman collection and environment files, as well as a batch file to run the collection and generate a Newman htmlextra report. Latest report is added into this directory.
 
 5. **[Test Automation Framework Rest API & UI Testing](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/06TestAutomationFramework)**
    - Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file inside the project for detailed navigation instructions.
