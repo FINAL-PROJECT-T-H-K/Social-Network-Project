@@ -20,12 +20,12 @@ public class PostPage extends BaseSocialPage {
     }
 
     public void createPublicPost(String postBody) {
-        postDescription = postBody;
+        postDescription = generateDescription();
         actions.waitForElementClickable("new.post.button");
         actions.clickElement("new.post.button");
 
         actions.waitForElementClickable("post.description");
-        actions.typeValueInField(postDescription, "post.description");
+        actions.typeValueInField(postBody, "post.description");
 
         actions.waitForElementClickable("choose.public.post");
         actions.clickElement("choose.public.post");
@@ -37,26 +37,18 @@ public class PostPage extends BaseSocialPage {
     }
 
     public void createPrivatePost(String postBody) {
-        postDescription = postBody;
+        postDescription = generateDescription();
         actions.waitForElementClickable("new.post.button");
         actions.clickElement("new.post.button");
 
         actions.waitForElementClickable("post.description");
-        actions.typeValueInField(postDescription, "post.description");
+        actions.typeValueInField(postBody, "post.description");
 
         actions.waitForElementClickable("choose.private.post");
         actions.clickElement("choose.private.post");
 
         actions.waitForElementClickable("create.post.button");
         actions.clickElement("create.post.button");
-
-
-    }
-
-    public void anonymousUserPrivatePostVisibility() {
-        actions.waitForElementClickable("home.page.latest.post.button");
-        actions.clickElement("home.page.latest.post.button");
-
     }
 
     public void likePublicPost() {
@@ -140,11 +132,6 @@ public class PostPage extends BaseSocialPage {
         int likeCount = Integer.parseInt(strNumber.trim());
         return likeCount;
 
-    }
-    public void verifyPostLikeAmountIncreasedByOne(String locator, int oldLikeCount) {
-
-        int likeCount = getLikeCount(locator);
-        actions.assertValueIncreasedBy(1, likeCount - oldLikeCount);
     }
 
     public void validatePostCreatedWithText(String comment) {

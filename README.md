@@ -27,13 +27,16 @@ Explore the various sections of our repository for a more detailed view of our p
 3. **[Jira Templates and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/03JiraTemplatesAndReports)**
    - Includes templates used for creating Jira test cases and reports, including the Jira Test Coverage report and Test Plan report.
 
-4. **[Rest API Performance Testing and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/04RestApiTestingPostmanAndNewmanReport)**
+4. **[Rest API Postman Testing and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/04RestApiTestingPostmanAndNewmanReport)**
    - This section contains the Postman collection and environment files, as well as a batch file to run the collection and generate a Newman htmlextra report.
 
-5. **[Test Automation Framework (Rest API & UI Testing)](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/TestAutomationFramework)**
+5. **[Test Automation Framework Rest API & UI Testing](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/06TestAutomationFramework)**
    - Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file inside the project for detailed navigation instructions.
 
 6. **[JMeter Performance Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport)**
+   - Contains performance testing conducted with JMeter and provides associated instructions.
+  
+6. **[ZAP Security Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/07ZAPSecurityTestingReport)**
    - Contains performance testing conducted with JMeter and provides associated instructions.
 
 Feel free to explore each section to gain a comprehensive understanding of our project's testing and development process. Your interest and support are greatly appreciated as we continue to refine and enhance the WEAre Social Network project.
