@@ -68,7 +68,6 @@ public class CommentTests extends BaseTestSetup {
         commentPage.userDislikeCommentUnderThePost();
         //assert
         commentPage.validateCommentIsUnliked();
-        //like amount decreased by 1
     }
 
     @Test

@@ -109,21 +109,10 @@ public class HomePage extends BaseSocialPage {
 
     }
 
-    public void searchUserByProfession() {
-        actions.waitForElementVisible("home.profession.input.field");
-        actions.typeValueInField("Hairdresser", "home.profession.input.field");
-        clickOnUserSearchBar();
-
-    }
-
     public void searchUserByKnownUsername(String name) {
         actions.waitForElementVisible("home.username.search.input");
         actions.typeValueInField(name, "home.username.search.input");
         actions.clickElement("user.search.button");
-    }
-
-    public void validateUserSearchByProfession(String profession) {
-        actions.assertElementVisible("user.search.result.profession.field", profession);
     }
 
     public void verifySuccessfulConnectionRequestMessage() {
@@ -162,12 +151,6 @@ public class HomePage extends BaseSocialPage {
     public void validateAboutUsInformationDisplayed() {
         actions.assertElementPresent("about.us.information.message");
 
-    }
-
-    public void verifyScrollDownInHomePage() {
-        actions.assertElementPresent("register.button.bottom");
-        actions.waitForElementToBeClickableUntilTimeout("register.button.bottom", 3);
-        logger.info("Scroll down action is successful 'Register' button is visible and clickable");
     }
 
     public void validateHomePageHeader(String key) {

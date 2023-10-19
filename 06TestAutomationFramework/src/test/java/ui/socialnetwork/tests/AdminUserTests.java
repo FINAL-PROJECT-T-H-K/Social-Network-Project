@@ -31,7 +31,7 @@ public class AdminUserTests extends BaseTestSetup {
     }
 
     @Test
-    @Tag("FHKT-263")
+    @Tag("FHKT-266")
     public void adminHomePageLinkTest() {
         homePage.verifyAdminZoneLinkVisibility();
         homePage.clickOnGoToAdminZoneButton();

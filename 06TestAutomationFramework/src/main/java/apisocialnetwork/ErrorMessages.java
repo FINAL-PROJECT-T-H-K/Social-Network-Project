@@ -23,8 +23,7 @@ public class ErrorMessages {
     public static final String ERROR_MESSAGE_RESPONSE_BODY_EMPTY = "Response body should be empty";
     public static final String ERROR_MESSAGE_BODY_NOT_VALID_JSON = "Body is not a valid JSON";
     public static final String ERROR_MESSAGE_POST_DESCRIPTION = format("Response body content does not match the expected. Expected %s", POST_DESCRIPTION);
-    public static final String ERROR_MESSAGE_JOB_TITLE = format("Response body content does not match the expected. Expected %s",RANDOM_JOB_TITLE);
-
+    public static final String ERROR_MESSAGE_JOB_TITLE = format("Response body content does not match the expected. Expected %s", RANDOM_JOB_TITLE);
     public static final String ERROR_MESSAGE_RESPONSE_BODY_POST_ID = format("Response body content does not match the expected. Expected %s", POST_ID);
 }
 
