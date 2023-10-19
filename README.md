@@ -2,8 +2,11 @@
 
 ## Table of Contents
 1.Overview 
+
 2.Testing Strategy
+
 3.Repository Structure
+
 
 ## Overview 
 This repository is made for our Final project in Telerik Academy and contains WEAre Social Network project's testing details and reports. WEAre social network aims to connect people who can benefit and exchange skills and services with other members
