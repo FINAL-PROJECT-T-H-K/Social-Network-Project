@@ -1,32 +1,60 @@
-**Instructions**
-1. Clone repository
-2. Open `TestAutomationFramework[test-automation-framework]` as a IntelliJ IDEA Project
-3. Build.
+# IntelliJ README for Test Automation Framework
 
-**Running Instructions API**
-```sh
-(Preconditions) : Database server and WEare project must be running.
+## Instructions
 
-1. API Tests are located under api.socialnetwork.tests
-2. To run API tests suite right click on api-testsuite.xml file and click run.
-3. Html report will be generated under test-output file. 
-```
-**Running Instructions Selenium UI Tests**
-(Preconditions) : Database server and WEare project must be running.
+**1. Clone the Repository**
+- Clone this repository to your local machine.
 
-1. UI Tests are located under ui.socialnetwork.tests
-2. To run UI tests suite navigate to your cloned repository in your local machine 
-"your path" + T-H-K\TestAutomationFramework\seleniumRunBat.bat"
-3. Double-click on seleniumRunBat.bat file and tests will start running.
-4. Report will be generated in T-H-K\TestAutomationFramework\target\site\surefire-report.html
+**2. Open the IntelliJ IDEA Project**
+- Open the project located in the `TestAutomationFramework[test-automation-framework]` directory using IntelliJ IDEA.
 
-**Running Instructions API Security Test**
-(Preconditions) : 
-Database server and WEare project must be running.
-ZAP must be installed in the local machine and started with active session.(click "No" on pop-up)
-Change API key in the class ZAPSecurityTest, paste the one from your ZAP.
+**3. Build the Project**
+- Build the project to set up the required dependencies.
 
-1. Right click on ZAPSecurityTest class and run.
-2. Html report will be generated as weare-zap-report.html in your project.
-3. Right click on the report.
+## Running Instructions for API Tests
+
+**Preconditions:**
+- Ensure that the Database server and the WEAre project are running.
+
+**1. Location of API Tests**
+- API Tests are located under the `api.socialnetwork.tests` package.
+
+**2. Running API Tests Suite**
+- To run the API test suite, right-click on the `api-testsuite.xml` file and select "Run."
+
+**3. Generating HTML Report**
+- An HTML report will be generated under the `test-output` directory.
+
+## Running Instructions for Selenium UI Tests
+
+**Preconditions:**
+- Ensure that the Database server and the WEAre project are running.
+
+**1. Location of UI Tests**
+- UI Tests are located under the `ui.socialnetwork.tests` package.
+
+**2. Running UI Tests Suite**
+- To run the UI test suite, navigate to your cloned repository on your local machine.
+
+**3. Double-Click to Run Tests**
+- Execute the tests by double-clicking on the `seleniumRunBat.bat` file.
+
+**4. Generating Report**
+- The test report will be generated in the `T-H-K\TestAutomationFramework\target\site\surefire-report.html` file.
+
+## Running Instructions for API Security Test
+
+**Preconditions:**
+- Ensure that the Database server and the WEAre project are running.
+- ZAP (OWASP Zed Attack Proxy) must be installed on your local machine and started with an active session (choose "No" on the pop-up dialog).
+- Update the API key in the `ZAPSecurityTest` class with the key from your ZAP session.
+
+**1. Running API Security Test**
+- Right-click on the `ZAPSecurityTest` class and select "Run."
+
+**2. Generating HTML Report**
+- An HTML report, named `weare-zap-report.html`, will be generated in your project.
+
+**3. Viewing the Report**
+- Right-click on the generated report to view the results.
 
