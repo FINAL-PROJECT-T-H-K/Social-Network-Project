@@ -1,22 +1,15 @@
-2023-10-19 21:59:02,765 INFO  [main] Initializing WebDriver
-2023-10-19 21:59:09,161 INFO  [main] Initializing WebDriver
-2023-10-19 21:59:10,711 INFO  [main] Initializing WebDriver
-2023-10-19 21:59:10,711 INFO  [main] Initializing WebDriver
-2023-10-19 21:59:10,712 INFO  [main] Initializing WebDriver
-2023-10-19 21:59:10,712 INFO  [main] Initializing WebDriver
-2023-10-19 21:59:10,713 INFO  [main] Initializing WebDriver
-2023-10-19 21:59:10,713 INFO  [main] Initializing WebDriver
-2023-10-19 21:59:10,714 INFO  [main] Initializing WebDriver
-2023-10-19 21:59:13,614 INFO  [main] Clicking on element register.page.submitButton
-2023-10-19 21:59:16,310 INFO  [main] Clicking on element login.submit.button
-2023-10-19 21:59:18,084 INFO  [main] Clicking on element new.post.button
-2023-10-19 21:59:19,717 INFO  [main] Clicking on element choose.public.post
-2023-10-19 21:59:19,837 INFO  [main] Clicking on element create.post.button
-2023-10-19 21:59:22,508 INFO  [main] Clicking on element home.page.home.button
-2023-10-19 21:59:23,770 INFO  [main] Clicking on element profile.personal.page.button
-2023-10-19 21:59:25,931 INFO  [main] Clicking on element latest.activity.button
-2023-10-19 21:59:26,681 INFO  [main] Clicking on element recently.post
-2023-10-19 21:59:29,055 INFO  [main] Clicking on element create.comments.button
-2023-10-19 21:59:32,232 INFO  [main] Clicking on element show.comments.button
-2023-10-19 21:59:36,036 INFO  [main] Reading text from element comment.time.created
-2023-10-19 21:59:36,088 INFO  [main] Quitting WebDriver
+2023-10-23 00:51:42,569 INFO  [main] Initializing WebDriver
+2023-10-23 00:51:50,223 INFO  [main] Initializing WebDriver
+2023-10-23 00:51:51,946 INFO  [main] Initializing WebDriver
+2023-10-23 00:51:51,947 INFO  [main] Initializing WebDriver
+2023-10-23 00:51:51,948 INFO  [main] Initializing WebDriver
+2023-10-23 00:51:51,949 INFO  [main] Initializing WebDriver
+2023-10-23 00:51:51,950 INFO  [main] Initializing WebDriver
+2023-10-23 00:51:51,953 INFO  [main] Initializing WebDriver
+2023-10-23 00:51:51,954 INFO  [main] Initializing WebDriver
+2023-10-23 00:51:54,361 INFO  [main] Clicking on element register.page.submitButton
+2023-10-23 00:51:56,517 INFO  [main] Clicking on element login.submit.button
+2023-10-23 00:51:58,228 INFO  [main] Clicking on element admin.zone.button
+2023-10-23 00:51:59,490 INFO  [main] Clicking on element admin.zone.button
+2023-10-23 00:52:00,127 INFO  [main] Clicking on element admin.view.all.users
+2023-10-23 00:52:02,265 INFO  [main] Quitting WebDriver

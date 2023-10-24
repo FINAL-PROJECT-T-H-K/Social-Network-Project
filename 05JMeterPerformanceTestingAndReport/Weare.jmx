@@ -102,8 +102,8 @@
       <hashTree/>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Stress Test " enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="1764072566">
-            <stringProp name="1691">50</stringProp>
+          <collectionProp name="-855488073">
+            <stringProp name="1598">20</stringProp>
             <stringProp name="0">0</stringProp>
             <stringProp name="48873">180</stringProp>
             <stringProp name="48">0</stringProp>
@@ -629,8 +629,8 @@ vars.put(&quot;randomEmail&quot;, generatedEmail)
       </hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Load Test " enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-1140714151">
-            <stringProp name="1660">40</stringProp>
+          <collectionProp name="-519639601">
+            <stringProp name="1598">20</stringProp>
             <stringProp name="0">0</stringProp>
             <stringProp name="1629">30</stringProp>
             <stringProp name="1722">60</stringProp>
@@ -1156,11 +1156,11 @@ vars.put(&quot;randomEmail&quot;, generatedEmail)
       </hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Endurance Test " enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-425974502">
-            <stringProp name="1629">30</stringProp>
+          <collectionProp name="-994745397">
+            <stringProp name="1598">20</stringProp>
             <stringProp name="0">0</stringProp>
             <stringProp name="1660">40</stringProp>
-            <stringProp name="53430">600</stringProp>
+            <stringProp name="49586">200</stringProp>
             <stringProp name="1660">40</stringProp>
           </collectionProp>
         </collectionProp>
@@ -1683,31 +1683,24 @@ vars.put(&quot;randomEmail&quot;, generatedEmail)
       </hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="Spike Test " enabled="true">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-839049867">
-            <stringProp name="1629">30</stringProp>
+          <collectionProp name="-554731607">
+            <stringProp name="1598">20</stringProp>
             <stringProp name="48">0</stringProp>
             <stringProp name="1567">10</stringProp>
             <stringProp name="48">0</stringProp>
             <stringProp name="48">0</stringProp>
           </collectionProp>
-          <collectionProp name="-1880022367">
-            <stringProp name="1629">30</stringProp>
+          <collectionProp name="-1703612875">
             <stringProp name="1598">20</stringProp>
-            <stringProp name="1598">20</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1567">10</stringProp>
             <stringProp name="48">0</stringProp>
             <stringProp name="48">0</stringProp>
           </collectionProp>
-          <collectionProp name="-1031390175">
-            <stringProp name="1629">30</stringProp>
-            <stringProp name="1629">30</stringProp>
-            <stringProp name="1629">30</stringProp>
-            <stringProp name="48">0</stringProp>
-            <stringProp name="48">0</stringProp>
-          </collectionProp>
-          <collectionProp name="-899587103">
-            <stringProp name="1629">30</stringProp>
-            <stringProp name="1660">40</stringProp>
-            <stringProp name="1660">40</stringProp>
+          <collectionProp name="-1599076256">
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1598">20</stringProp>
+            <stringProp name="1567">10</stringProp>
             <stringProp name="48">0</stringProp>
             <stringProp name="48">0</stringProp>
           </collectionProp>

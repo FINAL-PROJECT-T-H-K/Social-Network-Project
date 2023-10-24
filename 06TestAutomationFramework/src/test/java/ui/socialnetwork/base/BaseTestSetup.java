@@ -14,6 +14,7 @@ public class BaseTestSetup {
     public static HomePage homePage;
     public static PersonalProfilePage personalProfilePage;
     public static LogoutPage logoutPage;
+
     public static RegisterPage registerPage;
     public static LoginPage loginPage;
     public static PostPage postPage;
