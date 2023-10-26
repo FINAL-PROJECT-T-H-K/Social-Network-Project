@@ -15,11 +15,9 @@ import org.zaproxy.clientapi.core.ClientApi;
 import org.zaproxy.clientapi.core.ClientApiException;
 
 public class ZAPSecurityTest {
-
     static final String ZAP_PROXY_ADDRESS = "localhost";
     static final int ZAP_PROXY_PORT = 8080;
     static final String ZAP_API_KEY = "ivn8s36c2f29v9g490q03vh4hi";
-
     private WebDriver driver;
     private ClientApi api;
 
@@ -38,7 +36,6 @@ public class ZAPSecurityTest {
         driver = new ChromeDriver(co);
         api = new ClientApi(ZAP_PROXY_ADDRESS, ZAP_PROXY_PORT, ZAP_API_KEY);
     }
-
 
     @Test
     public void weAreSecurityTest() {
@@ -65,9 +62,8 @@ public class ZAPSecurityTest {
             } catch (ClientApiException e) {
                 e.printStackTrace();
             }
-
         }
-        //driver.quit();
+        driver.quit();
     }
 
 }
