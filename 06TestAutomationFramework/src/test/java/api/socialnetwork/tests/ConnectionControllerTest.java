@@ -2,6 +2,7 @@ package api.socialnetwork.tests;
 
 import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Tag;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
@@ -15,6 +16,7 @@ public class ConnectionControllerTest extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
 
     @Test
+    @Tag("FHKT-105")
     public void sendConnectionRequestTest() {
 
         createAndRegisterUserReceiver();
@@ -31,6 +33,7 @@ public class ConnectionControllerTest extends BaseTestSetup {
 
 
     @Test
+    @Tag("FHKT-106")
     public void approveConnectionRequestTest() {
 
         createAndRegisterUserReceiver();

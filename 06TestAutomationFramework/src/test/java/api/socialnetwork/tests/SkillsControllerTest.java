@@ -2,6 +2,7 @@ package api.socialnetwork.tests;
 
 import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Tag;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ public class SkillsControllerTest extends BaseTestSetup {
     static Logger logger = Logger.getLogger("");
 
     @Test
+    @Tag("FHKT-251")
     public static void createSkillTest() {
 
         Response response = createSkill();
@@ -78,6 +80,7 @@ public class SkillsControllerTest extends BaseTestSetup {
 
 
     @Test
+    @Tag("FHKT-251.FHKT-76")
     public void editSkillTest() {
 
         createSkill();

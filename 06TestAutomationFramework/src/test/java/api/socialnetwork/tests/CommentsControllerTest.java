@@ -3,6 +3,7 @@ package api.socialnetwork.tests;
 import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
 
+import org.junit.jupiter.api.Tag;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
@@ -20,6 +21,7 @@ public class CommentsControllerTest extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
 
     @Test
+    @Tag("FHKT-31")
     public void createCommentTest() {
 
         createAndRegisterUser();
@@ -40,6 +42,7 @@ public class CommentsControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-117")
     public void showCreatedCommentTest() {
 
         createAndRegisterUser();
@@ -62,6 +65,7 @@ public class CommentsControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-257")
     public void editCommentTest() {
 
         createAndRegisterUser();
@@ -80,6 +84,7 @@ public class CommentsControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-115")
     public void deleteCommentTest() {
 
         createAndRegisterUser();
@@ -97,6 +102,7 @@ public class CommentsControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-255")
     public void likeCommentTest() {
 
         createAndRegisterUser();
@@ -121,6 +127,7 @@ public class CommentsControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-113")
     public void dislikeCommentTest() {
 
         createAndRegisterUser();

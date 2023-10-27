@@ -2,6 +2,8 @@ package api.socialnetwork.tests;
 
 import api.socialnetwork.base.BaseTestSetup;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Tag;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
@@ -16,6 +18,7 @@ public class PostControllerTest extends BaseTestSetup {
     Logger logger = Logger.getLogger("");
 
     @Test
+    @Tag("FHKT-252")
     public void createPostSuccessfullyTest() {
 
         createAndRegisterUser();
@@ -37,6 +40,7 @@ public class PostControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-154")
     public void getAllPostsTest() {
 
         Response response = showAllPosts();
@@ -48,6 +52,7 @@ public class PostControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-108")
     public void showAllProfilePosts_Successful() {
 
         createAndRegisterUser();
@@ -72,6 +77,7 @@ public class PostControllerTest extends BaseTestSetup {
 
 
     @Test
+    @Tag("FHKT-253")
     public void editPostsTest() {
 
         createAndRegisterUser();
@@ -92,6 +98,7 @@ public class PostControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-35")
     public void likeProfilePostTest() {
 
         createAndRegisterUser();
@@ -116,6 +123,7 @@ public class PostControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-254")
     public void deletePostsTest() {
 
         createAndRegisterUser();
@@ -132,14 +140,11 @@ public class PostControllerTest extends BaseTestSetup {
 
         logger.info(SHOW_MESSAGE_POST_DELETED);
     }
-
     public void deletePostTearDown() {
-
         Response response = deletePost();
 
         int statusCode = response.getStatusCode();
         String responseBody = response.getBody().asPrettyString();
-        logger.info(responseBody);
 
         assertEquals(statusCode, SC_OK, ERROR_MESSAGE_STATUS_CODE);
         assertEquals(responseBody, "", ERROR_MESSAGE_RESPONSE_BODY_EMPTY);

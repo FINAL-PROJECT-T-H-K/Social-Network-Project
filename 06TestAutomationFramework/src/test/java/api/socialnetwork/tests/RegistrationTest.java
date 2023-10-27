@@ -4,6 +4,7 @@ import api.socialnetwork.base.BaseTestSetup;
 import apisocialnetwork.Utils;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Tag;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ public class RegistrationTest extends BaseTestSetup {
     Response response;
 
     @Test
+    @Tag("FHKT-210")
     public void registerUserTest() {
 
         response = createAndRegisterUser();

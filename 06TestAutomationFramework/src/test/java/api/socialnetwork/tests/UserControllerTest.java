@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Tag;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -41,6 +42,7 @@ public class UserControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-250")
     public void upgradeExpertiseProfileTest() {
 
         createAndRegisterUser();
@@ -59,6 +61,7 @@ public class UserControllerTest extends BaseTestSetup {
     }
 
     @Test
+    @Tag("FHKT-249")
     public void updateUserProfileTest() {
 
         createAndRegisterUser();
