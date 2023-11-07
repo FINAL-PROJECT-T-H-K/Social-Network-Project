@@ -12,7 +12,7 @@ jmeter -g "the location of your result .csv file"
 
 
 You can also execute the "ExecuteJmeterTestReportHtml.bat" file, however
-you will need edit and imput your system specific paths in it.
+you will need edit and input your system specific paths in it.
 
 @echo off
 ECHO Starting the HTML report generation for JMeter
