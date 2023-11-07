@@ -1,4 +1,4 @@
-Precognitions:
+Preconditions:
 Have a working folder with JMeter on your system.
 Open and run cmd in your Jmeter /bin folder.
 
