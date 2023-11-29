@@ -3,8 +3,8 @@
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Testing Strategy](#testing-strategy)
-3. [Repository Structure and Links](#repository-structure-and-links)
+2. [Repository Contents](#repository-contents)
+3. [Getting Started](#getting-started)
 
 ## Overview
 
@@ -57,9 +57,5 @@ To get started with a specific project or workshop, navigate to the respective f
 ## Contributing
 
 Feel free to contribute to this repository by forking the project and submitting pull requests. Whether it's fixing a bug, adding new features, or improving documentation, your contributions are valuable.
-
-## License
-
-This repository is open-source and available under the [MIT License](LICENSE). Feel free to explore, use, and modify the contents within the terms of the license.
 
 Happy coding!
