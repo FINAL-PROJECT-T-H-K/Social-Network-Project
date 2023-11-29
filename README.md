@@ -19,7 +19,7 @@ This directory contains materials related to OOP workshops conducted in Telerik 
 
 ---
 
-### 02. [Web Testing](#) <!-- Replace with your Web Testing folder URL -->
+### 02. [Web Testing](https://github.com/TimurDN/AutomationQA/tree/main/02.Web%20Testing) 
 
 **Description:**
 Explore this section for a comprehensive set of materials covering various aspects of web testing, including:
@@ -31,21 +31,21 @@ Explore this section for a comprehensive set of materials covering various aspec
 
 ---
 
-### 03. [POMFrameworkDesign1](#) <!-- Replace with your POMFrameworkDesign1 folder URL -->
+### 03. [POMFrameworkDesign1](https://github.com/TimurDN/AutomationQA/tree/main/03.POMFrameworkDesign1)
 
 **Description:**
 This folder focuses on a Page Object Model (POM) framework design. Check the README file for detailed information about the structure and implementation of the framework.
 
 ---
 
-### 04. [POMFrameworkDesign2](#) <!-- Replace with your POMFrameworkDesign2 folder URL -->
+### 04. [POMFrameworkDesign2](https://github.com/TimurDN/AutomationQA/tree/main/03.POMFrameworkDesign2)
 
 **Description:**
 Similar to POMFrameworkDesign1, this folder emphasizes another approach to Page Object Model (POM) framework design.
 
 ---
 
-### 05. [MyProjects](#) <!-- Replace with your MyProjects folder URL -->
+### 05. [MyProjects](https://github.com/TimurDN/AutomationQA/tree/main/05.MyProjects)
 
 **Description:**
 This section encompasses various personal projects. Explore the updated folder structure for the latest content and project materials.
