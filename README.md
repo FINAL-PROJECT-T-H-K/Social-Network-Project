@@ -38,7 +38,7 @@ This folder focuses on a Page Object Model (POM) framework design. Check the REA
 
 ---
 
-### 04. [POMFrameworkDesign2](https://github.com/TimurDN/AutomationQA/tree/main/03.POMFrameworkDesign2)
+### 04. [POMFrameworkDesign2](https://github.com/TimurDN/AutomationQA/tree/main/04.POMFrameworkDesign2)
 
 **Description:**
 Similar to POMFrameworkDesign1, this folder emphasizes another approach to Page Object Model (POM) framework design.
