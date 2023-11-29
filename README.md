@@ -1,4 +1,4 @@
-# WEAre Social Network Project Repository
+# Repository Overview
 
 ## Table of Contents
 
@@ -8,39 +8,58 @@
 
 ## Overview
 
-Welcome to the WEAre Social Network project repository, created as part of our final project at Telerik Academy. This repository provides comprehensive details and reports on the testing of the WEAre Social Network project. Our social network is designed to connect individuals who can mutually benefit by exchanging skills and services. Users can create posts, leave comments, and show appreciation through likes.
+Welcome to the repository containing materials related to Java, Object-Oriented Programming (OOP) workshops, and various web testing projects. This repository is a compilation of practical exercises and projects aimed at enhancing your skills in Java programming, OOP principles, and web testing techniques.
 
-## Testing Strategy
+## Repository Contents
 
-We have adopted the Agile Scrumban methodology, organizing our work into sprints. For more information about our testing approach and strategies, please visit our [01WEareTestPlan folder](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan).
+### 01. [Java OOP Workshops](https://github.com/TimurDN/AutomationQA/tree/main/01.Java%20OOP%20Workshops)
 
-## Repository Structure and Links
+**Description:**
+This directory contains materials related to OOP workshops conducted in Telerik Academy. Explore the updated folder structure for the latest content and practice exercises.
 
-# Project Sections
+---
 
-0. **[Project Specifications](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00ProjectSpecifications)** and **[Test Requirements](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/00TestRequirements)**
-   - Contains the detailed test plan for the project.
-   - Provides insights into team scheduling and test scheduling, along with associated dates.
+### 02. [Web Testing](#) <!-- Replace with your Web Testing folder URL -->
 
-1. **[WEAre Test Plan](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/01WEareTestPlan)**
-   - Contains the detailed test plan for the project.
+**Description:**
+Explore this section for a comprehensive set of materials covering various aspects of web testing, including:
+- Postman API testing
+- RestAssured API testing
+- Selenium tests
+- Homework assignments
+- In-class activities
 
-2. **[Team and Test Schedule](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/02TeamAndTestSchedule)**
-   - Provides insights into team scheduling and test scheduling, along with associated dates.
+---
 
-3. **[Jira Templates and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/03JiraTemplatesAndReports)**
-   - Includes templates used for creating Jira test cases and reports, including the Jira Test Coverage report and Test Plan report.
+### 03. [POMFrameworkDesign1](#) <!-- Replace with your POMFrameworkDesign1 folder URL -->
 
-4. **[Rest API Postman Testing and Reports](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/04RestApiTestingPostmanAndNewmanReport)**
-   - This section contains the Postman collection and environment files, as well as a batch file to run the collection and generate a Newman htmlextra report. Latest report is added into this directory.
+**Description:**
+This folder focuses on a Page Object Model (POM) framework design. Check the README file for detailed information about the structure and implementation of the framework.
 
-5. **[Test Automation Framework Rest API & UI Testing](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/06TestAutomationFramework)**
-   - Inside this folder, you'll find RestAssured tests for API testing and Selenium UI tests. Refer to the included readme file inside the project for detailed navigation instructions.
+---
 
-6. **[JMeter Performance Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport)**
-   - Contains performance testing conducted with JMeter and provides associated instructions and Jmeter report inside [(index.html)](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/05JMeterPerformanceTestingAndReport/ReportFolderJMeter) folder.
-  
-7. **[ZAP Security Testing and Report](https://github.com/FINAL-PROJECT-T-H-K/Social-Network-Project/tree/main/07ZAPSecurityTestingReport)**
-   - Contains performance testing conducted with JMeter and provides associated instructions.
+### 04. [POMFrameworkDesign2](#) <!-- Replace with your POMFrameworkDesign2 folder URL -->
 
-Feel free to explore each section to gain a comprehensive understanding of our project's testing and development process. Your interest and support are greatly appreciated as we continue to refine and enhance the WEAre Social Network project.
+**Description:**
+Similar to POMFrameworkDesign1, this folder emphasizes another approach to Page Object Model (POM) framework design.
+
+---
+
+### 05. [MyProjects](#) <!-- Replace with your MyProjects folder URL -->
+
+**Description:**
+This section encompasses various personal projects. Explore the updated folder structure for the latest content and project materials.
+
+## Getting Started
+
+To get started with a specific project or workshop, navigate to the respective folder, and refer to the README files for detailed instructions, project goals, and any additional information.
+
+## Contributing
+
+Feel free to contribute to this repository by forking the project and submitting pull requests. Whether it's fixing a bug, adding new features, or improving documentation, your contributions are valuable.
+
+## License
+
+This repository is open-source and available under the [MIT License](LICENSE). Feel free to explore, use, and modify the contents within the terms of the license.
+
+Happy coding!
